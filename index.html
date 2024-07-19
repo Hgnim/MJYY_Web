@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>我的世界谧静幽原服务器</title>
     <meta name="description" content="Edge is a beautiful Bootstrap 4 template for personal profile landing pages." />
-    <!--Inter UI font-->
-    <link href="https://rsms.me/inter/inter-ui.css" rel="stylesheet">
+    <!--Inter UI font
+    <link rel="stylesheet" href="css/inter.css" >-->
     <!--vendors styles-->
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <!-- Bootstrap CSS / Color Scheme -->
-    <link rel="stylesheet" href="css/default.css" id="theme-color">
+    <link rel="stylesheet" href="css/theme.css" id="theme-color">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="icon" href="./img/icon.ico" type="image/x-icon">
 
 
@@ -22,12 +23,17 @@
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/feather.min.js"></script>
     <script src="./js/scripts.js"></script>
+    <script src="./js/view_action.js"></script>
+
+    <style>
+
+    </style>
 </head>
 
 <body>
     <section class="sticky-top sticky-wrapper">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top sticky-navigation">
-            <a class="navbar-brand heading-black page-scroll" href="#home">
+            <a class="navbar-brand heading-black page-scroll" href="#home" onclick="home_a_run()">
                 谧静幽原
             </a>
             <button class="navbar-toggler navbar-toggler-right border-0 toggler" type="button" data-toggle="collapse"
@@ -58,7 +64,7 @@
         <div class="video-wrapper">
             <div class="video-container">
                 <!--<iframe class="video-source" src="#" frameborder="0" allowfullscreen></iframe>-->
-                <img src="https://s21.ax1x.com/2024/07/18/pkoTupF.png" class="card-img-top"/>
+                <img src="https://s21.ax1x.com/2024/07/19/pkTSIHO.png" class="card-img-top" />
             </div>
         </div>
     </div>
@@ -67,8 +73,10 @@
         <div class="container">
             <div class="row vh-100">
                 <div class="col-md-8 mx-auto my-auto text-center">
-                    <h1 class="display-4 mb-5 text-white">我的世界谧静幽原服务器欢迎您!</h1>
-                    <a href="#video_page" class="btn btn-outline-secondary page-scroll">
+                    <!--<h1 class="display-4 mb-5 text-white">Main Center Text</h1>-->
+                    <p class="text_light" id="home_MainText">我的世界谧静幽原服务器欢迎您!</p>
+                    <a href="#video_page" class="btn btn-outline-secondary page-scroll home_MainButton"
+                        id="home_MainButton">
                         让我们开始吧
                     </a>
                 </div>
@@ -155,37 +163,37 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/19/pkoHlIx.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTS5DK.png" class="card-img-top rounded" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/19/pkoH3i6.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTS4u6.png" class="card-img-top rounded" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/18/pkoTM6J.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTSR3R.png" class="card-img-top rounded" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/19/pkoHMZR.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTSfjx.png" class="card-img-top rounded" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/19/pkoHnsJ.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTSWg1.png" class="card-img-top rounded" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/19/pkoHuL9.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTSTED.png" class="card-img-top rounded" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="https://s21.ax1x.com/2024/07/19/pkoHQd1.png" class="card-img-top rounded" />
+                                <img src="https://s21.ax1x.com/2024/07/19/pkTS7Ue.png" class="card-img-top rounded" />
                             </div>
                         </div>
                     </div>
@@ -241,7 +249,8 @@
                     <br />
                     <h4 style="text-align:center">服务器规则(务必阅读)</h4>
                     <div style="text-align:center">
-                        <img src="https://s21.ax1x.com/2024/07/19/pkoHGRO.png" class="card-img-top rounded" style="width: 80%" />
+                        <img src="https://s21.ax1x.com/2024/07/19/pkoHGRO.png" class="card-img-top rounded"
+                            style="width: 80%" />
                     </div>
                 </div>
             </div>

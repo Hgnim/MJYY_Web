@@ -1,0 +1,20 @@
+.text_light{
+color:#dc39eb;
+text-decoration: none;
+font-size:2.5em;
+animation: text_light_a 4s infinite;
+user-select:none;
+}
+@keyframes text_light_a{
+    0%,100%{ color:#fff;text-shadow:0 0 10px #dc39eb,0 0 10px #dc39eb; }
+    50%{ text-shadow:0 0 10px #dc39eb,0 0 50px #dc39eb; }
+}
+
+#home_MainButton{
+    opacity: 0
+}
+@keyframes home_MainButton_a{
+    to{
+        opacity: 1;
+    }
+}
