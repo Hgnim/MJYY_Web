@@ -1,7 +1,12 @@
+@font-face{
+    font-family: "mzd-font" ;
+    src: url("../font/mzd-font.ttf");
+}
 .text_light{
 color:#dc39eb;
 text-decoration: none;
-font-size:2.5em;
+font-size:4em;
+font-family: "mzd-font";
 animation: text_light_a 4s infinite;
 user-select:none;
 }
@@ -10,8 +15,17 @@ user-select:none;
     50%{ text-shadow:0 0 10px #dc39eb,0 0 50px #dc39eb; }
 }
 
+#home_MainText_Div{
+    opacity: 0;
+}
+@keyframes home_MainText_a{
+    to{
+        opacity: 1;
+    }
+}
+
 #home_MainButton{
-    opacity: 0
+    opacity: 0;
 }
 @keyframes home_MainButton_a{
     to{
