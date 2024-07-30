@@ -1,4 +1,5 @@
 !function () {
+    if (!(/Mobi|Android|iPhone/i.test(navigator.userAgent))) {
     function n(n, e, t) {
         return n.getAttribute(e) || t
     }
@@ -9,7 +10,7 @@
  
     function t() {
         var t = e("script"), o = t.length, i = t[o - 1];
-        return {l: o, z: n(i, "zIndex", 0), o: n(i, "opacity", .5), c: n(i, "color", "74,140,229"), n: n(i, "count", 200)}
+        return {l: o, z: n(i, "zIndex", 0), o: n(i, "opacity", .5), c: n(i, "color", "74,140,229"), n: n(i, "count", 100)}
     }
  
     function o() {
@@ -40,4 +41,5 @@
     u = s.concat([y]), setTimeout(function () {
         i()
     }, 100)
+}
 }();
