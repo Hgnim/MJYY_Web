@@ -9,7 +9,7 @@
  
     function t() {
         var t = e("script"), o = t.length, i = t[o - 1];
-        return {l: o, z: n(i, "zIndex", 1000), o: n(i, "opacity", .5), c: n(i, "color", "74,140,229"), n: n(i, "count", 200)}
+        return {l: o, z: n(i, "zIndex", 0), o: n(i, "opacity", .5), c: n(i, "color", "74,140,229"), n: n(i, "count", 200)}
     }
  
     function o() {
