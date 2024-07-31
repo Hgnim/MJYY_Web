@@ -1,0 +1,23 @@
+.linkText {
+    outline-color: transparent;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    z-index: 2;
+}
+
+.linkText:link {
+    color: blue;
+}
+
+.linkText:visited {
+    color: purple;
+}
+
+.linkText:focus,
+.linkText:hover {
+    border-bottom: 1px solid;
+}
+
+.linkText:active {
+    color: lightblue;
+}
