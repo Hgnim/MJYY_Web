@@ -81,7 +81,7 @@
   
   function Particle() {
 
-    this.lifeSpan = 144; //ms
+    this.lifeSpan = 44; //ms
     this.initialStyles ={
       "position": "fixed",
       "top": "0",
