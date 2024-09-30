@@ -121,7 +121,8 @@ var stop, staticx;
 				document.getElementsByTagName('body')[0].appendChild(canvas);
 				cxt = canvas.getContext('2d');
 				var theimgList = new TheimgList();
-				for(var i = 0; i < 74; i++) {
+				for(var i = 0; i < 34; i++)//i值为粒子数量
+					{
 					var theimg, randomX, randomY, randomS, randomR, randomFnx, randomFny;
 					randomX = getRandom('x');
 					randomY = getRandom('y');
