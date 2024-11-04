@@ -24,6 +24,9 @@ function sleep(interval) {
     })
 }
 
+//以下是解决window.onload和body.onload两个函数冲突的方法
+document.onreadystatechange =WaitTimeOut;
+
 window.onload = LoadingOver;
 if (document.all) {
     window.attachEvent('onload', LoadingOver)
