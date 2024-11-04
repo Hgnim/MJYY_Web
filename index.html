@@ -29,15 +29,22 @@
 
     <link rel="stylesheet" href="css/loading.css" type="text/css">
     <script src="./js/loading.js"></script>
+
+    <script>
+        function BodyOnLoad(){
+            WaitTimeOut();
+        }
+    </script>
 </head>
 
-<body>
+<body onload="BodyOnLoad()">
         <!-- LOADER -->
         <div id="preloader">
             <div id="main-ld">
                 <div id="loader"></div>
             </div>
             <h3 class="main-ld-txt">正在加载资源，请耐心等待...</h3>
+            <button id="main-ld-skipbt" onclick="LoadingOver()">跳过资源加载</button>
         </div>
 
     <section class="sticky-top sticky-wrapper">
@@ -278,20 +285,35 @@
                     <p>我们偶尔会推出休闲小游戏供娱乐，服务器内有多个玩家生存社区，服务器内玩家之间和谐友好。</p>
                     <p>服务器原生版本: Java版1.21.1</p>
                     <p>服务器支持的客户端版本: Java版1.9-1.21.x; 基岩版: 1.20.80/1.20.81-1.21.40-1.21.44</p>
-                    <div class="text-center">
-                        <h4>
-                            服务器相关网站
-                        </h4>
-                        <a href="http://mc.mjyymc.fun:38080/minecraft/playerachievement/" style="z-index: 1; position: relative;text-decoration: line-through" class="linkText">前往服务器玩家统计网页</a>
-                        <br/>
-                        <a href="http://mc.mjyymc.fun:18100" style="z-index: 1; position: relative;text-decoration: line-through" class="linkText">前往服务器卫星地图网页</a>
-                    </div>
                     <br />
-                    <div class="text-center">
-                    <h4>服务器规则(务必阅读)</h4>
+                    <br/>
+                    <div class="col-md-10 mx-auto">
+                    <h4 class="text-center">服务器规则(务必阅读)</h4>
                     <div >
-                        <img src="https://s21.ax1x.com/2024/07/19/pkTADk6.png" class="card-img-top rounded"
-                            style="width: 80%" />
+                        <!--<img src="https://s21.ax1x.com/2024/07/19/pkTADk6.png" class="card-img-top rounded"
+                                                                    style="width: 80%" />-->
+                        <p>谧静幽原服务器规则第二版(包括但不限于以下几点)：</p>
+                        <br/>
+                        <p>一，私有财产等请使用告示牌等方式声明所有者，声明的客体确认有效后视为玩家私有资产，受服务器保护。</p>
+                        <p>二，不得恶意破坏他人私有财产及建设用地(第一条规定的)，破坏未经确认的实际存在的玩家资产的，按照破坏私有资产对待(不含建设用地)。</p>
+                        <p>三，不得破坏主城及其周围地区生态环境，或者在主城外破坏环境损害玩家游玩体验。</p>
+                        <p>四，服务器为维护大家的游戏体验，禁止在人多时做加大服务器负载的行为(快速跑图，大型机器等)。</p>
+                        <p>五，在服务器内或群中不得辱骂他人，人身攻击，发送低俗词汇；言论造成服务器成员精神损失事实的，按照人身攻击处理。</p>
+                        <p>六，群内可以自由讨论游戏内容或询问一些关于本游戏服务器的信息。禁止恶意刷屏，发大量无意义或与本服务器无关的信息。</p>
+                        <p>七，禁止利用第三方辅助或游戏特性等做危害游戏平衡、损害其他玩家游戏体验、破坏服务器稳定性的行为。</p>
+                        <p>八，违反以上条款的(包括但不限于以上五条，不包括第十条规定的情况)，进行一次警告，根据损害性质和认错态度进行第二次警告或封禁。</p>
+                        <p>九，确认管理员行使管理权利有误的，可以提交管理员申请复议。违反第十条或者态度极其恶劣的，不适用于该条款。</p>
+                        <p>十，具有以下情形的，将直接封禁：</p>
+                        <p>1.损害服务器名誉，或者因个人行为对服务器造成重大不良影响的。</p>
+                        <p>2.使用第三方辅助，严重损害其他玩家游玩体验造成恶劣影响的。</p>
+                        <p>3.在群中或服务器中散播谣言，邪教，黄色信息等非法内容的。</p>
+                        <p>4.破坏玩家私有物品，造成不可挽回的巨大损失的。</p>
+                        <br/>
+                        <p>良好的游戏环境需共同维护，如存在不良行为，请反馈至群内，营造服务器更好的环境。</p>
+                        <br/>
+                        <br/>
+                        <p>Lt_HY&Hgnim</p>
+                        <p>2024年5月8日宣</p>
                     </div>
                 </div>
                 </div>

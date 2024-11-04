@@ -30,7 +30,24 @@
     opacity: 0.65;
     font-family: 楷体;
 }
+#main-ld-skipbt{
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    cursor: pointer;
+    border: 1px solid #696969;
 
+    width: 150px;
+    height: 40px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: calc(50% - 20px + 110px);
+    left: calc(50% - 75px);
+    font-family: 楷体;
+    opacity: 0.80;
+    font-size: 20px;
+    display: none;
+}
 #loader {
     width: 70px;
     height: 70px;
