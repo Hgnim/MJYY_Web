@@ -24,7 +24,7 @@ function sleep(interval) {
     })
 }
 
-//window.onload = LoadingOver;
+window.onload = LoadingOver;
 if (document.all) {
     window.attachEvent('onload', LoadingOver)
 }
