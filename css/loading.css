@@ -20,15 +20,16 @@
     left: calc(50% - 35px);
 }
 .main-ld-txt {
-    width: 800px;
+    width: 600px;
     height: 70px;
     overflow: hidden;
     position: absolute;
     text-align: center;
-    top: calc(50% - 35px + 85px);
-    left: calc(50% - 400px);
+    top: calc(50% - 35px + 90px);
+    left: calc(50% - 300px);
     opacity: 0.65;
-    font-family: 楷体;
+    font-family: 黑体;
+    font-size: 15px;
 }
 #main-ld-skipbt{
     border-radius: 0.5em;
