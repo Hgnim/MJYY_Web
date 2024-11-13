@@ -12,28 +12,28 @@
 }
 
 #main-ld {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     position: absolute;
     top: calc(50% - 17px);
-    left: calc(50% - 35px);
+    left: calc(50% - 25px);
 }
 .main-ld-txt {
-    width: 600px;
+    width: 400px;
     height: 70px;
     overflow: hidden;
     position: absolute;
     text-align: center;
-    top: calc(50% - 35px + 90px);
-    left: calc(50% - 300px);
+    top: calc(50% - 35px + 74px);
+    left: calc(50% - 200px);
     opacity: 0.65;
     font-family: 黑体;
     font-size: 15px;
 }
 #main-ld-skipbt{
     border-radius: 0.5em;
-    background: #e8e8e8;
+    background: #474747; /* #e8e8e8;*/
     cursor: pointer;
     border: 1px solid #696969;
 
@@ -42,7 +42,7 @@
     overflow: hidden;
     position: absolute;
     text-align: center;
-    top: calc(50% - 20px + 110px);
+    top: calc(50% - 20px + 85px);
     left: calc(50% - 75px);
     font-family: 楷体;
     opacity: 0.80;
@@ -50,17 +50,17 @@
     display: none;
 }
 #loader {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-style: solid;
-    border-top-color: #FFF;
+    border-top-color:#FFF;
     border-right-color: #FFF;
     border-left-color: transparent;
     border-bottom-color: transparent;
     border-radius: 50%;
     box-sizing: border-box;
     animation: rotate 3s ease-in-out infinite;
-    transform: rotate(-200deg)
+    transform: rotate(-400deg)
 }
 
 @keyframes rotate {
