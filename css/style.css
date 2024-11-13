@@ -48,11 +48,3 @@ user-select:none;
     color: var(--color8);
 }
 
-
-.spoiler {
-    display: none;
-  }
-  
-  #spoiler-toggle:checked + .spoiler {
-    display: block;
-  }
