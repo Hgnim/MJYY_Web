@@ -33,6 +33,7 @@
     <script>
         function BodyOnLoad(){
             WaitTimeOut();
+            CheckSystemTheme();
         }
     </script>
 </head>
@@ -48,9 +49,9 @@
         </div>
 
     <section class="sticky-top sticky-wrapper">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top sticky-navigation">
+        <nav class="navbar navbar-expand-md navbar-style fixed-top sticky-navigation">
             <a class="navbar-brand heading-black page-scroll" href="#home" onclick="home_a_run()">
-                <img src="./img/mjyylogo-128x.png" style="-webkit-user-drag: none;" width="48px"/><!--<label style="position: relative; left: 8px;">谧静幽原</label>-->
+                <img src="./img/mjyylogo-128x.png" style="-webkit-user-drag: none;" width="34px"/><!--<label style="position: relative; left: 8px;">谧静幽原</label>-->
             </a>
             <button class="navbar-toggler navbar-toggler-right border-0 toggler" type="button" data-toggle="collapse"
                 data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -71,6 +72,7 @@
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#join_us">加入我们</a>
                     </li>
+                    <button onclick="toggleTheme_Click()" class="toggleThemeButton">切换主题</button>
                 </ul>
             </div>
         </nav>
@@ -94,7 +96,7 @@
                     <p class="text_light" id="home_MainText" >谧静幽原服务器</p>
                 </div>
                 <div style="z-index: 3; position: relative;">
-                    <a href="#video_page" class="btn btn-outline-secondary page-scroll home_MainButton"
+                    <a href="#video_page" class="btn btn-outline-secondary page-scroll"
                         id="home_MainButton">
                         让我们开始吧
                     </a>
@@ -108,7 +110,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <h2 class="dot-circle">宣传视频</h2>
+                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">宣传视频</h2>
                     <div class="row mt-6 projects" style="z-index: 1; position: relative;">
                         <iframe style="width:100%;height: 535px ;"
                             src="//player.bilibili.com/player.html?isOutside=true&aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&p=1"
@@ -124,7 +126,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <h2 class="dot-circle">宣传图片</h2>
+                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">宣传图片</h2>
                     <div class="row mt-6 projects">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
@@ -246,7 +248,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <h2 class="dot-circle">服务器介绍</h2>
+                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">服务器介绍</h2>
                     <!--<div class="row mt-6">
                         <div class="col-md-6 mb-5">
                             <div class="card">

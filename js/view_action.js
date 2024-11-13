@@ -39,3 +39,26 @@ function home_a_run() {
         }, 0);
     }
 }
+
+
+// 切换主题
+function toggleTheme_Click() {
+    let html = document.querySelector('html');
+    let currentTheme = html.getAttribute('data-theme');
+ 
+    if (currentTheme === "dark") {
+        html.setAttribute('data-theme', 'light');
+    } else {
+        html.setAttribute('data-theme', 'dark');
+    }
+}
+
+function CheckSystemTheme(){
+    let html = document.querySelector('html');
+const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
+if (isDarkTheme.matches) { //深色
+    html.setAttribute('data-theme', 'dark');
+} else { //非深色
+    html.setAttribute('data-theme', 'light');
+}
+}
