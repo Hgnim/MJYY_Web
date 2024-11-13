@@ -62,3 +62,16 @@ if (isDarkTheme.matches) { //深色
     html.setAttribute('data-theme', 'light');
 }
 }
+
+//隐藏文本的显示状态切换
+function toggleSpoiler(targetName,buttonName) {
+    var spoiler = document.getElementById(targetName);
+    var button=document.getElementById(buttonName);
+    if (spoiler.style.display === "none") {
+        spoiler.style.display = "block";
+        button.value="收起";
+    } else {
+        spoiler.style.display = "none";
+        button.value="展开";
+    }
+  }

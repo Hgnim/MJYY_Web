@@ -47,3 +47,12 @@ user-select:none;
 .normalFontColor{
     color: var(--color8);
 }
+
+
+.spoiler {
+    display: none;
+  }
+  
+  #spoiler-toggle:checked + .spoiler {
+    display: block;
+  }
