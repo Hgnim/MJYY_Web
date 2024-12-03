@@ -146,15 +146,14 @@ var stop, staticx;
 					stop = requestAnimationFrame(arguments.callee);
 				})
 			}
- 
-			window.onresize = function() {
-				var canvasSnow = document.getElementById('canvas_snow');
-				canvasSnow.width = window.innerWidth;
-				canvasSnow.height = window.innerHeight;
-			}
- 
+
 			img.onload = function() {
 				startTheimg();
+				window.addEventListener('resize',function() {
+					var canvas = document.getElementById('canvas_theimg');
+					canvas.width = window.innerWidth;
+					canvas.height= window.innerHeight;
+				});
 			}
  
 			function stopp() {
