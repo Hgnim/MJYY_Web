@@ -47,15 +47,26 @@ $(function () {
     var utbFlyLock=false;
     var utbLoc=0;
     var utb=document.getElementById('upTopButton');
+    var utbShakAId=0;
     utb.addEventListener('mouseenter', (event) => {
         if(!utbFlyLock && utbLoc==1){
+            utbShakAId=0;
         utb.style.right='20px';
         utb.style.animation='scroll-top_shak 0.5s infinite';
     }
     });
     utb.addEventListener('mouseleave', (event) => {
         if(!utbFlyLock && utbLoc==1)
-         utb.style.animation='';
+        {
+            function utbAOver(){
+                if(utbShakAId==1){
+                utb.style.animationIterationCount = 0;
+                utb.style.animation='';}
+                utb.removeEventListener('animationiteration',utbAOver);
+            }
+            utbShakAId=1;
+            utb.addEventListener('animationiteration',utbAOver);
+        }
     });
     // scroll top top
     $('.scroll-top').click(function () {
