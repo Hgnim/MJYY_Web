@@ -118,7 +118,8 @@ var stop, staticx;
 				//canvas.setAttribute('style', 'position: fixed;left: 0;top: 0;pointer-events: none;');
                 canvas.setAttribute('style', 'position: absolute;left: 0;top: 0;pointer-events: none;z-index:2;');
 				canvas.setAttribute('id', 'canvas_theimg');
-				document.getElementsByTagName('body')[0].appendChild(canvas);
+				document.getElementById('home')/*getElementsByTagName('body')[0]*/.appendChild(canvas);
+				canvas_theimg_SizeChange()
 				cxt = canvas.getContext('2d');
 				var theimgList = new TheimgList();
 				for(var i = 0; i < 34; i++)//i值为粒子数量
@@ -150,10 +151,13 @@ var stop, staticx;
 			img.onload = function() {
 				startTheimg();
 				window.addEventListener('resize',function() {
-					var canvas = document.getElementById('canvas_theimg');
-					canvas.width = window.innerWidth;
-					canvas.height= window.innerHeight;
+					canvas_theimg_SizeChange();
 				});
+			}
+			function canvas_theimg_SizeChange(){
+				var canvas = document.getElementById('canvas_theimg');
+				canvas.width =document.getElementById('home').offsetWidth; //window.innerWidth;
+				canvas.height= document.getElementById('home').offsetHeight;//window.innerHeight;
 			}
  
 			function stopp() {
