@@ -80,7 +80,7 @@
             <button id="main-ld-skipbt" onclick="LoadingOver()">跳过资源加载</button>
         </div>
 
-    <section class="sticky-top sticky-wrapper">
+    <section class="sticky-top sticky-wrapper unSelectable">
         <nav class="navbar navbar-expand-md navbar-style fixed-top sticky-navigation">
             <a class="navbar-brand heading-black page-scroll" href="#home" onclick="home_a_run()" style="overflow: hidden;">
                 <img src="./img/mjyylogo-128x.png" style="-webkit-user-drag: none;transform: translateX(-100px);filter: drop-shadow(100px 0 var(--logoColor))" width="34px"/><!--<label style="position: relative; left: 8px;">谧静幽原</label>-->
@@ -110,7 +110,7 @@
         </nav>
     </section>
 
-    <div class="video-section" style="z-index: 1;">
+    <div class="video-section unSelectable" style="z-index: 1;">
         <div class="video-wrapper">
             <div class="video-container">
                 <!--<iframe class="video-source" src="#" frameborder="0" allowfullscreen></iframe>-->
@@ -142,7 +142,7 @@
     </section>
 
 
-    <section class="py-6" id="video_page">
+    <section class="py-6 unSelectable" id="video_page">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
@@ -173,7 +173,7 @@
         </div>
     </section>
 
-    <section class="py-6" id="photo">
+    <section class="py-6 unSelectable" id="photo">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
@@ -295,7 +295,7 @@
     </section>
 
 
-    <section class="py-6" id="introduce">
+    <section class="py-6 unSelectable" id="introduce">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
@@ -372,7 +372,7 @@
             </div>
         </div>
     </section>
-    <section class="py-6" id="join_us">
+    <section class="py-6 unSelectable" id="join_us">
         <div class="container">
             <div class="row">
                 <!--文字居中class"text-center"<div class="col-md-7 mx-auto text-center">
@@ -431,9 +431,9 @@
 
 
     <!--scroll to top-->
-    <div class="scroll-top">
-        <i class="fa fa-angle-up" aria-hidden="true"></i>
-    </div>
+    <img src="/img/fireworkRocket.png" style="image-rendering:pixelated" class="scroll-top" id="upTopButton">
+        <!--<i class="fa fa-angle-up" aria-hidden="true"></i>--><!--向上的箭头的字符-->
+    </img>
 
     <script src="./js/MoreLineEffect.js"></script>
     <script src="./js/imgFalling.js"></script>

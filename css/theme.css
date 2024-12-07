@@ -231,6 +231,11 @@ kbd {
   background-color: var(--color16);
 }
 
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 0px);
+  border-top-right-radius: calc(0.25rem - 0px); }
+
 .m-6 {
   margin: 6rem !important;
 }
@@ -680,24 +685,67 @@ footer a {
 /*scroll to top */
 .scroll-top {
   bottom: 20px;
-  font-size: 20px;
-  height: 40px;
+  /*font-size: 20px;*/
+  height: 45px;
   position: fixed;
   text-align: center;
-  width: 40px;
+  /*width: 40px;*/
   z-index: 10;
   cursor: pointer;
   transition: .3s;
-  border-radius: 50%;
-  line-height: 40px;
+  /*border-radius: 50%;*/
+  /*line-height: 40px;*/
   right: -100px;
-  color: var(--color8);
-  background-color: var(--color6); }
-  .scroll-top:hover {
-    background-color: var(--color3);
-    transition: all .4s ease-in-out; }
-  .scroll-top.active {
-    right: 20px; }
+  /*color: var(--color8);
+  background-color: var(--color6);*/
+  --defTopValue: 0;
+}
+/*.scroll-top:hover {
+  background-color: var(--color3);
+  transition: all .4s ease-in-out;
+ }*/
+
+  /*.scroll-top.active {
+    right: 20px; }*/
+  @keyframes scroll-top_out{
+    from{
+      right: -100px;
+    }to{
+      right: 20px;
+    }
+  }
+  @keyframes scroll-top_in{
+    from{
+      right: 20px;
+    }to{
+      right: -100px;
+    }
+  }
+  @keyframes scroll-top_fly{
+    from{
+      top: var(--defTopValue);
+    }
+    to{
+      top: -100px;
+    }
+  }
+  @keyframes scroll-top_shak{
+    0%{
+      transform: rotate(0deg);
+    }
+    25%{
+      transform: rotate(15deg);
+    }
+    50%{
+      transform: rotate(-15deg);
+    }
+    75%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(0deg);
+    }
+  }
 
 /*timeline */
 .timeline .media {
