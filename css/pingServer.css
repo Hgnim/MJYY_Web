@@ -1,19 +1,32 @@
-#pingServerView{
+#pingServerRootView{
     position:absolute;
     bottom: 0;
     left: 0;
     width: 340px;
     z-index: 1;
     display: none;
+}
+#pingServerView{
+    display: flex;
+    align-items: center;
+    position: relative;
 
     --pingServerState-loading: #cfa61f;
     --pingServerState-failed:#c50a0a;
     --pingServerState-succeed:#099709;
 }
+#pingServerInfo{
+    padding:0 15px 15px 15px;
+    display: none; /*flex;*/
+    align-items: center;
+}
+.pingServerInfo_text{
+    line-height:0;
+}
 #pingServerText{
-    position: absolute;
-    top: calc(28%);
-    left: calc(16%);
+    position: relative;
+    top: 8px;
+    left: -16px;
     font-size: 20px;
     user-select:none;
     /*color: var(--pingServerState-loading);*/

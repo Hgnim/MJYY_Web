@@ -32,7 +32,6 @@
 
     <link rel="stylesheet" href="css/pingServer.css" type="text/css">
     <script src="./js/pingServer.js"></script>
-    <script src="https://fastly.jsdelivr.net/gh/alfg/ping.js@0.3.0/dist/ping.min.js" type="text/javascript"></script>
 
     <script>
         function BodyOnLoad(){
@@ -135,9 +134,25 @@
                 </div>
             </div>
         </div>
-        <div id="pingServerView" onclick="pingServer_Start()">
-            <div id="pingServerLoader" ></div>
-            <p id="pingServerText"></p>
+        <div id="pingServerRootView">
+            <div id="pingServerView" onclick="pingServer_Start()">
+                <div id="pingServerLoader"></div>
+                <p id="pingServerText"></p>
+            </div>
+            <div>
+                <div id="pingServerInfo">
+                    <img id="pingServerInfo_icon" src="img/mjyylogo-128x.png" width="64px" />
+                    <div style="padding-left: 8px;">
+                        <div class="pingServerInfo_text">
+                            <p id="pingServerInfo_text_player">player</p>
+                        </div>
+                        <div class="pingServerInfo_text" style="padding-top: 10px;">
+                            <p id="pingServerInfo_text_motd1">motd1</p>
+                            <p id="pingServerInfo_text_motd2">motd2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
