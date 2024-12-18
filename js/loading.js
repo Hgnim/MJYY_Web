@@ -5,7 +5,12 @@ function LoadingOver() {
         isLoadingOver = true;
         $("#preloader").on(500).fadeOut();
         $(".preloader").on(600).fadeOut("slow");
+        waitToRemoveLoadingPage();
     }
+}
+async function waitToRemoveLoadingPage(){
+    await sleep(3000);//为了优化网页，在结束加载页面后的一段时间后卸载元素
+    document.getElementById("preloader").remove();
 }
 
 //加载时间过长的话则显示跳过加载的按钮
