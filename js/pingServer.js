@@ -46,7 +46,7 @@ function pingServer_Start() {
                         // 监听动画迭代结束事件
                         psl.addEventListener('animationiteration',pslLoopStop);
 
-                        if(response.code=200){
+                        if(response.code==200){
                             psl.style.background = pss_s;
                             pst.style.color = pss_s;
                             pst.innerText = "Minecraft服务器在线";

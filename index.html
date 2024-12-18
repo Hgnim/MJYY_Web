@@ -134,7 +134,7 @@
                 </div>
             </div>
         </div>
-        <div id="pingServerRootView">
+        <div id="pingServerRootView" class="unSelectable">
             <div id="pingServerView" onclick="pingServer_Start()">
                 <div id="pingServerLoader"></div>
                 <p id="pingServerText"></p>
@@ -143,12 +143,12 @@
                 <div id="pingServerInfo">
                     <img id="pingServerInfo_icon" src="img/mjyylogo-128x.png" width="64px" />
                     <div style="padding-left: 8px;">
-                        <div class="pingServerInfo_text">
-                            <p id="pingServerInfo_text_player">player</p>
+                        <div >
+                            <p id="pingServerInfo_text_player" class="pingServerInfo_text">player</p>
                         </div>
-                        <div class="pingServerInfo_text" style="padding-top: 10px;">
-                            <p id="pingServerInfo_text_motd1">motd1</p>
-                            <p id="pingServerInfo_text_motd2">motd2</p>
+                        <div style="padding-top: 10px;">
+                            <p id="pingServerInfo_text_motd1" class="pingServerInfo_text" >motd1</p>
+                            <p id="pingServerInfo_text_motd2" class="pingServerInfo_text" >motd2</p>
                         </div>
                     </div>
                 </div>
