@@ -11,6 +11,7 @@ function LoadingOver() {
 async function waitToRemoveLoadingPage(){
     await sleep(3000);//为了优化网页，在结束加载页面后的一段时间后卸载元素
     document.getElementById("preloader").remove();
+    document.getElementsByClassName('pace')[0].remove();
 }
 
 //加载时间过长的话则显示跳过加载的按钮
