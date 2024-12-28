@@ -1,6 +1,6 @@
 var stop, staticx;
 			var img = new Image();
-			img.src = "../img/cherry.png";
+			img.src = "https://s21.ax1x.com/2024/12/28/pAxPrxU.png";//cherry.png
  
 			function Theimg(x, y, s, r, fn) {
 				this.x = x;
