@@ -28,8 +28,8 @@
 }
 #pingServerText{
     position: relative;
-    top: 8px;
-    left: -16px;
+    top: 7px;
+    left: -19px;
     font-size: 20px;
     user-select:none;
     /*color: var(--pingServerState-loading);*/
@@ -48,7 +48,7 @@
     mask-composite: exclude;
     -webkit-mask-repeat: no-repeat;
     /*animation: pingServerLoader_loop 1.5s infinite;*/
-    transform: scale(0.4);
+    transform: scale(0.3);
     float: left;
 }
 @keyframes pingServerLoader_loop {
