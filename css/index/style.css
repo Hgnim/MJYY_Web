@@ -1,6 +1,6 @@
 @font-face{
     font-family: "mzd-font" ;
-    src: url("../font/mzd-font.ttf");
+    src: url("../../font/mzd-font.ttf");
 }
 .text_light{
 color:#dc39eb;
