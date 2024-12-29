@@ -80,11 +80,12 @@ user-select:none;
 }
 
 
-.topBar_ButtonBar {
+.navbar_ButtonBar {
     padding: 10px;
+    text-align: center;
 }
 
-.topBar_ButtonBar:hover {
+.navbar_ButtonBar:hover {
     border-radius: 50px;
     background-color: rgba(255, 255, 255, 0.5);
     transition: .2s;
