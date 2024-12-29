@@ -78,3 +78,28 @@ user-select:none;
     z-index: 2;
     position: relative;
 }
+
+
+.topBar_ButtonBar {
+    padding: 10px;
+}
+
+.topBar_ButtonBar:hover {
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: .2s;
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: relative;
+    margin: -2px 0 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: unset;
+}
