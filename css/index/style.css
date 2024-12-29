@@ -90,3 +90,16 @@ user-select:none;
     transition: .2s;
 }
 
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: relative;
+    margin: -2px 0 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: unset;
+}
