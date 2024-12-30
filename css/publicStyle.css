@@ -1,0 +1,25 @@
+.unSelectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    -user-drag: none;
+}
+
+.unset_unSelectable {
+    -moz-user-select: unset;
+    -khtml-user-select: unset;
+    -webkit-user-select: auto;
+    -o-user-select: unset;
+    user-select: text;
+    
+    -webkit-user-drag: unset;
+    -moz-user-drag: unset;
+    -ms-user-drag: unset;
+    -user-drag: unset;
+}
