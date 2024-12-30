@@ -1,9 +1,47 @@
+<!doctype html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>社区照片墙-我的世界谧静幽原服务器</title>
+    <link rel="icon" href="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" type="image/x-icon"><!--mjyylogo-128x.png-->
+    
     <script src="https://fastly.jsdelivr.net/npm/marked@15.0.4/lib/marked.umd.min.js"></script>
+
+    <link href="https://fastly.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/publicStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/publicNavbar.css" type="text/css">
+    <link rel="stylesheet" href="css/CommunityPhotoWall/navbar.css" type="text/css">
+
+    <script src="https://fastly.jsdelivr.net/npm/feather-icons@4.29.2/dist/feather.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    <script src="js/publicNavbar.js"></script>
+
+    <script src="js/CommunityPhotoWall/script.js"></script>
 </head>
 <body>
-    <div id="help" style="text-align: center;"></div>
+    <section class="sticky-top sticky-wrapper unSelectable">
+        <nav class="navbar navbar-expand-md navbar-style fixed-top sticky-navigation navbarStyle">
+            <a class="navbar-brand heading-black page-scroll navbar-logo-box" href="/">
+                <img src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" class="navbar-logo" width="34px"/><!--mjyylogo-128x.png-->
+                <!--<label style="position: relative; left: 8px;">谧静幽原</label>-->
+            </a>
+            <button class="navbar-toggler navbar-toggler-right border-0 toggler" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation" id="navbarCollapse_showButton">
+                <span data-feather="grid"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll navbar_ButtonBar" href="/">主页</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section id="home" >
+    <div id="help" style="text-align: center;position: relative;top:80px"></div>
     <script>
         fetch('/md/communityPhotoWallHelp.md')
             .then(response => response.text())
@@ -11,4 +49,5 @@
                 document.getElementById('help').innerHTML = marked.parse(markdownText);
             })
     </script>
+    </section>
 </body>
