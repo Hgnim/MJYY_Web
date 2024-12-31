@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(37, 37, 37);
+}
+p{
+    color: white;
+}
+h1{
+    color: white;
+}
+
+
+
+.card{
+    background-color: transparent;
+}
+.card-body-a{
+    color: white !important;
+}

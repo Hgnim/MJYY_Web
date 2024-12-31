@@ -1,0 +1,12 @@
+[
+{
+    "title": "示例",
+    "subtitle": "这是一个示例板块\\\n子标题为[markdown语言](https://markdown.com.cn)，其它均为纯文本",
+    "photo": [
+        {"comment":"在此处批注","url":"https://cloudflare.cdnjson.com/images/2024/12/28/photo-12.png"},
+        {"comment":"第二行图片为不加批注的效果","url":"https://cloudflare.cdnjson.com/images/2024/12/28/photo-12.png"},
+        {"url":"https://cloudflare.cdnjson.com/images/2024/12/28/photo-12.png"},
+        {"url":"https://cloudflare.cdnjson.com/images/2024/12/28/photo-12.png"}
+    ]
+}
+]
