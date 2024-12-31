@@ -62,6 +62,7 @@ $(function () {
                                     commentBar.className="card-body px-0 py-1";
                                     {
                                         const comment=document.createElement('a');
+                                        comment.className='card-body-a';
                                         comment.innerText=photoItem.comment;
                                         commentBar.appendChild(comment);
                                     }
