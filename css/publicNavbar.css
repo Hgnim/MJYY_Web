@@ -19,6 +19,13 @@
 .navbarStyle{
 }
 
+.navbar-title{
+    color: white;
+    &.autocolor{
+        color: var(--color8);
+    }
+}
+
 .navbar_ButtonBar {
     padding: 10px;
     text-align: center;
