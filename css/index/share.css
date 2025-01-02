@@ -1,0 +1,63 @@
+#share-page{
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    transform: .5s;
+}
+#share-window{
+    position: fixed;
+    background-color: var(--color21);
+    border-radius: 20px;
+    padding: 20px;
+    width: 280px;
+    height: 350px;
+    left: calc(50% - 140px);
+    top: calc(50% - 175px); 
+}
+#share-window-btn{
+    position: relative;
+    width: 300px;
+    top: 10px;
+    left: -11px;
+}
+#share-window-info{
+
+}
+
+#share-window-info-title{
+    position: relative;
+    left: calc(50% - 90px);
+    width: 200px;
+}
+#share-window-info-qrcodeImg{
+    position: relative;
+    left: calc(50% - 90px);
+    width: 180px;
+    border-radius: 14px;
+}
+#share-window-info-textBox{
+    width: 140px;
+}
+#share-window-info-inputDiv{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+#share-window-info-copyBtn{
+    position: relative;
+}
+
+#share-window-toast{
+    position: absolute;
+    color: var(--color8);
+    background-color: var(--color15);
+    left: calc(50% - 55px);
+    bottom: 40px;
+    width: 110px;
+}

@@ -51,6 +51,11 @@ user-select:none;
 #ruleText{
     z-index: 2;
     position: relative;
+    padding: 30px;
+    border-radius: 40px;
+    background-color: var(--color19);
+    color: var(--color8);
+    transition: .2s;
 }
 
 .githubButton {

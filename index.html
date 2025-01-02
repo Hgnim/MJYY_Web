@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>我的世界谧静幽原服务器</title>
+    <meta name="description" content="我的世界谧静幽原多人服务器官方网站">
+    <meta name="author" content="Hgnim">
     <link rel="icon" href="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" type="image/x-icon"><!--mjyylogo-128x.png-->
 
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -24,10 +26,19 @@
     <script src="js/publicNavbar.js"></script>
     <script src="js/index/navbar.js"></script>
     
+    <script src="https://fastly.jsdelivr.net/npm/marked@15.0.4/lib/marked.umd.min.js"></script>
+
+    <link rel="stylesheet" href="css/index/share.css" type="text/css">
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/overtrue/share.js@1.0.2/dist/css/share.min.css" type="text/css">
+    <script src="https://fastly.jsdelivr.net/gh/overtrue/share.js@1.0.2/dist/js/share.min.js" type="text/javascript"></script>
+    <script src="js/index/share.js"></script>
 
     <script src="js/index/pageSmoothScroll.js"></script>
     <script src="js/index/view_action.js"></script>
     <script src="js/index/titileChange.js"></script>
+
+    <link rel="stylesheet" href="css/toast.css" type="text/css">
+    <script src="js/toast.js"></script>
 
     <link rel="stylesheet" href="css/index/loading.css" type="text/css">
     <script src="js/index/loading.js"></script>
@@ -117,6 +128,7 @@
                                 <a class="dropdown-text">更多</a>
                                 <div class="dropdown-menu autocolor center">
                                     <a class="dropdown-item autocolor" href="/CommunityPhotoWall.html" title="由玩家们自由发挥的照片墙">社区照片墙</a>
+                                    <a class="dropdown-item autocolor" href="" onclick="OpenSharePage();return false;" title="将谧静幽原分享给更多人！">分享</a>
                                 </div>
                               </div>
                         </li>
@@ -340,33 +352,11 @@
                             <p>服务器支持的客户端版本: Java版1.9-1.21.x; 基岩版: 1.20.80/1.20.81-1.21.40-1.21.44</p>
                             <br />
                             <br />
-                            <div class="col-md-8 mx-auto">
+                            <div class="col-md-10 mx-auto">
                                 <h4 class="text-center">服务器规则(务必阅读)</h4>
                                 <div class="text-center"> <input onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button"
                                         type="button" value="展开" style="z-index: 1; position:relative;" /></div>
                                 <div style="display: none;" id="ruleText" class="unset_unSelectable">
-                                    <p>谧静幽原服务器规则第二版(包括但不限于以下几点)：</p>
-                                    <br />
-                                    <p>一，私有财产等请使用告示牌等方式声明所有者，声明的客体确认有效后视为玩家私有资产，受服务器保护。</p>
-                                    <p>二，不得恶意破坏他人私有财产及建设用地(第一条规定的)，破坏未经确认的实际存在的玩家资产的，按照破坏私有资产对待(不含建设用地)。</p>
-                                    <p>三，不得破坏主城及其周围地区生态环境，或者在主城外破坏环境损害玩家游玩体验。</p>
-                                    <p>四，服务器为维护大家的游戏体验，禁止在人多时做加大服务器负载的行为(快速跑图，大型机器等)。</p>
-                                    <p>五，在服务器内或群中不得辱骂他人，人身攻击，发送低俗词汇；言论造成服务器成员精神损失事实的，按照人身攻击处理。</p>
-                                    <p>六，群内可以自由讨论游戏内容或询问一些关于本游戏服务器的信息。禁止恶意刷屏，发大量无意义或与本服务器无关的信息。</p>
-                                    <p>七，禁止利用第三方辅助或游戏特性等做危害游戏平衡、损害其他玩家游戏体验、破坏服务器稳定性的行为。</p>
-                                    <p>八，违反以上条款的(包括但不限于以上五条，不包括第十条规定的情况)，进行一次警告，根据损害性质和认错态度进行第二次警告或封禁。</p>
-                                    <p>九，确认管理员行使管理权利有误的，可以提交管理员申请复议。违反第十条或者态度极其恶劣的，不适用于该条款。</p>
-                                    <p>十，具有以下情形的，将直接封禁：</p>
-                                    <p>1.损害服务器名誉，或者因个人行为对服务器造成重大不良影响的。</p>
-                                    <p>2.使用第三方辅助，严重损害其他玩家游玩体验造成恶劣影响的。</p>
-                                    <p>3.在群中或服务器中散播谣言，邪教，黄色信息等非法内容的。</p>
-                                    <p>4.破坏玩家私有物品，造成不可挽回的巨大损失的。</p>
-                                    <br />
-                                    <p>良好的游戏环境需共同维护，如存在不良行为，请反馈至群内，营造服务器更好的环境。</p>
-                                    <br />
-                                    <br />
-                                    <p>Lt_HY&Hgnim</p>
-                                    <p>2024年5月8日宣</p>
                                 </div>
                             </div>
                         </div>
@@ -436,6 +426,41 @@
             </path>
             </svg>
         </a>
+    </div>
+
+    <div id="share-page" class="unSelectable">
+        <div id="share-window">
+            <div id="share-window-info">
+                <h3 id="share-window-info-title">分享给更多人！</h3>
+                <img src="" id="share-window-info-qrcodeImg" ></img>
+                <div id="share-window-info-inputDiv">
+                <input id="share-window-info-textBox" type="text" value="" readonly>
+                <input id="share-window-info-copyBtn" type="button" onclick="shareWindowInfoCopyBtn_Click()" value="复制"/>
+                 </div>
+            </div>
+            <div id="share-window-btn" class="share-component"
+            data-initialized="true"
+            data-url="https://mjyymc.fun"
+            data-source="https://mjyymc.fun"
+            data-title="谧静幽原-我的世界"
+            data-image="https://s21.ax1x.com/2024/12/28/pAxP0P0.png"
+            data-description="想玩我的世界多人生存，就来谧静幽原！"
+            data-wechat-qrcode-title="打开微信扫一扫后手动进行分享"
+            data-wechat-qrcode-helper = '<p>由于微信未开放相关接口，</p><p>所以只能通过用户手动进行分享。</p>'
+            >
+                <a href="#" class="social-share-icon icon-wechat"></a>
+                <a href="#" class="social-share-icon icon-qq"></a>
+                <a href="#" class="social-share-icon icon-qzone"></a>
+                <a href="#" class="social-share-icon icon-weibo"></a>
+                <a href="#" class="social-share-icon icon-facebook"></a>
+                <a href="#" class="social-share-icon icon-twitter"></a>
+            </div>
+
+            <div id="share-window-toast" class="toast hide">
+                <div class="toast-content">
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--scroll to top-->
