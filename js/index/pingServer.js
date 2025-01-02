@@ -93,7 +93,7 @@ function pingServer_Start() {
         ChangePss(0);
         $("#pingServerRootView").fadeIn();
 
-        new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyymc.fun/minecraft/playerachievement/", function (err) {
+        new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/minecraft/playerachievement/", function (err) {
             if (err) {
                 if (!pingServerRunLock2 && pss == PssEnum.hf) {//如果备用检测完成且未成功，则输出失败信息
                     ChangePss(7);
