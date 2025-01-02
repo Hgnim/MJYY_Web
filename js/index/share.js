@@ -6,7 +6,7 @@ function shareWindowInfoCopyBtn_Click(){
 function OpenSharePage(){
     {
         document.getElementById("share-window-info-qrcodeImg").src="img/mjyy-qrcode.png";//动态加载，避免延长加载时间
-        document.getElementById("share-window-info-textBox").value="https://mjyymc.fun";
+        document.getElementById("share-window-info-textBox").value="https://mjyy.top";
     }
 
     $("#share-page").fadeIn();
