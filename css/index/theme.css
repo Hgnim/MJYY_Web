@@ -74,6 +74,7 @@
   --color18: rgba(0, 0, 0, 0.3);
   --color19: rgba(0, 0, 0, 0.1);
   --color20: rgba(29, 29, 29, 0.98);/*顶栏背景颜色*/
+  --color21: rgba(43, 43, 43, 0.9);
 }
 [data-theme="light"] {
   --primary: #ffffff;
@@ -98,6 +99,7 @@
   --color18: rgba(255, 255, 255,0.3);
   --color19: rgba(255, 255, 255, 0.1);
   --color20: rgba(197, 197, 197, 0.98);
+  --color21: rgba(212, 212, 212, 0.9);
 }
 
 
