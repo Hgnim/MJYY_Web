@@ -69,3 +69,8 @@ user-select:none;
 .githubButton:hover svg {
     transform: scale(0.9) rotate(2880deg);
 }
+
+
+.main-toast{
+    z-index: 3000;
+}

@@ -1,7 +1,7 @@
 function shareWindowInfoCopyBtn_Click(){
     navigator.clipboard.writeText(document.getElementById('share-window-info-textBox').value);
 
-    showToast("share-window-toast","复制成功",2000);
+    showToast("share-window-toast autocolor", "复制成功", 2000, "share-window");
 }
 function OpenSharePage(){
     {
