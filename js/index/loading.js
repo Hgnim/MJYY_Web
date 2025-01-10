@@ -46,11 +46,11 @@ else {
 
 document.addEventListener('DOMContentLoaded', function () {
     let randomInt;{
-        let min = 0, max = 5;
+        let min = 0, max = 6;
         randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    //randomInt = 5;
+    //randomInt = 6;
     let newLink = document.createElement('link');
     newLink.rel = 'stylesheet';
     newLink.type = 'text/css';
@@ -84,6 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
             newLink.href = '../../css/animation/pong.css';
             newDiv.className = 'pong_animation';
             for (i = 0; i < 3; i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+        case 6:
+            newLink.href = '../../css/animation/waterfall.css';
+            newDiv.className = "waterfall_animation";
+            for (i = 0; i < 5; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
     }

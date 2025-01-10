@@ -29,7 +29,13 @@
       will-change: transform;
       z-index: 2;
       content: -850 741;
-
+    }
+    .pong_animation div:nth-child(1)::before {
+      content: "";
+      width: 25px;
+      height: 25px;
+      transform: translate(-40%, -40%);
+      position: absolute;
       background-image: url('https://s21.ax1x.com/2025/01/10/pECLI6e.png');
       background-size: contain;
     }

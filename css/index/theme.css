@@ -373,15 +373,15 @@ p a, .border-link {
   .press .press-item {
     margin-bottom: 1.5rem; } }
 
-/*video background*/
-.video-section {
+/*main-view background*/
+.main-view-section {
   overflow: hidden;
   position: absolute;
   background-color: #000000;
   z-index: 0;
   width: 100%;
   height: 100vh; }
-  .video-section:before {
+  .main-view-section:before {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -391,25 +391,25 @@ p a, .border-link {
     top: 0;
     content: "";
     background-color: rgba(0, 0, 0, 0.6); }
-  .video-section .video-wrapper {
+  .main-view-section .main-view-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
-    .video-section .video-wrapper .video-container {
+    .main-view-section .main-view-wrapper .main-view-container {
       position: relative;
       overflow: hidden;
       height: 56.25vw;
       width: 100vw; }
-      .video-section .video-wrapper .video-container .video-source {
+      .main-view-section .main-view-wrapper .main-view-container .main-view-source {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%; }
     @media (max-aspect-ratio: 16 / 9) {
-      .video-section .video-wrapper .video-container {
+      .main-view-section .main-view-wrapper .main-view-container {
         height: 100vh;
         width: 177.7777777778vh; } }
 

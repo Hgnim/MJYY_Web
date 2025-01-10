@@ -53,10 +53,10 @@
     position: relative;
 }
 
-#share-window-toast{
+.share-window-toast{
     position: absolute;
-    color: var(--color8);
-    background-color: var(--color15);
+    transform: unset;
+    top: unset;
     left: calc(50% - 55px);
     bottom: 40px;
     width: 110px;
