@@ -1,0 +1,35 @@
+/*此代码来自 https://github.com/jh3y/whirl 仓库(@author jh3y)。在此对其进行了部分修改*/
+.bar-spin_animation {
+  -webkit-animation: spin 3s infinite linear;
+          animation: spin 3s infinite linear;
+  height: 50px;
+  position: relative;
+  width: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  .bar-spin_animation:before {
+    content: '';
+    display: block;
+    height: 64px;
+    width: 64px;
+    -webkit-animation: spin .5s infinite;
+            animation: spin .5s infinite;
+    /*background: var(--primary, #fff);*/
+    background-image: url('https://s21.ax1x.com/2025/01/10/pECLI6e.png');
+    position: absolute;
+    /*left: 50%;
+    margin-left: -5px; */
+  }
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }

@@ -1,3 +1,4 @@
+/*此代码来自 https://github.com/jh3y/whirl 仓库(@author jh3y)。在此对其进行了部分修改*/
 @-webkit-keyframes cube_animation {
         0% {
                 -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
