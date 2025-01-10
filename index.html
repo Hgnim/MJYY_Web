@@ -64,38 +64,11 @@
         <div id="preloader">
             <!-- LOADER -->
             <div id="main-ld">
-                <div class="loader">
-                    <div class="box box0">
-                        <div></div>
-                    </div>
-                    <div class="box box1">
-                        <div></div>
-                    </div>
-                    <div class="box box2">
-                        <div></div>
-                    </div>
-                    <div class="box box3">
-                        <div></div>
-                    </div>
-                    <div class="box box4">
-                        <div></div>
-                    </div>
-                    <div class="box box5">
-                        <div></div>
-                    </div>
-                    <div class="box box6">
-                        <div></div>
-                    </div>
-                    <div class="box box7">
-                        <div></div>
-                    </div>
-                    <div class="ground">
-                        <div></div>
-                    </div>
-                </div>
+                <div id="main-ld-loader"></div>
+                <h3 class="main-ld-txt">正在加载资源，请耐心等待...</h3>
+                <button id="main-ld-skipbt" onclick="LoadingOver()">跳过资源加载</button>
             </div>
-            <h3 class="main-ld-txt">正在加载资源，请耐心等待...</h3>
-            <button id="main-ld-skipbt" onclick="LoadingOver()">跳过资源加载</button>
+            
         </div>
 
         <section class="sticky-top sticky-wrapper unSelectable">
@@ -381,7 +354,7 @@
                                 <a href="https://qm.qq.com/q/siqAtkac9i" style="z-index: 1; position: relative;"
                                     class="linkText">点击加入QQ交流群(群号: 821763384)</a>
                                 <br />
-                                <img src="img/qqGroupQRcode.webp" class="card-img-top rounded" style="width: 45%" />
+                                <img src="img/qqGroupQRcode.webp" loading="lazy" class="card-img-top rounded" style="width: 45%" />
                             </div>
                         </div>
                     </div>

@@ -40,3 +40,32 @@ if (document.all) {
 else {
     window.addEventListener('load', LoadingOver, false);
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    let randomInt;{
+        let min = 0, max = 1;
+        randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    let newLink = document.createElement('link');
+    newLink.rel = 'stylesheet';
+    newLink.type = 'text/css';
+    let newDiv = document.createElement('div');
+    switch (randomInt) {
+        case 0:
+            newLink.href = '../../css/animation/spinning-coin.css';
+            newDiv.className = 'spinning-coin_animation';
+            break;
+        case 1:
+            newLink.href = '../../css/animation/cube.css';
+            newDiv.className = 'cube_animation';
+            for (i = 0; i < 6;i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+    }
+    document.head.appendChild(newLink);
+    document.getElementById("main-ld-loader").appendChild(newDiv);
+});

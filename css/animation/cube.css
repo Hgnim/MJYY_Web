@@ -1,0 +1,111 @@
+@-webkit-keyframes cube_animation {
+        0% {
+                -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+                transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+        }
+
+        50% {
+                -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+                transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+        }
+
+        100% {
+                -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+                transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+        }
+}
+
+@keyframes cube_animation {
+        0% {
+                -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+                transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+        }
+
+        50% {
+                -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+                transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+        }
+
+        100% {
+                -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+                transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+        }
+}
+
+.cube_animation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        -webkit-animation: cube_animation 2s infinite ease;
+        animation: cube_animation 2s infinite ease;
+        height: 40px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        width: 40px;
+}
+
+.cube_animation div {
+        /*background-color: rgba(255, 255, 255, 0.25);*/
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        /*border: 2px solid white;*/
+        
+}
+.cube_animation div:nth-of-type(1) {
+        -webkit-transform: translateZ(-20px) rotateY(180deg);
+        transform: translateZ(-20px) rotateY(180deg);
+
+        background-image: url('https://s21.ax1x.com/2025/01/10/pECOD4P.png');
+        background-size: contain;
+        image-rendering: pixelated;
+}
+.cube_animation div:nth-of-type(2) {
+        -webkit-transform: rotateY(-270deg) translateX(50%);
+        transform: rotateY(-270deg) translateX(50%);
+        -webkit-transform-origin: top right;
+        transform-origin: top right;
+
+        background-image: url('https://s21.ax1x.com/2025/01/10/pECOD4P.png');
+        background-size: contain;
+        image-rendering: pixelated;
+}
+.cube_animation div:nth-of-type(3) {
+        -webkit-transform: rotateY(270deg) translateX(-50%);
+        transform: rotateY(270deg) translateX(-50%);
+        -webkit-transform-origin: center left;
+        transform-origin: center left;
+
+        background-image: url('https://s21.ax1x.com/2025/01/10/pECOD4P.png');
+        background-size: contain;
+        image-rendering: pixelated;
+}
+.cube_animation div:nth-of-type(4) {
+        -webkit-transform: rotateX(90deg) translateY(-50%);
+        transform: rotateX(90deg) translateY(-50%);
+        -webkit-transform-origin: top center;
+        transform-origin: top center;
+
+        background-image: url('https://s21.ax1x.com/2025/01/10/pECXn8f.png');
+        background-size: contain;
+        image-rendering: pixelated;
+}
+.cube_animation div:nth-of-type(5) {
+        -webkit-transform: rotateX(-90deg) translateY(50%);
+        transform: rotateX(-90deg) translateY(50%);
+        -webkit-transform-origin: bottom center;
+        transform-origin: bottom center;
+
+        background-image: url('https://s21.ax1x.com/2025/01/10/pECOs9f.png');
+        background-size: contain;
+        image-rendering: pixelated;
+}
+.cube_animation div:nth-of-type(6) {
+        -webkit-transform: translateZ(20px);
+        transform: translateZ(20px);
+        
+        background-image: url('https://s21.ax1x.com/2025/01/10/pECOD4P.png');
+        background-size: contain;
+        image-rendering: pixelated;
+}
