@@ -46,10 +46,11 @@ else {
 
 document.addEventListener('DOMContentLoaded', function () {
     let randomInt;{
-        let min = 0, max = 1;
+        let min = 0, max = 5;
         randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    //randomInt = 5;
     let newLink = document.createElement('link');
     newLink.rel = 'stylesheet';
     newLink.type = 'text/css';
@@ -63,6 +64,26 @@ document.addEventListener('DOMContentLoaded', function () {
             newLink.href = '../../css/animation/cube.css';
             newDiv.className = 'cube_animation';
             for (i = 0; i < 6;i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+        case 2:
+            newLink.href = '../../css/animation/bar-spin.css';
+            newDiv.className = 'bar-spin_animation';
+            break;
+        case 3:
+            newLink.href = '../../css/animation/wind-up.css';
+            newDiv.className = 'wind-up_animation';
+            break;
+        case 4:
+            newLink.href = '../../css/animation/push-pop.css';
+            newDiv.className = 'push-pop';
+            for (i = 0; i < 2; i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+        case 5:
+            newLink.href = '../../css/animation/pong.css';
+            newDiv.className = 'pong_animation';
+            for (i = 0; i < 3; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
     }
