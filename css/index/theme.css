@@ -75,6 +75,7 @@
   --color19: rgba(0, 0, 0, 0.1);
   --color20: rgba(29, 29, 29, 0.98);/*顶栏背景颜色*/
   --color21: rgba(43, 43, 43, 0.9);
+  --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-dark.png);
 }
 [data-theme="light"] {
   --primary: #ffffff;
@@ -100,6 +101,7 @@
   --color19: rgba(255, 255, 255, 0.1);
   --color20: rgba(197, 197, 197, 0.98);
   --color21: rgba(212, 212, 212, 0.9);
+  --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-light.png);
 }
 
 
@@ -230,11 +232,6 @@ kbd {
 .card {
   background-color: var(--color16);
 }
-
-.card-img-top {
-  width: 100%;
-  border-top-left-radius: calc(0.25rem - 0px);
-  border-top-right-radius: calc(0.25rem - 0px); }
 
 /*#endregion*/
 /*#region Custom CSS
@@ -390,7 +387,7 @@ p a, .border-link {
     left: 0;
     top: 0;
     content: "";
-    background-color: rgba(0, 0, 0, 0.6); }
+    background-color: rgba(0, 0, 0, 0.1); }
   .main-view-section .main-view-wrapper {
     position: absolute;
     top: 50%;
