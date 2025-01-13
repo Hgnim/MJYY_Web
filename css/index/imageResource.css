@@ -1,0 +1,34 @@
+.photoBoxGroup-1 {
+    /*
+照片资源组，用于js动态加载资源时寻找这些容器
+该类对应“宣传图片”板块内的所有照片容器
+*/
+}
+.photoBoxGroup-1::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border: 5px solid var(--color18);
+    border-top-color: var(--color13);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.photoBoxGroup-1 img[src]:not([src=""]) {
+    display: unset;
+}
+.photoBoxGroup-1 img[src=""] {
+    display: none;
+}

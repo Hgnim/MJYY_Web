@@ -53,16 +53,6 @@ function toggleTheme_Click() {
     }
 }
 
-function CheckSystemTheme(){
-    let html = document.querySelector('html');
-const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
-if (isDarkTheme.matches) { //深色
-    html.setAttribute('data-theme', 'dark');
-} else { //非深色
-    html.setAttribute('data-theme', 'light');
-}
-}
-
 //隐藏文本的显示状态切换
 function toggleSpoiler(targetName,buttonName) {
     var spoiler = document.getElementById(targetName);
