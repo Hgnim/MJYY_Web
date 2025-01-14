@@ -98,6 +98,14 @@ p{
 a{
   color: var(--color8);
 }
+li{
+  color: var(--color8);
+}
+blockquote{
+    background-color: var(--color18);
+    padding-left: 8px;
+    border-left: .25em solid var(--color15, var(--color15));
+}
 .img-thumbnail {
   background-color: var(--color16);
 }

@@ -89,6 +89,9 @@
                             <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#introduce">服务器介绍</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#rule">规则</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#join_us">加入我们</a>
                         </li>
                         <li class="nav-item">
@@ -310,29 +313,27 @@
                 <div class="col-md-10 mx-auto">
                     <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">服务器介绍</h2>
                     <div class="row mt-5">
-                        <div class="col-md-12 mb-5">
-                            <p>Minecraft我的世界谧静幽原生存服务器</p>
-                            <p>在眼花缭乱的模组中，是否还记得那个原汁原味的Minecraft，本服务器将给您带来原版我的世界，还您原汁原味的体验！
-                                服务器内环境优美，玩家氛围和睦友善。对于想要结伴聊天一起建建筑、生电和养老的玩家们，谧静幽原服务器是您的首选。</p>
-                            <p>服务器包含轻量服务器插件，不影响玩家原版的游戏体验。且Java版与基岩版互通，通俗的说就是手机和电脑都可以进行游戏。</p>
-                            <p>我们偶尔会推出休闲小游戏供娱乐，服务器内有多个玩家生存社区，服务器内玩家之间和谐友好。</p>
-                            <p>服务器原生版本: Java版1.21.1</p>
-                            <p>服务器支持的客户端版本: Java版1.9-1.21.x; 基岩版: 1.20.80/1.20.81-1.21.40-1.21.44</p>
-                            <br />
-                            <br />
-                            <div class="col-md-10 mx-auto">
-                                <h4 class="text-center">服务器规则(务必阅读)</h4>
-                                <div class="text-center"> <input onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button"
-                                        type="button" value="展开" style="z-index: 1; position:relative;" /></div>
-                                <div style="display: none;" id="ruleText" class="unset_unSelectable">
-                                </div>
-                            </div>
+                        <div id="serverIntroductoryText" class="col-md-12 mb-5">
                         </div>
                     </div>
                     </div>
             </div>
         </div>
     </section>
+    <section class="py-3 unSelectable" id="rule">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+                    <h4 class="text-center">服务器规则(务必阅读)</h4>
+                    <div class="text-center"> <input onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button"
+                            type="button" value="展开" style="z-index: 1; position:relative;" /></div>
+                    <div style="display: none;" id="ruleText" class="unset_unSelectable">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="py-5"></div>
     <section class="py-5 unSelectable" id="join_us">
         <div class="container">
             <div class="row">
@@ -340,8 +341,8 @@
                     <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">加入我们</h2>
                     <div class="row mt-5">
                         <div class="col-md-12 mb-5">
-                            <p>为了良好的游戏环境，我们建议加群获取服务器地址和申请白名单，还望各位理解。在群里大家可以愉快讨论聊天交友等。</p>
-                            <p>不会安装游戏或加入服务器等等的新人不用担心，可在服务器交流群内咨询，我们会提供游戏客户端以及进入服务器的相关教程。</p>
+                            <div id="joinUsText">
+                            </div>
                             <div class="text-center">
                                 <h3>
                                     QQ交流群

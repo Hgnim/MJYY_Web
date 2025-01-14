@@ -1,5 +1,33 @@
 async function LoadResources() {
-  {
+    {
+        {
+            function loadTextFile(path) {
+                return new Promise((resolve, reject) => {
+                    fetch(path)
+                        .then((response) => response.text())
+                        .then((readText) => {
+                            resolve(readText);
+                        })
+                        .catch(()=>{
+                            reject(new Error(`文本资源\'{path}\'加载失败`));
+                        });
+                });
+            }
+            const mdRes = [
+                ["/md/index/serverRule.md", "ruleText"],
+                ["/md/index/serverIntroductory.md", "serverIntroductoryText"],
+                ["/md/index/joinUs.md", "joinUsText"],
+            ];
+            for (i = 0; i < mdRes.length; i++) {
+                document.getElementById(mdRes[i][1]).innerHTML =
+                    marked.parse(await loadTextFile(mdRes[i][0]));
+            }
+        }
+
+        CheckSystemTheme();
+
+    {
+    //图片资源加载
     function loadImage(url) {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -61,8 +89,8 @@ async function LoadResources() {
         allImgBoxs[i].src = imgUrls[i];
       }
     }
+        }
 
-    //await sleep(300);//等待300毫秒用于容错
     LoadingOver();
   }
 }
