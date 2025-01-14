@@ -1,11 +1,15 @@
 
 var isLoadingOver = false;
-function LoadingOver() {
+var loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕
+function LoadingOver(addValue=1) {
     if (!isLoadingOver) {
-        isLoadingOver = true;
-        $("#preloader").on(500).fadeOut();
-        $(".preloader").on(600).fadeOut("slow");
-        waitToRemoveLoadingPage();
+        loadingOverValue = Number(loadingOverValue) + Number(addValue);
+        if (loadingOverValue >= 2) {//当阶段达到2后则加载完毕
+            isLoadingOver = true;
+            $("#preloader").on(500).fadeOut();
+            $(".preloader").on(600).fadeOut("slow");
+            waitToRemoveLoadingPage();
+        }
     }
 }
 async function waitToRemoveLoadingPage(){
@@ -30,21 +34,13 @@ function sleep(interval) {
     })
 }
 
-//以下是解决window.onload和body.onload两个函数冲突的方法
-document.onreadystatechange =WaitTimeOut;
-
-window.onload = LoadingOver;
-if (document.all) {
-    window.attachEvent('onload', LoadingOver)
-}
-else {
-    window.addEventListener('load', LoadingOver, false);
-}
-
 
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    WaitTimeOut();
+
+    //随机显示加载页面动画
     let randomInt;{
         let min = 0, max = 6;
         randomInt = Math.floor(Math.random() * (max - min + 1)) + min;

@@ -33,6 +33,15 @@ user-select:none;
     }
 }
 
+#home-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: var(--home-wrapper_img-url);
+    background-size: contain;
+    filter: blur(2px);
+}
+
 .toggleThemeButton{
     border-style: ridge;
     background-color: var(--primary);

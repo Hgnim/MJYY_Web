@@ -1,33 +1,6 @@
 ﻿:root {
   --primary: #ffffff;
-  --blue: #0000ff;
-  --indigo: #3d5afe;
-  --purple: #aa00ff;
-  --pink: #f50057;
-  --red: #ff1744;
-  --orange: #ffd700;
-  --yellow: #ffff00;
-  --green: #00e676;
-  --teal: #55ffc7;
-  --cyan: #00e5ff;
-  --white: #ffffff;
-  --gray: #868e96;
-  --gray-dark: #343a40;
-  --secondary: #ffffff;
-  --success: #00e676;
-  --info: #00e5ff;
-  --warning: #ffff00;
-  --danger: #ff1744;
-  --light: #f8f9fa;
-  --dark: #212529;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  
+
   /*--primary: #55ffc7;
   --color1: #cfffef;
   --color2: #b6ffe7;
@@ -75,6 +48,7 @@
   --color19: rgba(0, 0, 0, 0.1);
   --color20: rgba(29, 29, 29, 0.98);/*顶栏背景颜色*/
   --color21: rgba(43, 43, 43, 0.9);
+  --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-dark.png);
 }
 [data-theme="light"] {
   --primary: #ffffff;
@@ -100,6 +74,7 @@
   --color19: rgba(255, 255, 255, 0.1);
   --color20: rgba(197, 197, 197, 0.98);
   --color21: rgba(212, 212, 212, 0.9);
+  --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-light.png);
 }
 
 
@@ -122,6 +97,14 @@ p{
 }
 a{
   color: var(--color8);
+}
+li{
+  color: var(--color8);
+}
+blockquote{
+    background-color: var(--color18);
+    padding-left: 8px;
+    border-left: .25em solid var(--color15, var(--color15));
 }
 .img-thumbnail {
   background-color: var(--color16);
@@ -230,11 +213,6 @@ kbd {
 .card {
   background-color: var(--color16);
 }
-
-.card-img-top {
-  width: 100%;
-  border-top-left-radius: calc(0.25rem - 0px);
-  border-top-right-radius: calc(0.25rem - 0px); }
 
 /*#endregion*/
 /*#region Custom CSS
@@ -390,7 +368,7 @@ p a, .border-link {
     left: 0;
     top: 0;
     content: "";
-    background-color: rgba(0, 0, 0, 0.6); }
+    background-color: rgba(0, 0, 0, 0.1); }
   .main-view-section .main-view-wrapper {
     position: absolute;
     top: 50%;

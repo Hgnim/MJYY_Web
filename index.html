@@ -11,8 +11,8 @@
 
     <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/hgnim/WebSimpleToast@1.0.0/dist/css/toast.min.css" type="text/css">
-    <script src="https://fastly.jsdelivr.net/gh/hgnim/WebSimpleToast@1.0.0/dist/js/toast.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/hgnim/WebSimpleToast@1.1.0/dist/css/toast.min.css" type="text/css">
+    <script src="https://fastly.jsdelivr.net/gh/hgnim/WebSimpleToast@1.1.0/dist/js/toast.min.js" type="text/javascript"></script>
 
     <link href="https://fastly.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index/theme.css" id="theme-color">
@@ -42,6 +42,8 @@
 
     <link rel="stylesheet" href="css/index/loading.css" type="text/css">
     <script src="js/index/loading.js"></script>
+    <link rel="stylesheet" href="css/index/imageResource.css" type="text/css">
+    <script src="js/index/loadResources.js"></script>
 
     <link rel="stylesheet" href="css/index/pingServer.css" type="text/css">
     <script src="https://fastly.jsdelivr.net/gh/alfg/ping.js@0.3.0/dist/ping.min.js" type="text/javascript"></script>
@@ -51,13 +53,6 @@
     <link href="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/themes/silver/pace-theme-barber-shop.min.css" rel="stylesheet">
 
     <script src="js/index/script.js"></script>
-
-    <script>
-        function BodyOnLoad(){
-            WaitTimeOut();
-            CheckSystemTheme();
-        }
-    </script>
 </head>
 
 <body onload="BodyOnLoad()">
@@ -66,7 +61,7 @@
             <div id="main-ld">
                 <div id="main-ld-loader"></div>
                 <h3 class="main-ld-txt">正在加载资源，请耐心等待...</h3>
-                <button id="main-ld-skipbt" onclick="LoadingOver()">跳过资源加载</button>
+                <button id="main-ld-skipbt" onclick="LoadingOver(2)">跳过资源加载</button>
             </div>
             
         </div>
@@ -75,7 +70,7 @@
             <nav class="navbar navbar-expand-lg navbar-style fixed-top sticky-navigation navbarStyle autocolor">
                 <a class="navbar-brand heading-black page-scroll navbar-logo-box" href="#home" onclick="home_a_run()">
                     <img src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" class="navbar-logo autocolor" width="34px"/><!--mjyylogo-128x.png-->
-                    <label class="navbar-title autocolor">谧静幽原</label>
+                    <span class="navbar-title autocolor">谧静幽原</span>
                 </a>
                 <button class="navbar-toggler navbar-toggler-right border-0 toggler" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -92,6 +87,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#introduce">服务器介绍</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#rule">规则</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#join_us">加入我们</a>
@@ -115,7 +113,7 @@
         <div class="main-view-wrapper">
             <div class="main-view-container">
                 <!--<iframe class="main-view-source" src="#" frameborder="0" allowfullscreen></iframe>-->
-                <img src="http://cdnjson.com/images/2024/12/28/main.png" class="card-img-top" />
+                <div id="home-wrapper" class="card-img-top"></div>
             </div>
         </div>
     </div>
@@ -197,7 +195,7 @@
                     <div class="row mt-5 projects">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-16.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>我们有多个玩家社区</a>
                                 </div>
@@ -205,7 +203,7 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-2.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>大型工业区</a>
                                     <!--<a href="#" class="text-muted d-flex flex-row align-items-center">
@@ -217,7 +215,7 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-18.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>冰雪考察站</a>
                                 </div>
@@ -225,7 +223,7 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-4.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>惬意小酒馆</a>
                                 </div>
@@ -236,72 +234,72 @@
                     <div class="row  projects">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-15.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-17.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-5.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-6.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-7.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-8.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-9.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-10.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-11.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-12.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-19.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-20.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-13.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="http://cdnjson.com/images/2024/12/28/photo-14.png" class="card-img-top rounded" />
+                                <img src="" class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                     </div>
@@ -315,29 +313,27 @@
                 <div class="col-md-10 mx-auto">
                     <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">服务器介绍</h2>
                     <div class="row mt-5">
-                        <div class="col-md-12 mb-5">
-                            <p>Minecraft我的世界谧静幽原生存服务器</p>
-                            <p>在眼花缭乱的模组中，是否还记得那个原汁原味的Minecraft，本服务器将给您带来原版我的世界，还您原汁原味的体验！
-                                服务器内环境优美，玩家氛围和睦友善。对于想要结伴聊天一起建建筑、生电和养老的玩家们，谧静幽原服务器是您的首选。</p>
-                            <p>服务器包含轻量服务器插件，不影响玩家原版的游戏体验。且Java版与基岩版互通，通俗的说就是手机和电脑都可以进行游戏。</p>
-                            <p>我们偶尔会推出休闲小游戏供娱乐，服务器内有多个玩家生存社区，服务器内玩家之间和谐友好。</p>
-                            <p>服务器原生版本: Java版1.21.1</p>
-                            <p>服务器支持的客户端版本: Java版1.9-1.21.x; 基岩版: 1.20.80/1.20.81-1.21.40-1.21.44</p>
-                            <br />
-                            <br />
-                            <div class="col-md-10 mx-auto">
-                                <h4 class="text-center">服务器规则(务必阅读)</h4>
-                                <div class="text-center"> <input onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button"
-                                        type="button" value="展开" style="z-index: 1; position:relative;" /></div>
-                                <div style="display: none;" id="ruleText" class="unset_unSelectable">
-                                </div>
-                            </div>
+                        <div id="serverIntroductoryText" class="col-md-12 mb-5">
                         </div>
                     </div>
                     </div>
             </div>
         </div>
     </section>
+    <section class="py-3 unSelectable" id="rule">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+                    <h4 class="text-center">服务器规则(务必阅读)</h4>
+                    <div class="text-center"> <input onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button"
+                            type="button" value="展开" style="z-index: 1; position:relative;" /></div>
+                    <div style="display: none;" id="ruleText" class="unset_unSelectable">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="py-5"></div>
     <section class="py-5 unSelectable" id="join_us">
         <div class="container">
             <div class="row">
@@ -345,8 +341,8 @@
                     <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">加入我们</h2>
                     <div class="row mt-5">
                         <div class="col-md-12 mb-5">
-                            <p>为了良好的游戏环境，我们建议加群获取服务器地址和申请白名单，还望各位理解。在群里大家可以愉快讨论聊天交友等。</p>
-                            <p>不会安装游戏或加入服务器等等的新人不用担心，可在服务器交流群内咨询，我们会提供游戏客户端以及进入服务器的相关教程。</p>
+                            <div id="joinUsText">
+                            </div>
                             <div class="text-center">
                                 <h3>
                                     QQ交流群
@@ -388,8 +384,6 @@
             </div>-->
         </div>
     </section>
-    <!--新增模块时要使用py-6，mt-6会导致滚动条跳转时的距离问题<section class="py-6" id="new_py-6"></section>-->
-    <!--<section class="mt-6" id="new_mt-6"></section>-->
     <div class="githubButton">
         <a href="https://github.com/Hgnim/MJYY_Web">
             <svg id="github" viewBox="0 0 24 24" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="var(--logoColor)"
