@@ -1,0 +1,10 @@
+#resourceModeBox{
+    z-index: 3;
+    position: relative;
+}
+#resourceModeBox_select{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: auto;
+}
