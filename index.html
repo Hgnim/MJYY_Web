@@ -1,4 +1,5 @@
 <!doctype html>
+<!--suppress HtmlDeprecatedAttribute, HtmlUnknownTag, HtmlRequiredAltAttribute -->
 <html lang="cn" data-theme="light">
 
 <head>
@@ -154,6 +155,7 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
     <div class="py-5"></div>
@@ -172,7 +174,7 @@
                         <div class="col-sm-6 mb-4">
                             <div class="card" style="z-index: 1; position: relative;">
                                 <iframe  src="//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0" class="card-img-top rounded"
-                            allowfullscreen="allowfullscreen"  scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"height="300px" ></iframe>
+                            allowfullscreen="allowfullscreen"  scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" height="300px" ></iframe>
                             </div>
                         </div>
                         <!--<div class="card" style="left: 25%;width: 50%;height: 500px;">
@@ -399,9 +401,10 @@
         <div id="share-window">
             <div id="share-window-info">
                 <h3 id="share-window-info-title">分享给更多人！</h3>
-                <img src="" id="share-window-info-qrcodeImg" ></img>
+                <img src="" id="share-window-info-qrcodeImg" >
                 <div id="share-window-info-inputDiv">
-                <input id="share-window-info-textBox" type="text" value="" readonly>
+                <!--suppress HtmlFormInputWithoutLabel -->
+                    <input id="share-window-info-textBox" type="text" value="" readonly>
                 <input id="share-window-info-copyBtn" type="button" onclick="shareWindowInfoCopyBtn_Click()" value="复制"/>
                  </div>
             </div>
@@ -427,8 +430,6 @@
 
     <!--scroll to top-->
     <img src="https://s21.ax1x.com/2024/12/28/pAxPBGV.png" style="image-rendering:pixelated" class="scroll-top unSelectable" id="upTopButton"><!--fireworkRocket.png-->
-        <!--<i class="fa fa-angle-up" aria-hidden="true"></i>--><!--向上的箭头的字符-->
-    </img>
 
     <script src="js/index/MoreLineEffect.js"></script>
     <script src="js/index/imgFalling.js"></script>
