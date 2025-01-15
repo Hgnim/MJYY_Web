@@ -11,11 +11,21 @@ async function CheckSystemTheme() {
 }
 
 $(function () {
+  CheckSystemTheme();
+
   if (navigator.connection && navigator.connection.type === "cellular") {
-    showToast("检测到当前使用计费网络，请注意流量消耗", 4000, "main-toast");
+    showToast("检测到当前使用计费网络，已自动切换为省流模式", 4000, "main-toast");
+    SetResourceMode('low',true);
   } else {
     if (navigator.connection.effectiveType != "4g")
       showToast("检测到当前网络速度缓慢，请耐心等待", 3500, "main-toast");
+  }
+
+  {
+    const  resMode=GetResourceMode();
+    loadMediaResources(resMode).then(r => {
+    });
+    document.getElementById("resourceModeBox_select").value = resMode;
   }
 
   //替换图标
