@@ -1,0 +1,52 @@
+@keyframes fk-1_animation {
+0%{
+    left: -50px;
+    bottom: 25px;
+}
+    50%{
+        left: -40px;
+        bottom: 20px;
+    }
+    100%{
+        left: -50px;
+        bottom: 25px;
+    }
+}
+@keyframes fk-2_animation {
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 2px;
+    }
+    100%{
+        left: 0;
+    }
+}
+.fk_animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fk_animation div {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-size: contain;
+}
+
+.fk_animation div:nth-of-type(1) {
+    animation: fk-1_animation 0.15s infinite;
+    background-image: url('https://s21.ax1x.com/2024/12/28/pAxP0P0.png');
+    left: -50px;
+    bottom: 25px;
+    rotate: 25deg;
+}
+
+.fk_animation div:nth-of-type(2) {
+    animation: fk-2_animation 0.15s infinite;
+    background-image: url('https://s21.ax1x.com/2025/01/10/pECLI6e.png');
+    left: 0;
+    rotate: 80deg;
+}
