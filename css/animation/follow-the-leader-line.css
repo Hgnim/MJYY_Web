@@ -1,0 +1,52 @@
+/*此代码来自 https://github.com/jh3y/whirl 仓库(@author jh3y)。在此对其进行了部分修改*/
+@-webkit-keyframes follow-the-leader {
+  0% {
+    -webkit-transform: rotate(0deg) translateY(-200%);
+            transform: rotate(0deg) translateY(-200%); }
+  60%,
+  100% {
+    -webkit-transform: rotate(360deg) translateY(-200%);
+            transform: rotate(360deg) translateY(-200%); } }
+@keyframes follow-the-leader {
+  0% {
+    -webkit-transform: rotate(0deg) translateY(-200%);
+            transform: rotate(0deg) translateY(-200%); }
+  60%,
+  100% {
+    -webkit-transform: rotate(360deg) translateY(-200%);
+            transform: rotate(360deg) translateY(-200%); } }
+
+.follow-the-leader-line_animation {
+  height: 24px;
+  position: relative;
+  width: 24px;
+    bottom: 24px;
+}
+  .follow-the-leader-line_animation div {
+    -webkit-animation: follow-the-leader 1.25s infinite backwards;
+            animation: follow-the-leader 1.25s infinite backwards;
+    height: 100%;
+    width: 100%;
+      background-image: url('https://s21.ax1x.com/2025/01/10/pECLI6e.png');
+      background-size: contain;
+  }
+    .follow-the-leader-line_animation div:nth-child(1) {
+      -webkit-animation-delay: 0.15s;
+              animation-delay: 0.15s;
+        opacity:1; }
+    .follow-the-leader-line_animation div:nth-child(2) {
+      -webkit-animation-delay: 0.3s;
+              animation-delay: 0.3s;
+        opacity:0.9; }
+    .follow-the-leader-line_animation div:nth-child(3) {
+      -webkit-animation-delay: 0.45s;
+              animation-delay: 0.45s;
+        opacity:0.8; }
+    .follow-the-leader-line_animation div:nth-child(4) {
+      -webkit-animation-delay: 0.6s;
+              animation-delay: 0.6s;
+        opacity:0.7; }
+    .follow-the-leader-line_animation div:nth-child(5) {
+      -webkit-animation-delay: 0.75s;
+              animation-delay: 0.75s;
+        opacity:0.6; }

@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //随机显示加载页面动画
     let randomInt;{
-        let min = 0, max = 6;
+        let min = 0, max = 9;
         randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+        //randomInt=max;//仅用于调试
     }
 
-    //randomInt = 6;
     let newLink = document.createElement('link');
     newLink.rel = 'stylesheet';
     newLink.type = 'text/css';
@@ -86,6 +86,24 @@ document.addEventListener('DOMContentLoaded', function () {
             newLink.href = '../../css/animation/waterfall.css';
             newDiv.className = "waterfall_animation";
             for (i = 0; i < 5; i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+        case 7:
+            newLink.href = '../../css/animation/fk.css';
+            newDiv.className = 'fk_animation';
+            for (let i = 0; i < 2; i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+        case 8:
+            newLink.href = '../../css/animation/follow-the-leader-line.css';
+            newDiv.className = 'follow-the-leader-line_animation';
+            for (let i = 0; i < 5; i++)
+                newDiv.appendChild(document.createElement('div'));
+            break;
+        case 9:
+            newLink.href = '../../css/animation/slide-in.css';
+            newDiv.className = 'slide-in_animation';
+            for (let i = 0; i < 3; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
     }

@@ -1,0 +1,56 @@
+/*此代码来自 https://github.com/jh3y/whirl 仓库(@author jh3y)。在此对其进行了部分修改*/
+@-webkit-keyframes slide-in_animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-300%);
+            transform: translateX(-300%); }
+  30%,
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(300%);
+            transform: translateX(300%); } }
+@keyframes slide-in_animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-300%);
+            transform: translateX(-300%); }
+  30%,
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(300%);
+            transform: translateX(300%); } }
+.slide-in_animation{
+    position:relative;
+bottom: 0;}
+.slide-in_animation div {
+  -webkit-animation: slide-in_animation 1.5s infinite;
+          animation: slide-in_animation 1.5s infinite;
+    background-image: url('https://s21.ax1x.com/2025/01/10/pECLI6e.png');
+    background-size: contain;
+  height: 40px;
+  left: 50%;
+  margin-top: -10px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  width: 40px;}
+  .slide-in_animation div:nth-of-type(1) {
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+    margin-left: -65px; }
+  .slide-in_animation div:nth-of-type(2) {
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s;
+    margin-left: -20px; }
+  .slide-in_animation div:nth-of-type(3) {
+    -webkit-animation-delay: 1.5s;
+            animation-delay: 1.5s;
+    margin-left: 25px; }
