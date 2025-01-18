@@ -16,7 +16,7 @@
   },
   "homepage": "https://Hgnim.github.io/MJYY_Web",
   "scripts": {
-    "github-action_build": "npm-run-all build:runWebpack build:css-animation_linuxSh deploy",
+    "github-action_build": "npm-run-all build:runWebpack build:css-animation_linuxSh",
     "build": "npm-run-all build:runWebpack build:css-animation_wincmd",
     "build:runWebpack": "webpack",
     "build:css-animation_wincmd": "for %f in (.\\src\\css\\animation\\*.css) do npx postcss \"%f\" -o \".\\dist\\css\\animation\\%~nxf\" --verbose",
