@@ -107,6 +107,11 @@ module.exports = {
                 { from: './src/json', to: 'json' },
             ],
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './CNAME', to: 'CNAME' },
+            ],
+        }),
     ],
     optimization: {
         minimize: true, // 开启代码压缩
