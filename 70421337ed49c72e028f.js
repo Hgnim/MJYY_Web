@@ -1,0 +1,1 @@
+$((function(){function a(){$(window).scrollTop()>=200?$(".sticky-navigation").removeClass("navbar-dark").addClass("shadow-bottom").addClass("navbar-light"):$(".sticky-navigation").removeClass("shadow-bottom").removeClass("navbar-light").addClass("navbar-dark")}$(window).scroll((function(){a()})),a()}));
