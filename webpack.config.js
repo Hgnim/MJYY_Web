@@ -6,7 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'production',//优化打包输出和构建性能的模式
     entry: {
         'index':'./src/index.html',
         'communityPhotoWall':'./src/CommunityPhotoWall.html'
@@ -58,7 +58,7 @@ module.exports = {
                 type: 'asset/resource',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: 8 * 1024, // 小于8KB的图片转为base64
+                        maxSize: 3 * 1024, // 小于3KB的图片转为base64
                     },
                 },
                 generator: {
@@ -78,10 +78,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html', // 指定模板文件
             filename: 'index.html', // 输出文件名
+            chunks: ['index']
         }),
         new HtmlWebpackPlugin({
             template: './src/CommunityPhotoWall.html',
             filename: 'CommunityPhotoWall.html',
+            chunks: ['communityPhotoWall']
         }),
         new MiniCssExtractPlugin(
             {
@@ -90,7 +92,7 @@ module.exports = {
             }
         ),
 
-        new CopyWebpackPlugin({
+        new CopyWebpackPlugin({//复制文件
             patterns: [
                 { from: './src/img/mjyy-qrcode.png', to: 'img/mjyy-qrcode.png' },
             ],
@@ -103,11 +105,6 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 { from: './src/json', to: 'json' },
-            ],
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: './src/css/animation', to: 'css/animation' },
             ],
         }),
     ],
