@@ -1,2 +1,2 @@
-*.json linguist-detectable=true
+src/json/*.json linguist-detectable=true
 *.md linguist-detectable=true

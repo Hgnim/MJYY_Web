@@ -53,55 +53,55 @@ document.addEventListener('DOMContentLoaded', function () {
     let newDiv = document.createElement('div');
     switch (randomInt) {
         case 0:
-            newLink.href = '../../css/animation/spinning-coin.css';
+            newLink.href = 'css/animation/spinning-coin.css';
             newDiv.className = 'spinning-coin_animation';
             break;
         case 1:
-            newLink.href = '../../css/animation/cube.css';
+            newLink.href = 'css/animation/cube.css';
             newDiv.className = 'cube_animation';
             for (i = 0; i < 6;i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
         case 2:
-            newLink.href = '../../css/animation/bar-spin.css';
+            newLink.href = 'css/animation/bar-spin.css';
             newDiv.className = 'bar-spin_animation';
             break;
         case 3:
-            newLink.href = '../../css/animation/wind-up.css';
+            newLink.href = 'css/animation/wind-up.css';
             newDiv.className = 'wind-up_animation';
             break;
         case 4:
-            newLink.href = '../../css/animation/push-pop.css';
+            newLink.href = 'css/animation/push-pop.css';
             newDiv.className = 'push-pop';
             for (i = 0; i < 2; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
         case 5:
-            newLink.href = '../../css/animation/pong.css';
+            newLink.href = 'css/animation/pong.css';
             newDiv.className = 'pong_animation';
             for (i = 0; i < 3; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
         case 6:
-            newLink.href = '../../css/animation/waterfall.css';
+            newLink.href = 'css/animation/waterfall.css';
             newDiv.className = "waterfall_animation";
             for (i = 0; i < 5; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
         case 7:
-            newLink.href = '../../css/animation/fk.css';
+            newLink.href = 'css/animation/fk.css';
             newDiv.className = 'fk_animation';
             for (let i = 0; i < 2; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
         case 8:
-            newLink.href = '../../css/animation/follow-the-leader-line.css';
+            newLink.href = 'css/animation/follow-the-leader-line.css';
             newDiv.className = 'follow-the-leader-line_animation';
             for (let i = 0; i < 5; i++)
                 newDiv.appendChild(document.createElement('div'));
             break;
         case 9:
-            newLink.href = '../../css/animation/slide-in.css';
+            newLink.href = 'css/animation/slide-in.css';
             newDiv.className = 'slide-in_animation';
             for (let i = 0; i < 3; i++)
                 newDiv.appendChild(document.createElement('div'));

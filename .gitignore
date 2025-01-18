@@ -1,3 +1,5 @@
 localFile
 .vscode
 .idea
+node_modules
+dist
