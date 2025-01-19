@@ -201,6 +201,9 @@ async function loadMediaResources(resMode) {
                     break;
             }
             for (let i = 0; i < imgUrls.length; i++) {
+                allImgBoxs[i].src="";//设置为控制以触发加载动画
+            }
+            for (let i = 0; i < imgUrls.length; i++) {
                 try {
                     await loadImage(imgUrls[i]);
                     allImgBoxs[i].src = imgUrls[i];
