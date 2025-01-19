@@ -1,5 +1,5 @@
 <!doctype html>
-<!--suppress HtmlDeprecatedAttribute, HtmlUnknownTag, HtmlRequiredAltAttribute -->
+<!--suppress HtmlDeprecatedAttribute, HtmlUnknownTag, HtmlRequiredAltAttribute, RequiredAttributes -->
 <html lang="cn" data-theme="light">
 
 <head>
@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="css/index/imageResource.css" type="text/css">
     <script src="js/index/loadResources.js"></script>
     <link rel="stylesheet" href="css/index/resourceMode.css" type="text/css">
+
+    <link rel="stylesheet" href="css/index/themeToggle.css" type="text/css">
 
     <link rel="stylesheet" href="css/index/pingServer.css" type="text/css">
     <script src="https://fastly.jsdelivr.net/gh/alfg/ping.js@0.3.0/dist/ping.min.js" type="text/javascript"></script>
@@ -105,7 +107,6 @@
                                 </div>
                               </div>
                         </li>
-                        <button onclick="toggleTheme_Click()" class="toggleThemeButton">切换主题</button>
                     </ul>
                 </div>
             </nav>
@@ -166,6 +167,7 @@
             <option value="low">省流模式</option>
         </select>
     </i>
+        <div id="themeToggleButton" onclick="toggleTheme_Click()"></div>
     <div class="py-5"></div>
     <section class="py-5 unSelectable" id="video_page">
         <div class="container">
