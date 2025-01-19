@@ -42,16 +42,6 @@ user-select:none;
     filter: blur(2px);
 }
 
-.toggleThemeButton{
-    border-style: ridge;
-    background-color: var(--primary);
-    color: var(--color8);
-    border-radius: .25rem;
-    transition: all ease .45s;
-    border-color:var(--color3);
-    border-width:4px;
-   
-}
 
 .normalFontColor{
     color: var(--color8);

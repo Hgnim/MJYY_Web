@@ -49,6 +49,7 @@
   --color20: rgba(29, 29, 29, 0.98);/*顶栏背景颜色*/
   --color21: rgba(43, 43, 43, 0.9);
   --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-dark.png);
+  --theme-toggle-button_img-url: url(https://s21.ax1x.com/2025/01/19/pEk0LtI.png);/*daylight_detector_2.png*/
 }
 [data-theme="light"] {
   --primary: #ffffff;
@@ -75,6 +76,7 @@
   --color20: rgba(197, 197, 197, 0.98);
   --color21: rgba(212, 212, 212, 0.9);
   --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-light.png);
+  --theme-toggle-button_img-url: url(https://s21.ax1x.com/2025/01/19/pEk0Oht.png);/*daylight_detector_1.png*/
 }
 
 

@@ -109,7 +109,10 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: './CNAME', to: '' },
+                {
+                    from: './CNAME', to: '',
+                    noErrorOnMissing: true, // 文件不存在时不报错
+                },
             ],
         }),
     ],

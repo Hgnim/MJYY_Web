@@ -1,6 +1,8 @@
 #resourceModeBox{
     z-index: 3;
-    position: relative;
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 6px;;
 }
 #resourceModeBox_select{
     background-color: transparent;

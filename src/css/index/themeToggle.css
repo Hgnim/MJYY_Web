@@ -1,0 +1,15 @@
+#themeToggleButton{
+    z-index: 3;
+    background-image: var(--theme-toggle-button_img-url);
+    background-size: contain;
+    width: 100px;
+    height: 62px;
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    transition: transform 0.5s ease;
+}
+#themeToggleButton:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}

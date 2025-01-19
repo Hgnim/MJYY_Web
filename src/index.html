@@ -1,5 +1,5 @@
 <!doctype html>
-<!--suppress HtmlDeprecatedAttribute, HtmlUnknownTag, HtmlRequiredAltAttribute -->
+<!--suppress HtmlDeprecatedAttribute, HtmlUnknownTag, HtmlRequiredAltAttribute, RequiredAttributes -->
 <html lang="cn" data-theme="light">
 
 <head>
@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="css/index/imageResource.css" type="text/css">
     <script src="js/index/loadResources.js"></script>
     <link rel="stylesheet" href="css/index/resourceMode.css" type="text/css">
+
+    <link rel="stylesheet" href="css/index/themeToggle.css" type="text/css">
 
     <link rel="stylesheet" href="css/index/pingServer.css" type="text/css">
     <script src="https://fastly.jsdelivr.net/gh/alfg/ping.js@0.3.0/dist/ping.min.js" type="text/javascript"></script>
@@ -105,7 +107,6 @@
                                 </div>
                               </div>
                         </li>
-                        <button onclick="toggleTheme_Click()" class="toggleThemeButton">切换主题</button>
                     </ul>
                 </div>
             </nav>
@@ -114,7 +115,7 @@
     <div class="main-view-section unSelectable" style="z-index: 1;">
         <div class="main-view-wrapper">
             <div class="main-view-container">
-                <!--<iframe class="main-view-source" src="#" frameborder="0" allowfullscreen></iframe>-->
+                <!--<iframe class="main-view-source" frameborder="0" allowfullscreen></iframe>-->
                 <div id="home-wrapper" class="card-img-top"></div>
             </div>
         </div>
@@ -166,6 +167,7 @@
             <option value="low">省流模式</option>
         </select>
     </i>
+        <div id="themeToggleButton" onclick="toggleTheme_Click()"></div>
     <div class="py-5"></div>
     <section class="py-5 unSelectable" id="video_page">
         <div class="container">
@@ -208,7 +210,7 @@
                     <div class="row mt-5 projects">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>我们有多个玩家社区</a>
                                 </div>
@@ -216,7 +218,7 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>大型工业区</a>
                                     <!--<a href="#" class="text-muted d-flex flex-row align-items-center">
@@ -228,7 +230,7 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>冰雪考察站</a>
                                 </div>
@@ -236,7 +238,7 @@
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                                 <div class="card-body px-0" style="text-align:center">
                                     <a>惬意小酒馆</a>
                                 </div>
@@ -247,72 +249,72 @@
                     <div class="row  projects">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                         <div class="col-sm-6 mb-4">
                             <div class="card">
-                                <img src="#" class="card-img-top rounded photoBoxGroup-1" />
+                                <img class="card-img-top rounded photoBoxGroup-1" />
                             </div>
                         </div>
                     </div>
@@ -412,7 +414,7 @@
         <div id="share-window">
             <div id="share-window-info">
                 <h3 id="share-window-info-title">分享给更多人！</h3>
-                <img src="#" id="share-window-info-qrcodeImg" >
+                <img id="share-window-info-qrcodeImg" >
                 <div id="share-window-info-inputDiv">
                 <!--suppress HtmlFormInputWithoutLabel -->
                     <input id="share-window-info-textBox" type="text" value="" readonly>
