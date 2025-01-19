@@ -20,7 +20,7 @@
     "build": "npm-run-all build:runWebpack build:css-animation_wincmd",
     "build:runWebpack": "webpack",
     "build:css-animation_wincmd": "for %f in (.\\src\\css\\animation\\*.css) do npx postcss \"%f\" -o \".\\dist\\css\\animation\\%~nxf\" --verbose",
-    "build:css-animation_linuxSh":"find ./src/css/animation -name '*.css' -exec npx postcss \"{}\" -o \"./dist/css/animation/{}\" --verbose \\;",
+    "build:css-animation_linuxSh":"find ./src/css/animation -name '*.css' -exec sh -c 'npx postcss \"$0\" -o \"./dist/css/animation/$(basename \"$0\")\" --verbose' {} \\;",
 
     "deploy": "gh-pages -d dist"
   }
