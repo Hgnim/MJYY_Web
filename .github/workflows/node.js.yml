@@ -38,7 +38,7 @@ jobs:
 #        git config --global user.name 'github-actions[bot]'
 #        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
     - name: Build
-      run: npm run github-action_build
+      run: npm run build
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v4
       with:
