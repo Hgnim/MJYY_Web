@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 
 module.exports = {
     mode: 'production',//优化打包输出和构建性能的模式
@@ -24,7 +25,7 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            esModule: false,
+                            esModule: true,
                         },
                     },
                     "css-loader",
@@ -88,7 +89,7 @@ module.exports = {
         new MiniCssExtractPlugin(
             {
                 filename: 'css/[name].[contenthash].css',
-                chunkFilename: 'css/[name].[contenthash].chunk.css',
+                chunkFilename: 'css/[id].[contenthash].chunk.css',
             }
         ),
 
@@ -115,13 +116,26 @@ module.exports = {
                 },
             ],
         }),
+        new WebpackShellPluginNext({//运行外部命令
+            //onBuildStart: {//在构建前执行
+            onBuildEnd:{//在构建后执行
+                scripts: [
+                    'echo 开始处理独立的css文件',
+                    'npx postcss ./src/css/animation --dir ./dist/css/animation --verbose',
+                    'echo 独立的css文件处理完成'
+                ],
+                blocking: true,//等待命令完成
+                parallel: false,//确保命令按顺序运行
+            },
+            logging: true,
+        })
     ],
     optimization: {
         minimize: true, // 开启代码压缩
         minimizer: [
             `...`,
             new CssMinimizerPlugin({
-                exclude: /78492f0a1915464b90c8\.css/,
+                exclude: /^(?!.*(communityPhotoWall|index).*).*\.css/,//反排除需要压缩的css文件
                 minimizerOptions: {
                     preset: [
                         'default',
@@ -133,5 +147,10 @@ module.exports = {
             }), // 压缩css
             new TerserPlugin(), // 压缩js
         ],
+    },
+    devServer: {
+        static: {//指定dist文件为静态文件来源，用于读取一些用脚本处理的文件
+            directory: path.join(__dirname, 'dist')
+        },
     },
 };

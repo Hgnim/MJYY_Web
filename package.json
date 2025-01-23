@@ -1,4 +1,6 @@
 {
+  "name": "mjyy-web",
+  "private": true,
   "devDependencies": {
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.0.0",
@@ -12,17 +14,14 @@
     "postcss-csso": "^6.0.1",
     "terser-webpack-plugin": "^5.3.11",
     "webpack": "^5.83.0",
-    "webpack-cli": "^5.0.0"
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^5.2.0",
+    "webpack-shell-plugin-next": "^2.3.2"
   },
   "homepage": "https://Hgnim.github.io/MJYY_Web",
   "scripts": {
-    "github-action_build": "npm-run-all build:runWebpack build:css-animation_linuxSh",
-    "quick_build": "npm-run-all build:runWebpack",
-    "build": "npm-run-all build:runWebpack build:css-animation_wincmd",
-    "build:runWebpack": "webpack",
-    "build:css-animation_wincmd": "for %f in (.\\src\\css\\animation\\*.css) do npx postcss \"%f\" -o \".\\dist\\css\\animation\\%~nxf\" --verbose",
-    "build:css-animation_linuxSh":"find ./src/css/animation -name '*.css' -exec sh -c 'npx postcss \"$0\" -o \"./dist/css/animation/$(basename \"$0\")\" --verbose' {} \\;",
-
+    "build": "webpack",
+    "serve": "webpack serve",
     "deploy": "gh-pages -d dist"
   }
 }
