@@ -1,0 +1,16 @@
+/*对https://fastly.jsdelivr.net/npm/pace-js@1.2.4/themes/silver/pace-theme-barber-shop.min.css进行重写*/
+.pace {
+    background: var(--color10);
+}
+
+.pace .pace-progress {
+    background-color: var(--color9);
+}
+
+.pace .pace-activity {
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, var(--color18)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, var(--color18)), color-stop(0.75, var(--color18)), color-stop(0.75, transparent), to(transparent));
+    background-image: -webkit-linear-gradient(45deg, var(--color18) 25%, transparent 25%, transparent 50%, var(--color18) 50%, var(--color18) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(45deg, var(--color18) 25%, transparent 25%, transparent 50%, var(--color18) 50%, var(--color18) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, var(--color18) 25%, transparent 25%, transparent 50%, var(--color18) 50%, var(--color18) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, var(--color18) 25%, transparent 25%, transparent 50%, var(--color18) 50%, var(--color18) 75%, transparent 75%, transparent);
+}

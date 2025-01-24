@@ -29,8 +29,6 @@ import '@/assets/css/index/imageResource.css';
 import * as loadResources from '@/js/index/loadResources.js';exposeModuleToGlobal(loadResources);
 import '@/assets/css/index/resourceMode.css';
 
-import '@/assets/css/index/themeToggle.css';
-
 import '@/assets/css/index/pingServer.css';
 import * as pingServer from '@/js/index/pingServer.js';exposeModuleToGlobal(pingServer);
 

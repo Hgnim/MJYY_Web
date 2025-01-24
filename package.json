@@ -25,7 +25,7 @@
   "homepage": "https://Hgnim.github.io/MJYY_Web",
   "scripts": {
     "build": "webpack",
-    "serve": "webpack serve",
+    "serve": "webpack serve --mode=development",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

@@ -2,8 +2,66 @@ $grid-breakpoints: (
         xs: 0,
         sm: 576px,
         md: 768px,
-        md2: 774px,
+        md2: 789px,
         lg: 992px,
         xl: 1200px
 );
+
 @import "bootstrap";
+
+
+.navbar.navbar-shadow {
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+
+.navbar.navbar-transparent {
+  opacity: 0.98; }
+
+@media (max-width: 992px) {
+  .navbar.navbar-transparent {
+    background-color: rgba(0, 0, 0, 0.4); }
+}
+.navbar-style .navbar-brand {
+  color: var(--color16); }
+.navbar-style .navbar-brand:hover, .navbar-style .navbar-brand:focus {
+  color: var(--color16); }
+
+@mixin navButton-style{
+  color: var(--color8);
+  font-weight: 510;
+}
+
+.navbar-style .navbar-nav .nav-link {
+  @include navButton-style;
+}
+.navbar-style .navbar-nav .nav-link:hover, .navbar-style .navbar-nav .nav-link:focus {
+  color: var(--color8); }
+.navbar-style .navbar-nav .nav-link.disabled {
+  color: var(--color18); }
+
+.navbar-style .navbar-nav .show > .nav-link,
+.navbar-style .navbar-nav .active > .nav-link,
+.navbar-style .navbar-nav .nav-link.show,
+.navbar-style .navbar-nav .nav-link.active {
+  color: var(--color16); }
+
+.navbar-style .navbar-nav .dropdown{
+  @include navButton-style;
+}
+
+.navbar-style .navbar-toggler {
+  color: var(--color2);
+  border-color: var(--color19); }
+
+.navbar-style .navbar-text {
+  color: var(--color17); }
+.navbar-style .navbar-text a {
+  color: var(--color16); }
+.navbar-style .navbar-text a:hover, .navbar-style .navbar-text a:focus {
+  color: var(--color16); }
+.nav-tabs .nav-item.show .nav-link {
+  color: var(--color16);
+}
+
+.card {
+  background-color: var(--color16);
+}
