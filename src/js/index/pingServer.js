@@ -16,6 +16,7 @@ export function pingServer_Start() {
             hf: 3,
             hs: 4
         }
+        var pss;
         var pss_l, pss_f, pss_s, pss_hf, pss_hs;
         {
             var psv_cs = getComputedStyle(document.querySelector('#pingServerView'));
