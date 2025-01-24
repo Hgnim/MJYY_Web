@@ -7,18 +7,30 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 
 module.exports = {
+    //mode: 'development',
     mode: 'production',//优化打包输出和构建性能的模式
     entry: {
-        'index':'./src/index.html',
-        'communityPhotoWall':'./src/CommunityPhotoWall.html'
+        'index-ts': './src/init/index.ts',
+        'index-html':'./src/index.html',
+        'communityPhotoWall-html':'./src/CommunityPhotoWall.html',
+        'communityPhotoWall-ts':'./src/init/communityPhotoWall.ts',
     },
     output: {
         path: path.resolve(__dirname, 'dist'), // 输出路径
-        //filename: 'js/[name].[contenthash].js', // 输出文件名
+        filename: 'js/[name].[contenthash].js', // 输出文件名
         clean: true, // 清除dist目录
+    },
+    resolve: {
+        //设置类型可以作为模块被引用
+        extensions: [".ts", ".tsx", ".js"],
     },
     module: {
         rules: [
+            {
+                test: /\.tsx?$/, // 匹配 TypeScript 文件
+                use: "ts-loader", // 使用 ts-loader 处理 TypeScript 文件
+                exclude: /node_modules/ // 排除 node_modules 文件夹
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -79,12 +91,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html', // 指定模板文件
             filename: 'index.html', // 输出文件名
-            chunks: ['index']
+            inject: 'head',//插入在head标签
+            chunks: ['index-ts','index-html'],//插入的入口文件
         }),
         new HtmlWebpackPlugin({
             template: './src/CommunityPhotoWall.html',
             filename: 'CommunityPhotoWall.html',
-            chunks: ['communityPhotoWall']
+            inject: 'head',
+            chunks: ['communityPhotoWall-ts','communityPhotoWall-html'],
         }),
         new MiniCssExtractPlugin(
             {
