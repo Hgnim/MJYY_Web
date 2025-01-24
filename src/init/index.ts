@@ -1,4 +1,1 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const output:string ='ts is loaded';
-    alert(output);
-});
+import './ts/index_global-bridge';

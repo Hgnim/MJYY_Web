@@ -1,4 +1,4 @@
-async function CheckSystemTheme() {
+export async function CheckSystemTheme() {
   let html = document.querySelector("html");
   const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
   if (isDarkTheme.matches) {
@@ -34,6 +34,6 @@ $(function () {
   feather.replace();
 });
 
-function BodyOnLoad() {
+export function BodyOnLoad() {
   LoadingOver();
 }

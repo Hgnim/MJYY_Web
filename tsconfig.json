@@ -6,7 +6,7 @@
     "moduleResolution": "node",   // 模块解析方式
     "esModuleInterop": true,      // 允许从 ES 模块中导入 CommonJS 模块
     "baseUrl": ".",
-    "outDir": "./dist",           // 编译输出目录
+    "allowJs": true,
     "paths": {
       "@/*": [
         "src/*"

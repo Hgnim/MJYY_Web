@@ -1,6 +1,6 @@
 var resourceMode;
 
-function GetResourceMode() {
+export function GetResourceMode() {
     function getCookie(name) {
         const nameEQ = name + "=";
         const ca = document.cookie.split(';');
@@ -22,7 +22,7 @@ function GetResourceMode() {
     return resourceMode;
 }
 
-function SetResourceMode(value, dtSetCookie = false) {
+export function SetResourceMode(value, dtSetCookie = false) {
     function setCookie(name, value, days) {
         let expires = "";
         if (days) {
@@ -37,13 +37,13 @@ function SetResourceMode(value, dtSetCookie = false) {
     resourceMode = value;
 }
 
-function userSelectResourceMode(value) {
+export function userSelectResourceMode(value) {
     SetResourceMode(value);
     loadMediaResources(value);
 }
 
 
-async function loadMediaResources(resMode) {
+export async function loadMediaResources(resMode) {
     //视频资源加载
     {
         const targetBox = document.getElementById("video-page_video-box");

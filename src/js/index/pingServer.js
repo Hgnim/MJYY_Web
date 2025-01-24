@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 var pingServerRunLock = false;
 var pingServerLoaderLock=false;//用于等待动画组件动画播放完成，避免监听事件滞留
-function pingServer_Start() {
+export function pingServer_Start() {
     if (!pingServerRunLock && !pingServerLoaderLock) {
         pingServerRunLock = true;
 

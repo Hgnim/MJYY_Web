@@ -1,7 +1,7 @@
 
 var isLoadingOver = false;
 var loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕
-function LoadingOver(addValue=1) {
+export function LoadingOver(addValue=1) {
     if (!isLoadingOver) {
         loadingOverValue = Number(loadingOverValue) + Number(addValue);
         if (loadingOverValue >= 2) {//当阶段达到2后则加载完毕
@@ -12,14 +12,14 @@ function LoadingOver(addValue=1) {
         }
     }
 }
-async function waitToRemoveLoadingPage(){
+export async function waitToRemoveLoadingPage(){
     await sleep(3000);//为了优化网页，在结束加载页面后的一段时间后卸载元素
     document.getElementById("preloader").remove();
     document.getElementsByClassName('pace')[0].remove();
 }
 
 //加载时间过长的话则显示跳过加载的按钮
-async function WaitTimeOut(){
+export async function WaitTimeOut(){
     await sleep(5000);
     if(!isLoadingOver){
         $("#main-ld-skipbt").fadeIn();
@@ -28,7 +28,7 @@ async function WaitTimeOut(){
 
 
 
-function sleep(interval) {
+export function sleep(interval) {
     return new Promise(resolve => {
         setTimeout(resolve, interval);
     })

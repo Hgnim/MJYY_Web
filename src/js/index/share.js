@@ -1,9 +1,9 @@
-function shareWindowInfoCopyBtn_Click(){
+export function shareWindowInfoCopyBtn_Click(){
     navigator.clipboard.writeText(document.getElementById('share-window-info-textBox').value);
 
     showToast("复制成功", 2000, "share-window-toast",undefined, "share-window");
 }
-function OpenSharePage(){
+export function OpenSharePage(){
     {
         document.getElementById("share-window-info-qrcodeImg").src="img/mjyy-qrcode.png";//动态加载，避免延长加载时间
         document.getElementById("share-window-info-textBox").value="https://mjyy.top";

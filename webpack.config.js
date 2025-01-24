@@ -10,10 +10,8 @@ module.exports = {
     //mode: 'development',
     mode: 'production',//优化打包输出和构建性能的模式
     entry: {
-        'index-ts': './src/init/index.ts',
-        'index-html':'./src/index.html',
-        'communityPhotoWall-html':'./src/CommunityPhotoWall.html',
-        'communityPhotoWall-ts':'./src/init/communityPhotoWall.ts',
+        'index': './src/init/index.ts',
+        'communityPhotoWall':'./src/init/communityPhotoWall.ts',
     },
     output: {
         path: path.resolve(__dirname, 'dist'), // 输出路径
@@ -23,6 +21,9 @@ module.exports = {
     resolve: {
         //设置类型可以作为模块被引用
         extensions: [".ts", ".tsx", ".js"],
+        alias: {
+            "@": path.resolve(__dirname, "src"), //配置@指向src目录
+        },
     },
     module: {
         rules: [
@@ -92,13 +93,13 @@ module.exports = {
             template: './src/index.html', // 指定模板文件
             filename: 'index.html', // 输出文件名
             inject: 'head',//插入在head标签
-            chunks: ['index-ts','index-html'],//插入的入口文件
+            chunks: ['index'],//插入的入口文件
         }),
         new HtmlWebpackPlugin({
             template: './src/CommunityPhotoWall.html',
             filename: 'CommunityPhotoWall.html',
             inject: 'head',
-            chunks: ['communityPhotoWall-ts','communityPhotoWall-html'],
+            chunks: ['communityPhotoWall'],
         }),
         new MiniCssExtractPlugin(
             {
