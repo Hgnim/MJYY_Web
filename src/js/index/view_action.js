@@ -22,7 +22,7 @@ var home_a_while = setInterval(function () {
 }*/
 //将标题从逐字输出动画更改为淡出动画
 home_a_run();
-function home_a_run() {
+export function home_a_run() {
     try {
         if (document.getElementById("home_MainText_Div").style.animation != "" || document.getElementById("home_MainButton").style.animation != "") {
             document.getElementById("home_MainText_Div").style.opacity = 0;
@@ -42,7 +42,7 @@ function home_a_run() {
 
 
 // 切换主题
-function toggleTheme_Click() {
+export function toggleTheme_Click() {
     let html = document.querySelector('html');
     let currentTheme = html.getAttribute('data-theme');
  
@@ -54,7 +54,7 @@ function toggleTheme_Click() {
 }
 
 //隐藏文本的显示状态切换
-function toggleSpoiler(targetName,buttonName) {
+export function toggleSpoiler(targetName,buttonName) {
     var spoiler = document.getElementById(targetName);
     var button=document.getElementById(buttonName);
     if (spoiler.style.display === "none") {

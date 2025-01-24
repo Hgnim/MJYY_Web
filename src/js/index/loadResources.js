@@ -1,6 +1,6 @@
 var resourceMode;
 
-function GetResourceMode() {
+export function GetResourceMode() {
     function getCookie(name) {
         const nameEQ = name + "=";
         const ca = document.cookie.split(';');
@@ -22,7 +22,7 @@ function GetResourceMode() {
     return resourceMode;
 }
 
-function SetResourceMode(value, dtSetCookie = false) {
+export function SetResourceMode(value, dtSetCookie = false) {
     function setCookie(name, value, days) {
         let expires = "";
         if (days) {
@@ -37,13 +37,13 @@ function SetResourceMode(value, dtSetCookie = false) {
     resourceMode = value;
 }
 
-function userSelectResourceMode(value) {
+export function userSelectResourceMode(value) {
     SetResourceMode(value);
     loadMediaResources(value);
 }
 
 
-async function loadMediaResources(resMode) {
+export async function loadMediaResources(resMode) {
     //视频资源加载
     {
         const targetBox = document.getElementById("video-page_video-box");
@@ -85,9 +85,9 @@ async function loadMediaResources(resMode) {
         }
 
         const mdRes = [
-            ["md/index/serverRule.md", "ruleText"],
-            ["md/index/serverIntroductory.md", "serverIntroductoryText"],
-            ["md/index/joinUs.md", "joinUsText"],
+            ["assets/md/index/serverRule.md", "ruleText"],
+            ["assets/md/index/serverIntroductory.md", "serverIntroductoryText"],
+            ["assets/md/index/joinUs.md", "joinUsText"],
         ];
         for (let i = 0; i < mdRes.length; i++) {
             document.getElementById(mdRes[i][1]).innerHTML =
@@ -97,14 +97,16 @@ async function loadMediaResources(resMode) {
     //图片资源加载
     {
         //加载图像资源函数
-        function loadImage(url) {
+        function loadImage(url,overCall=(su)=>{}) {
             return new Promise((resolve, reject) => {
                 const img = new Image();
                 img.onload = () => {
                     resolve(img);
+                    overCall(true);
                 };
                 img.onerror = () => {
                     reject(new Error(`图片资源\"${url}\"加载失败`));
+                    overCall(false);
                 };
                 img.src = url;
             });
@@ -149,7 +151,8 @@ async function loadMediaResources(resMode) {
             }
         }
         {
-            const allImgBoxs = document.querySelectorAll(".photoBoxGroup-1");
+            const allImgBoxs=document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)");
+            const allLoadingBoxs=document.querySelectorAll(".loadingBox.photoBoxGroup-1");
             let imgUrls;
             switch (resMode) {
                 case "low":
@@ -201,11 +204,14 @@ async function loadMediaResources(resMode) {
                     break;
             }
             for (let i = 0; i < imgUrls.length; i++) {
-                allImgBoxs[i].src="";//设置为控制以触发加载动画
+                allLoadingBoxs[i].setAttribute("data-show",true);//触发加载动画
             }
             for (let i = 0; i < imgUrls.length; i++) {
                 try {
-                    await loadImage(imgUrls[i]);
+                    await loadImage(imgUrls[i],
+                        (su)=>{
+                            allLoadingBoxs[i].setAttribute("data-show",false);
+                    });
                     allImgBoxs[i].src = imgUrls[i];
                 } catch {
                 }
