@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 var pingServerRunLock = false;//主要检测锁，避免重复检测(对服务器的网站进行ping检测来实现快速判断是否在线)
 var pingServerRunLock2 = false;//备用检测锁，避免重复检测，当两个检测锁同时为false时，才会进行检测(通过第三方API检测，成功率较低)
 var pingServerLoaderLock = false;//用于等待动画组件动画播放完成，避免监听事件滞留
-function pingServer_Start() {
+export function pingServer_Start() {
     if (!pingServerRunLock && !pingServerRunLock2 && !pingServerLoaderLock) {
         pingServerRunLock = true;
         pingServerRunLock2 = true;
