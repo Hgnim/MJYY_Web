@@ -1,17 +1,29 @@
-.photoBoxGroup-1 {
+.photoBoxGroup-1:not(.loadingBox) {
     /*
 照片资源组，用于js动态加载资源时寻找这些容器
 该类对应“宣传图片”板块内的所有照片容器
 */
-
 }
-.photoBoxGroup-1[src=""] {
+.photoBoxGroup-1.loadingBox{
+}
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loadingBox[data-show=true]{
     position: relative;
     width: 100%;
     height: 100px;
-    visibility: hidden;
 }
-.photoBoxGroup-1::before {
+.loadingBox[data-show=true]::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -24,13 +36,4 @@
     border-radius: 50%;
     animation: spin 1s linear infinite;
     visibility: visible;
-}
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
 }

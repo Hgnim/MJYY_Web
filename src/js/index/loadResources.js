@@ -97,14 +97,16 @@ export async function loadMediaResources(resMode) {
     //图片资源加载
     {
         //加载图像资源函数
-        function loadImage(url) {
+        function loadImage(url,overCall=(su)=>{}) {
             return new Promise((resolve, reject) => {
                 const img = new Image();
                 img.onload = () => {
                     resolve(img);
+                    overCall(true);
                 };
                 img.onerror = () => {
                     reject(new Error(`图片资源\"${url}\"加载失败`));
+                    overCall(false);
                 };
                 img.src = url;
             });
@@ -149,7 +151,8 @@ export async function loadMediaResources(resMode) {
             }
         }
         {
-            const allImgBoxs = document.querySelectorAll(".photoBoxGroup-1");
+            const allImgBoxs=document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)");
+            const allLoadingBoxs=document.querySelectorAll(".loadingBox.photoBoxGroup-1");
             let imgUrls;
             switch (resMode) {
                 case "low":
@@ -201,11 +204,14 @@ export async function loadMediaResources(resMode) {
                     break;
             }
             for (let i = 0; i < imgUrls.length; i++) {
-                allImgBoxs[i].src="";//设置为控制以触发加载动画
+                allLoadingBoxs[i].setAttribute("data-show",true);//触发加载动画
             }
             for (let i = 0; i < imgUrls.length; i++) {
                 try {
-                    await loadImage(imgUrls[i]);
+                    await loadImage(imgUrls[i],
+                        (su)=>{
+                            allLoadingBoxs[i].setAttribute("data-show",false);
+                    });
                     allImgBoxs[i].src = imgUrls[i];
                 } catch {
                 }

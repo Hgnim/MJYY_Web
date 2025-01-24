@@ -77,14 +77,14 @@ module.exports = {
                     },
                 },
                 generator: {
-                    filename: 'img/[hash:10][ext][query]', // 指定打包路径和文件名
+                    filename: 'assets/img/[hash:10][ext][query]', // 指定打包路径和文件名
                 },
             },
             {
                 test: /\.(ttf|woff|woff2)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[hash:10][ext][query]', // 指定打包路径和文件名
+                    filename: 'assets/fonts/[hash:10][ext][query]', // 指定打包路径和文件名
                 },
             }
         ],
