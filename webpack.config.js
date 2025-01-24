@@ -33,7 +33,7 @@ module.exports = {
                 exclude: /node_modules/ // 排除 node_modules 文件夹
             },
             {
-                test: /\.css$/,
+                test: /\.(css|scss)$/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -41,8 +41,9 @@ module.exports = {
                             esModule: true,
                         },
                     },
-                    "css-loader",
-                ], // 处理css文件
+                    "css-loader",//处理css文件
+                    'sass-loader',//编译SCSS文件
+                ],
             },
             {
                 test: /\.html$/,
