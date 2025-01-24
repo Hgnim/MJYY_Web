@@ -51,7 +51,12 @@
     }
 }
 
+#navbarCollapse_showButton{
 
+}
+#navbarCollapse_showButton:focus{
+    outline: none;
+}
 
 .dropdown {
     position: relative;
