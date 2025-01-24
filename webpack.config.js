@@ -104,19 +104,19 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(
             {
-                filename: 'css/[name].[contenthash].css',
-                chunkFilename: 'css/[id].[contenthash].chunk.css',
+                filename: 'assets/css/[name].[contenthash].css',
+                chunkFilename: 'assets/css/[id].[contenthash].chunk.css',
             }
         ),
 
         new CopyWebpackPlugin({//复制文件
             patterns: [
-                { from: './src/img/mjyy-qrcode.png', to: 'img/mjyy-qrcode.png' },
+                { from: './src/assets/img/mjyy-qrcode.png', to: 'assets/img/mjyy-qrcode.png' },
             ],
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: './src/md', to: 'md' },
+                { from: './src/assets/md', to: 'assets/md' },
             ],
         }),
         new CopyWebpackPlugin({
@@ -137,7 +137,7 @@ module.exports = {
             onBuildEnd:{//在构建后执行
                 scripts: [
                     'echo 开始处理独立的css文件',
-                    'npx postcss ./src/css/animation --dir ./dist/css/animation --verbose',
+                    'npx postcss ./src/assets/css/animation --dir ./dist/assets/css/animation --verbose',
                     'echo 独立的css文件处理完成'
                 ],
                 blocking: true,//等待命令完成

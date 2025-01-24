@@ -85,9 +85,9 @@ export async function loadMediaResources(resMode) {
         }
 
         const mdRes = [
-            ["md/index/serverRule.md", "ruleText"],
-            ["md/index/serverIntroductory.md", "serverIntroductoryText"],
-            ["md/index/joinUs.md", "joinUsText"],
+            ["assets/md/index/serverRule.md", "ruleText"],
+            ["assets/md/index/serverIntroductory.md", "serverIntroductoryText"],
+            ["assets/md/index/joinUs.md", "joinUsText"],
         ];
         for (let i = 0; i < mdRes.length; i++) {
             document.getElementById(mdRes[i][1]).innerHTML =

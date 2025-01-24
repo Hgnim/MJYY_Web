@@ -5,14 +5,14 @@
 * */
 import {exposeModuleToGlobal} from './global-bridge';
 
-import '@/css/publicStyle.css';
-import '@/css/publicNavbar.css';
-import '@/css/CommunityPhotoWall/navbar.css';
+import '@/assets/css/publicStyle.css';
+import '@/assets/css/publicNavbar.css';
+import '@/assets/css/CommunityPhotoWall/navbar.css';
 
 import '@/js/publicNavbar.js';
 import '@/js/CommunityPhotoWall/navbar.js';
 
 import '@/js/CommunityPhotoWall/photoWall_Load.js';
 
-import '@/css/CommunityPhotoWall/style.css';
+import '@/assets/css/CommunityPhotoWall/style.css';
 import '@/js/CommunityPhotoWall/script.js';

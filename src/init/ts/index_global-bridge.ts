@@ -6,32 +6,32 @@
 import {exposeModuleToGlobal} from './global-bridge';
 
 
-import '@/css/index/theme.css';
-import '@/css/publicStyle.css';
-import '@/css/index/style.css';
-import '@/css/publicNavbar.css';
-import '@/css/index/navbar.css';
-import '@/css/index/linkText.css';
+import '@/assets/css/index/theme.css';
+import '@/assets/css/publicStyle.css';
+import '@/assets/css/index/style.css';
+import '@/assets/css/publicNavbar.css';
+import '@/assets/css/index/navbar.css';
+import '@/assets/css/index/linkText.css';
 
 import/* * as publicNavbar from*/ '@/js/publicNavbar.js';//exposeModuleToGlobal(publicNavbar);
 import/* * as navbar from*/ '@/js/index/navbar.js';//exposeModuleToGlobal(navbar);
 
-import '@/css/index/share.css';
+import '@/assets/css/index/share.css';
 import * as share from '@/js/index/share.js';exposeModuleToGlobal(share);
 
 import/* * as pageSmoothScroll from*/ '@/js/index/pageSmoothScroll.js';//exposeModuleToGlobal(pageSmoothScroll);
 import * as viewAction from '@/js/index/view_action.js';exposeModuleToGlobal(viewAction);
 import/* * as titleChange from*/ '@/js/index/titileChange.js';//exposeModuleToGlobal(titleChange);
 
-import '@/css/index/loading.css';
+import '@/assets/css/index/loading.css';
 import * as loading from '@/js/index/loading.js';exposeModuleToGlobal(loading);
-import '@/css/index/imageResource.css';
+import '@/assets/css/index/imageResource.css';
 import * as loadResources from '@/js/index/loadResources.js';exposeModuleToGlobal(loadResources);
-import '@/css/index/resourceMode.css';
+import '@/assets/css/index/resourceMode.css';
 
-import '@/css/index/themeToggle.css';
+import '@/assets/css/index/themeToggle.css';
 
-import '@/css/index/pingServer.css';
+import '@/assets/css/index/pingServer.css';
 import * as pingServer from '@/js/index/pingServer.js';exposeModuleToGlobal(pingServer);
 
 import * as script from '@/js/index/script.js';exposeModuleToGlobal(script);
