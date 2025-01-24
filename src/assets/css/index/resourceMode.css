@@ -2,7 +2,10 @@
     z-index: 3;
     position: absolute;
     margin-top: 4px;
-    margin-left: 6px;;
+    margin-left: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #resourceModeBox_select{
     background-color: transparent;

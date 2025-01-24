@@ -29,9 +29,6 @@ $(function () {
     });
     document.getElementById("resourceModeBox_select").value = resMode;
   }
-
-  //替换图标
-  feather.replace();
 });
 
 export function BodyOnLoad() {
