@@ -21,12 +21,11 @@ var home_a_while = setInterval(function () {
 }, 64);
 }*/
 //将标题从逐字输出动画更改为淡出动画
-home_a_run();
 export function home_a_run() {
     try {
-        if (document.getElementById("home_MainText_Div").style.animation != "" || document.getElementById("home_MainButton").style.animation != "") {
-            document.getElementById("home_MainText_Div").style.opacity = 0;
-            document.getElementById("home_MainButton").style.opacity = 0;
+        if (document.getElementById("home_MainText_Div").style.animation !== "" || document.getElementById("home_MainButton").style.animation !== "") {
+            document.getElementById("home_MainText_Div").style.opacity = '0';
+            document.getElementById("home_MainButton").style.opacity = '0';
             document.getElementById("home_MainText_Div").style.animation = "";
             document.getElementById("home_MainButton").style.animation = "";
         }
@@ -55,13 +54,13 @@ export function toggleTheme_Click() {
 
 //隐藏文本的显示状态切换
 export function toggleSpoiler(targetName,buttonName) {
-    var spoiler = document.getElementById(targetName);
-    var button=document.getElementById(buttonName);
+    const spoiler = document.getElementById(targetName);
+    const button = document.getElementById(buttonName);
     if (spoiler.style.display === "none") {
         spoiler.style.display = "block";
-        button.value="收起";
+        button.innerText="收起";
     } else {
         spoiler.style.display = "none";
-        button.value="展开";
+        button.innerText="展开";
     }
   }

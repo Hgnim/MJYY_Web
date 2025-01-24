@@ -1,3 +1,5 @@
+import {home_a_run} from "@/js/index/view_action";
+
 let isLoadingOver = false;
 let loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕
 export function LoadingOver(addValue=1) {
@@ -7,6 +9,7 @@ export function LoadingOver(addValue=1) {
             isLoadingOver = true;
             $("#preloader").on(500).fadeOut();
             $(".preloader").on(600).fadeOut("slow");
+            home_a_run();
             // noinspection JSIgnoredPromiseFromCall
             waitToRemoveLoadingPage();
         }

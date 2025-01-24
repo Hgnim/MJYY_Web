@@ -45,7 +45,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
 
         <section class="sticky-top sticky-wrapper unSelectable">
             <nav class="navbar navbar-expand-md2 navbar-style fixed-top sticky-navigation navbarStyle autocolor">
-                <a class="navbar-brand heading-black page-scroll navbar-logo-box" href="#home" onclick="home_a_run()">
+                <a class="navbar-brand page-scroll navbar-logo-box" href="#home" onclick="home_a_run()" style="font-weight: 900;">
                     <img src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" class="navbar-logo autocolor" width="34px"/><!--mjyylogo-128x.png-->
                     <span class="navbar-title autocolor">谧静幽原</span>
                 </a>
@@ -96,18 +96,20 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
 
     <section id="home" >
         <div class="container" >
-            <div class="row vh-100">
+            <div class="row" style="height: 100vh;">
                 <div class="col-md-8 mx-auto my-auto text-center" style="z-index: 3;">
                     <!--<h1 class="display-4 mb-5 text-white">Main Center Text</h1>-->
                     <div id="home_MainText_Div">
-                    <p class="text_light" id="home_MainText" >谧静幽原服务器</p>
+                    <p id="home_MainText" >谧静幽原服务器</p>
                 </div>
-                <div style="z-index: 3; position: relative;">
-                    <a href="#video_page" class="btn btn-outline-secondary page-scroll"
-                        id="home_MainButton">
-                        让我们开始吧
-                    </a>
-                </div>
+                <a href="#video_page" class="page-scroll" id="home_MainButton">
+                    <span id="home_MainButton_icon_box">
+                        <div id="home_MainButton_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                        </div>
+                    </span>
+                    <span id="home_MainButton_text">让我们开始吧</span>
+                </a>
             </div>
         </div>
         <div id="pingServerRootView" class="unSelectable">
@@ -349,8 +351,9 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <div class="row">
                 <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
                     <h4 class="text-center">服务器规则(务必阅读)</h4>
-                    <div class="text-center"> <input onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button"
-                            type="button" value="展开" style="z-index: 1; position:relative;" /></div>
+                    <div class="text-center">
+                        <button onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button">展开</button>
+                    </div>
                     <div style="display: none;" id="ruleText" class="unset_unSelectable">
                     </div>
                 </div>
@@ -380,32 +383,6 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                     </div>
                 </div>
             </div>
-            <!--little button<div class="row mt-5">
-                <div class="col-md-6 mx-auto text-center">
-                    <a class="btn btn-primary d-inline-flex flex-row align-items-center" href="#">
-                        <em data-feather="download" width="18" height="18" class="mr-2"></em>
-                        button1
-                    </a>
-                    <a class="btn btn-secondary " href="#">
-                        button2
-                    </a>
-                </div>
-            </div>-->
-            <!--little image<div class="row mt-6">
-                <div class="col-12 text-muted text-center small text-uppercase">text</div>
-                <div class="col-md-10 mx-auto">
-                    <div class="row press mt-4">
-                        <div class="press-item col-lg-3 col-md-4 col-6"><a href="#"><img class="img-fluid"
-                                    src="img" alt=""></a></div>
-                        <div class="press-item col-lg-3 col-md-4 col-6"><a href="#"><img class="img-fluid"
-                                    src="img" alt=""></a></div>
-                        <div class="press-item col-lg-3 col-md-4 col-6"><a href="#"><img class="img-fluid"
-                                    src="img" alt=""></a></div>
-                        <div class="press-item col-lg-3 col-md-4 col-6"><a href="#"><img class="img-fluid"
-                                    src="img" alt=""></a></div>
-                    </div>
-                </div>
-            </div>-->
         </div>
     </section>
     <div class="githubButton">

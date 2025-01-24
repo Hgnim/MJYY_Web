@@ -29,6 +29,7 @@
     background: #474747; /* #e8e8e8;*/
     cursor: pointer;
     border: 1px solid #696969;
+    transition: transform .5s;
 
     width: 150px;
     height: 40px;
@@ -43,7 +44,12 @@
     display: none;
     color: white;
 }
-
+#main-ld-skipbt:focus {
+    outline: none;
+}
+#main-ld-skipbt:active{
+    transform: scale(0.95);
+}
 
 #main-ld {
     position: absolute;

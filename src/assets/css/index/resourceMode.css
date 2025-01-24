@@ -9,4 +9,7 @@
     border: none;
     padding: 0;
     width: auto;
+    appearance: none; /*移除默认的外观样式*/
+    -webkit-appearance: none; /*Webkit浏览器*/
+    -moz-appearance: none; /*Firefox浏览器*/
 }
