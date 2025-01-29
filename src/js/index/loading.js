@@ -23,7 +23,8 @@ export async function waitToRemoveLoadingPage(){
 
 //加载时间过长的话则显示跳过加载的按钮
 export async function WaitTimeOut(){
-    await sleep(5000);
+    //await sleep(5000);
+    //开发分支中无需等待，直接弹出跳过加载按钮
     if(!isLoadingOver){
         $("#main-ld-skipbt").fadeIn();
     }
