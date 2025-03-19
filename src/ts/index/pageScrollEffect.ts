@@ -2,7 +2,7 @@ $(function (){
     let lastScrollTime = 0;
     $(window).scroll(function () {
         const nowScrollTime = Date.now();
-        if (nowScrollTime - lastScrollTime > 100){//减缓触发频率，避免抖动，单位ms
+        if (nowScrollTime - lastScrollTime > 200){//减缓触发频率，避免抖动，单位ms
             const mb:HTMLElement|null=document.getElementById("main-background_img");
             if (mb!=null) {
                 const overflowValue:number=parseFloat(window.getComputedStyle(mb).width) - $(window).width()!;

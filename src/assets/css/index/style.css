@@ -9,7 +9,7 @@
 color:#dc39eb;
 text-decoration: none;
 font-size:4em;
-font-family: "mzd-font";
+    font-family: "mzd-font", system-ui;
 animation: home_MainText_loop_a 4s infinite;
 user-select:none;
 }
@@ -125,11 +125,7 @@ user-select:none;
 }
 #ruleText{
     z-index: 2;
-    position: relative;
-    padding: 30px;
     border-radius: 40px;
-    background-color: var(--color19);
-    color: var(--color8);
     transition: .2s;
 }
 
@@ -317,7 +313,6 @@ button{
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
 .main-view-section .main-view-wrapper .main-view-container {
     position: relative;
@@ -349,6 +344,8 @@ button{
     position: absolute;
     top: 0;
     left: 0;
+    /*will-change: filter,left;*/
+    transform: translateZ(0);/*使用gpu渲染*/
     filter: blur(4px) brightness(var(--filter-brightness));
 }
 /*#endregion*/
@@ -364,15 +361,13 @@ button{
 
 /*#region dot circles */
 .dot-circle:hover:before {
-    -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     transition: all .25s ease-out; }
 
 .dot-circle:before {
     background: var(--color14);
     transition: all .25s ease-out;
-    border-radius: 0px;
-    -webkit-transform: rotate(0);
+    border-radius: 0;
     transform: rotate(0);
     content: "";
     height: 100px;

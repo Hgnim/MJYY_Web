@@ -120,6 +120,8 @@ export async function loadMediaResources(resMode) {
                     imgUrls = [
                         "http://cdnjson.com/images/2025/01/13/main2-light.png",
                         "http://cdnjson.com/images/2025/01/13/main2-dark.png",
+
+                        "http://cdnjson.com/images/2025/03/19/bg1-light.png",
                     ];
                     break;
                 case "low":
@@ -127,6 +129,8 @@ export async function loadMediaResources(resMode) {
                     imgUrls = [
                         "http://cdnjson.com/images/2025/03/18/main2-light-low2.png",
                         "http://cdnjson.com/images/2025/03/18/main2-dark-low2.png",
+
+                        "http://cdnjson.com/images/2025/03/19/bg1-light-low2.jpg",
                     ];
                     break;
                 case "normal":
@@ -135,6 +139,8 @@ export async function loadMediaResources(resMode) {
                     imgUrls = [
                         "http://cdnjson.com/images/2025/01/15/main2-light-low.png",
                         "http://cdnjson.com/images/2025/01/15/main2-dark-low.png",
+
+                        "http://cdnjson.com/images/2025/03/19/bg1-light-low.jpg",
                     ];
                     break;
             }
@@ -153,113 +159,139 @@ export async function loadMediaResources(resMode) {
                         }
                         document.documentElement.style.setProperty(name, `url(${imgUrls[i]})`);
                     }
+                    else{
+                        switch (i){
+                            case 2:
+                                document.getElementById('main-background_img').src=imgUrls[i];
+                                break;
+                        }
+                    }
                 } catch {
                 }
             }
         }
         {
-            const allImgBoxs=document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)");
-            const allLoadingBoxs=document.querySelectorAll(".loadingBox.photoBoxGroup-1");
-            let imgUrls;
-            switch (resMode) {
-                case "source":
-                    // noinspection HttpUrlsUsage
-                    imgUrls = [
-                        "http://cdnjson.com/images/2025/03/18/photo-21.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-2.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-18.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-4.png",
-
-                        "http://cdnjson.com/images/2024/12/28/photo-15.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-17.png",
-                        "http://cdnjson.com/images/2025/03/18/photo-22.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-6.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-5.png",
-                        "http://cdnjson.com/images/2025/03/18/photo-23.png",
-                        "http://cdnjson.com/images/2025/03/18/photo-24.png",
-                        "http://cdnjson.com/images/2025/03/18/photo-25.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-7.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-8.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-9.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-10.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-11.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-12.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-19.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-20.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-13.png",
-                        "http://cdnjson.com/images/2024/12/28/photo-14.png",
-                    ];
-                    break;
-                case "low":
-                    // noinspection HttpUrlsUsage
-                    imgUrls = [
-                        "http://cdnjson.com/images/2025/03/18/photo-21-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-2-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-18-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-4-low2.jpg",
-
-                        "http://cdnjson.com/images/2025/03/18/photo-15-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-17-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-22-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-6-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-5-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-23-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-24-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-25-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-7-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-8-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-9-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-10-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-11-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-12-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-19-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-20-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-13-low2.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-14-low2.jpg",
-                    ];
-                    break;
-                default:
-                case "normal":
-                    // noinspection HttpUrlsUsage
-                    imgUrls = [
-                        "http://cdnjson.com/images/2025/03/18/photo-21-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-2-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-18-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-4-low.jpg",
-
-                        "http://cdnjson.com/images/2025/01/15/photo-15-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-17-low.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-22-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-6-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-5-low.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-23-low.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-24-low.jpg",
-                        "http://cdnjson.com/images/2025/03/18/photo-25-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-7-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-8-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-9-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-10-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-11-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-12-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-19-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-20-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-13-low.jpg",
-                        "http://cdnjson.com/images/2025/01/15/photo-14-low.jpg",
-                    ];
-                    break;
-            }
-            for (let i = 0; i < imgUrls.length; i++) {
-                allLoadingBoxs[i].setAttribute("data-show",true);//触发加载动画
-            }
-            for (let i = 0; i < imgUrls.length; i++) {
-                try {
-                    await loadImage(imgUrls[i],
-                        (su)=>{
-                            allLoadingBoxs[i].setAttribute("data-show",false);
-                    });
-                    allImgBoxs[i].src = imgUrls[i];
-                } catch {
+            async function deployImg(imgUrls,allImgBoxs,allLoadingBoxs){
+                for (let i = 0; i < imgUrls.length; i++) {
+                    allLoadingBoxs[i].setAttribute("data-show", true);//触发加载动画
                 }
+                for (let i = 0; i < imgUrls.length; i++) {
+                    try {
+                        await loadImage(imgUrls[i],
+                            (su) => {
+                                allLoadingBoxs[i].setAttribute("data-show", false);
+                            });
+                    } catch {
+                    }
+                    finally {
+                        allImgBoxs[i].src = imgUrls[i];
+                    }
+                }
+            }
+            {
+                let imgUrls;
+                switch (resMode) {
+                    case "source":
+                        // noinspection HttpUrlsUsage
+                        imgUrls = [
+                            "http://cdnjson.com/images/2025/03/18/photo-21.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-2.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-18.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-4.png",
+
+                            "http://cdnjson.com/images/2024/12/28/photo-15.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-17.png",
+                            "http://cdnjson.com/images/2025/03/18/photo-22.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-6.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-5.png",
+                            "http://cdnjson.com/images/2025/03/18/photo-23.png",
+                            "http://cdnjson.com/images/2025/03/18/photo-24.png",
+                            "http://cdnjson.com/images/2025/03/18/photo-25.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-7.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-8.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-9.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-10.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-11.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-12.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-19.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-20.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-13.png",
+                            "http://cdnjson.com/images/2024/12/28/photo-14.png",
+                        ];
+                        break;
+                    case "low":
+                        // noinspection HttpUrlsUsage
+                        imgUrls = [
+                            "http://cdnjson.com/images/2025/03/18/photo-21-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-2-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-18-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-4-low2.jpg",
+
+                            "http://cdnjson.com/images/2025/03/18/photo-15-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-17-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-22-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-6-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-5-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-23-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-24-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-25-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-7-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-8-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-9-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-10-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-11-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-12-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-19-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-20-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-13-low2.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-14-low2.jpg",
+                        ];
+                        break;
+                    default:
+                    case "normal":
+                        // noinspection HttpUrlsUsage
+                        imgUrls = [
+                            "http://cdnjson.com/images/2025/03/18/photo-21-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-2-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-18-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-4-low.jpg",
+
+                            "http://cdnjson.com/images/2025/01/15/photo-15-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-17-low.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-22-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-6-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-5-low.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-23-low.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-24-low.jpg",
+                            "http://cdnjson.com/images/2025/03/18/photo-25-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-7-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-8-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-9-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-10-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-11-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-12-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-19-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-20-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-13-low.jpg",
+                            "http://cdnjson.com/images/2025/01/15/photo-14-low.jpg",
+                        ];
+                        break;
+                }
+                await deployImg(
+                    imgUrls,
+                    document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)"),
+                    document.querySelectorAll(".loadingBox.photoBoxGroup-1")
+                );
+            }
+            {
+                await deployImg(
+                    [
+                        //"http://cdnjson.com/images/2024/12/28/photo-14.png",
+                        "assets/img/qqGroupQRcode.webp",
+                    ],
+                    document.querySelectorAll(".photoBoxGroup-2:not(.loadingBox)"),
+                    document.querySelectorAll(".loadingBox.photoBoxGroup-2")
+                );
             }
         }
     }
