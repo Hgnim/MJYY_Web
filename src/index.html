@@ -91,6 +91,10 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
         </div>
     </div>
 
+        <div id="main-background" class="unselectable">
+            <img id="main-background_img">
+        </div>
+
     <section id="home" >
         <div class="container" >
             <div class="row" style="height: 100vh;">
@@ -382,7 +386,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                     <div class="text-center">
                         <button onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button">展开</button>
                     </div>
-                    <div style="display: none;" id="ruleText" class="unset_unSelectable">
+                    <div style="display: none;" id="ruleText" class="unset_unSelectable card card-body">
                     </div>
                 </div>
             </div>
@@ -405,7 +409,11 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                 <a href="https://qm.qq.com/q/siqAtkac9i" style="z-index: 1; position: relative;"
                                     class="linkText">点击加入QQ交流群(群号: 821763384)</a>
                                 <br />
-                                <img src="assets/img/qqGroupQRcode.webp" loading="lazy" class="card-img-top rounded" style="width: 45%" />
+                                <div class="card col-12 mx-auto" style="width: 45%;padding: 0 0 0 0">
+                                    <div class="photoBoxGroup-2 loadingBox" data-show=true>
+                                        <img class="card-img-top rounded photoBoxGroup-2" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

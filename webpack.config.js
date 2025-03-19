@@ -112,20 +112,11 @@ module.exports = {
         new CopyWebpackPlugin({//复制文件
             patterns: [
                 { from: './src/assets/img/mjyy-qrcode.png', to: 'assets/img/mjyy-qrcode.png' },
-            ],
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
+                { from: './src/assets/img/qqGroupQRcode.webp', to: 'assets/img/qqGroupQRcode.webp' },
+
                 { from: './src/assets/md', to: 'assets/md' },
-            ],
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
                 { from: './src/json', to: 'json' },
-            ],
-        }),
-        new CopyWebpackPlugin({
-            patterns: [
+
                 {
                     from: './CNAME', to: '',
                     noErrorOnMissing: true, // 文件不存在时不报错
