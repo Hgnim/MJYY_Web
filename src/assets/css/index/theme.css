@@ -50,6 +50,7 @@
   --color21: rgba(43, 43, 43, 0.9);
   --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-dark.png);
   --theme-toggle-button_img-url: url(https://s21.ax1x.com/2025/01/19/pEk0LtI.png);/*daylight_detector_2.png*/
+  --filter-brightness: 34%;
 }
 [data-theme="light"] {
   --primary: #ffffff;
@@ -77,6 +78,7 @@
   --color21: rgba(212, 212, 212, 0.9);
   --home-wrapper_img-url: url(http://cdnjson.com/images/2025/01/13/main2-light.png);
   --theme-toggle-button_img-url: url(https://s21.ax1x.com/2025/01/19/pEk0Oht.png);/*daylight_detector_1.png*/
+  --filter-brightness: 100%;
 }
 
 #themeToggleButton{
