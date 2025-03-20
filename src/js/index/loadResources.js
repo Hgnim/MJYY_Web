@@ -46,27 +46,30 @@ export function userSelectResourceMode(value) {
 export async function loadMediaResources(resMode) {
     //视频资源加载
     {
-        const targetBox = document.getElementById("video-page_video-box");
-        switch (resMode) {
-            case "low":
-                targetBox.innerHTML = "<p style=\"text-align: center;width: 100%;position: relative\">省流模式下将不会加载宣传视频</p>";
-                break;
-            case "normal":
-            default:
-                // noinspection HtmlDeprecatedAttribute
-                targetBox.innerHTML = "<div class=\"col-sm-6 mb-4\" >\n" +
-                    "    <div class=\"card\" style=\"z-index: 1; position: relative;\">\n" +
-                    "        <iframe src=\"//player.bilibili.com/player.html?aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&page=1&high_quality=1&danmaku=0&autoplay=0\" class=\"card-img-top rounded\"\n" +
-                    "    allowfullscreen=\"allowfullscreen\"  scrolling=\"no\" frameborder=\"0\" sandbox=\"allow-top-navigation allow-same-origin allow-forms allow-scripts\" height=\"300px\"></iframe>\n" +
-                    "    </div>\n" +
-                    "</div>\n" +
-                    "<div class=\"col-sm-6 mb-4\">\n" +
-                    "    <div class=\"card\" style=\"z-index: 1; position: relative;\">\n" +
-                    "        <iframe  src=\"//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0\" class=\"card-img-top rounded\"\n" +
-                    "    allowfullscreen=\"allowfullscreen\"  scrolling=\"no\" frameborder=\"0\" sandbox=\"allow-top-navigation allow-same-origin allow-forms allow-scripts\" height=\"300px\" ></iframe>\n" +
-                    "    </div>\n" +
-                    "</div>";
-                break;
+        const targetBoxs =document.querySelectorAll(".video-page_video-box");
+        {
+            const urls=[
+                "//player.bilibili.com/player.html?aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&page=1&high_quality=1&danmaku=0&autoplay=0",
+                "//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0"
+            ]
+            let i=0;
+            targetBoxs.forEach(targetBox => {
+                switch (resMode) {
+                    case "low":
+                        targetBox.innerHTML = "<p style=\"text-align: center;width: 100%;position: relative\">省流模式下将不会加载宣传视频</p>";
+                        break;
+                    case "normal":
+                    default:
+                        // noinspection HtmlDeprecatedAttribute
+                        targetBox.innerHTML =
+                            "<div class=\"card\" style=\"z-index: 1; position: relative;height: 100%;width: 100%;\">\n" +
+                            "    <iframe src=\""+ urls[i] +"\" class=\"card-img-top rounded\" style=\"height: 100%;width: 100%;\" \n" +
+                            "allowfullscreen=\"allowfullscreen\"  scrolling=\"no\" frameborder=\"0\" sandbox=\"allow-top-navigation allow-same-origin allow-forms allow-scripts\"></iframe>\n" +
+                            "</div>\n";
+                        break;
+                }
+                i++;
+            });
         }
     }
     //md文件加载

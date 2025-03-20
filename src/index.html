@@ -148,34 +148,20 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
     </i>
         <div id="themeToggleButton" onclick="toggleTheme_Click()"></div>
     <div class="py-5"></div>
-    <section class="py-5 unSelectable" id="video_page">
+    <section class="py-5 unSelectable" id="video_page" style="overflow: hidden">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">宣传视频</h2>
-                    <div class="row mt-5 projects" id="video-page_video-box" >
-                        <!--<div class="col-sm-6 mb-4" >
-                            <div class="card" style="z-index: 1; position: relative;">
-                                <iframe src="//player.bilibili.com/player.html?aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&page=1&high_quality=1&danmaku=0&autoplay=0" class="card-img-top rounded"
-                            allowfullscreen="allowfullscreen"  scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" height="300px"></iframe>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 mb-4">
-                            <div class="card" style="z-index: 1; position: relative;">
-                                <iframe  src="//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0" class="card-img-top rounded"
-                            allowfullscreen="allowfullscreen"  scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" height="300px" ></iframe>
-                            </div>
-                        </div>--><!--视频片段将在js中动态嵌入-->
-
-
-
-                        <!--<div class="card" style="left: 25%;width: 50%;height: 500px;">
-                            <iframe src="//player.bilibili.com/player.html?aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&page=1&high_quality=1&danmaku=0&autoplay=0" class="card-img-top rounded"
-                            allowfullscreen="allowfullscreen"  scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" height="100%"></iframe>
-                            <br/>
-                            <iframe  src="//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0" class="card-img-top rounded"
-                            allowfullscreen="allowfullscreen"  scrolling="no" frameborder="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts" height="100%"></iframe>
-                        </div>-->
+                <div class="col-12">
+                    <div class="oak-hanging-sign mx-auto" id="video-page_header">
+                        <h2 style="user-select: none;z-index: 1; position:relative;text-align: center;top: 46%;">宣传视频</h2>
+                    </div>
+                </div>
+                <div class="row mx-auto mt-5">
+                    <div class="col-sm-6" >
+                        <div class="video-page_video-box item_frame if_custom_video-box mx-auto" id="video-page_video-box_1"></div>
+                    </div>
+                    <div class="col-sm-6" >
+                        <div class="video-page_video-box item_frame if_custom_video-box mx-auto" id="video-page_video-box_2"></div>
                     </div>
                 </div>
             </div>
@@ -185,8 +171,8 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">宣传图片</h2>
-                    <div class="row mt-5 projects">
+                    <h2 style="user-select: none;z-index: 1; position:relative;">宣传图片</h2>
+                    <div class="row mt-5">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
                                 <div class="photoBoxGroup-1 loadingBox" data-show=true>
@@ -233,7 +219,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                         </div>
                     </div>
                     <h4 style="text-align:center">更多照片欣赏</h4>
-                    <div class="row  projects">
+                    <div class="row">
                         <div class="col-sm-6 mb-4">
                             <div class="card">
                                 <div class="photoBoxGroup-1 loadingBox" data-show=true>
@@ -369,7 +355,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">服务器介绍</h2>
+                    <h2 style="user-select: none;z-index: 1; position:relative;">服务器介绍</h2>
                     <div class="row mt-5">
                         <div id="serverIntroductoryText" class="col-md-12 mb-5">
                         </div>
@@ -397,7 +383,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 mx-auto">
-                    <h2 class="dot-circle" style="user-select: none;z-index: 1; position:relative;">加入我们</h2>
+                    <h2 style="user-select: none;z-index: 1; position:relative;">加入我们</h2>
                     <div class="row mt-5">
                         <div class="col-md-12 mb-5">
                             <div id="joinUsText">
