@@ -1,3 +1,5 @@
+import {sleep} from "@/ts/other/sleep";
+
 $(function (){
     //const allSections = document.querySelectorAll('section');
     {
@@ -188,8 +190,16 @@ $(function (){
                                     }
                                 }
                             }
-                            {
-
+                            if (is_pistonPushPhotoAnim_Init && !isStart_pistonPushPhotoAnim){
+                                const sectionSub:HTMLElement|null = document.getElementById("photo_sub2");
+                                if (sectionSub!=null){
+                                    const offsetTopSub: number = sectionSub.offsetTop;
+                                    if(currentBottomScroll>offsetTopSub) {
+                                        sectionSub.style.visibility='unset';
+                                        sectionSub.style.opacity='1';
+                                        pistonPushPhotoAnim_Start().then();
+                                    }
+                                }
                             }
                         }
                     }
@@ -199,3 +209,105 @@ $(function (){
         });
     }
 })
+//表示动画是否已完成初始化
+let is_pistonPushPhotoAnim_Init:boolean=false;
+//活塞推动照片动画初始化，需要在所需照片加载完后调用
+export function pistonPushPhotoAnim_Init(){
+    const allPhotoObjs:NodeListOf<HTMLElement>=document.querySelectorAll(".photo_sub2_pbgCard");
+    document.getElementById('photo_sub2')!.style.height = `${allPhotoObjs[0].offsetHeight*2.5}px`;
+    {
+        //将底部活塞向左偏移一些，这样以保证下落的图片能精确落在粘液块右侧
+        const p21=document.getElementById("photo_sub2_piston2-1")!;
+        p21.style.left = `${-(p21.offsetHeight - document.getElementById("photo_sub2_piston-template1")!.offsetHeight)}px`
+        const p221=document.getElementById("photo_sub2_piston2-2-1")!;
+        p221.style.left = p21.style.left;
+        document.getElementById("photo_sub2_piston2-2-2")!.style.left = `${p221.offsetWidth+p21.offsetLeft}px`;
+    }
+
+    allPhotoObjs.forEach((pobj)=>{
+        pobj.style.left=`${$(window).width()}px`;
+    });
+    is_pistonPushPhotoAnim_Init=true;
+}
+//表示当前是否已经启动动画播放
+let isStart_pistonPushPhotoAnim:boolean=false;
+//设置为true后将停止当前正在执行的动画
+let stop_pistonPushPhotoAnim:boolean=false;
+//活塞推动照片动画启动
+async function pistonPushPhotoAnim_Start(){
+    if (is_pistonPushPhotoAnim_Init && !isStart_pistonPushPhotoAnim){
+        isStart_pistonPushPhotoAnim=true;
+
+        const transitionSleep:number=600;//在css过渡的时候进行的等待时间，在css更改过渡时间时，该值也需要随之更改
+        const allPhotoObjs:NodeListOf<HTMLElement>=document.querySelectorAll(".photo_sub2_pbgCard");
+        const piston= {
+            'parent':document.getElementById("photo_sub2")!,
+            'tmp1':document.getElementById("photo_sub2_piston-template1")!,
+            '1-1': document.getElementById("photo_sub2_piston1-1")!,
+            '1-2': document.getElementById("photo_sub2_piston1-2")!,
+            '2-1': document.getElementById("photo_sub2_piston2-1")!,
+            //'2-2': document.getElementById("photo_sub2_piston2-2")!,
+            '2-2-1': document.getElementById("photo_sub2_piston2-2-1")!,
+            '2-2-2': document.getElementById("photo_sub2_piston2-2-2")!,
+        };
+        let pobjIndex:number=0;
+        function indexAdd(index:number, max:number):number{
+            let i=index;
+            i++;
+            if (!(i<max))
+                i=0;
+            return i;
+        }
+        while (!stop_pistonPushPhotoAnim){
+            piston["2-2-1"].style.left = piston["2-1"].style.left;
+            piston["2-2-2"].style.left = `${piston["2-2-1"].offsetWidth+piston["2-1"].offsetLeft}px`;
+            {
+                const lv1=-(allPhotoObjs[pobjIndex].offsetWidth);
+                allPhotoObjs[pobjIndex].style.transition = 'unset';//取消过渡，避免图片回调时发生过渡。
+                allPhotoObjs[pobjIndex].style.left = `${lv1}px`;
+                allPhotoObjs[pobjIndex].style.bottom = `${piston.parent.offsetHeight-allPhotoObjs[pobjIndex].offsetHeight}px`;
+                {
+                    const lv2 = lv1 - piston["2-2-1"].offsetWidth;
+                    piston["1-1"].style.left = `${lv2}px`;
+                    piston["1-2"].style.left = `${lv2}px`;
+                }
+            }
+            await sleep(transitionSleep);//等待过渡
+
+            allPhotoObjs[pobjIndex].style.transition = '';//重新启用过渡（要等待后才能启用过渡，否则“取消过渡”就没效果了）
+            piston["1-1"].style.left = '0';
+            piston["1-2"].style.left = '0';
+            allPhotoObjs[pobjIndex].style.left = `${piston["2-2-1"].offsetWidth}px`;
+            await sleep(transitionSleep);
+
+            piston["1-2"].style.left = `${piston["tmp1"].offsetHeight}px`;
+            allPhotoObjs[pobjIndex].style.left = `${piston["tmp1"].offsetHeight+piston["2-2-1"].offsetWidth}px`;
+            await sleep(transitionSleep);
+
+            piston["1-2"].style.left = '0';
+            allPhotoObjs[pobjIndex].style.bottom='0';
+            //allPhotoObjs[pobjIndex].style.left=`${piston["2-2-1"].offsetWidth*2}px`;//已将底部活塞向左偏移了一些，所以图片下落时无需偏移
+            await sleep(transitionSleep);
+
+            piston["1-1"].style.left = `${-piston["2-2-1"].offsetWidth}px`;
+            piston["1-2"].style.left = `${-piston["2-2-1"].offsetWidth}px`;
+            piston["2-2-1"].style.left = `${piston["tmp1"].offsetHeight+piston["2-1"].offsetLeft}px`;
+            piston["2-2-2"].style.left = `${piston["tmp1"].offsetHeight+piston["2-2-1"].offsetWidth+piston["2-1"].offsetLeft}px`;
+            {
+                let pi2: number = pobjIndex;
+                for (let i = 0; i < allPhotoObjs.length; i++) {
+                    allPhotoObjs[pi2].style.left=`${allPhotoObjs[pi2].offsetLeft+allPhotoObjs[pi2].offsetWidth}px`;
+
+                    pi2--;
+                    if (pi2<0)
+                        pi2=allPhotoObjs.length-1;
+                }
+            }
+            await sleep(transitionSleep);
+
+            pobjIndex=indexAdd(pobjIndex,allPhotoObjs.length);
+        }
+        stop_pistonPushPhotoAnim=false;
+        isStart_pistonPushPhotoAnim=false;
+    }
+}

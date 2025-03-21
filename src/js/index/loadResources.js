@@ -1,3 +1,5 @@
+import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
+
 var resourceMode;
 
 export function GetResourceMode() {
@@ -285,6 +287,8 @@ export async function loadMediaResources(resMode) {
                     document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)"),
                     document.querySelectorAll(".loadingBox.photoBoxGroup-1")
                 );
+
+                pistonPushPhotoAnim_Init();//在photoBoxGroup-1的内容加载完毕时初始化活塞推动照片动画
             }
             {
                 await deployImg(
