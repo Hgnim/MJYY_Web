@@ -7,3 +7,31 @@
 #video-page_video-box_2{
   transition: .8s;
 }
+
+/*#region 0图形边框*/
+.oak-hanging-sign{
+  background-image: url('https://s21.ax1x.com/2025/03/20/pEwrHQU.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 164px;
+  width: 164px;
+  overflow: hidden;
+}
+.item_frame{
+  background-image: url('https://s21.ax1x.com/2025/03/20/pEwroWV.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 164px;
+  width: 164px;
+  padding: 4%;
+  overflow: hidden;
+  &.if_custom_video-box{
+    height: 45vh;//364px;
+    width: 45vh;//364px;
+    padding: 4vh;
+    position: relative;
+  }
+}
+/*#endregion*/

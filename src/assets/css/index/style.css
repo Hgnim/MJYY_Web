@@ -145,33 +145,6 @@ user-select:none;
 }
 /*#endregion*/
 
-/*#region 0图形边框*/
-.oak-hanging-sign{
-    background-image: url('https://s21.ax1x.com/2025/03/20/pEwrHQU.png');
-    image-rendering: pixelated;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 164px;
-    width: 164px;
-    overflow: hidden;
-}
-.item_frame{
-    background-image: url('https://s21.ax1x.com/2025/03/20/pEwroWV.png');
-    image-rendering: pixelated;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 164px;
-    width: 164px;
-    padding: 4%;
-    overflow: hidden;
-    &.if_custom_video-box{
-        height: 364px;
-        width: 364px;
-        padding: 7%;
-        position: relative;
-    }
-}
-/*#endregion*/
 
 .main-toast{
     z-index: 3000;

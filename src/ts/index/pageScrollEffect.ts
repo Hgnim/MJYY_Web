@@ -46,40 +46,65 @@ $(function (){
                 }
                 console.log(currentSection);*/
 
+                const currentTopScroll:number =$(window).scrollTop()!;
                 const currentBottomScroll = $(window).scrollTop()!+$(window).height()!;
+                const screenHeight:number = $(window).height();
+                const screenWidth:number = $(window).width();
                 {
                     const section = document.getElementById("video_page");
                     if (section != null) {
                         const offsetTop: number = section.offsetTop;
                         const clientHeight:number=section.clientHeight;
                         const height:number = offsetTop+clientHeight;
-                        if (currentBottomScroll >= offsetTop /*&& currentBottomScroll < height*/){
-                            const xValue:number =currentBottomScroll-offsetTop;
-                            const yValue:number= (1/((Math.floor(xValue / (clientHeight)) * 3000) + 2600)) * Math.pow(xValue-clientHeight,2);
+                        if (currentBottomScroll >= offsetTop && currentTopScroll < height){
+                            const obj=[
+                                document.getElementById("video-page_header"),
+                                document.getElementById("video-page_video-box_1"),
+                                document.getElementById("video-page_video-box_2"),
+                            ];
+                            const progressValue:number=(currentBottomScroll-offsetTop)/clientHeight;
+                            const progressValue2:number = (currentTopScroll-offsetTop)/clientHeight;
+                            if (obj[0]!=null && obj[1]!=null && obj[2]!=null) {
+                                if (progressValue2>0.25){
+                                    let v=(progressValue2-0.25)/0.5;
+                                    if (v>1)v = 1;
+                                    obj[0].style.opacity=`${1-v}`;
 
-                            console.log(`${xValue} ${yValue} ${offsetTop} ${height}`);
+                                    {
+                                        const v2:number=-(v * section.clientWidth);
+                                        obj[1].style.left = `${v2}px`;
+                                        obj[2].style.right = `${v2}px`;
+                                    }
+                                }
+                                else if (progressValue<0.5){
+                                    let v=(progressValue/0.5);
+                                    if (v>1)v = 1;
+                                    obj[0].style.opacity=v.toString();
 
-                            const obj1=document.getElementById("video-page_header");
-                            const obj2=document.getElementById("video-page_video-box_1");
-                            const obj3=document.getElementById("video-page_video-box_2");
-                            if (obj1!=null) {
-                                if (yValue>20)
-                                    obj1.style.opacity = `${100 - yValue}%`;
-                                else
-                                    obj1.style.opacity='100%';
+                                    {
+                                        const v2:number=-(section.clientWidth-(v * section.clientWidth));
+                                        obj[1].style.left = `${v2}px`;
+                                        obj[2].style.right = `${v2}px`;
+                                    }
+                                }
+                                else{
+                                    obj[0].style.opacity='100%';
+                                    obj[1].style.left = '0';
+                                    obj[2].style.right = '0';
+                                }
                             }
-                            if (obj2!=null) {
-                                if (yValue>20)
-                                obj2.style.left = `-${yValue * 5}px`;
+                            /*if (obj2!=null) {
+                                if (yValue>funcMinValue)
+                                    obj2.style.left = `-${yValue * 5}px`;
                                 else
-                                obj2.style.left = '0';
+                                    obj2.style.left = '0';
                             }
                             if (obj3!=null) {
-                                if (yValue > 20)
+                                if (yValue > funcMinValue)
                                     obj3.style.right = `-${yValue * 5}px`;
                                 else
                                     obj3.style.right = '0';
-                            }
+                            }*/
                         }
                     }
                 }
