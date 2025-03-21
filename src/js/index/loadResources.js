@@ -200,7 +200,7 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/03/18/photo-21.png",
                             "http://cdnjson.com/images/2024/12/28/photo-2.png",
                             "http://cdnjson.com/images/2024/12/28/photo-18.png",
-                            "http://cdnjson.com/images/2024/12/28/photo-4.png",
+                            //"http://cdnjson.com/images/2024/12/28/photo-4.png",
 
                             "http://cdnjson.com/images/2024/12/28/photo-15.png",
                             "http://cdnjson.com/images/2024/12/28/photo-17.png",
@@ -228,7 +228,7 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/03/18/photo-21-low2.jpg",
                             "http://cdnjson.com/images/2025/03/18/photo-2-low2.jpg",
                             "http://cdnjson.com/images/2025/03/18/photo-18-low2.jpg",
-                            "http://cdnjson.com/images/2025/03/18/photo-4-low2.jpg",
+                            //"http://cdnjson.com/images/2025/03/18/photo-4-low2.jpg",
 
                             "http://cdnjson.com/images/2025/03/18/photo-15-low2.jpg",
                             "http://cdnjson.com/images/2025/03/18/photo-17-low2.jpg",
@@ -257,7 +257,7 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/03/18/photo-21-low.jpg",
                             "http://cdnjson.com/images/2025/01/15/photo-2-low.jpg",
                             "http://cdnjson.com/images/2025/01/15/photo-18-low.jpg",
-                            "http://cdnjson.com/images/2025/01/15/photo-4-low.jpg",
+                            //"http://cdnjson.com/images/2025/01/15/photo-4-low.jpg",
 
                             "http://cdnjson.com/images/2025/01/15/photo-15-low.jpg",
                             "http://cdnjson.com/images/2025/01/15/photo-17-low.jpg",

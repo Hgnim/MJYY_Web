@@ -46,10 +46,10 @@ $(function (){
                 }
                 console.log(currentSection);*/
 
-                const currentTopScroll:number =$(window).scrollTop()!;
-                const currentBottomScroll = $(window).scrollTop()!+$(window).height()!;
                 const screenHeight:number = $(window).height();
                 const screenWidth:number = $(window).width();
+                const currentTopScroll:number =$(window).scrollTop()!;
+                const currentBottomScroll = currentTopScroll+screenHeight;
                 {
                     const section = document.getElementById("video_page");
                     if (section != null) {
@@ -93,22 +93,107 @@ $(function (){
                                     obj[2].style.right = '0';
                                 }
                             }
-                            /*if (obj2!=null) {
-                                if (yValue>funcMinValue)
-                                    obj2.style.left = `-${yValue * 5}px`;
-                                else
-                                    obj2.style.left = '0';
-                            }
-                            if (obj3!=null) {
-                                if (yValue > funcMinValue)
-                                    obj3.style.right = `-${yValue * 5}px`;
-                                else
-                                    obj3.style.right = '0';
-                            }*/
                         }
                     }
                 }
+                {
+                    const section:HTMLElement|null = document.getElementById("photo");
+                    if (section != null) {
+                        const offsetTop: number = section.offsetTop;
+                        const clientHeight:number=section.clientHeight;
+                        const height:number = offsetTop+clientHeight;
+                        if (currentBottomScroll >= offsetTop && currentTopScroll < height){
+                            {
+                                const sectionSub:HTMLElement|null = document.getElementById("photo_sub1");
+                                if (sectionSub!=null) {
+                                    const offsetTopSub: number = sectionSub.offsetTop;
+                                    const clientHeightSub: number = sectionSub.clientHeight;
+                                    const heightSub: number = offsetTopSub + clientHeightSub;
 
+                                    const obj:HTMLElement[]=[
+                                        document.getElementById("photo_sub1_title")!,
+                                        document.getElementById("photo_sub1_photoBox1")!,
+                                        document.getElementById("photo_sub1_photoBox2")!,
+                                        document.getElementById("photo_sub1_photoBox3")!,
+                                    ];
+                                    const progressValueSub:number=(currentBottomScroll-offsetTopSub)/clientHeightSub;
+                                    const progressValueSub2:number = (currentTopScroll-offsetTopSub)/clientHeightSub;
+
+                                    if (progressValueSub2>0.8){
+                                        let v=(progressValueSub2-0.8)/0.2;
+                                        if (v>1)v = 1;
+
+                                        obj.forEach((o:HTMLElement) => {
+                                            o.style.opacity=(1-v).toString();
+                                        });
+                                    }
+                                    else if (progressValueSub>0.25 && progressValueSub<0.5) {
+                                        if (progressValueSub<0.34){
+                                            let v=(progressValueSub-0.25)/0.8;
+                                            if (v>1)v = 1;
+
+                                            obj[1].style.opacity=v.toString();
+                                            obj[1].style.top = `${(1-v)*obj[1].offsetHeight}px`;
+                                        }else if (progressValueSub<0.42){
+                                            let v=(progressValueSub-0.33)/0.8;
+                                            if (v>1)v = 1;
+
+                                            obj[1].style.opacity='1';
+                                            obj[1].style.top = '0';
+
+                                            obj[2].style.opacity=v.toString();
+                                            obj[2].style.top = `${(1-v)*obj[2].offsetHeight}px`;
+
+                                            obj[0].style.left=`-${(1-v)*screenWidth}px`;
+                                        }else{
+                                            let v=(progressValueSub-0.41)/0.8;
+                                            if (v>1)v = 1;
+
+                                            obj[0].style.left='0';
+
+                                            obj[1].style.opacity='1';
+                                            obj[1].style.top = '0';
+
+                                            obj[2].style.opacity='1';
+                                            obj[2].style.top = '0';
+
+                                            obj[3].style.opacity=v.toString();
+                                            obj[3].style.top = `${(1-v)*obj[3].offsetHeight}px`;
+                                        }
+                                    }
+                                    else if(progressValueSub>=0.5){
+                                        obj[0].style.opacity='1';
+                                        obj[0].style.left='0';
+
+                                        obj[1].style.opacity='1';
+                                        obj[1].style.top = '0';
+
+                                        obj[2].style.opacity='1';
+                                        obj[2].style.top = '0';
+
+                                        obj[3].style.opacity='1';
+                                        obj[3].style.top = '0';
+                                    }
+                                    else if (progressValueSub<=0.25){
+                                        obj[0].style.left=`-${screenWidth}`;
+
+                                        obj[1].style.opacity='0';
+                                        obj[1].style.top = `${obj[1].offsetHeight}`;
+
+                                        obj[2].style.opacity='0';
+                                        obj[2].style.top = `${obj[2].offsetHeight}`;
+
+                                        obj[3].style.opacity='0';
+                                        obj[3].style.top = `${obj[3].offsetHeight}`;
+                                    }
+                                }
+                            }
+                            {
+
+                            }
+                        }
+                    }
+                }
             }
             return false;
         });
