@@ -131,20 +131,6 @@ user-select:none;
 }
 /*#endregion*/
 
-/*#region githubButton*/
-.githubButton {
-    z-index: 1;
-    position: absolute;
-    margin-left: 4px;
-}
-.githubButton svg {
-    transition: transform 2s;
-}
-.githubButton:hover svg {
-    transform: scale(0.9) rotate(2880deg);
-}
-/*#endregion*/
-
 
 .main-toast{
     z-index: 3000;
