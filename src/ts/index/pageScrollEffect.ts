@@ -78,7 +78,7 @@ $(function (){
                                         obj[2].style.right = `${v2}px`;
                                     }
                                 }
-                                else if (progressValue<0.5){
+                                else if (progressValue<=0.5){
                                     let v=(progressValue/0.5);
                                     if (v>1)v = 1;
                                     obj[0].style.opacity=v.toString();
@@ -204,11 +204,89 @@ $(function (){
                         }
                     }
                 }
+                {
+                    const section:HTMLElement|null = document.getElementById("introduce");
+                    if (section != null) {
+                        const offsetTop: number = section.offsetTop;
+                        const clientHeight: number = section.clientHeight;
+                        const height: number = offsetTop + clientHeight;
+                        if (currentBottomScroll >= offsetTop && currentTopScroll < height) {
+                            const obj=[
+                                document.getElementById("introduce_header")!,
+                                document.getElementById("serverIntroductoryText")!,
+                            ];
+                            const progressValue:number=(currentBottomScroll-offsetTop)/clientHeight;
+                            const progressValue2:number = (currentTopScroll-offsetTop)/clientHeight;
+                            if (progressValue2>0.25){
+                                let v=(progressValue2-0.25)/0.5;
+                                if (v>1)v = 1;
+                                obj.forEach((o:HTMLElement)=>{
+                                    o.style.opacity=`${1-v}`;
+                                });
+                            }
+                            else if (progressValue<=0.25){
+                                let v=(progressValue/0.25);
+                                if (v>1)v = 1;
+                                obj[0].style.opacity=v.toString();
+                            }
+                            else if (progressValue<=0.5){
+                                let v=(progressValue-0.25/0.25);
+                                if (v>1)v = 1;
+                                obj[1].style.opacity=v.toString();
+                            }
+                            else{
+                                obj.forEach((o:HTMLElement)=>{
+                                    o.style.opacity='1';
+                                });
+                            }
+                        }
+                    }
+                }
+                {
+                    const section: HTMLElement | null = document.getElementById("rule");
+                    if (section != null) {
+                        const offsetTop: number = section.offsetTop;
+                        const clientHeight: number = section.clientHeight;
+                        const height: number = offsetTop + clientHeight;
+                        if (currentBottomScroll >= offsetTop && currentTopScroll < height) {
+                            const obj :HTMLElement[]= [
+                                document.getElementById("rule_header")!,
+                                //document.getElementById("ruleText_Button")!,
+                                (document.querySelectorAll("#ruleText_Button button")[0] as HTMLElement)!,
+                                document.getElementById("ruleText_border")!,
+                            ];
+                            const progressValue: number = (currentBottomScroll - offsetTop) / clientHeight;
+                            const progressValue2: number = (currentTopScroll - offsetTop) / clientHeight;
+                            if (progressValue2>0.25){
+                                let v=(progressValue2-0.25)/0.5;
+                                if (v>1)v = 1;
+                                const pxv=-(v*$(window).width());
+                                obj[0].style.left=`${pxv}px`;
+                                obj[1].style.right=`${pxv}px`;
+                                obj[2].style.opacity=`${1-v}`;
+                            }
+                            else if (progressValue<=0.5){
+                                let v=(progressValue/0.5);
+                                if (v>1)v = 1;
+                                const pxv=-((1-v)*$(window).width());
+                                obj[0].style.left=`${pxv}px`;
+                                obj[1].style.right=`${pxv}px`;
+                                obj[2].style.opacity=v.toString();
+                            }
+                            else{
+                                obj[0].style.left='0';
+                                obj[1].style.right='0';
+                                obj[2].style.opacity='1';
+                            }
+                        }
+                    }
+                }
             }
             return false;
         });
     }
 })
+//#region pistonPushPhotoAnim
 //表示动画是否已完成初始化
 let is_pistonPushPhotoAnim_Init:boolean=false;
 //活塞推动照片动画初始化，需要在所需照片加载完后调用
@@ -310,4 +388,17 @@ async function pistonPushPhotoAnim_Start(){
         stop_pistonPushPhotoAnim=false;
         isStart_pistonPushPhotoAnim=false;
     }
+}
+//#endregion
+
+export function ruleText_Button_Click(){
+    const obj=document.getElementById("ruleText_border")!;
+    $("#ruleText_Button").fadeOut();
+    obj.style.transition='unset';//临时关闭过渡效果，避免淡出效果不可见
+    $("#ruleText_border").fadeIn();
+
+    (async () => {
+        await sleep(500);//等待一段时间后恢复过渡效果
+        obj.style.transition='';
+    })();
 }

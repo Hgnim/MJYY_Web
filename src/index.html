@@ -338,24 +338,34 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
         <div class="container">
             <div class="row">
                 <div class="col-md-10 mx-auto">
-                    <h2 style="user-select: none;z-index: 1; position:relative;">服务器介绍</h2>
+                    <div class="oak-hanging-sign mx-auto" id="introduce_header">
+                        <h2>介绍</h2>
+                    </div>
                     <div class="row mt-5">
-                        <div id="serverIntroductoryText" class="col-md-12 mb-5">
-                        </div>
+                        <div id="serverIntroductoryText" class="mx-auto mb-5 openedBook-background obb_custom_introduce"></div>
                     </div>
                     </div>
             </div>
         </div>
     </section>
-    <section class="py-3 unSelectable" id="rule">
+    <section class="py-3 unSelectable" id="rule" style="overflow: hidden;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
-                    <h4 class="text-center">服务器规则(务必阅读)</h4>
-                    <div class="text-center">
-                        <button onclick="toggleSpoiler('ruleText','ruleText_Button')" id="ruleText_Button">展开</button>
-                    </div>
-                    <div style="display: none;" id="ruleText" class="unset_unSelectable card card-body">
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <div class="oak-sign os_custom_rule mx-auto" id="rule_header">
+                                <h4>规则</h4>
+                            </div>
+                        </div>
+                        <div id="ruleText_Button">
+                            <button onclick="ruleText_Button_Click();"></button>
+                        </div>
+                        <div class="col-12">
+                            <div id="ruleText_border" class="openedBook-background obb_custom_rule mx-auto">
+                                <div id="ruleText" class="unset_unSelectable"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

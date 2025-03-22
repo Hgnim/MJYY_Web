@@ -110,27 +110,6 @@ user-select:none;
 }
 /*#endregion*/
 
-/*#region ruleText*/
-#ruleText_Button{
-    z-index:1;
-    position:relative;
-    border: none;
-    padding: 5px;
-    border-radius: 4px;
-}
-#ruleText_Button:focus {
-    outline: none;
-}
-#ruleText_Button:active{
-    transform: scale(0.85);
-}
-#ruleText{
-    z-index: 2;
-    border-radius: 40px;
-    transition: .2s;
-}
-/*#endregion*/
-
 
 .main-toast{
     z-index: 3000;

@@ -94,6 +94,59 @@
   width: 30%;
 }
 
+#introduce_header{
+  @include transition_1;
+  opacity: 0;
+}
+#serverIntroductoryText{
+  @include transition_1;
+  opacity: 0;
+}
+
+#rule_header{
+  @include transition_1;
+  position: relative;
+
+  left: -100vh;
+}
+#ruleText_Button{
+  //@include transition_1;
+  position: absolute;
+  z-index:1;
+
+  left:75%;
+}
+#ruleText_Button button{
+  @include transition_1;
+  position:relative;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor:pointer;
+
+  background-image: url("https://s21.ax1x.com/2025/03/22/pE0J6C4.png");
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 80px;
+  width: 80px;
+
+  right: -100vh;
+}
+#ruleText{
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+}
+#ruleText_border{
+  @include transition_1;
+  z-index: 1;
+  position: relative;
+  display: none;
+  opacity: 0;
+}
+
 /*#region 0图形边框*/
 
 .oak-sign2{
@@ -119,16 +172,35 @@
   image-rendering: pixelated;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 164px;
-  width: 164px;
+  height: 160px;
+  width: 150px;
   overflow: hidden;
 }
 .oak-hanging-sign h2{
   user-select: none;
-  z-index: 1;
+  //z-index: 1;
   position:relative;
   text-align: center;
   top: 46%;
+}
+
+.oak-sign{
+  background-image: url('https://s21.ax1x.com/2025/03/20/pEwrTzT.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 260px;
+  width: 240px;
+  overflow: hidden;
+  &.os_custom_rule{
+    height: 130px;
+    width: 120px;
+  }
+}
+.oak-sign h4{
+  position:relative;
+  text-align: center;
+  top: 8%;
 }
 
 .item_frame{
@@ -146,6 +218,51 @@
     padding: 4vh;
     position: relative;
   }
+}
+
+.openedBook-background{
+  background-image: url('https://s21.ax1x.com/2025/03/22/pE08coF.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 146px;
+  height:180px;
+  &.obb_custom_introduce{
+    width: 547.5px;
+    height: 675px;
+    padding: 55px;
+  }
+  &.obb_custom_rule{
+    width: 438px;
+    height: 540px;
+    padding: 40px;
+  }
+}
+@font-face{
+  font-family: "unifont" ;
+  src: url("@/assets/font/unifont-16.0.02.otf");
+}
+@mixin obb_custom_introduce_color{
+  color:black;
+  font-family: 'unifont',system-ui;
+}
+.obb_custom_introduce h5{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_introduce li{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_introduce p{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_rule h4{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_rule li{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_rule p{
+  @include obb_custom_introduce_color;
 }
 
 .glass_background{
