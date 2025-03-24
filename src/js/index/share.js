@@ -5,7 +5,7 @@ export function shareWindowInfoCopyBtn_Click(){
 }
 export function OpenSharePage(){
     {
-        document.getElementById("share-window-info-qrcodeImg").src="assets/img/mjyy-qrcode.png";//动态加载，避免延长加载时间
+        document.getElementById("share-window-info-qrcodeImg").src="assets/img/copy/mjyy-qrcode.png";//动态加载，避免延长加载时间
         document.getElementById("share-window-info-textBox").value="https://mjyy.top";
     }
 

@@ -110,38 +110,6 @@ user-select:none;
 }
 /*#endregion*/
 
-#ruleText_Button{
-    z-index:1;
-    position:relative;
-    border: none;
-    padding: 5px;
-    border-radius: 4px;
-}
-#ruleText_Button:focus {
-    outline: none;
-}
-#ruleText_Button:active{
-    transform: scale(0.85);
-}
-#ruleText{
-    z-index: 2;
-    border-radius: 40px;
-    transition: .2s;
-}
-
-/*#region githubButton*/
-.githubButton {
-    z-index: 1;
-    position: absolute;
-    margin-left: 4px;
-}
-.githubButton svg {
-    transition: transform 2s;
-}
-.githubButton:hover svg {
-    transform: scale(0.9) rotate(2880deg);
-}
-/*#endregion*/
 
 .main-toast{
     z-index: 3000;
@@ -150,7 +118,7 @@ user-select:none;
 }
 
 
-/*#region 元素的主题颜色*/
+/*#region 0元素的主题颜色*/
 body {
     background-color: var(--color16); }
 a:not([href]):not([tabindex]) {
@@ -357,39 +325,4 @@ button{
 .projects .card:hover svg {
     margin-left: 10px !important;
     transition: all .25s ease-out; }
-/*#endregion*/
-
-/*#region dot circles */
-.dot-circle:hover:before {
-    transform: rotate(45deg);
-    transition: all .25s ease-out; }
-
-.dot-circle:before {
-    background: var(--color14);
-    transition: all .25s ease-out;
-    border-radius: 0;
-    transform: rotate(0);
-    content: "";
-    height: 100px;
-    position: absolute;
-    top: -30px;
-    width: 100px; }
-
-.dot-circle:not(.right):before {
-    left: -25px; }
-
-.dot-circle.right:before {
-    right: -25px; }
-
-.dot-circle.dot-sm:before {
-    height: 70px;
-    left: -15px;
-    top: -15px;
-    width: 70px; }
-
-.dot-circle.dot-lg:before {
-    height: 200px;
-    left: -50px;
-    top: -60px;
-    width: 200px; }
 /*#endregion*/

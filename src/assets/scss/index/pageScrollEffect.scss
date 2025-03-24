@@ -1,0 +1,375 @@
+/*#region 0图形边框*/
+
+.oak-sign2{
+  background-image: url('https://s21.ax1x.com/2025/03/21/pE0CYpd.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 120px ;
+  width: 240px;
+  &.os2_custom_p{
+    background-size: 100% auto;
+    margin: 0;
+    width: 120px;
+    height: 60px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.oak-hanging-sign{
+  background-image: url('https://s21.ax1x.com/2025/03/20/pEwrHQU.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 160px;
+  width: 150px;
+  overflow: hidden;
+}
+.oak-hanging-sign h2{
+  user-select: none;
+  //z-index: 1;
+  position:relative;
+  text-align: center;
+  top: 46%;
+}
+
+.oak-sign{
+  background-image: url('https://s21.ax1x.com/2025/03/20/pEwrTzT.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 260px;
+  width: 240px;
+  overflow: hidden;
+  &.os_custom_rule{
+    height: 130px;
+    width: 120px;
+  }
+}
+.oak-sign h4{
+  position:relative;
+  text-align: center;
+  top: 8%;
+}
+
+.item_frame{
+  background-image: url('https://s21.ax1x.com/2025/03/20/pEwroWV.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 164px;
+  width: 164px;
+  padding: 4%;
+  overflow: hidden;
+  &.if_custom_video-box{
+    height: 45vh;//364px;
+    width: 45vh;//364px;
+    padding: 4vh;
+    position: relative;
+  }
+}
+
+.openedBook-background{
+  background-image: url('https://s21.ax1x.com/2025/03/22/pE08coF.png');
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 146px;
+  height:180px;
+  &.obb_custom_introduce{
+    width: 547.5px;
+    height: 675px;
+    padding: 55px;
+  }
+  &.obb_custom_rule{
+    width: 438px;
+    height: 540px;
+    padding: 40px;
+  }
+}
+@font-face{
+  font-family: "unifont" ;
+  src: url("@/assets/font/unifont-16.0.02.otf");
+}
+@mixin obb_custom_introduce_color{
+  color:black;
+  font-family: 'unifont',system-ui;
+}
+.obb_custom_introduce h5{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_introduce li{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_introduce p{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_rule h4{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_rule li{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_rule p{
+  @include obb_custom_introduce_color;
+}
+
+.glass_background{
+  background-color: unset;
+}
+.glass_background::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  background-image: url("https://s21.ax1x.com/2025/03/21/pE0Ct1A.png");
+  image-rendering: pixelated;
+  background-size: 20% 25%;
+  opacity: 74%;
+}
+
+/*#endregion*/
+
+
+@mixin transition_1{
+  transition: .8s;
+}
+
+#video-page_header{
+  @include transition_1;
+  opacity: 0;
+}
+#video-page_video-box_1{
+  @include transition_1;
+  left: -100vh;
+}
+#video-page_video-box_2{
+  @include transition_1;
+  right: -100vh;
+}
+
+#photo_sub1_title{
+  @include transition_1;
+  position:relative;
+  opacity: 1;
+  left: -100vh;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@mixin photo_sub1_photoBox{
+  @include transition_1;
+  opacity: 0;
+  top: 100%;
+}
+#photo_sub1_photoBox1{
+  @include photo_sub1_photoBox;
+}
+#photo_sub1_photoBox2{
+  @include photo_sub1_photoBox;
+}
+#photo_sub1_photoBox3{
+  @include photo_sub1_photoBox;
+}
+
+#photo_sub2{
+  @include transition_1;
+  position: relative;
+  overflow: hidden;
+  orphans: 0;
+  visibility: hidden;
+}
+@mixin transition_2{
+  transition: .6s;//该值在ts脚本中有同步该值的常量，在更改该值时需要在ts脚本中同步。
+}
+@mixin photo_sub2_piston{
+  @include transition_2;
+  transform: rotate(90deg);
+  position: absolute;
+  image-rendering: pixelated;
+  width: 5%;
+}
+#photo_sub2_piston-template1{
+  //模板元素，不可见，仅用于脚本中的计算
+  @include photo_sub2_piston;
+  opacity: 0;
+  visibility: hidden;
+}
+#photo_sub2_piston1-1{
+  @include photo_sub2_piston;
+  z-index: 2;
+}
+#photo_sub2_piston1-2{
+  @include photo_sub2_piston;
+  z-index: 1;
+}
+
+#photo_sub2_piston2-1{
+  @include photo_sub2_piston;
+  z-index: 2;
+  bottom: 0;
+}
+#photo_sub2_piston2-2{
+  z-index: 1;
+}
+@mixin photo_sub2_piston2-2{
+  @include photo_sub2_piston;
+  bottom: 0;
+}
+#photo_sub2_piston2-2 #photo_sub2_piston2-2-1{
+  @include photo_sub2_piston2-2;
+}
+#photo_sub2_piston2-2 #photo_sub2_piston2-2-2{
+  @include photo_sub2_piston2-2;
+  left: 5%;
+}
+
+.photo_sub2_pbgCard{
+  @include transition_2;
+  position: absolute;
+  width: 30%;
+}
+
+#introduce_header{
+  @include transition_1;
+  opacity: 0;
+}
+#serverIntroductoryText{
+  @include transition_1;
+  opacity: 0;
+}
+
+#rule_header{
+  @include transition_1;
+  position: relative;
+
+  left: -100vh;
+}
+#ruleText_Button{
+  //@include transition_1;
+  position: absolute;
+  z-index:1;
+
+  left:75%;
+}
+#ruleText_Button button{
+  @include transition_1;
+  position:relative;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor:pointer;
+
+  background-image: url("https://s21.ax1x.com/2025/03/22/pE0J6C4.png");
+  image-rendering: pixelated;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  height: 80px;
+  width: 80px;
+
+  right: -100vh;
+}
+#ruleText{
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+}
+#ruleText_border{
+  @include transition_1;
+  z-index: 1;
+  position: relative;
+  display: none;
+  opacity: 0;
+}
+
+#join_us_header_logo{
+  @include transition_1;
+  opacity: 0;
+}
+#join_us_header_logo img{
+  position: absolute;
+  right: 0;
+}
+#join_us_header_text{
+  @include transition_1;
+  opacity: 0;
+}
+#join_us_header_text h1{
+  position: relative;
+  top: 20%;
+}
+#join_us_header_text h4{
+  position: relative;
+  left: 40%;
+  top: 10%;
+}
+#joinUsText{
+  @include transition_1;
+  position: relative;
+  z-index: 1;
+  height: 110px;
+  width: 220px;
+  padding: 4px 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+}
+@mixin joinUs_qgQRCode{
+  width: 100%;
+  top:0;
+  left: 0;
+}
+#joinUs_qgQRCode{
+  @include transition_1;
+  position: relative;
+  opacity: 0;
+}
+#joinUs_qgQRCode a{
+  position: absolute;
+  height: 100%;
+  @include joinUs_qgQRCode;
+  opacity: 0;
+  z-index: 1;
+  background-color: rgba(0,0,0,.5);
+  transition: .5s;
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  color: var(--color8);
+}
+#joinUs_qgQRCode a:hover{
+  color: var(--color8);
+  text-decoration:underline;//去除下划线
+
+  opacity: 1;
+}
+#joinUs_qgQRCode a:visited{
+  color: var(--color8);//已访问过的颜色
+  text-decoration:none;
+}
+#joinUs_qgQRCode a:link {
+  color: var(--color8);//未访问过的颜色
+  text-decoration:none;
+}
+#joinUs_qgQRCode a span{
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+}
+#joinUs_qgQRCode .photoBoxGroup-2 img{
+  position: relative;
+  @include joinUs_qgQRCode;
+  opacity: .9;
+}
+#joinUsText2{
+  @include transition_1;
+  opacity: 0;
+}

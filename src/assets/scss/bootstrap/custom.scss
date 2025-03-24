@@ -66,3 +66,10 @@ $grid-breakpoints: (
   background-color: var(--color22);
   border: 1px solid rgba(0,0,0,.064);
 }
+.card-body{
+  &.pbg_haveTitle{
+    padding-top:0;
+    padding-bottom: 10px;
+    text-align:center
+  }
+}

@@ -1,3 +1,5 @@
+import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
+
 var resourceMode;
 
 export function GetResourceMode() {
@@ -46,27 +48,30 @@ export function userSelectResourceMode(value) {
 export async function loadMediaResources(resMode) {
     //视频资源加载
     {
-        const targetBox = document.getElementById("video-page_video-box");
-        switch (resMode) {
-            case "low":
-                targetBox.innerHTML = "<p style=\"text-align: center;width: 100%;position: relative\">省流模式下将不会加载宣传视频</p>";
-                break;
-            case "normal":
-            default:
-                // noinspection HtmlDeprecatedAttribute
-                targetBox.innerHTML = "<div class=\"col-sm-6 mb-4\" >\n" +
-                    "    <div class=\"card\" style=\"z-index: 1; position: relative;\">\n" +
-                    "        <iframe src=\"//player.bilibili.com/player.html?aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&page=1&high_quality=1&danmaku=0&autoplay=0\" class=\"card-img-top rounded\"\n" +
-                    "    allowfullscreen=\"allowfullscreen\"  scrolling=\"no\" frameborder=\"0\" sandbox=\"allow-top-navigation allow-same-origin allow-forms allow-scripts\" height=\"300px\"></iframe>\n" +
-                    "    </div>\n" +
-                    "</div>\n" +
-                    "<div class=\"col-sm-6 mb-4\">\n" +
-                    "    <div class=\"card\" style=\"z-index: 1; position: relative;\">\n" +
-                    "        <iframe  src=\"//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0\" class=\"card-img-top rounded\"\n" +
-                    "    allowfullscreen=\"allowfullscreen\"  scrolling=\"no\" frameborder=\"0\" sandbox=\"allow-top-navigation allow-same-origin allow-forms allow-scripts\" height=\"300px\" ></iframe>\n" +
-                    "    </div>\n" +
-                    "</div>";
-                break;
+        const targetBoxs =document.querySelectorAll(".video-page_video-box");
+        {
+            const urls=[
+                "//player.bilibili.com/player.html?aid=113259596223254&bvid=BV16j1qYdE2U&cid=26166823217&page=1&high_quality=1&danmaku=0&autoplay=0",
+                "//player.bilibili.com/player.html?aid=113481005274537&bvid=BV1FCULY6Eoq&cid=26757105167&page=1&high_quality=1&danmaku=0&autoplay=0"
+            ]
+            let i=0;
+            targetBoxs.forEach(targetBox => {
+                switch (resMode) {
+                    case "low":
+                        targetBox.innerHTML = "<p style=\"text-align: center;width: 100%;position: relative\">省流模式下将不会加载宣传视频</p>";
+                        break;
+                    case "normal":
+                    default:
+                        // noinspection HtmlDeprecatedAttribute
+                        targetBox.innerHTML =
+                            "<div class=\"card\" style=\"z-index: 1; position: relative;height: 100%;width: 100%;\">\n" +
+                            "    <iframe src=\""+ urls[i] +"\" class=\"card-img-top rounded\" style=\"height: 100%;width: 100%;\" \n" +
+                            "allowfullscreen=\"allowfullscreen\"  scrolling=\"no\" frameborder=\"0\" sandbox=\"allow-top-navigation allow-same-origin allow-forms allow-scripts\"></iframe>\n" +
+                            "</div>\n";
+                        break;
+                }
+                i++;
+            });
         }
     }
     //md文件加载
@@ -88,6 +93,7 @@ export async function loadMediaResources(resMode) {
             ["assets/md/index/serverRule.md", "ruleText"],
             ["assets/md/index/serverIntroductory.md", "serverIntroductoryText"],
             ["assets/md/index/joinUs.md", "joinUsText"],
+            ["assets/md/index/joinUsText2.md", "joinUsText2"],
         ];
         for (let i = 0; i < mdRes.length; i++) {
             document.getElementById(mdRes[i][1]).innerHTML =
@@ -197,7 +203,7 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/03/18/photo-21.png",
                             "http://cdnjson.com/images/2024/12/28/photo-2.png",
                             "http://cdnjson.com/images/2024/12/28/photo-18.png",
-                            "http://cdnjson.com/images/2024/12/28/photo-4.png",
+                            //"http://cdnjson.com/images/2024/12/28/photo-4.png",
 
                             "http://cdnjson.com/images/2024/12/28/photo-15.png",
                             "http://cdnjson.com/images/2024/12/28/photo-17.png",
@@ -225,7 +231,7 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/03/18/photo-21-low2.jpg",
                             "http://cdnjson.com/images/2025/03/18/photo-2-low2.jpg",
                             "http://cdnjson.com/images/2025/03/18/photo-18-low2.jpg",
-                            "http://cdnjson.com/images/2025/03/18/photo-4-low2.jpg",
+                            //"http://cdnjson.com/images/2025/03/18/photo-4-low2.jpg",
 
                             "http://cdnjson.com/images/2025/03/18/photo-15-low2.jpg",
                             "http://cdnjson.com/images/2025/03/18/photo-17-low2.jpg",
@@ -254,7 +260,7 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/03/18/photo-21-low.jpg",
                             "http://cdnjson.com/images/2025/01/15/photo-2-low.jpg",
                             "http://cdnjson.com/images/2025/01/15/photo-18-low.jpg",
-                            "http://cdnjson.com/images/2025/01/15/photo-4-low.jpg",
+                            //"http://cdnjson.com/images/2025/01/15/photo-4-low.jpg",
 
                             "http://cdnjson.com/images/2025/01/15/photo-15-low.jpg",
                             "http://cdnjson.com/images/2025/01/15/photo-17-low.jpg",
@@ -282,13 +288,31 @@ export async function loadMediaResources(resMode) {
                     document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)"),
                     document.querySelectorAll(".loadingBox.photoBoxGroup-1")
                 );
+
+                pistonPushPhotoAnim_Init();//在photoBoxGroup-1的内容加载完毕时初始化活塞推动照片动画
             }
             {
+                let imgUrls;
+                switch (resMode) {
+                    case "source":
+                        imgUrls = [
+                            "assets/img/copy/qqGroupQRcode.png",
+                        ];
+                        break;
+                    case "low":
+                        imgUrls = [
+                            "assets/img/copy/qqGroupQRcode-low2.png",
+                        ];
+                        break;
+                    default:
+                    case "normal":
+                        imgUrls = [
+                            "assets/img/copy/qqGroupQRcode-low.png",
+                        ];
+                        break;
+                }
                 await deployImg(
-                    [
-                        //"http://cdnjson.com/images/2024/12/28/photo-14.png",
-                        "assets/img/qqGroupQRcode.webp",
-                    ],
+                    imgUrls,
                     document.querySelectorAll(".photoBoxGroup-2:not(.loadingBox)"),
                     document.querySelectorAll(".loadingBox.photoBoxGroup-2")
                 );

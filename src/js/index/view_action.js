@@ -51,16 +51,3 @@ export function toggleTheme_Click() {
         html.setAttribute('data-theme', 'dark');
     }
 }
-
-//隐藏文本的显示状态切换
-export function toggleSpoiler(targetName,buttonName) {
-    const spoiler = document.getElementById(targetName);
-    const button = document.getElementById(buttonName);
-    if (spoiler.style.display === "none") {
-        spoiler.style.display = "block";
-        button.innerText="收起";
-    } else {
-        spoiler.style.display = "none";
-        button.innerText="展开";
-    }
-  }
