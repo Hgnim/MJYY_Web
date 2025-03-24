@@ -93,6 +93,7 @@ export async function loadMediaResources(resMode) {
             ["assets/md/index/serverRule.md", "ruleText"],
             ["assets/md/index/serverIntroductory.md", "serverIntroductoryText"],
             ["assets/md/index/joinUs.md", "joinUsText"],
+            ["assets/md/index/joinUsText2.md", "joinUsText2"],
         ];
         for (let i = 0; i < mdRes.length; i++) {
             document.getElementById(mdRes[i][1]).innerHTML =
@@ -291,11 +292,27 @@ export async function loadMediaResources(resMode) {
                 pistonPushPhotoAnim_Init();//在photoBoxGroup-1的内容加载完毕时初始化活塞推动照片动画
             }
             {
+                let imgUrls;
+                switch (resMode) {
+                    case "source":
+                        imgUrls = [
+                            "assets/img/copy/qqGroupQRcode.png",
+                        ];
+                        break;
+                    case "low":
+                        imgUrls = [
+                            "assets/img/copy/qqGroupQRcode-low2.png",
+                        ];
+                        break;
+                    default:
+                    case "normal":
+                        imgUrls = [
+                            "assets/img/copy/qqGroupQRcode-low.png",
+                        ];
+                        break;
+                }
                 await deployImg(
-                    [
-                        //"http://cdnjson.com/images/2024/12/28/photo-14.png",
-                        "assets/img/qqGroupQRcode.webp",
-                    ],
+                    imgUrls,
                     document.querySelectorAll(".photoBoxGroup-2:not(.loadingBox)"),
                     document.querySelectorAll(".loadingBox.photoBoxGroup-2")
                 );

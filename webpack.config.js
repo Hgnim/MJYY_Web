@@ -111,8 +111,7 @@ module.exports = {
 
         new CopyWebpackPlugin({//复制文件
             patterns: [
-                { from: './src/assets/img/mjyy-qrcode.png', to: 'assets/img/mjyy-qrcode.png' },
-                { from: './src/assets/img/qqGroupQRcode.webp', to: 'assets/img/qqGroupQRcode.webp' },
+                { from: './src/assets/img/copy', to: 'assets/img/copy' },
 
                 { from: './src/assets/md', to: 'assets/md' },
                 { from: './src/json', to: 'json' },

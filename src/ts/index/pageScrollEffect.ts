@@ -281,6 +281,75 @@ $(function (){
                         }
                     }
                 }
+                {
+                    const section: HTMLElement | null = document.getElementById("join_us");
+                    if (section != null) {
+                        const offsetTop: number = section.offsetTop;
+                        const clientHeight: number = section.clientHeight;
+                        const height: number = offsetTop + clientHeight;
+                        if (currentBottomScroll >= offsetTop && currentTopScroll < height) {
+                            const obj :HTMLElement[]= [
+                                document.getElementById("join_us_header_logo")!,
+                                document.getElementById("join_us_header_text")!,
+                                document.getElementById("joinUsText")!,
+                                document.getElementById("joinUs_qgQRCode")!,
+                                document.getElementById("joinUsText2")!,
+                            ];
+                            const progressValue: number = (currentBottomScroll - offsetTop) / clientHeight;
+                            //const progressValue2: number = (currentTopScroll - offsetTop) / clientHeight;
+                             if (progressValue>0.2 && progressValue<=0.4){
+                                 let v=(progressValue-0.2/0.2);
+                                 if (v>1)v = 1;
+                                 obj[0].style.opacity=v.toString();
+                                 obj[0].style.top = `${(1-v)*obj[0].offsetTop}px`;
+                                 obj[1].style.opacity=v.toString();
+                                 obj[1].style.bottom = `${(1-v)*obj[0].offsetTop}px`;
+                             }
+                             else if (progressValue<=0.55){
+                                 obj[0].style.opacity='1';
+                                 obj[0].style.top='0';
+                                 obj[1].style.opacity='1';
+                                 obj[1].style.bottom='0';
+
+                                 let v=(progressValue-0.4/0.15);
+                                 if (v>1)v = 1;
+                                 obj[2].style.opacity=v.toString();
+                             }
+                             else if (progressValue<=0.7){
+                                 obj[0].style.opacity='1';
+                                 obj[0].style.top='0';
+                                 obj[1].style.opacity='1';
+                                 obj[1].style.bottom='0';
+                                 obj[2].style.opacity='1';
+
+                                 let v=(progressValue-0.55/0.15);
+                                 if (v>1)v = 1;
+                                 obj[3].style.opacity=v.toString();
+                             }
+                             else if (progressValue<=0.85){
+                                 obj[0].style.opacity='1';
+                                 obj[0].style.top='0';
+                                 obj[1].style.opacity='1';
+                                 obj[1].style.bottom='0';
+                                 obj[2].style.opacity='1';
+                                 obj[3].style.opacity='1';
+
+                                 let v=(progressValue-0.7/0.15);
+                                 if (v>1)v = 1;
+                                 obj[4].style.opacity=v.toString();
+                             }
+                             else{
+                                 obj[0].style.opacity='1';
+                                 obj[0].style.top='0';
+                                 obj[1].style.opacity='1';
+                                 obj[1].style.bottom='0';
+                                 obj[2].style.opacity='1';
+                                 obj[3].style.opacity='1';
+                                 obj[4].style.opacity='1';
+                             }
+                        }
+                    }
+                }
             }
             return false;
         });
