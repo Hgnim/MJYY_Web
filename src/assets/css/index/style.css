@@ -313,8 +313,8 @@ button{
     top: 0;
     left: 0;
     /*will-change: filter,left;*/
-    transform: translateZ(0);/*使用gpu渲染*/
-    filter: blur(4px) brightness(var(--filter-brightness));
+    /*transform: translateZ(0);/*使用gpu渲染*/
+    filter: blur(2px) brightness(var(--filter-brightness));
 }
 /*#endregion*/
 
