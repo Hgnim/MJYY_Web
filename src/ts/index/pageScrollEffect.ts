@@ -1,352 +1,453 @@
 import {sleep} from "@/ts/other/sleep";
 
 $(function (){
-    //const allSections = document.querySelectorAll('section');
     {
+        const allSectionIds = [
+            "video_page",
+            "photo",
+            "introduce",
+            "rule",
+            "join_us",
+        ];
+        const sectionStats={
+            "video_page": {
+                isChange: false,//如果对象被更改了，则设置为true
+                restoreFunc: function (obj:(HTMLElement|null)[]){
+                    //还原其中所有对象的属性至动画开始前
+                    //避免快速滚动时导致动画组件没有恢复到初始状态
+                    obj[0]!.style.opacity = '0';
+                    obj[1]!.style.left = `${-$(window).width()}px`;
+                    obj[2]!.style.right = `${-$(window).width()}px`;
+                },
+            },
+            "photo": {
+                isChange: false,
+                restoreFunc: function (obj:(HTMLElement|null)[]|null,subId:number=0){
+                    const allDo=(subId == 0);
+                    while (allDo) {
+                        if (allDo) subId++;
+                        switch (subId) {
+                            case 1:
+                                if(allDo)
+                                    obj = getSubObj("photo_sub1");
+
+                                if (obj!=null) {
+                                    obj[0]!.style.left = `${-$(window).width()}px`;
+
+                                    obj[1]!.style.opacity = '0';
+                                    obj[1]!.style.top = `${obj[1]!.offsetHeight}px`;
+
+                                    obj[2]!.style.opacity = '0';
+                                    obj[2]!.style.top = `${obj[2]!.offsetHeight}px`;
+
+                                    obj[3]!.style.opacity = '0';
+                                    obj[3]!.style.top = `${obj[3]!.offsetHeight}px`;
+                                }
+                                break;
+                            case 2:
+                                if(allDo)
+                                    obj = getSubObj("photo_sub2");
+
+                                if (obj!=null) {
+                                    obj[0]!.style.opacity = '0';
+                                }
+                                break;
+                        }
+                        if(allDo && !(subId<2))break;
+                    }
+                },
+            },
+            "introduce": {
+                isChange: false,
+                restoreFunc: function (obj:(HTMLElement|null)[]){
+                    obj.forEach((o: HTMLElement | null) => {
+                        o!.style.opacity = '0';
+                    });
+                },
+            },
+            "rule": {
+                isChange: false,
+                restoreFunc: function (obj:(HTMLElement|null)[]){
+                    obj[0]!.style.left='0';
+                    obj[1]!.style.right='0';
+                    obj[2]!.style.opacity='0';
+                },
+            },
+            "join_us": {
+                isChange: false,
+                restoreFunc: function (obj:(HTMLElement|null)[]){
+                    obj[0]!.style.opacity='0';
+                    obj[0]!.style.top=`${obj[0]!.offsetTop}px`;
+                    obj[1]!.style.opacity='0';
+                    obj[1]!.style.bottom=`${obj[0]!.offsetTop}px`;
+                    obj[2]!.style.opacity='0';
+                    obj[3]!.style.opacity='0';
+                    obj[4]!.style.opacity='0';
+                },
+            },
+        };
+        function getSubObj(sectionId:string){
+            let obj:(HTMLElement|null)[]|null=null;
+            switch (sectionId) {
+                case "video_page":
+                    obj = [
+                        document.getElementById("video-page_header"),
+                        document.getElementById("video-page_video-box_1"),
+                        document.getElementById("video-page_video-box_2"),
+                    ];
+                    break;
+                case "photo":
+                    obj = [];
+                    break;
+                case "photo_sub1":
+                    obj = [
+                        document.getElementById("photo_sub1_title")!,
+                        document.getElementById("photo_sub1_photoBox1")!,
+                        document.getElementById("photo_sub1_photoBox2")!,
+                        document.getElementById("photo_sub1_photoBox3")!,
+                    ];
+                    break;
+                case "photo_sub2":
+                    obj = [
+                        document.getElementById("photo_sub2"),
+                    ]
+                    break;
+                case "introduce":
+                    obj = [
+                        document.getElementById("introduce_header")!,
+                        document.getElementById("serverIntroductoryText")!,
+                    ];
+                    break;
+                case "rule":
+                    obj = [
+                        document.getElementById("rule_header")!,
+                        //document.getElementById("ruleText_Button")!,
+                        (document.querySelectorAll("#ruleText_Button button")[0] as HTMLElement)!,
+                        document.getElementById("ruleText_border")!,
+                    ];
+                    break;
+                case "join_us":
+                    obj = [
+                        document.getElementById("join_us_header_logo")!,
+                        document.getElementById("join_us_header_text")!,
+                        document.getElementById("joinUsText")!,
+                        document.getElementById("joinUs_qgQRCode")!,
+                        document.getElementById("joinUsText2")!,
+                    ];
+                    break;
+            }
+            return obj;
+        }
         let lastScrollTime = 0;
         $(window).scroll(function () {
             const nowScrollTime = Date.now();
             if (nowScrollTime - lastScrollTime > 64) {//减缓触发频率，避免可能的运动抖动和高频计算，单位ms
                 lastScrollTime=nowScrollTime;
-                const mb: HTMLElement | null = document.getElementById("main-background_img");
-                if (mb != null) {
-                    const overflowValue: number = parseFloat(window.getComputedStyle(mb).width) - $(window).width()!;
-                    const scrollTop: number | undefined = $(window).scrollTop();
-                    const maxScrollTop: number | undefined = $(document).height()! - $(window).height()!;
-                    //if (scrollTop!=null && maxScrollTop!=null) {
-                    mb!.style.left = `${(-((scrollTop / maxScrollTop) * overflowValue))}px`;
-                    //}
-                }
 
-                /*const sectionPoss: any[] = [];
-                let currentSection:any|null=null;
                 {
-                    const currentBottomScroll = $(window).scrollTop()!+$(window).height()!;
-                    allSections.forEach(section => {
-                        sectionPoss.push({
-                            id: section.id,
-                            offsetTop: section.offsetTop,
-                            height: section.clientHeight
-                        });
-                    });
-                    let idNum:number=0;
-                    sectionPoss.every(pos => {
-                        const sectionTop = pos.offsetTop;
-                        const sectionBottom = sectionTop + pos.height;
-
-                        if (currentBottomScroll >= sectionTop && currentBottomScroll < sectionBottom) {
-                            currentSection={
-                                id: pos.id,
-                                idNum:idNum,
-                            };
-                            return false;
-                        } else {
-                            idNum++;
-                        }
-                        return true;
-                    });
+                    const mb: HTMLElement | null = document.getElementById("main-background_img");
+                    if (mb != null) {
+                        const overflowValue: number = parseFloat(window.getComputedStyle(mb).width) - $(window).width()!;
+                        const scrollTop: number | undefined = $(window).scrollTop();
+                        const maxScrollTop: number | undefined = $(document).height()! - $(window).height()!;
+                        //if (scrollTop!=null && maxScrollTop!=null) {
+                        mb!.style.left = `${(-((scrollTop / maxScrollTop) * overflowValue))}px`;
+                        //}
+                    }
                 }
-                console.log(currentSection);*/
 
                 const screenHeight:number = $(window).height();
                 const screenWidth:number = $(window).width();
                 const currentTopScroll:number =$(window).scrollTop()!;
                 const currentBottomScroll = currentTopScroll+screenHeight;
-                {
-                    const section = document.getElementById("video_page");
+
+                for (let si=0;si<allSectionIds.length;si++){
+                    const section = document.getElementById(allSectionIds[si]);
                     if (section != null) {
                         const offsetTop: number = section.offsetTop;
                         const clientHeight:number=section.clientHeight;
                         const height:number = offsetTop+clientHeight;
                         if (currentBottomScroll >= offsetTop && currentTopScroll < height){
-                            const obj=[
-                                document.getElementById("video-page_header"),
-                                document.getElementById("video-page_video-box_1"),
-                                document.getElementById("video-page_video-box_2"),
-                            ];
-                            const progressValue:number=(currentBottomScroll-offsetTop)/clientHeight;
-                            const progressValue2:number = (currentTopScroll-offsetTop)/clientHeight;
-                            if (obj[0]!=null && obj[1]!=null && obj[2]!=null) {
-                                if (progressValue2>0.25){
-                                    let v=(progressValue2-0.25)/0.5;
-                                    if (v>1)v = 1;
-                                    obj[0].style.opacity=`${1-v}`;
+                            switch (allSectionIds[si]) {
+                                default:
+                                {
+                                    const obj:(HTMLElement|null)[]|null= getSubObj(allSectionIds[si]);
 
-                                    {
-                                        const v2:number=-(v * section.clientWidth);
-                                        obj[1].style.left = `${v2}px`;
-                                        obj[2].style.right = `${v2}px`;
-                                    }
-                                }
-                                else if (progressValue<=0.5){
-                                    let v=(progressValue/0.5);
-                                    if (v>1)v = 1;
-                                    obj[0].style.opacity=v.toString();
+                                    const progressValue: number = (currentBottomScroll - offsetTop) / clientHeight;
+                                    const progressValue2: number = (currentTopScroll - offsetTop) / clientHeight;
+                                    if (obj!=null) {
+                                        switch (allSectionIds[si]) {
+                                            case "video_page":
+                                                if (obj[0] != null && obj[1] != null && obj[2] != null) {
+                                                    if (progressValue2 > 0.25) {
+                                                        let v = (progressValue2 - 0.25) / 0.5;
+                                                        if (v > 1) v = 1;
+                                                        obj[0].style.opacity = `${1 - v}`;
 
-                                    {
-                                        const v2:number=-(section.clientWidth-(v * section.clientWidth));
-                                        obj[1].style.left = `${v2}px`;
-                                        obj[2].style.right = `${v2}px`;
-                                    }
-                                }
-                                else{
-                                    obj[0].style.opacity='100%';
-                                    obj[1].style.left = '0';
-                                    obj[2].style.right = '0';
-                                }
-                            }
-                        }
-                    }
-                }
-                {
-                    const section:HTMLElement|null = document.getElementById("photo");
-                    if (section != null) {
-                        const offsetTop: number = section.offsetTop;
-                        const clientHeight:number=section.clientHeight;
-                        const height:number = offsetTop+clientHeight;
-                        if (currentBottomScroll >= offsetTop && currentTopScroll < height){
-                            {
-                                const sectionSub:HTMLElement|null = document.getElementById("photo_sub1");
-                                if (sectionSub!=null) {
-                                    const offsetTopSub: number = sectionSub.offsetTop;
-                                    const clientHeightSub: number = sectionSub.clientHeight;
-                                    const heightSub: number = offsetTopSub + clientHeightSub;
+                                                        {
+                                                            const v2: number = -(v * $(window).width());
+                                                            obj[1].style.left = `${v2}px`;
+                                                            obj[2].style.right = `${v2}px`;
+                                                        }
+                                                    } else if (progressValue <= 0.5) {
+                                                        let v = (progressValue / 0.5);
+                                                        if (v > 1) v = 1;
+                                                        obj[0].style.opacity = v.toString();
 
-                                    const obj:HTMLElement[]=[
-                                        document.getElementById("photo_sub1_title")!,
-                                        document.getElementById("photo_sub1_photoBox1")!,
-                                        document.getElementById("photo_sub1_photoBox2")!,
-                                        document.getElementById("photo_sub1_photoBox3")!,
-                                    ];
-                                    const progressValueSub:number=(currentBottomScroll-offsetTopSub)/clientHeightSub;
-                                    const progressValueSub2:number = (currentTopScroll-offsetTopSub)/clientHeightSub;
+                                                        {
+                                                            const v2: number = -($(window).width() - (v * $(window).width()));
+                                                            obj[1].style.left = `${v2}px`;
+                                                            obj[2].style.right = `${v2}px`;
+                                                        }
+                                                    } else {
+                                                        obj[0].style.opacity = '100%';
+                                                        obj[1].style.left = '0';
+                                                        obj[2].style.right = '0';
+                                                    }
+                                                }
+                                                break;
+                                            case "photo": {
+                                                {
+                                                    const sectionSub:HTMLElement|null = document.getElementById("photo_sub1");
+                                                    if (sectionSub!=null) {
+                                                        const offsetTopSub: number = sectionSub.offsetTop;
+                                                        const clientHeightSub: number = sectionSub.clientHeight;
+                                                        //const heightSub: number = offsetTopSub + clientHeightSub;
 
-                                    if (progressValueSub2>0.8){
-                                        let v=(progressValueSub2-0.8)/0.2;
-                                        if (v>1)v = 1;
+                                                        const objsub:(HTMLElement|null)[]|null=getSubObj("photo_sub1");
 
-                                        obj.forEach((o:HTMLElement) => {
-                                            o.style.opacity=(1-v).toString();
-                                        });
-                                    }
-                                    else if (progressValueSub>0.25 && progressValueSub<0.5) {
-                                        if (progressValueSub<0.34){
-                                            let v=(progressValueSub-0.25)/0.8;
-                                            if (v>1)v = 1;
+                                                        const progressValueSub:number=(currentBottomScroll-offsetTopSub)/clientHeightSub;
+                                                        const progressValueSub2:number = (currentTopScroll-offsetTopSub)/clientHeightSub;
 
-                                            obj[1].style.opacity=v.toString();
-                                            obj[1].style.top = `${(1-v)*obj[1].offsetHeight}px`;
-                                        }else if (progressValueSub<0.42){
-                                            let v=(progressValueSub-0.33)/0.8;
-                                            if (v>1)v = 1;
+                                                        if (objsub!=null) {
+                                                            if (progressValueSub2 > 0.8) {
+                                                                let v = (progressValueSub2 - 0.8) / 0.2;
+                                                                if (v > 1) v = 1;
 
-                                            obj[1].style.opacity='1';
-                                            obj[1].style.top = '0';
+                                                                objsub.forEach((o: HTMLElement|null) => {
+                                                                    o!.style.opacity = (1 - v).toString();
+                                                                });
+                                                            }
+                                                            else if (progressValueSub > 0.25 && progressValueSub < 0.5) {
+                                                                if (progressValueSub < 0.34) {
+                                                                    let v = (progressValueSub - 0.25) / 0.8;
+                                                                    if (v > 1) v = 1;
 
-                                            obj[2].style.opacity=v.toString();
-                                            obj[2].style.top = `${(1-v)*obj[2].offsetHeight}px`;
+                                                                    objsub[1]!.style.opacity = v.toString();
+                                                                    objsub[1]!.style.top = `${(1 - v) * objsub[1]!.offsetHeight}px`;
+                                                                } else if (progressValueSub < 0.42) {
+                                                                    let v = (progressValueSub - 0.33) / 0.8;
+                                                                    if (v > 1) v = 1;
 
-                                            obj[0].style.left=`-${(1-v)*screenWidth}px`;
-                                        }else{
-                                            let v=(progressValueSub-0.41)/0.8;
-                                            if (v>1)v = 1;
+                                                                    objsub[1]!.style.opacity = '1';
+                                                                    objsub[1]!.style.top = '0';
 
-                                            obj[0].style.left='0';
+                                                                    objsub[2]!.style.opacity = v.toString();
+                                                                    objsub[2]!.style.top = `${(1 - v) * objsub[2]!.offsetHeight}px`;
 
-                                            obj[1].style.opacity='1';
-                                            obj[1].style.top = '0';
+                                                                    objsub[0]!.style.left = `-${(1 - v) * screenWidth}px`;
+                                                                } else {
+                                                                    let v = (progressValueSub - 0.41) / 0.8;
+                                                                    if (v > 1) v = 1;
 
-                                            obj[2].style.opacity='1';
-                                            obj[2].style.top = '0';
+                                                                    objsub[0]!.style.left = '0';
 
-                                            obj[3].style.opacity=v.toString();
-                                            obj[3].style.top = `${(1-v)*obj[3].offsetHeight}px`;
+                                                                    objsub[1]!.style.opacity = '1';
+                                                                    objsub[1]!.style.top = '0';
+
+                                                                    objsub[2]!.style.opacity = '1';
+                                                                    objsub[2]!.style.top = '0';
+
+                                                                    objsub[3]!.style.opacity = v.toString();
+                                                                    objsub[3]!.style.top = `${(1 - v) * objsub[3]!.offsetHeight}px`;
+                                                                }
+                                                            }
+                                                            else if (progressValueSub >= 0.5) {
+                                                                objsub[0]!.style.opacity = '1';
+                                                                objsub[0]!.style.left = '0';
+
+                                                                objsub[1]!.style.opacity = '1';
+                                                                objsub[1]!.style.top = '0';
+
+                                                                objsub[2]!.style.opacity = '1';
+                                                                objsub[2]!.style.top = '0';
+
+                                                                objsub[3]!.style.opacity = '1';
+                                                                objsub[3]!.style.top = '0';
+                                                            }
+                                                            else if (progressValueSub <= 0.25) {
+                                                                /*objsub[0]!.style.left = `-${screenWidth}`;
+
+                                                                objsub[1]!.style.opacity = '0';
+                                                                objsub[1]!.style.top = `${objsub[1]!.offsetHeight}`;
+
+                                                                objsub[2]!.style.opacity = '0';
+                                                                objsub[2]!.style.top = `${objsub[2]!.offsetHeight}`;
+
+                                                                objsub[3]!.style.opacity = '0';
+                                                                objsub[3]!.style.top = `${objsub[3]!.offsetHeight}`;*/
+                                                                sectionStats["photo"]["restoreFunc"](objsub,1);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                if (is_pistonPushPhotoAnim_Init) {
+                                                    const sectionSub: HTMLElement | null = document.getElementById("photo_sub2");
+                                                    if (sectionSub != null) {
+                                                        const offsetTopSub: number = sectionSub.offsetTop;
+                                                        const clientHeightSub: number = sectionSub.clientHeight;
+                                                        //const heightSub: number = offsetTopSub + clientHeightSub;
+
+                                                        //const objsub:(HTMLElement|null)[]|null=getSubObj("photo_sub2");
+
+                                                        const progressValueSub:number=(currentBottomScroll-offsetTopSub)/clientHeightSub;
+                                                        const progressValueSub2:number = (currentTopScroll-offsetTopSub)/clientHeightSub;
+
+                                                        /*if (objsub!=null) {
+
+                                                        }*/
+
+                                                        if (progressValueSub2 > 0.8) {
+                                                            let v = (progressValueSub2 - 0.8) / 0.2;
+                                                            if (v > 1) v = 1;
+
+                                                            sectionSub.style.opacity=(1-v).toString();
+                                                        }
+                                                        else if (progressValueSub<=0.5){
+                                                            let v = (progressValueSub) / 0.5;
+                                                            if (v > 1) v = 1;
+
+                                                            sectionSub.style.opacity=v.toString();
+                                                        }
+                                                        else{
+                                                            sectionSub.style.opacity='1';
+                                                        }
+                                                        
+                                                        if (!isStart_pistonPushPhotoAnim) {//启动动画
+                                                            const offsetTopSub: number = sectionSub.offsetTop;
+                                                            if (currentBottomScroll > offsetTopSub) {
+                                                                sectionSub.style.visibility = 'unset';
+                                                                //sectionSub.style.opacity = '1';
+                                                                pistonPushPhotoAnim_Start().then();
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                                break;
+                                            case "introduce": {
+                                                if (progressValue2 > 0.25) {
+                                                    let v = (progressValue2 - 0.25) / 0.5;
+                                                    if (v > 1) v = 1;
+                                                    obj.forEach((o: HTMLElement | null) => {
+                                                        o!.style.opacity = `${1 - v}`;
+                                                    });
+                                                } else if (progressValue <= 0.25) {
+                                                    let v = (progressValue / 0.25);
+                                                    if (v > 1) v = 1;
+                                                    obj[0]!.style.opacity = v.toString();
+                                                } else if (progressValue <= 0.5) {
+                                                    let v = (progressValue - 0.25 / 0.25);
+                                                    if (v > 1) v = 1;
+                                                    obj[1]!.style.opacity = v.toString();
+                                                } else {
+                                                    obj.forEach((o: HTMLElement | null) => {
+                                                        o!.style.opacity = '1';
+                                                    });
+                                                }
+                                            }break;
+                                            case "rule":{
+                                                if (progressValue2>0.25){
+                                                    let v=(progressValue2-0.25)/0.5;
+                                                    if (v>1)v = 1;
+                                                    const pxv=-(v*$(window).width());
+                                                    obj[0]!.style.left=`${pxv}px`;
+                                                    obj[1]!.style.right=`${pxv}px`;
+                                                    obj[2]!.style.opacity=`${1-v}`;
+                                                }
+                                                else if (progressValue<=0.5){
+                                                    let v=(progressValue/0.5);
+                                                    if (v>1)v = 1;
+                                                    const pxv=-((1-v)*$(window).width());
+                                                    obj[0]!.style.left=`${pxv}px`;
+                                                    obj[1]!.style.right=`${pxv}px`;
+                                                    obj[2]!.style.opacity=v.toString();
+                                                }
+                                                else{
+                                                    obj[0]!.style.left='0';
+                                                    obj[1]!.style.right='0';
+                                                    obj[2]!.style.opacity='1';
+                                                }
+                                            }break;
+                                            case "join_us":{
+                                                if (progressValue>0.2 && progressValue<=0.4){
+                                                    let v=(progressValue-0.2/0.2);
+                                                    if (v>1)v = 1;
+                                                    obj[0]!.style.opacity=v.toString();
+                                                    obj[0]!.style.top = `${(1-v)*obj[0]!.offsetTop}px`;
+                                                    obj[1]!.style.opacity=v.toString();
+                                                    obj[1]!.style.bottom = `${(1-v)*obj[0]!.offsetTop}px`;
+                                                }
+                                                else if (progressValue<=0.55){
+                                                    obj[0]!.style.opacity='1';
+                                                    obj[0]!.style.top='0';
+                                                    obj[1]!.style.opacity='1';
+                                                    obj[1]!.style.bottom='0';
+
+                                                    let v=(progressValue-0.4/0.15);
+                                                    if (v>1)v = 1;
+                                                    obj[2]!.style.opacity=v.toString();
+                                                }
+                                                else if (progressValue<=0.7){
+                                                    obj[0]!.style.opacity='1';
+                                                    obj[0]!.style.top='0';
+                                                    obj[1]!.style.opacity='1';
+                                                    obj[1]!.style.bottom='0';
+                                                    obj[2]!.style.opacity='1';
+
+                                                    let v=(progressValue-0.55/0.15);
+                                                    if (v>1)v = 1;
+                                                    obj[3]!.style.opacity=v.toString();
+                                                }
+                                                else if (progressValue<=0.85){
+                                                    obj[0]!.style.opacity='1';
+                                                    obj[0]!.style.top='0';
+                                                    obj[1]!.style.opacity='1';
+                                                    obj[1]!.style.bottom='0';
+                                                    obj[2]!.style.opacity='1';
+                                                    obj[3]!.style.opacity='1';
+
+                                                    let v=(progressValue-0.7/0.15);
+                                                    if (v>1)v = 1;
+                                                    obj[4]!.style.opacity=v.toString();
+                                                }
+                                                else if (progressValue<=0.2){
+                                                    sectionStats["join_us"]["restoreFunc"](obj);
+                                                }
+                                                else{
+                                                    obj[0]!.style.opacity='1';
+                                                    obj[0]!.style.top='0';
+                                                    obj[1]!.style.opacity='1';
+                                                    obj[1]!.style.bottom='0';
+                                                    obj[2]!.style.opacity='1';
+                                                    obj[3]!.style.opacity='1';
+                                                    obj[4]!.style.opacity='1';
+                                                }
+                                            }break;
                                         }
                                     }
-                                    else if(progressValueSub>=0.5){
-                                        obj[0].style.opacity='1';
-                                        obj[0].style.left='0';
-
-                                        obj[1].style.opacity='1';
-                                        obj[1].style.top = '0';
-
-                                        obj[2].style.opacity='1';
-                                        obj[2].style.top = '0';
-
-                                        obj[3].style.opacity='1';
-                                        obj[3].style.top = '0';
-                                    }
-                                    else if (progressValueSub<=0.25){
-                                        obj[0].style.left=`-${screenWidth}`;
-
-                                        obj[1].style.opacity='0';
-                                        obj[1].style.top = `${obj[1].offsetHeight}`;
-
-                                        obj[2].style.opacity='0';
-                                        obj[2].style.top = `${obj[2].offsetHeight}`;
-
-                                        obj[3].style.opacity='0';
-                                        obj[3].style.top = `${obj[3].offsetHeight}`;
-                                    }
                                 }
+                                    break;
                             }
-                            if (is_pistonPushPhotoAnim_Init && !isStart_pistonPushPhotoAnim){
-                                const sectionSub:HTMLElement|null = document.getElementById("photo_sub2");
-                                if (sectionSub!=null){
-                                    const offsetTopSub: number = sectionSub.offsetTop;
-                                    if(currentBottomScroll>offsetTopSub) {
-                                        sectionSub.style.visibility='unset';
-                                        sectionSub.style.opacity='1';
-                                        pistonPushPhotoAnim_Start().then();
-                                    }
-                                }
-                            }
+                            //@ts-ignore: 7053
+                            sectionStats[allSectionIds[si]]["isChange"]=true;
                         }
-                    }
-                }
-                {
-                    const section:HTMLElement|null = document.getElementById("introduce");
-                    if (section != null) {
-                        const offsetTop: number = section.offsetTop;
-                        const clientHeight: number = section.clientHeight;
-                        const height: number = offsetTop + clientHeight;
-                        if (currentBottomScroll >= offsetTop && currentTopScroll < height) {
-                            const obj=[
-                                document.getElementById("introduce_header")!,
-                                document.getElementById("serverIntroductoryText")!,
-                            ];
-                            const progressValue:number=(currentBottomScroll-offsetTop)/clientHeight;
-                            const progressValue2:number = (currentTopScroll-offsetTop)/clientHeight;
-                            if (progressValue2>0.25){
-                                let v=(progressValue2-0.25)/0.5;
-                                if (v>1)v = 1;
-                                obj.forEach((o:HTMLElement)=>{
-                                    o.style.opacity=`${1-v}`;
-                                });
-                            }
-                            else if (progressValue<=0.25){
-                                let v=(progressValue/0.25);
-                                if (v>1)v = 1;
-                                obj[0].style.opacity=v.toString();
-                            }
-                            else if (progressValue<=0.5){
-                                let v=(progressValue-0.25/0.25);
-                                if (v>1)v = 1;
-                                obj[1].style.opacity=v.toString();
-                            }
-                            else{
-                                obj.forEach((o:HTMLElement)=>{
-                                    o.style.opacity='1';
-                                });
-                            }
-                        }
-                    }
-                }
-                {
-                    const section: HTMLElement | null = document.getElementById("rule");
-                    if (section != null) {
-                        const offsetTop: number = section.offsetTop;
-                        const clientHeight: number = section.clientHeight;
-                        const height: number = offsetTop + clientHeight;
-                        if (currentBottomScroll >= offsetTop && currentTopScroll < height) {
-                            const obj :HTMLElement[]= [
-                                document.getElementById("rule_header")!,
-                                //document.getElementById("ruleText_Button")!,
-                                (document.querySelectorAll("#ruleText_Button button")[0] as HTMLElement)!,
-                                document.getElementById("ruleText_border")!,
-                            ];
-                            const progressValue: number = (currentBottomScroll - offsetTop) / clientHeight;
-                            const progressValue2: number = (currentTopScroll - offsetTop) / clientHeight;
-                            if (progressValue2>0.25){
-                                let v=(progressValue2-0.25)/0.5;
-                                if (v>1)v = 1;
-                                const pxv=-(v*$(window).width());
-                                obj[0].style.left=`${pxv}px`;
-                                obj[1].style.right=`${pxv}px`;
-                                obj[2].style.opacity=`${1-v}`;
-                            }
-                            else if (progressValue<=0.5){
-                                let v=(progressValue/0.5);
-                                if (v>1)v = 1;
-                                const pxv=-((1-v)*$(window).width());
-                                obj[0].style.left=`${pxv}px`;
-                                obj[1].style.right=`${pxv}px`;
-                                obj[2].style.opacity=v.toString();
-                            }
-                            else{
-                                obj[0].style.left='0';
-                                obj[1].style.right='0';
-                                obj[2].style.opacity='1';
-                            }
-                        }
-                    }
-                }
-                {
-                    const section: HTMLElement | null = document.getElementById("join_us");
-                    if (section != null) {
-                        const offsetTop: number = section.offsetTop;
-                        const clientHeight: number = section.clientHeight;
-                        const height: number = offsetTop + clientHeight;
-                        if (currentBottomScroll >= offsetTop && currentTopScroll < height) {
-                            const obj :HTMLElement[]= [
-                                document.getElementById("join_us_header_logo")!,
-                                document.getElementById("join_us_header_text")!,
-                                document.getElementById("joinUsText")!,
-                                document.getElementById("joinUs_qgQRCode")!,
-                                document.getElementById("joinUsText2")!,
-                            ];
-                            const progressValue: number = (currentBottomScroll - offsetTop) / clientHeight;
-                            //const progressValue2: number = (currentTopScroll - offsetTop) / clientHeight;
-                             if (progressValue>0.2 && progressValue<=0.4){
-                                 let v=(progressValue-0.2/0.2);
-                                 if (v>1)v = 1;
-                                 obj[0].style.opacity=v.toString();
-                                 obj[0].style.top = `${(1-v)*obj[0].offsetTop}px`;
-                                 obj[1].style.opacity=v.toString();
-                                 obj[1].style.bottom = `${(1-v)*obj[0].offsetTop}px`;
-                             }
-                             else if (progressValue<=0.55){
-                                 obj[0].style.opacity='1';
-                                 obj[0].style.top='0';
-                                 obj[1].style.opacity='1';
-                                 obj[1].style.bottom='0';
-
-                                 let v=(progressValue-0.4/0.15);
-                                 if (v>1)v = 1;
-                                 obj[2].style.opacity=v.toString();
-                             }
-                             else if (progressValue<=0.7){
-                                 obj[0].style.opacity='1';
-                                 obj[0].style.top='0';
-                                 obj[1].style.opacity='1';
-                                 obj[1].style.bottom='0';
-                                 obj[2].style.opacity='1';
-
-                                 let v=(progressValue-0.55/0.15);
-                                 if (v>1)v = 1;
-                                 obj[3].style.opacity=v.toString();
-                             }
-                             else if (progressValue<=0.85){
-                                 obj[0].style.opacity='1';
-                                 obj[0].style.top='0';
-                                 obj[1].style.opacity='1';
-                                 obj[1].style.bottom='0';
-                                 obj[2].style.opacity='1';
-                                 obj[3].style.opacity='1';
-
-                                 let v=(progressValue-0.7/0.15);
-                                 if (v>1)v = 1;
-                                 obj[4].style.opacity=v.toString();
-                             }
-                             else{
-                                 obj[0].style.opacity='1';
-                                 obj[0].style.top='0';
-                                 obj[1].style.opacity='1';
-                                 obj[1].style.bottom='0';
-                                 obj[2].style.opacity='1';
-                                 obj[3].style.opacity='1';
-                                 obj[4].style.opacity='1';
-                             }
+                        else if (//@ts-ignore: 7053
+                            sectionStats[allSectionIds[si]]["isChange"]){
+                            //@ts-ignore: 7053
+                            sectionStats[allSectionIds[si]]["isChange"]=false;
+                            //@ts-ignore: 7053
+                            sectionStats[allSectionIds[si]]["restoreFunc"](getSubObj(allSectionIds[si]));
                         }
                     }
                 }
