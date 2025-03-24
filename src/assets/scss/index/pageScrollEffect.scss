@@ -78,23 +78,42 @@
   background-repeat: no-repeat;
   width: 146px;
   height:180px;
+  aspect-ratio: 146 / 180;//设置比例
   &.obb_custom_introduce{
-    width: 547.5px;
-    height: 675px;
-    padding: 55px;
+    padding: 10%;
+    width: 100%;
+    height: auto;
   }
   &.obb_custom_rule{
-    width: 438px;
-    height: 540px;
-    padding: 40px;
+    padding: 12%;
+    width: 100%;
+    height: auto;
   }
+}
+@mixin openedBook-background_before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  //继承父元素
+  background-color: inherit;
+  background-image: inherit;
+  image-rendering: inherit;
+  background-size: inherit;
+  background-repeat: inherit;
+
+  filter: brightness(var(--filter-brightness));
+  z-index: -1;
 }
 @font-face{
   font-family: "unifont" ;
   src: url("@/assets/font/unifont-16.0.02.otf");
 }
 @mixin obb_custom_introduce_color{
-  color:black;
+  color: var(--color8);
   font-family: 'unifont',system-ui;
 }
 .obb_custom_introduce h5{
@@ -241,7 +260,18 @@
 }
 #serverIntroductoryText{
   @include transition_1;
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+}
+#serverIntroductoryText_border{
+  @include transition_1;
+  z-index: 1;
+  position: relative;
   opacity: 0;
+}
+#serverIntroductoryText_border::before{
+  @include openedBook-background_before;
 }
 
 #rule_header{
@@ -286,6 +316,9 @@
   position: relative;
   display: none;
   opacity: 0;
+}
+#ruleText_border::before{
+  @include openedBook-background_before;
 }
 
 #join_us_header_logo{

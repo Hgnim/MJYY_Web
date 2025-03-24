@@ -115,7 +115,7 @@ $(function (){
                 case "introduce":
                     obj = [
                         document.getElementById("introduce_header")!,
-                        document.getElementById("serverIntroductoryText")!,
+                        document.getElementById("serverIntroductoryText_border")!,
                     ];
                     break;
                 case "rule":
@@ -141,7 +141,7 @@ $(function (){
         let lastScrollTime = 0;
         $(window).scroll(function () {
             const nowScrollTime = Date.now();
-            if (nowScrollTime - lastScrollTime > 64) {//减缓触发频率，避免可能的运动抖动和高频计算，单位ms
+            if (nowScrollTime - lastScrollTime > 24) {//减缓触发频率，避免可能的运动抖动和高频计算，单位ms
                 lastScrollTime=nowScrollTime;
 
                 {
