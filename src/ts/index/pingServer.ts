@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     pingServer_Start();
 });
-var pingServerRunLock = false;//主要检测锁，避免重复检测(对服务器的网站进行ping检测来实现快速判断是否在线)
+let pingServerRunLock = false;//主要检测锁，避免重复检测(对服务器的网站进行ping检测来实现快速判断是否在线)
 //var pingServerRunLock2 = false;//备用检测锁，避免重复检测，当两个检测锁同时为false时，才会进行检测(通过第三方API检测，成功率较低)
-var pingServerLoaderLock = false;//用于等待动画组件动画播放完成，避免监听事件滞留
+let pingServerLoaderLock = false;//用于等待动画组件动画播放完成，避免监听事件滞留
 export function pingServer_Start() {
     if (!pingServerRunLock  && !pingServerLoaderLock) {
         pingServerRunLock = true;
@@ -15,22 +15,20 @@ export function pingServer_Start() {
             hf: 3,
             hs: 4
         }
-        var pss;
-        var pss_l, pss_f, pss_s, pss_hf, pss_hs;
-        {
-            var psv_cs = getComputedStyle(document.querySelector('#pingServerView'));
-            pss_l = psv_cs.getPropertyValue('--pingServerState-loading');
-            pss_f = psv_cs.getPropertyValue('--pingServerState-failed');
-            pss_s = psv_cs.getPropertyValue('--pingServerState-succeed');
-            pss_hf = psv_cs.getPropertyValue('--pingServerState-halfFailed');
-            pss_hs = psv_cs.getPropertyValue('--pingServerState-succeed');
-        }
-        var psl = document.getElementById("pingServerLoader");
-        var pst = document.getElementById("pingServerText");
+        let pss;
+        const psv_cs = getComputedStyle(document.querySelector('#pingServerView') as Element);
+        const pss_l: string = psv_cs.getPropertyValue('--pingServerState-loading'),
+            pss_f: string= psv_cs.getPropertyValue('--pingServerState-failed'),
+            pss_s: string= psv_cs.getPropertyValue('--pingServerState-succeed'),
+            pss_hf: string= psv_cs.getPropertyValue('--pingServerState-halfFailed'),
+            pss_hs: string= psv_cs.getPropertyValue('--pingServerState-succeed');
+
+        let psl:HTMLElement = document.getElementById("pingServerLoader")!;
+        let pst:HTMLElement = document.getElementById("pingServerText")!;
         function StopPslLoop() {
             function pslLoopStop() {
                 // 设置动画迭代次数为0，让动画在完成当前迭代后停止
-                psl.style.animationIterationCount = 0;
+                psl.style.animationIterationCount = '0';
                 psl.removeEventListener('animationiteration', pslLoopStop);
                 pingServerLoaderLock = false;
             }
@@ -38,7 +36,7 @@ export function pingServer_Start() {
             // 监听动画迭代结束事件
             psl.addEventListener('animationiteration', pslLoopStop);
         }
-        function ChangePss(id) {
+        function ChangePss(id:number) {
             switch (id) {
                 case 0:
                     pss = PssEnum.l;
@@ -96,13 +94,17 @@ export function pingServer_Start() {
 
         function Action(response = null) {
             if (response != null) {
+                //@ts-ignore:2339
                 if (response.online === true) {
                     ChangePss(3);
-                    document.getElementById("pingServerInfo_icon").src = response.icon;
-                    document.getElementById("pingServerInfo_text_player").innerText = `玩家数: ${response.players.online}/${response.players.max}`;
-                    document.getElementById("pingServerInfo_text_motd").innerHTML = response.motd.html.replace(/<span>[^>]*\n[^<]*<\/span>/, "<br>");
+                    //@ts-ignore:2339
+                    document.getElementById("pingServerInfo_icon")!.src = response.icon;
+                    //@ts-ignore:2339
+                    document.getElementById("pingServerInfo_text_player")!.innerText = `玩家数: ${response.players.online}/${response.players.max}`;
+                    //@ts-ignore:2339
+                    document.getElementById("pingServerInfo_text_motd")!.innerHTML = response.motd.html.replace(/<span>[^>]*\n[^<]*<\/span>/, "<br>");
                     //document.getElementById("pingServerInfo_text_motd2").innerText = response.motd2;
-                    document.getElementById("pingServerInfo").style.display = "flex";
+                    document.getElementById("pingServerInfo")!.style.display = "flex";
                     StopPslLoop();
                 } else {
                     ChangePss(4);
@@ -112,28 +114,27 @@ export function pingServer_Start() {
             } else {
                 //使用备用方案
                 ChangePss(1);
-                Action2();
+                {
+                    //备用方案
+                    //@ts-ignore:2339
+                    new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/minecraft/playerachievement/", function (err) {
+                        if (err) {
+                            //如果备用检测未成功，则输出失败信息
+                            ChangePss(7);
+                            StopPslLoop();
+                        }
+                        else {
+                            ChangePss(2);
+                            StopPslLoop();
+                        }
+                        pingServerRunLock = false;
+                    });
+                }
             }
         }
 
-        function Action2(){
-            //备用方案
-            new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/minecraft/playerachievement/", function (err) {
-                if (err) {
-                    //如果备用检测未成功，则输出失败信息
-                    ChangePss(7);
-                    StopPslLoop();
-                }
-                else {
-                    ChangePss(2);
-                    StopPslLoop();
-                }
-                pingServerRunLock = false;
-            });
-        }
-
         require('node-mcstatus').statusJava('mc.mjyy.top', '30303',{query:false,timeout:20.0})
-            .then((result) => {
+            .then((result:any) => {
                 // `result` will be the same shape and
                 // properties as what is documented on
                 // our website.
@@ -141,7 +142,7 @@ export function pingServer_Start() {
                 //console.log(result);
                 Action(result);
             })
-            .catch((error) => {
+            .catch((error:any) => {
                 // If the server is offline, then
                 // you will NOT receive an error here.
                 // Instead, you will use the `result.online`

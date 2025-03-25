@@ -1,3 +1,5 @@
+import {pingServer_Start} from "@/ts/index/pingServer";
+
 export async function CheckSystemTheme() {
   let html = document.querySelector("html");
   const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)"); // 是深色
@@ -33,4 +35,8 @@ $(function () {
 
 export function BodyOnLoad() {
   LoadingOver();
+}
+
+export function pingServerView_Click(){
+  pingServer_Start();
 }
