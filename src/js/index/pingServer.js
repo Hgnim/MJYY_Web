@@ -2,12 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     pingServer_Start();
 });
 var pingServerRunLock = false;//主要检测锁，避免重复检测(对服务器的网站进行ping检测来实现快速判断是否在线)
-var pingServerRunLock2 = false;//备用检测锁，避免重复检测，当两个检测锁同时为false时，才会进行检测(通过第三方API检测，成功率较低)
+//var pingServerRunLock2 = false;//备用检测锁，避免重复检测，当两个检测锁同时为false时，才会进行检测(通过第三方API检测，成功率较低)
 var pingServerLoaderLock = false;//用于等待动画组件动画播放完成，避免监听事件滞留
 export function pingServer_Start() {
-    if (!pingServerRunLock && !pingServerRunLock2 && !pingServerLoaderLock) {
+    if (!pingServerRunLock  && !pingServerLoaderLock) {
         pingServerRunLock = true;
-        pingServerRunLock2 = true;
 
         const PssEnum = {
             l: 0,
@@ -94,77 +93,62 @@ export function pingServer_Start() {
         ChangePss(0);
         $("#pingServerRootView").fadeIn();
 
-        new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/minecraft/playerachievement/", function (err) {
-            if (err) {
-                if (!pingServerRunLock2 && pss == PssEnum.hf) {//如果备用检测完成且未成功，则输出失败信息
-                    ChangePss(7);
-                    StopPslLoop();
-                }
-                else
-                    ChangePss(1);
-            }
-            else {
-                if (pst.style.color != pss_s) {
-                    ChangePss(2);
-                    if (!pingServerRunLock2)//判断备用检测是否完成，如果已完成则停止动画
-                        StopPslLoop();
-                }
-            }
-            pingServerRunLock = false;
-        });
 
-        function Action(response = null, status = null) {
+        function Action(response = null) {
             if (response != null) {
-                if (response.code == 200) {
+                if (response.online === true) {
                     ChangePss(3);
-                    document.getElementById("pingServerInfo_icon").src = response.img;
-                    document.getElementById("pingServerInfo_text_player").innerText = "玩家数: " + response.players;
-                    document.getElementById("pingServerInfo_text_motd1").innerText = response.motd;
-                    document.getElementById("pingServerInfo_text_motd2").innerText = response.motd2;
+                    document.getElementById("pingServerInfo_icon").src = response.icon;
+                    document.getElementById("pingServerInfo_text_player").innerText = `玩家数: ${response.players.online}/${response.players.max}`;
+                    document.getElementById("pingServerInfo_text_motd").innerHTML = response.motd.html.replace(/<span>[^>]*\n[^<]*<\/span>/, "<br>");
+                    //document.getElementById("pingServerInfo_text_motd2").innerText = response.motd2;
                     document.getElementById("pingServerInfo").style.display = "flex";
                     StopPslLoop();
                 } else {
-                    if (!pingServerRunLock && pss == PssEnum.hf) {
-                        ChangePss(4);
-                        StopPslLoop();
-                    }
-                    else if (pingServerRunLock)
-                        ChangePss(1);
-                    else if (pss == PssEnum.hs)
-                        StopPslLoop();
+                    ChangePss(4);
+                    StopPslLoop();
                 }
+                pingServerRunLock = false;
             } else {
-                if (!pingServerRunLock && pss == PssEnum.hf) {//如果主要检测未完成，则不输出失败信息；如果主要检测已返回成功值，则不输出失败信息
-                    if (status === "timeout") {
-                        ChangePss(5);
-                    }
-                    else {
-                        ChangePss(6);
-                    }
+                //使用备用方案
+                ChangePss(1);
+                Action2();
+            }
+        }
+
+        function Action2(){
+            //备用方案
+            new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/minecraft/playerachievement/", function (err) {
+                if (err) {
+                    //如果备用检测未成功，则输出失败信息
+                    ChangePss(7);
                     StopPslLoop();
                 }
-                else if (pingServerRunLock)//如果主要检测未完成，则显示使用备用方案
-                    ChangePss(1);
-                else if (pss == PssEnum.hs)//如果半成功状态输出错误，则停止动画
+                else {
+                    ChangePss(2);
                     StopPslLoop();
-            }
-            pingServerRunLock2 = false;
+                }
+                pingServerRunLock = false;
+            });
         }
-        $.ajax({
-            url: 'https://proxy.cors.sh/https://uapis.cn/api/mcserver?server=113.219.237.106:30303',//通过公共CORS代理，避免跨域请求错误
-            type: "GET",
-            timeout: 60000,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Access-Control-Allow-Origin': '*'
-            },
-            contentType: "application/json",
-            success: function (response) {
-                Action(response);
-            },
-            error: function (status) {
-                Action(null, status);
-            }
-        });
+
+        require('node-mcstatus').statusJava('mc.mjyy.top', '30303',{query:false,timeout:20.0})
+            .then((result) => {
+                // `result` will be the same shape and
+                // properties as what is documented on
+                // our website.
+                // https://mcstatus.io/docs#java-status
+                //console.log(result);
+                Action(result);
+            })
+            .catch((error) => {
+                // If the server is offline, then
+                // you will NOT receive an error here.
+                // Instead, you will use the `result.online`
+                // boolean values in `.then()`.
+                // Receiving an error here means that there
+                // was an error with the service itself.
+                Action(null);
+            })
     }
 }
