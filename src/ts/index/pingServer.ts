@@ -101,6 +101,14 @@ export function pingServer_Start() {
                     document.getElementById("pingServerInfo_icon")!.src = response.icon;
                     //@ts-ignore:2339
                     document.getElementById("pingServerInfo_text_player")!.innerText = `玩家数: ${response.players.online}/${response.players.max}`;
+                    {
+                        const plist:HTMLElement=document.getElementById("pingServerInfo_text_playerList")!;
+                        plist.innerHTML='<b>在线玩家：</b><br>';
+                        //@ts-ignore:2339
+                        response.players.list.forEach((pl: any) => {
+                            plist.innerHTML+=`${pl.name_html}<br>`;
+                        });
+                    }
                     //@ts-ignore:2339
                     document.getElementById("pingServerInfo_text_motd")!.innerHTML = response.motd.html.replace(/<span>[^>]*\n[^<]*<\/span>/, "<br>");
                     //document.getElementById("pingServerInfo_text_motd2").innerText = response.motd2;

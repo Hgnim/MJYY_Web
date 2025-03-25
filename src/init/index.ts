@@ -1,6 +1,6 @@
 import '@/assets/scss/bootstrap/custom.scss';
 
-import '@/assets/css/index/pingServer.css';
+import '@/assets/scss/index/pingServer.scss';
 import '@/ts/index/pingServer';
 
 import './ts/index_global-bridge';
