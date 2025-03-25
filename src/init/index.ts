@@ -1,5 +1,8 @@
 import '@/assets/scss/bootstrap/custom.scss';
 
+import '@/assets/scss/index/pingServer.scss';
+import '@/ts/index/pingServer';
+
 import './ts/index_global-bridge';
 
 import '@/assets/css/index/pace_override.css';

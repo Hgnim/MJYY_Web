@@ -18,16 +18,46 @@
     --pingServerState-halfSucceed:#004b00;
     --pingServerState-succeed:#099709;
 }
+
 #pingServerInfo{
     padding:0 15px 15px 15px;
     display: none; /*flex;*/
     align-items: center;
 }
-.pingServerInfo_text{
+@mixin pingServerInfo_text{
     margin: 0;
-    margin-bottom:0;
-    margin-top:0;
 }
+@mixin pingServerInfo_text_player{
+    display: inline;
+}
+#pingServerInfo_text_player_border{
+    @include pingServerInfo_text_player;
+    position: relative;
+}
+#pingServerInfo_text_playerList{
+    display: none;
+    background-color: var(--color15);
+    color:var(--color8);
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    padding: 10px;
+}
+#pingServerInfo_text_player_border:hover #pingServerInfo_text_playerList{
+    display: inline;
+}
+#pingServerInfo_text_player{
+    @include pingServerInfo_text;
+    @include pingServerInfo_text_player;
+    color:var(--color8);
+}
+
+#pingServerInfo_text_motd{
+    @include pingServerInfo_text;
+}
+
 #pingServerText{
     position: relative;
     top: 7px;

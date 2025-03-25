@@ -3,7 +3,6 @@
   "private": true,
   "devDependencies": {
     "@types/jquery": "^3.2.1",
-
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.0.0",
     "css-minimizer-webpack-plugin": "^5.0.0",
@@ -31,6 +30,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^4.0.0",
+    "node-mcstatus": "^1.2.1"
   }
 }
