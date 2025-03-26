@@ -15,4 +15,4 @@ import '@/js/CommunityPhotoWall/navbar.js';
 import '@/js/CommunityPhotoWall/photoWall_Load.js';
 
 import '@/assets/css/CommunityPhotoWall/style.css';
-import '@/js/CommunityPhotoWall/script.js';
+import * as script from '@/js/CommunityPhotoWall/script.js';exposeModuleToGlobal(script);
