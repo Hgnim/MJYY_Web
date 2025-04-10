@@ -1,4 +1,5 @@
 import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
+import {sleep} from "@/ts/other/sleep";
 
 var resourceMode;
 
@@ -282,6 +283,35 @@ export async function loadMediaResources(resMode) {
                             "http://cdnjson.com/images/2025/01/15/photo-14-low.jpg",
                         ];
                         break;
+                }
+                {
+                    let num=1;
+                    {
+                        const pbIdHeader = "photo_sub1_photoBox";
+                        while (true) {
+                            const photoBox=document.getElementById(`${pbIdHeader}${num.toString()}`);
+                            if (photoBox!=null) {
+                                photoBox.innerHTML=
+                                    "<div class=\"photoBoxGroup-1 loadingBox pbg_haveTitle\" data-show=true>\n" +
+                                    "<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片' />\n" +
+                                    "</div>\n"
+                                    + photoBox.innerHTML;
+                            }
+                            else break;
+                            num++;
+                        }
+                    }
+                    {
+                        const photoBox = document.getElementById("photo_sub2");
+                        for (let i = 0; i < imgUrls.length-(num-1); i++) {
+                            photoBox.innerHTML +=
+                                "<div class=\"card photo_sub2_pbgCard\">\n" +
+                                "<div class=\"photoBoxGroup-1 loadingBox\" data-show=true>\n" +
+                                "<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片'/>\n" +
+                                "</div>\n" +
+                                "</div>";
+                        }
+                    }
                 }
                 await deployImg(
                     imgUrls,
