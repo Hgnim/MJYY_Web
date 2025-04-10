@@ -1,4 +1,5 @@
 import {pingServer_Start} from "@/ts/index/pingServer";
+import {imageClick,bvfiClick} from "@/ts/index/bigViewForImage";
 
 export async function CheckSystemTheme() {
   let html = document.querySelector("html");
@@ -40,3 +41,12 @@ export function BodyOnLoad() {
 export function pingServerView_Click(){
   pingServer_Start();
 }
+
+//#region bigViewForImage
+export function bigViewForImage_click(){
+  bvfiClick();
+}
+export function photoBoxGroup1_click(e) {
+  imageClick(e);
+}
+//#endregion

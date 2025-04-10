@@ -285,6 +285,8 @@ export async function loadMediaResources(resMode) {
                         break;
                 }
                 {
+                    // noinspection RequiredAttributes,JSUnresolvedReference
+                    const imgHtml="<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片' onclick='photoBoxGroup1_click(this)' />\n";
                     let num=1;
                     {
                         const pbIdHeader = "photo_sub1_photoBox";
@@ -293,7 +295,7 @@ export async function loadMediaResources(resMode) {
                             if (photoBox!=null) {
                                 photoBox.innerHTML=
                                     "<div class=\"photoBoxGroup-1 loadingBox pbg_haveTitle\" data-show=true>\n" +
-                                    "<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片' />\n" +
+                                    imgHtml +
                                     "</div>\n"
                                     + photoBox.innerHTML;
                             }
@@ -307,7 +309,7 @@ export async function loadMediaResources(resMode) {
                             photoBox.innerHTML +=
                                 "<div class=\"card photo_sub2_pbgCard\">\n" +
                                 "<div class=\"photoBoxGroup-1 loadingBox\" data-show=true>\n" +
-                                "<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片'/>\n" +
+                                imgHtml +
                                 "</div>\n" +
                                 "</div>";
                         }
