@@ -1,5 +1,8 @@
 import '@/assets/scss/bootstrap/custom.scss';
 
+import '@/assets/css/index/loading.css';
+import '@/ts/index/loading';
+
 import '@/assets/scss/index/pingServer.scss';
 import '@/ts/index/pingServer';
 

@@ -1,5 +1,7 @@
 import {pingServer_Start} from "@/ts/index/pingServer";
 import {imageClick,bvfiClick} from "@/ts/index/bigViewForImage";
+import {loadMediaResources,userSelectResourceMode,SetResourceMode,GetResourceMode} from "@/ts/index/loadResources";
+import {LoadingOver} from '@/ts/index/loading';
 
 export async function CheckSystemTheme() {
   let html = document.querySelector("html");
@@ -41,6 +43,18 @@ export function BodyOnLoad() {
 export function pingServerView_Click(){
   pingServer_Start();
 }
+
+//#region loading
+export function mainldskipbt_click(num){
+  LoadingOver(num);
+}
+//#endregion
+
+//#region loadResources
+export function resourceModeBox_select_onchange(value){
+  userSelectResourceMode(value);
+}
+//#endregion
 
 //#region bigViewForImage
 export function bigViewForImage_click(){

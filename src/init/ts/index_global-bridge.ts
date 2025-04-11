@@ -23,10 +23,7 @@ import/* * as pageSmoothScroll from*/ '@/js/index/pageSmoothScroll.js';//exposeM
 import * as viewAction from '@/js/index/view_action.js';exposeModuleToGlobal(viewAction);
 import/* * as titleChange from*/ '@/js/index/titileChange.js';//exposeModuleToGlobal(titleChange);
 
-import '@/assets/css/index/loading.css';
-import * as loading from '@/js/index/loading.js';exposeModuleToGlobal(loading);
 import '@/assets/css/index/imageResource.css';
-import * as loadResources from '@/js/index/loadResources.js';exposeModuleToGlobal(loadResources);
 import '@/assets/css/index/resourceMode.css';
 
 
