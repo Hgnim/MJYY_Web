@@ -35,7 +35,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <div id="main-ld">
                 <div id="main-ld-loader"></div>
                 <h3 class="main-ld-txt">正在加载资源，请耐心等待...</h3>
-                <button id="main-ld-skipbt" onclick="LoadingOver(2)">跳过资源加载</button>
+                <button id="main-ld-skipbt" onclick="mainldskipbt_click(2)">跳过资源加载</button>
             </div>
 
         </div>
@@ -139,7 +139,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
     <i id="resourceModeBox" class="unSelectable" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
         <!--suppress HtmlFormInputWithoutLabel -->
-        <select id="resourceModeBox_select" onchange="userSelectResourceMode(document.getElementById('resourceModeBox_select').value)">
+        <select id="resourceModeBox_select" onchange="resourceModeBox_select_onchange(document.getElementById('resourceModeBox_select').value)">
             <option value="source">原图</option>
             <!--<option value="high">质量</option>-->
             <option value="normal">正常</option>
@@ -181,9 +181,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                             <div class="col-sm-6 col-12">
                                 <div class="col-12 mb-4">
                                     <div class="card glass_background" id="photo_sub1_photoBox1">
-                                        <div class="photoBoxGroup-1 loadingBox pbg_haveTitle" data-show=true>
-                                            <img class="card-img-top rounded photoBoxGroup-1" />
-                                        </div>
+                                        <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
                                             <p class="oak-sign2 os2_custom_p">我们有多个玩家社区</p>
                                         </div>
@@ -191,9 +189,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                 </div>
                                 <div class="col-12 mb-4">
                                     <div class="card glass_background" id="photo_sub1_photoBox2">
-                                        <div class="photoBoxGroup-1 loadingBox pbg_haveTitle" data-show=true>
-                                            <img class="card-img-top rounded photoBoxGroup-1" />
-                                        </div>
+                                        <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
                                             <p class="oak-sign2 os2_custom_p">大型工业区</p>
                                         </div>
@@ -201,9 +197,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                 </div>
                                 <div class="col-12 mb-4">
                                     <div class="card glass_background" id="photo_sub1_photoBox3">
-                                        <div class="photoBoxGroup-1 loadingBox pbg_haveTitle" data-show=true>
-                                            <img class="card-img-top rounded photoBoxGroup-1" />
-                                        </div>
+                                        <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
                                             <p class="oak-sign2 os2_custom_p">冰雪考察站</p>
                                         </div>
@@ -216,9 +210,6 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             </div>
         </div>
         <div class="mx-auto" id="photo_sub2">
-            <!--<h4 style="text-align:center">更多照片欣赏</h4>-->
-
-            <!--模板元素，用于脚本中的大小比对-->
             <img src="https://s21.ax1x.com/2025/03/21/pE0QQBD.png" id="photo_sub2_piston-template1">
 
             <img src="https://s21.ax1x.com/2025/03/21/pE0nQF1.png" id="photo_sub2_piston1-1">
@@ -229,97 +220,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                 <img src="https://s21.ax1x.com/2025/03/21/pE0ZslF.png" id="photo_sub2_piston2-2-1">
                 <img src="https://s21.ax1x.com/2025/03/21/pE0ZBWT.png" id="photo_sub2_piston2-2-2">
             </div>
-
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
-            <div class="card photo_sub2_pbgCard">
-                <div class="photoBoxGroup-1 loadingBox" data-show=true>
-                    <img class="card-img-top rounded photoBoxGroup-1"/>
-                </div>
-            </div>
+            <!--图片卡片html由loadResources脚本中插入-->
         </div>
     </section>
     <section class="py-5 unSelectable" id="introduce">
@@ -436,6 +337,11 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
     <img src="https://s21.ax1x.com/2024/12/28/pAxPBGV.png" style="image-rendering:pixelated" class="scroll-top unSelectable" id="upTopButton"><!--fireworkRocket.png-->
 
     <!--<script src="js/index/TextFall.js"></script>--> <!--工作台鼠标拖尾特效，到时候或许要开起来-->
+
+
+<div id="bigViewForImage" onclick="bigViewForImage_click();">
+    <img alt="大视图图片" id="bigViewForImage_imgBox">
+</div>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-import {sleep} from "@/ts/other/sleep";
+import {sleep} from "@/ts/global/sleep";
 
 $(function (){
     {

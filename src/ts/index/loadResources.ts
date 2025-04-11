@@ -1,19 +1,10 @@
 import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
+import {LoadingOver} from "@/ts/index/loading";
+import {getCookie,setCookie} from "@/ts/global/cookie";
 
-var resourceMode;
+let resourceMode:string|null;
 
 export function GetResourceMode() {
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
     if (resourceMode == null) {
         const cDat = getCookie("resourceMode");
         if (cDat != null)
@@ -24,28 +15,19 @@ export function GetResourceMode() {
     return resourceMode;
 }
 
-export function SetResourceMode(value, dtSetCookie = false) {
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    if (!dtSetCookie) setCookie("resourceMode", value, 7);
+export function SetResourceMode(value:string|null, dtSetCookie = false) {
+    if (!dtSetCookie) setCookie("resourceMode", value!, 7);
     resourceMode = value;
 }
 
-export function userSelectResourceMode(value) {
+export function userSelectResourceMode(value:string) {
     SetResourceMode(value);
+    // noinspection JSIgnoredPromiseFromCall
     loadMediaResources(value);
 }
 
 
-export async function loadMediaResources(resMode) {
+export async function loadMediaResources(resMode:string) {
     //视频资源加载
     {
         const targetBoxs =document.querySelectorAll(".video-page_video-box");
@@ -76,7 +58,7 @@ export async function loadMediaResources(resMode) {
     }
     //md文件加载
     {
-        function loadTextFile(path) {
+        function loadTextFile(path:string) {
             return new Promise((resolve, reject) => {
                 fetch(path)
                     .then((response) => response.text())
@@ -96,14 +78,14 @@ export async function loadMediaResources(resMode) {
             ["assets/md/index/joinUsText2.md", "joinUsText2"],
         ];
         for (let i = 0; i < mdRes.length; i++) {
-            document.getElementById(mdRes[i][1]).innerHTML =
+            document.getElementById(mdRes[i][1])!.innerHTML =
                 marked.parse(await loadTextFile(mdRes[i][0]));
         }
     }
     //图片资源加载
     {
         //加载图像资源函数
-        function loadImage(url,overCall=(su)=>{}) {
+        function loadImage(url:string,overCall=(su:boolean)=>{if (su){/*空语句，用于占位和解决编译器警告*/}}) {
             return new Promise((resolve, reject) => {
                 const img = new Image();
                 img.onload = () => {
@@ -163,12 +145,12 @@ export async function loadMediaResources(resMode) {
                                 name = "--home-wrapper_img-url_dark";
                                 break;
                         }
-                        document.documentElement.style.setProperty(name, `url(${imgUrls[i]})`);
+                        document.documentElement.style.setProperty(name!, `url(${imgUrls[i]})`);
                     }
                     else{
                         switch (i){
                             case 2:
-                                document.getElementById('main-background_img').src=imgUrls[i];
+                                (document.getElementById('main-background_img')! as HTMLImageElement).src=imgUrls[i];
                                 break;
                         }
                     }
@@ -177,15 +159,15 @@ export async function loadMediaResources(resMode) {
             }
         }
         {
-            async function deployImg(imgUrls,allImgBoxs,allLoadingBoxs){
+            async function deployImg(imgUrls:string[],allImgBoxs:HTMLImageElement[],allLoadingBoxs:HTMLElement[]){
                 for (let i = 0; i < imgUrls.length; i++) {
-                    allLoadingBoxs[i].setAttribute("data-show", true);//触发加载动画
+                    allLoadingBoxs[i].setAttribute("data-show", 'true');//触发加载动画
                 }
                 for (let i = 0; i < imgUrls.length; i++) {
                     try {
                         await loadImage(imgUrls[i],
-                            (su) => {
-                                allLoadingBoxs[i].setAttribute("data-show", false);
+                            () => {
+                                allLoadingBoxs[i].setAttribute("data-show", 'false');
                             });
                     } catch {
                     }
@@ -195,7 +177,7 @@ export async function loadMediaResources(resMode) {
                 }
             }
             {
-                let imgUrls;
+                let imgUrls:string[];
                 switch (resMode) {
                     case "source":
                         // noinspection HttpUrlsUsage
@@ -283,10 +265,41 @@ export async function loadMediaResources(resMode) {
                         ];
                         break;
                 }
+                {
+                    // noinspection RequiredAttributes,JSUnresolvedReference
+                    const imgHtml="<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片' onclick='photoBoxGroup1_click(this)' />\n";
+                    let num=1;
+                    {
+                        const pbIdHeader = "photo_sub1_photoBox";
+                        while (true) {
+                            const photoBox=document.getElementById(`${pbIdHeader}${num.toString()}`);
+                            if (photoBox!=null) {
+                                photoBox.innerHTML=
+                                    "<div class=\"photoBoxGroup-1 loadingBox pbg_haveTitle\" data-show=true>\n" +
+                                    imgHtml +
+                                    "</div>\n"
+                                    + photoBox.innerHTML;
+                            }
+                            else break;
+                            num++;
+                        }
+                    }
+                    {
+                        const photoBox:HTMLElement = document.getElementById("photo_sub2")!;
+                        for (let i = 0; i < imgUrls.length-(num-1); i++) {
+                            photoBox.innerHTML +=
+                                "<div class=\"card photo_sub2_pbgCard\">\n" +
+                                "<div class=\"photoBoxGroup-1 loadingBox\" data-show=true>\n" +
+                                imgHtml +
+                                "</div>\n" +
+                                "</div>";
+                        }
+                    }
+                }
                 await deployImg(
                     imgUrls,
-                    document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)"),
-                    document.querySelectorAll(".loadingBox.photoBoxGroup-1")
+                    Array.from(document.querySelectorAll(".photoBoxGroup-1:not(.loadingBox)")) as HTMLImageElement[],
+                    Array.from(document.querySelectorAll(".loadingBox.photoBoxGroup-1")) as HTMLElement[]
                 );
 
                 pistonPushPhotoAnim_Init();//在photoBoxGroup-1的内容加载完毕时初始化活塞推动照片动画
@@ -313,8 +326,8 @@ export async function loadMediaResources(resMode) {
                 }
                 await deployImg(
                     imgUrls,
-                    document.querySelectorAll(".photoBoxGroup-2:not(.loadingBox)"),
-                    document.querySelectorAll(".loadingBox.photoBoxGroup-2")
+                    Array.from(document.querySelectorAll(".photoBoxGroup-2:not(.loadingBox)")) as HTMLImageElement[],
+                    Array.from(document.querySelectorAll(".loadingBox.photoBoxGroup-2")) as HTMLElement[]
                 );
             }
         }

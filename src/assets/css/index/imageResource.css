@@ -5,7 +5,8 @@
 */
 }
 .photoBoxGroup-1.loadingBox{
-
+    cursor: pointer;
+    z-index: 1;
     &.pbg_haveTitle {
         /*带有标题的板块的样式*/
         margin: 3%;

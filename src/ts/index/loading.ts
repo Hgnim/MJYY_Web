@@ -1,4 +1,5 @@
 import {home_a_run} from "@/js/index/view_action";
+import {sleep} from "@/ts/global/sleep";
 
 let isLoadingOver = false;
 let loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕
@@ -7,37 +8,28 @@ export function LoadingOver(addValue=1) {
         loadingOverValue = Number(loadingOverValue) + Number(addValue);
         if (loadingOverValue >= 2) {//当阶段达到2后则加载完毕
             isLoadingOver = true;
-            $("#preloader").on(500).fadeOut();
-            $(".preloader").on(600).fadeOut("slow");
+            $("#preloader").fadeOut();
+            $(".preloader").fadeOut("slow");
             home_a_run();
             // noinspection JSIgnoredPromiseFromCall
             waitToRemoveLoadingPage();
         }
     }
 }
-export async function waitToRemoveLoadingPage(){
+async function waitToRemoveLoadingPage(){
     await sleep(3000);//为了优化网页，在结束加载页面后的一段时间后卸载元素
-    document.getElementById("preloader").remove();
+    document.getElementById("preloader")!.remove();
     document.getElementsByClassName('pace')[0].remove();
 }
 
 //加载时间过长的话则显示跳过加载的按钮
-export async function WaitTimeOut(){
-    await sleep(5000);
+async function WaitTimeOut(){
+    //await sleep(5000);
+    //开发分支中无需等待，直接弹出跳过加载按钮
     if(!isLoadingOver){
         $("#main-ld-skipbt").fadeIn();
     }
 }
-
-
-
-export function sleep(interval) {
-    return new Promise(resolve => {
-        setTimeout(resolve, interval);
-    })
-}
-
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -45,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     WaitTimeOut();
 
     const animationCssPath='assets/css/animation/';
-    const animationCssInfo=[
+    const animationCssInfo:any[][]=[
         ['spinning-coin.css','spinning-coin_animation',0],
         ['cube.css','cube_animation',6],
         ['bar-spin.css','bar-spin_animation',0],
@@ -76,5 +68,5 @@ document.addEventListener('DOMContentLoaded', function () {
         newDiv.appendChild(document.createElement('div'));
 
     document.head.appendChild(newLink);
-    document.getElementById("main-ld-loader").appendChild(newDiv);
+    document.getElementById("main-ld-loader")!.appendChild(newDiv);
 });
