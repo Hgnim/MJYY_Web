@@ -1,5 +1,5 @@
 import {home_a_run} from "@/js/index/view_action";
-import {sleep} from "@/ts/other/sleep";
+import {sleep} from "@/ts/global/sleep";
 
 let isLoadingOver = false;
 let loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕

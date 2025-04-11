@@ -1,5 +1,7 @@
 import '@/assets/scss/bootstrap/custom.scss';
 
+import '@/ts/global/cookie';
+
 import '@/assets/css/index/loading.css';
 import '@/ts/index/loading';
 

@@ -1,4 +1,4 @@
-import {sleep} from "@/ts/other/sleep";
+import {sleep} from "@/ts/global/sleep";
 
 const bvfi:HTMLElement=document.getElementById("bigViewForImage")!;
 const bvfiib:HTMLImageElement=document.getElementById("bigViewForImage_imgBox")! as HTMLImageElement;

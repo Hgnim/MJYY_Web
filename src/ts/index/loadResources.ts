@@ -1,21 +1,10 @@
 import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
-import {sleep} from "@/ts/other/sleep";
 import {LoadingOver} from "@/ts/index/loading";
+import {getCookie,setCookie} from "@/ts/global/cookie";
 
-var resourceMode:string|null;
+let resourceMode:string|null;
 
 export function GetResourceMode() {
-    function getCookie(name:string) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
     if (resourceMode == null) {
         const cDat = getCookie("resourceMode");
         if (cDat != null)
@@ -27,16 +16,6 @@ export function GetResourceMode() {
 }
 
 export function SetResourceMode(value:string|null, dtSetCookie = false) {
-    function setCookie(name:string, value:string, days:number) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
     if (!dtSetCookie) setCookie("resourceMode", value!, 7);
     resourceMode = value;
 }
@@ -106,7 +85,7 @@ export async function loadMediaResources(resMode:string) {
     //图片资源加载
     {
         //加载图像资源函数
-        function loadImage(url:string,overCall=(su:any)=>{}) {
+        function loadImage(url:string,overCall=(su:boolean)=>{if (su){/*空语句，用于占位和解决编译器警告*/}}) {
             return new Promise((resolve, reject) => {
                 const img = new Image();
                 img.onload = () => {
@@ -187,7 +166,7 @@ export async function loadMediaResources(resMode:string) {
                 for (let i = 0; i < imgUrls.length; i++) {
                     try {
                         await loadImage(imgUrls[i],
-                            (su) => {
+                            () => {
                                 allLoadingBoxs[i].setAttribute("data-show", 'false');
                             });
                     } catch {
