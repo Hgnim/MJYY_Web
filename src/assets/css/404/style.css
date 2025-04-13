@@ -1,0 +1,23 @@
+body{
+    background-color: #2e2e2e;
+}
+h1{
+    color: #dddddd;
+}
+
+.logoAndTextBox{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.logoAndTextBox_head{
+    display: flex;
+    justify-content: center;
+}
+.logoAndTextBox_head img{
+    object-fit: none;
+}
+.logoAndTextBox_body1{
+    text-align: center
+}
