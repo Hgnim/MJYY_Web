@@ -23,11 +23,11 @@ export function SetResourceMode(value:string|null, dtSetCookie = false) {
 export function userSelectResourceMode(value:string) {
     SetResourceMode(value);
     // noinspection JSIgnoredPromiseFromCall
-    loadMediaResources(value);
+    loadMediaResources(value,false);
 }
 
 
-export async function loadMediaResources(resMode:string) {
+export async function loadMediaResources(resMode:string,isInit:boolean=true) {
     //视频资源加载
     {
         const targetBoxs =document.querySelectorAll(".video-page_video-box");
@@ -265,7 +265,7 @@ export async function loadMediaResources(resMode:string) {
                         ];
                         break;
                 }
-                {
+                if (isInit) {//是否是初始化的资源加载，如果是则进行元素创建
                     // noinspection RequiredAttributes,JSUnresolvedReference
                     const imgHtml="<img class=\"card-img-top rounded photoBoxGroup-1\" alt='图片' onclick='photoBoxGroup1_click(this)' />\n";
                     let num=1;

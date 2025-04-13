@@ -116,6 +116,12 @@
   color: var(--color8);
   font-family: 'unifont',system-ui;
 }
+.obb_custom_introduce h3{
+  @include obb_custom_introduce_color;
+}
+.obb_custom_introduce h4{
+  @include obb_custom_introduce_color;
+}
 .obb_custom_introduce h5{
   @include obb_custom_introduce_color;
 }
@@ -324,6 +330,7 @@
 #join_us_header_logo{
   @include transition_1;
   opacity: 0;
+  top: 100%;
 }
 #join_us_header_logo img{
   position: absolute;
@@ -332,15 +339,21 @@
 #join_us_header_text{
   @include transition_1;
   opacity: 0;
+  bottom: 100%;
 }
 #join_us_header_text h1{
   position: relative;
+  width: 150%;
   top: 20%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #join_us_header_text h4{
   position: relative;
   left: 40%;
   top: 10%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #joinUsText{
   @include transition_1;
