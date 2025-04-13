@@ -341,12 +341,17 @@
 }
 #join_us_header_text h1{
   position: relative;
+  width: 150%;
   top: 20%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #join_us_header_text h4{
   position: relative;
   left: 40%;
   top: 10%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #joinUsText{
   @include transition_1;
