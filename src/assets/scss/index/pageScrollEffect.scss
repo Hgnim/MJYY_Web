@@ -7,6 +7,8 @@
   background-repeat: no-repeat;
   height: 120px ;
   width: 240px;
+  font-family: 'unifont',system-ui;
+
   &.os2_custom_p{
     background-size: 100% auto;
     margin: 0;
@@ -17,6 +19,9 @@
     transform: translateX(-50%);
   }
 }
+.oak-sign2 code{
+  font-family: 'unifont',system-ui;
+}
 
 .oak-hanging-sign{
   background-image: url('https://s21.ax1x.com/2025/03/20/pEwrHQU.png');
@@ -26,6 +31,7 @@
   height: 160px;
   width: 150px;
   overflow: hidden;
+  font-family: 'unifont',system-ui;
 }
 .oak-hanging-sign h2{
   user-select: none;
@@ -43,6 +49,8 @@
   height: 260px;
   width: 240px;
   overflow: hidden;
+  font-family: 'unifont',system-ui;
+
   &.os_custom_rule{
     height: 130px;
     width: 120px;
