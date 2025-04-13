@@ -384,9 +384,9 @@ $(function (){
                                                     let v=(progressValue-0.2/0.2);
                                                     if (v>1)v = 1;
                                                     obj[0]!.style.opacity=v.toString();
-                                                    obj[0]!.style.top = `${(1-v)*obj[0]!.offsetTop}px`;
+                                                    obj[0]!.style.top = `${(1-v)*obj[0]!.clientHeight}px`;
                                                     obj[1]!.style.opacity=v.toString();
-                                                    obj[1]!.style.bottom = `${(1-v)*obj[0]!.offsetTop}px`;
+                                                    obj[1]!.style.bottom = `${(1-v)*obj[0]!.clientHeight}px`;
                                                 }
                                                 else if (progressValue<=0.55){
                                                     obj[0]!.style.opacity='1';

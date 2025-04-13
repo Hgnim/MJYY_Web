@@ -330,6 +330,7 @@
 #join_us_header_logo{
   @include transition_1;
   opacity: 0;
+  top: 100%;
 }
 #join_us_header_logo img{
   position: absolute;
@@ -338,6 +339,7 @@
 #join_us_header_text{
   @include transition_1;
   opacity: 0;
+  bottom: 100%;
 }
 #join_us_header_text h1{
   position: relative;
