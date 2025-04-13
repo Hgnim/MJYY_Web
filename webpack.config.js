@@ -12,6 +12,7 @@ module.exports = {
     entry: {
         'index': './src/init/index.ts',
         'communityPhotoWall':'./src/init/communityPhotoWall.ts',
+        '404':'./src/init/404.ts',
     },
     output: {
         path: path.resolve(__dirname, 'dist'), // 输出路径
@@ -102,6 +103,13 @@ module.exports = {
             inject: 'head',
             chunks: ['communityPhotoWall'],
         }),
+        new HtmlWebpackPlugin({
+            template: './src/404.html',
+            filename: '404.html',
+            inject: 'head',
+            chunks: ['404'],
+        }),
+
         new MiniCssExtractPlugin(
             {
                 filename: 'assets/css/[name].[contenthash].css',
