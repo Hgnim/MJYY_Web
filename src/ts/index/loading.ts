@@ -1,5 +1,6 @@
 import {home_a_run} from "@/js/index/view_action";
 import {sleep} from "@/ts/global/sleep";
+import {lockScroll,unlockScroll} from "@/ts/global/scrollLock";
 
 let isLoadingOver = false;
 let loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕
@@ -13,6 +14,8 @@ export function LoadingOver(addValue=1) {
             home_a_run();
             // noinspection JSIgnoredPromiseFromCall
             waitToRemoveLoadingPage();
+
+            unlockScroll();
         }
     }
 }
@@ -33,6 +36,7 @@ async function WaitTimeOut(){
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    lockScroll();
     // noinspection JSIgnoredPromiseFromCall
     WaitTimeOut();
 

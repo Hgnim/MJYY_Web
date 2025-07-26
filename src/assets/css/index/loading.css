@@ -5,10 +5,10 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: #333333;
+    background: rgba(0, 0, 0, 0.41);
     z-index: 1999;
     position: fixed;
-    display: block
+    display: block;
 }
 .main-ld-txt {
     width: 300px;
@@ -31,14 +31,15 @@
     border: 1px solid #696969;
     transition: transform .5s;
 
-    width: 150px;
+    width: 130px;
     height: 40px;
     overflow: hidden;
     position: absolute;
     text-align: center;
     top: calc(50% - 20px + 95px);
-    left: calc(50% - 75px);
-    font-family: 楷体;
+    left: calc(50% - 65px);
+    font-family: 黑体;
+    font-weight:bold;
     opacity: 0.80;
     font-size: 20px;
     display: none;
