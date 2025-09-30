@@ -7,6 +7,10 @@
     function e(n) {
         return document.getElementsByTagName(n)
     }
+
+    function getElement(id){
+        return document.getElementById(id);
+    }
  
     function t() {
         var t = e("script"), o = t.length, i = t[o - 1];
@@ -29,7 +33,7 @@
         x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (n) {
             window.setTimeout(n, 1e3 / 45)
         }, w = Math.random, y = {x: null, y: null, max: 75000};
-    m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, e("body")[0].appendChild(m), o(), window.onmousemove = function (n) {
+    m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, getElement("moreLineEffect").appendChild(m), o(), window.onmousemove = function (n) {
         n = n || window.event, y.x = n.clientX, y.y = n.clientY
     }, window.onmouseout = function () {
         y.x = null, y.y = null
