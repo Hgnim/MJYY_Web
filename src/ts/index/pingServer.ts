@@ -1,3 +1,5 @@
+import {sleep} from "@/ts/global/sleep";
+
 document.addEventListener('DOMContentLoaded', function () {
     pingServer_Start();
 });
@@ -43,19 +45,19 @@ export function pingServer_Start() {
                     psl.style.background = pss_l;
                     pst.style.color = pss_l;
                     psl.style.animation = "pingServerLoader_loop 1s infinite forwards";
-                    pst.innerText = "正在检测服务器在线状态......";
+                    pst.innerText = "正在检测MC服务器连接状态......";
                     break;
                 case 1:
                     pss = PssEnum.hf;
                     psl.style.background = pss_hf;
                     pst.style.color = pss_hf;
-                    pst.innerText = "尝试用备用方案检测在线状态......";
+                    pst.innerText = "尝试用备用方案检测服务器连接状态......";
                     break;
                 case 2:
                     pss = PssEnum.hs;
                     psl.style.background = pss_hs;
                     pst.style.color = pss_hs;
-                    pst.innerText = "与MC服务器的连接正常";
+                    pst.innerText = "与服务器的连接正常";
                     break;
                 case 3:
                     pss = PssEnum.s;
@@ -72,16 +74,16 @@ export function pingServer_Start() {
                     pst.style.color = pss_f;
                     switch (id) {
                         case 4:
-                            pst.innerText = "Minecraft服务器已离线";
+                            pst.innerText = "无法连接Minecraft服务器";
                             break;
                         case 5:
                             pst.innerText = "Minecraft服务器请求超时";
                             break;
                         case 6:
-                            pst.innerText = "在线状态检查失败，请稍后尝试";
+                            pst.innerText = "连接状态检查失败，请稍后尝试";
                             break;
                         case 7:
-                            pst.innerText = "当前网络无法连接至MC服务器";
+                            pst.innerText = "无法连接至服务器";
                             break;
                     }
                     break;
@@ -92,7 +94,29 @@ export function pingServer_Start() {
         $("#pingServerRootView").fadeIn();
 
 
-        function Action(response = null) {
+        async function Action(response = null) {
+            try{
+            async function backupPlan(){
+                ChangePss(1);
+                {
+                    let lock:boolean=false;
+                    //备用方案
+                    //@ts-ignore:2339
+                    new Ping({ favicon: "/ping.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/tool", function (err) {
+                        if (err) {
+                            //如果备用检测未成功，则输出失败信息
+                            ChangePss(7);
+                        }
+                        else {
+                            ChangePss(2);
+                        }
+                        lock=true;
+                    });
+                    while (!lock){
+                        await sleep(10);
+                    }
+                }
+            }
             if (response != null) {
                 //@ts-ignore:2339
                 if (response.online === true) {
@@ -113,35 +137,25 @@ export function pingServer_Start() {
                     document.getElementById("pingServerInfo_text_motd")!.innerHTML = response.motd.html.replace(/<span>[^>]*\n[^<]*<\/span>/, "<br>");
                     //document.getElementById("pingServerInfo_text_motd2").innerText = response.motd2;
                     document.getElementById("pingServerInfo")!.style.display = "flex";
-                    StopPslLoop();
                 } else {
                     ChangePss(4);
-                    StopPslLoop();
+                    await sleep(1500);
+                    await backupPlan();
                 }
-                pingServerRunLock = false;
             } else {
                 //使用备用方案
-                ChangePss(1);
-                {
-                    //备用方案
-                    //@ts-ignore:2339
-                    new Ping({ favicon: "/usePing.png", logError: false, timeout: 30000 }).ping("https://web.mjyy.top/minecraft/playerachievement/", function (err) {
-                        if (err) {
-                            //如果备用检测未成功，则输出失败信息
-                            ChangePss(7);
-                            StopPslLoop();
-                        }
-                        else {
-                            ChangePss(2);
-                            StopPslLoop();
-                        }
-                        pingServerRunLock = false;
-                    });
-                }
+                await backupPlan();
+            }
+            }catch {
+                ChangePss(6);
+            }
+            finally {
+                StopPslLoop();
+                pingServerRunLock = false;
             }
         }
 
-        require('node-mcstatus').statusJava('mc.mjyy.top', '30303',{query:false,timeout:20.0})
+        require('node-mcstatus').statusJava('mc.mjyy.top', '25565',{query:false,timeout:20.0})
             .then((result:any) => {
                 // `result` will be the same shape and
                 // properties as what is documented on
