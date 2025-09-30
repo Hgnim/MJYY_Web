@@ -19,3 +19,5 @@ import {ruleText_Button_Click} from '@/ts/index/pageScrollEffect';
 (window as any).ruleText_Button_Click = ruleText_Button_Click;//将该函数暴露至全局
 
 import '@/assets/scss/index/bigViewForImage.scss';
+
+import '@/assets/scss/index/style.scss';
