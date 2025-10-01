@@ -2,6 +2,8 @@ import {pingServer_Start} from "@/ts/index/pingServer";
 import {imageClick,bvfiClick} from "@/ts/index/bigViewForImage";
 import {loadMediaResources,userSelectResourceMode,SetResourceMode,GetResourceMode} from "@/ts/index/loadResources";
 import {LoadingOver} from '@/ts/index/loading';
+import {SetScrollEffect,GetScrollEffectFromCookieAndSet} from "@/ts/index/pageScrollEffect";
+
 
 export async function CheckSystemTheme() {
   let html = document.querySelector("html");
@@ -35,6 +37,8 @@ $(function () {
     loadMediaResources(resMode).then(() => {});
     document.getElementById("resourceModeBox_select").value = resMode;
   }
+
+  GetScrollEffectFromCookieAndSet();
 });
 
 export function BodyOnLoad() {
@@ -43,6 +47,10 @@ export function BodyOnLoad() {
 
 export function pingServerView_Click(){
   pingServer_Start();
+}
+
+export function effectCheckBox_Change(checked){
+  SetScrollEffect(checked);
 }
 
 //#region loading

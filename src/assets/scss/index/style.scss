@@ -15,3 +15,11 @@
     position: fixed;
   }
 }
+
+#effectCheckBoxDiv{
+  position: relative;
+  z-index: 3;
+  left: 0;
+  margin-left: 6px;
+  margin-top: 4px;
+}
