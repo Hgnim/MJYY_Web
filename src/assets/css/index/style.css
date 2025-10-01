@@ -154,6 +154,12 @@ button{
     color: var(--color8);
     background-color: var(--color9);
 }
+span{
+    color: var(--color8);
+}
+label{
+    color: var(--color8);
+}
 /*#endregion*/
 
 /*#region scroll to top button */

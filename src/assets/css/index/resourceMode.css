@@ -1,11 +1,13 @@
 #resourceModeBox{
     z-index: 3;
-    position: absolute;
+    position: relative;
     margin-top: 4px;
     margin-left: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 0;
+    width: min-content;
 }
 #resourceModeBox_select{
     background-color: transparent;

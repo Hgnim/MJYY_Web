@@ -1,8 +1,11 @@
 import {sleep} from "@/ts/global/sleep";
+import {getCookie,setCookie} from "@/ts/global/cookie";
+import {isMobile} from "@/ts/global/deviceDetect";
+import {effectCheckBox_Change} from "@/js/index/script";
+import {setMoreLineEffect} from "@/js/index/MoreLineEffect";
+import {setImgFalling} from "@/js/index/imgFalling";
 
-$(function (){
-    {
-        const allSectionIds = [
+const allSectionIds = [
             "video_page",
             "photo",
             "introduce",
@@ -18,6 +21,13 @@ $(function (){
                     obj[0]!.style.opacity = '0';
                     obj[1]!.style.left = `${-$(window).width()}px`;
                     obj[2]!.style.right = `${-$(window).width()}px`;
+                },
+                finishFunc:function (obj:(HTMLElement|null)[]){
+                    //将其中的对象属性更改至完成状态
+                    //为禁用视觉效果选项服务
+                    obj[0]!.style.opacity = '1';
+                    obj[1]!.style.left = `0px`;
+                    obj[2]!.style.right = `0px`;
                 },
             },
             "photo": {
@@ -56,6 +66,40 @@ $(function (){
                         if(allDo && !(subId<2))break;
                     }
                 },
+                finishFunc:function (obj:(HTMLElement|null)[]|null,subId:number=0){
+                    const allDo=(subId == 0);
+                    while (allDo) {
+                        if (allDo) subId++;
+                        switch (subId) {
+                            case 1:
+                                if(allDo)
+                                    obj = getSubObj("photo_sub1");
+
+                                if (obj!=null) {
+                                    obj[0]!.style.left = `0px`;
+
+                                    obj[1]!.style.opacity = '1';
+                                    obj[1]!.style.top = `0px`;
+
+                                    obj[2]!.style.opacity = '1';
+                                    obj[2]!.style.top = `0px`;
+
+                                    obj[3]!.style.opacity = '1';
+                                    obj[3]!.style.top = `0px`;
+                                }
+                                break;
+                            case 2:
+                                if(allDo)
+                                    obj = getSubObj("photo_sub2");
+
+                                if (obj!=null) {
+                                    obj[0]!.style.opacity = '1';
+                                }
+                                break;
+                        }
+                        if(allDo && !(subId<2))break;
+                    }
+                },
             },
             "introduce": {
                 isChange: false,
@@ -64,13 +108,23 @@ $(function (){
                         o!.style.opacity = '0';
                     });
                 },
+                finishFunc:function (obj:(HTMLElement|null)[]){
+                    obj.forEach((o: HTMLElement | null) => {
+                        o!.style.opacity = '1';
+                    });
+                },
             },
             "rule": {
                 isChange: false,
                 restoreFunc: function (obj:(HTMLElement|null)[]){
+                    obj[0]!.style.left=`${-$(window).width()}px`;
+                    obj[1]!.style.right=`${-$(window).width()}px`;
+                    obj[2]!.style.opacity='0';
+                },
+                finishFunc:function(obj:(HTMLElement|null)[]){
                     obj[0]!.style.left='0';
                     obj[1]!.style.right='0';
-                    obj[2]!.style.opacity='0';
+                    obj[2]!.style.opacity='1';
                 },
             },
             "join_us": {
@@ -83,6 +137,15 @@ $(function (){
                     obj[2]!.style.opacity='0';
                     obj[3]!.style.opacity='0';
                     obj[4]!.style.opacity='0';
+                },
+                finishFunc:function(obj:(HTMLElement|null)[]){
+                    obj[0]!.style.opacity='1';
+                    obj[0]!.style.top=`0px`;
+                    obj[1]!.style.opacity='1';
+                    obj[1]!.style.bottom=`0px`;
+                    obj[2]!.style.opacity='1';
+                    obj[3]!.style.opacity='1';
+                    obj[4]!.style.opacity='1';
                 },
             },
         };
@@ -139,7 +202,7 @@ $(function (){
             return obj;
         }
         let lastScrollTime = 0;
-        $(window).scroll(function () {
+        function scrollEffect() {
             const nowScrollTime = Date.now();
             if (nowScrollTime - lastScrollTime > 24) {//减缓触发频率，避免可能的运动抖动和高频计算，单位ms
                 lastScrollTime=nowScrollTime;
@@ -322,7 +385,7 @@ $(function (){
                                                         else{
                                                             sectionSub.style.opacity='1';
                                                         }
-                                                        
+
                                                         if (!isStart_pistonPushPhotoAnim) {//启动动画
                                                             const offsetTopSub: number = sectionSub.offsetTop;
                                                             if (currentBottomScroll > offsetTopSub) {
@@ -453,9 +516,64 @@ $(function (){
                 }
             }
             return false;
-        });
+        }
+
+export function SetScrollEffect (enable: boolean=true) {
+    setCookie("effectCheckBox", enable ? "true":"false" , 7);
+    {
+        function enableEffect(){
+            $(window).on('scroll', scrollEffect);
+        }
+        function disableEffect(){
+            $(window).off('scroll', scrollEffect);
+            {
+                allSectionIds.forEach(sectionId => {
+                   const sections:(HTMLElement|null)[]|null = getSubObj(sectionId);
+                   if (sections!=null) {
+                       /*switch (sectionId) {
+                           case "video_page":
+                               sectionStats[sectionId].finishFunc(sections)
+                               break;
+                           case "photo":
+                               sectionStats[sectionId].finishFunc(sections)
+                               break;
+                       }*/
+                       sectionStats[sectionId as keyof typeof sectionStats]["finishFunc"](sections);
+                   }
+                });
+            }
+        }
+
+        if(enable)
+            enableEffect();
+        else
+            disableEffect();
+        setMoreLineEffect(enable);
+        setImgFalling(enable);
     }
-})
+}
+export function GetScrollEffect():boolean {
+    return (document.getElementById('effectCheckBox') as HTMLInputElement).checked;
+}
+export function GetScrollEffectFromCookieAndSet():boolean {
+    function getValueFunc():boolean|null {
+        const gc:string|null = getCookie("effectCheckBox");
+        if (gc!=null)
+            return (gc == "true");
+        else
+            return gc;
+    }
+    const getValue:boolean|null=getValueFunc();
+    let outputValue:boolean;
+    if(getValue!=null)
+        outputValue = getValue;
+    else
+        outputValue=!isMobile;
+
+    (document.getElementById('effectCheckBox') as HTMLInputElement).checked=outputValue;
+    effectCheckBox_Change(outputValue);
+    return outputValue;
+}
 //#region pistonPushPhotoAnim
 //表示动画是否已完成初始化
 let is_pistonPushPhotoAnim_Init:boolean=false;

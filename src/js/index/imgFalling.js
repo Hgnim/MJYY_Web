@@ -43,7 +43,7 @@ var stop, staticx;
 				}
 			}
  
-			TheimgList = function() {
+			let TheimgList = function() {
 				this.list = [];
 			}
 			TheimgList.prototype.push = function(theimg) {
@@ -122,8 +122,9 @@ var stop, staticx;
 				canvas_theimg_SizeChange()
 				cxt = canvas.getContext('2d');
 				var theimgList = new TheimgList();
+				let randomFnR;
 				for(var i = 0; i < 34; i++)//i值为粒子数量
-					{
+				{
 					var theimg, randomX, randomY, randomS, randomR, randomFnx, randomFny;
 					randomX = getRandom('x');
 					randomY = getRandom('y');
@@ -140,19 +141,12 @@ var stop, staticx;
 					theimg.draw(cxt);
 					theimgList.push(theimg);
 				}
-				stop = requestAnimationFrame(function() {
+				(function tick() {
 					cxt.clearRect(0, 0, canvas.width, canvas.height);
 					theimgList.update();
 					theimgList.draw(cxt);
-					stop = requestAnimationFrame(arguments.callee);
-				})
-			}
-
-			img.onload = function() {
-				startTheimg();
-				window.addEventListener('resize',function() {
-					canvas_theimg_SizeChange();
-				});
+					stop = requestAnimationFrame(tick);
+				}());
 			}
 			function canvas_theimg_SizeChange(){
 				var canvas = document.getElementById('canvas_theimg');
@@ -167,6 +161,17 @@ var stop, staticx;
 					window.cancelAnimationFrame(stop);
 					staticx = false;
 				} else {
-					startTheimg();
+					//startTheimg();
 				}
 			}
+
+export function setImgFalling(enable) {
+	if(enable) {
+		startTheimg();
+		$(window).on('resize',canvas_theimg_SizeChange);
+	}
+	else{
+		stopp();
+		$(window).off('resize',canvas_theimg_SizeChange);
+	}
+}
