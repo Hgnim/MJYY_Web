@@ -35,9 +35,13 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <div id="main-ld">
                 <div id="main-ld-loader"></div>
                 <h3 class="main-ld-txt">正在加载资源...</h3>
-                <button id="main-ld-skipbt" onclick="mainldskipbt_click(2)">后台加载</button>
+                <button id="main-ld-skipbt" onclick="mainldskipbt_click(2)">隐藏加载页</button>
+                <div class="main-ld-checkbox">
+                    <!-- From Uiverse.io by Dev-MdTuhin -->
+                    <input checked="" type="checkbox" id="main-ld-bgswap" class="tgl tgl-flip" onchange="mainldbgswap_change()">
+                    <label for="main-ld-bgswap" data-tg-on="前台加载" data-tg-off="后台加载" class="tgl-btn"></label>
+                </div>
             </div>
-
         </div>
 
         <section class="sticky-top sticky-wrapper unSelectable">
@@ -221,7 +225,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <img src="https://s21.ax1x.com/2025/03/21/pE0nQF1.png" id="photo_sub2_piston1-1">
             <img src="https://s21.ax1x.com/2025/03/21/pE0ZslF.png" id="photo_sub2_piston1-2">
 
-            <img src="https://s21.ax1x.com/2025/03/21/pE0nQF1.png" id="photo_sub2_piston2-1">
+            <img src="https://s21.ax1x.com/2025/03/21/pE0nQF1.png" id="photo_sub2_piston2-1" onclick="photo_sub2_target_click()" onmouseover="photo_sub2_target_mouseover()" onmouseout="photo_sub2_target_mouseout()">
             <div id="photo_sub2_piston2-2">
                 <img src="https://s21.ax1x.com/2025/03/21/pE0ZslF.png" id="photo_sub2_piston2-2-1">
                 <img src="https://s21.ax1x.com/2025/03/21/pE0ZBWT.png" id="photo_sub2_piston2-2-2">
