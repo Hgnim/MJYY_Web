@@ -212,6 +212,7 @@
 }
 
 #photo_sub2{
+  --pistonPushPhotoAnim_speed: 600ms;
   @include transition_1;
   position: relative;
   overflow: hidden;
@@ -219,7 +220,7 @@
   visibility: hidden;
 }
 @mixin transition_2{
-  transition: .6s;//该值在ts脚本中有同步该值的常量，在更改该值时需要在ts脚本中同步。
+  transition: var(--pistonPushPhotoAnim_speed);
 }
 @mixin photo_sub2_piston{
   @include transition_2;

@@ -595,6 +595,25 @@ export function pistonPushPhotoAnim_Init(){
     });
     is_pistonPushPhotoAnim_Init=true;
 }
+class PistonPushPhotoAnim_Speed{
+    private _def:number=600;
+    get def():number{
+        return this._def;
+    }
+
+    private _speed:number=this.def;
+    get speed():number{
+        return this._speed;
+    }
+    set speed(value:number){
+        if (value>=1) {
+            document.getElementById('photo_sub2')!.style.setProperty('--pistonPushPhotoAnim_speed', `${value}ms`);
+            this._speed = value;
+        }
+    }
+}
+//在css过渡的时候进行的等待时间，也可也看作速度
+const pistonPushPhotoAnim_speed=new PistonPushPhotoAnim_Speed();
 //表示当前是否已经启动动画播放
 let isStart_pistonPushPhotoAnim:boolean=false;
 //设置为true后将停止当前正在执行的动画
@@ -604,7 +623,6 @@ async function pistonPushPhotoAnim_Start(){
     if (is_pistonPushPhotoAnim_Init && !isStart_pistonPushPhotoAnim){
         isStart_pistonPushPhotoAnim=true;
 
-        const transitionSleep:number=600;//在css过渡的时候进行的等待时间，在css更改过渡时间时，该值也需要随之更改
         const allPhotoObjs:NodeListOf<HTMLElement>=document.querySelectorAll(".photo_sub2_pbgCard");
         const piston= {
             'parent':document.getElementById("photo_sub2")!,
@@ -638,22 +656,22 @@ async function pistonPushPhotoAnim_Start(){
                     piston["1-2"].style.left = `${lv2}px`;
                 }
             }
-            await sleep(transitionSleep);//等待过渡
+            await sleep(pistonPushPhotoAnim_speed.speed);//等待过渡
 
             allPhotoObjs[pobjIndex].style.transition = '';//重新启用过渡（要等待后才能启用过渡，否则“取消过渡”就没效果了）
             piston["1-1"].style.left = '0';
             piston["1-2"].style.left = '0';
             allPhotoObjs[pobjIndex].style.left = `${piston["2-2-1"].offsetWidth}px`;
-            await sleep(transitionSleep);
+            await sleep(pistonPushPhotoAnim_speed.speed);
 
             piston["1-2"].style.left = `${piston["tmp1"].offsetHeight}px`;
             allPhotoObjs[pobjIndex].style.left = `${piston["tmp1"].offsetHeight+piston["2-2-1"].offsetWidth}px`;
-            await sleep(transitionSleep);
+            await sleep(pistonPushPhotoAnim_speed.speed);
 
             piston["1-2"].style.left = '0';
             allPhotoObjs[pobjIndex].style.bottom='0';
             //allPhotoObjs[pobjIndex].style.left=`${piston["2-2-1"].offsetWidth*2}px`;//已将底部活塞向左偏移了一些，所以图片下落时无需偏移
-            await sleep(transitionSleep);
+            await sleep(pistonPushPhotoAnim_speed.speed);
 
             piston["1-1"].style.left = `${-piston["2-2-1"].offsetWidth}px`;
             piston["1-2"].style.left = `${-piston["2-2-1"].offsetWidth}px`;
@@ -669,13 +687,19 @@ async function pistonPushPhotoAnim_Start(){
                         pi2=allPhotoObjs.length-1;
                 }
             }
-            await sleep(transitionSleep);
+            await sleep(pistonPushPhotoAnim_speed.speed);
 
             pobjIndex=indexAdd(pobjIndex,allPhotoObjs.length);
         }
         stop_pistonPushPhotoAnim=false;
         isStart_pistonPushPhotoAnim=false;
     }
+}
+export function pistonPushPhotoAnim_SpeedSet(num:number, isSet:boolean=false){
+    if (isSet)
+        pistonPushPhotoAnim_speed.speed=num;
+    else
+        pistonPushPhotoAnim_speed.speed+=num;
 }
 //#endregion
 

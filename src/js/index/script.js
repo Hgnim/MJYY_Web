@@ -2,7 +2,13 @@ import {pingServer_Start} from "@/ts/index/pingServer";
 import {imageClick,bvfiClick} from "@/ts/index/bigViewForImage";
 import {loadMediaResources,userSelectResourceMode,SetResourceMode,GetResourceMode} from "@/ts/index/loadResources";
 import {bgSwap_Change, LoadingOver} from '@/ts/index/loading';
-import {SetScrollEffect,GetScrollEffectFromCookieAndSet} from "@/ts/index/pageScrollEffect";
+import {
+  SetScrollEffect,
+  GetScrollEffectFromCookieAndSet,
+  pistonPushPhotoAnim_SpeedSet
+} from "@/ts/index/pageScrollEffect";
+import {isMobile} from "@/ts/global/deviceDetect";
+import {sleep} from "@/ts/global/sleep";
 
 
 export async function CheckSystemTheme() {
@@ -74,5 +80,30 @@ export function bigViewForImage_click(){
 }
 export function photoBoxGroup1_click(e) {
   imageClick(e).then(() => {});
+}
+//#endregion
+
+//#region photo_sub2
+export function photo_sub2_target_click(){
+  if (isMobile)
+    pistonPushPhotoAnim_SpeedSet(-20);
+}
+let photo_sub2_target_mouse =false;
+export function photo_sub2_target_mouseover(){
+  if (!isMobile && !photo_sub2_target_mouse){
+    async function run(){
+      photo_sub2_target_mouse=true;
+      while (photo_sub2_target_mouse){
+        pistonPushPhotoAnim_SpeedSet(-5);
+        await sleep(50);
+      }
+    }
+    run();
+  }
+}
+export function photo_sub2_target_mouseout(){
+  if (!isMobile){
+    photo_sub2_target_mouse =false;
+  }
 }
 //#endregion
