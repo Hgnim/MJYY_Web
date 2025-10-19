@@ -1,6 +1,7 @@
 import {home_a_run} from "@/js/index/view_action";
 import {sleep} from "@/ts/global/sleep";
 import {lockScroll,unlockScroll} from "@/ts/global/scrollLock";
+import {getCookie, setCookie} from "@/ts/global/cookie";
 
 let isLoadingOver = false;
 let loadingOverValue = 0;//加载结束数值，当加载阶段达到一定值后才算加载完毕
@@ -9,8 +10,8 @@ export function LoadingOver(addValue=1) {
         loadingOverValue = Number(loadingOverValue) + Number(addValue);
         if (loadingOverValue >= 2) {//当阶段达到2后则加载完毕
             isLoadingOver = true;
-            $("#preloader").fadeOut();
-            $(".preloader").fadeOut("slow");
+            bgSwap_Change_clear();
+            $("#preloader").fadeOut("slow");
             home_a_run();
             // noinspection JSIgnoredPromiseFromCall
             waitToRemoveLoadingPage();
@@ -39,6 +40,31 @@ document.addEventListener('DOMContentLoaded', function () {
     lockScroll();
     // noinspection JSIgnoredPromiseFromCall
     WaitTimeOut();
+
+    {//bgswap 初始化
+        const bgswap:HTMLInputElement|null = document.getElementById('main-ld-bgswap') as HTMLInputElement;
+        if (bgswap) {
+            const cok:string|null=getCookie("bgswapChecked");
+            if (cok){
+                switch (cok){
+                    case '1':
+                        // noinspection PointlessBooleanExpressionJS
+                        if (bgswap.checked==false){
+                            bgswap.checked=true;
+                            bgSwap_Change();
+                        }
+                        break;
+                    case '0':
+                        // noinspection PointlessBooleanExpressionJS
+                        if (bgswap.checked==true){
+                            bgswap.checked=false;
+                            bgSwap_Change();
+                        }
+                        break;
+                }
+            }
+        }
+    }
 
     const animationCssPath='assets/css/animation/';
     const animationCssInfo:any[][]=[
@@ -74,3 +100,39 @@ document.addEventListener('DOMContentLoaded', function () {
     document.head.appendChild(newLink);
     document.getElementById("main-ld-loader")!.appendChild(newDiv);
 });
+
+export function bgSwap_Change(){
+    const preloader:HTMLElement|null =document.getElementById('preloader');
+    const bgswap:HTMLInputElement|null = document.getElementById('main-ld-bgswap') as HTMLInputElement;
+    if(preloader && bgswap) {
+        preloader.style.transition= 'opacity 1.2s';
+        function _setCookie(value:string){
+            setCookie("bgswapChecked", value, 7);
+        }
+        switch (bgswap.checked) {
+            case false:
+                preloader.style.opacity='0.15';
+                setTimeout(() => {
+                    if (!bgswap.checked) {//等待后再次确认
+                        preloader.style.pointerEvents = 'none';
+                        unlockScroll();
+                    }
+                }, 1200);
+                _setCookie('0');
+                break;
+            case true:
+                preloader.style.opacity='unset';
+                preloader.style.pointerEvents = 'unset';
+                lockScroll();
+                _setCookie('1');
+                break;
+        }
+    }
+}
+function bgSwap_Change_clear(){
+    //清除样式，否则无法显示淡出效果
+    const preloader:HTMLElement|null =document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.transition= 'unset';
+    }
+}

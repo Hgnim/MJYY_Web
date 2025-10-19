@@ -1,7 +1,7 @@
 import {pingServer_Start} from "@/ts/index/pingServer";
 import {imageClick,bvfiClick} from "@/ts/index/bigViewForImage";
 import {loadMediaResources,userSelectResourceMode,SetResourceMode,GetResourceMode} from "@/ts/index/loadResources";
-import {LoadingOver} from '@/ts/index/loading';
+import {bgSwap_Change, LoadingOver} from '@/ts/index/loading';
 import {SetScrollEffect,GetScrollEffectFromCookieAndSet} from "@/ts/index/pageScrollEffect";
 
 
@@ -56,6 +56,9 @@ export function effectCheckBox_Change(checked){
 //#region loading
 export function mainldskipbt_click(num){
   LoadingOver(num);
+}
+export function mainldbgswap_change(){
+  bgSwap_Change();
 }
 //#endregion
 
