@@ -336,7 +336,7 @@
 #ruleText_border::before{
   @include openedBook-background_before;
 }
-
+//#region join_us
 #join_us_header_logo{
   @include transition_1;
   opacity: 0;
@@ -346,6 +346,34 @@
   position: absolute;
   right: 0;
 }
+#join_us_header_logo-img{
+
+}
+@keyframes join_us_header_logo-img_click{
+  30%{
+    transform: rotate(-15deg);
+  }
+  60%{
+    transform: rotate(15deg);
+  }
+  90%{
+    transform: rotate(0deg);
+  }
+}
+@keyframes join_us_header_logo-img_big{
+  to{
+    transform: scale(9);
+  }
+}
+@keyframes join_us_header_logo-img_big-restore{
+  from{
+    transform: scale(9);
+  }
+  to{
+    transform: unset;
+  }
+}
+
 #join_us_header_text{
   @include transition_1;
   opacity: 0;
@@ -430,3 +458,4 @@
   opacity: 0;
   margin: 10px;
 }
+//#endregion
