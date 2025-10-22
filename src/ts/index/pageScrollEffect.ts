@@ -222,7 +222,7 @@ const allSectionIds = [
                 const screenHeight:number = $(window).height();
                 const screenWidth:number = $(window).width();
                 const currentTopScroll:number =$(window).scrollTop()!;
-                const currentBottomScroll = currentTopScroll+screenHeight;
+                const currentBottomScroll:number = currentTopScroll+screenHeight;
 
                 for (let si=0;si<allSectionIds.length;si++){
                     const section = document.getElementById(allSectionIds[si]);
@@ -354,48 +354,7 @@ const allSectionIds = [
                                                         }
                                                     }
                                                 }
-                                                if (is_pistonPushPhotoAnim_Init) {
-                                                    const sectionSub: HTMLElement | null = document.getElementById("photo_sub2");
-                                                    if (sectionSub != null) {
-                                                        const offsetTopSub: number = sectionSub.offsetTop;
-                                                        const clientHeightSub: number = sectionSub.clientHeight;
-                                                        //const heightSub: number = offsetTopSub + clientHeightSub;
-
-                                                        //const objsub:(HTMLElement|null)[]|null=getSubObj("photo_sub2");
-
-                                                        const progressValueSub:number=(currentBottomScroll-offsetTopSub)/clientHeightSub;
-                                                        const progressValueSub2:number = (currentTopScroll-offsetTopSub)/clientHeightSub;
-
-                                                        /*if (objsub!=null) {
-
-                                                        }*/
-
-                                                        if (progressValueSub2 > 0.8) {
-                                                            let v = (progressValueSub2 - 0.8) / 0.2;
-                                                            if (v > 1) v = 1;
-
-                                                            sectionSub.style.opacity=(1-v).toString();
-                                                        }
-                                                        else if (progressValueSub<=0.5){
-                                                            let v = (progressValueSub) / 0.5;
-                                                            if (v > 1) v = 1;
-
-                                                            sectionSub.style.opacity=v.toString();
-                                                        }
-                                                        else{
-                                                            sectionSub.style.opacity='1';
-                                                        }
-
-                                                        if (!isStart_pistonPushPhotoAnim) {//启动动画
-                                                            const offsetTopSub: number = sectionSub.offsetTop;
-                                                            if (currentBottomScroll > offsetTopSub) {
-                                                                sectionSub.style.visibility = 'unset';
-                                                                //sectionSub.style.opacity = '1';
-                                                                pistonPushPhotoAnim_Start().then();
-                                                            }
-                                                        }
-                                                    }
-                                                }
+                                                pistonPushPhotoAnim_Spawn(currentTopScroll,currentBottomScroll);
                                             }
                                                 break;
                                             case "introduce": {
@@ -542,6 +501,18 @@ export function SetScrollEffect (enable: boolean=true) {
                    }
                 });
             }
+            {//禁用效果状态下，手动生成活塞推动图片动画元素
+                async function runSpawn(){
+                    while (true){
+                        if (is_pistonPushPhotoAnim_Init){//等待初始化完成后再生成
+                            pistonPushPhotoAnim_Spawn(null,null);
+                            break;
+                        }
+                        await sleep(500);
+                    }
+                }
+                runSpawn();
+            }
         }
 
         if(enable)
@@ -609,6 +580,57 @@ class PistonPushPhotoAnim_Speed{
         if (value>=1) {
             document.getElementById('photo_sub2')!.style.setProperty('--pistonPushPhotoAnim_speed', `${value}ms`);
             this._speed = value;
+        }
+    }
+}
+function pistonPushPhotoAnim_Spawn(currentTopScroll:null, currentBottomScroll:null):void;
+function pistonPushPhotoAnim_Spawn(currentTopScroll:number, currentBottomScroll:number):void;
+function pistonPushPhotoAnim_Spawn(currentTopScroll:any, currentBottomScroll:any):void{
+    if (is_pistonPushPhotoAnim_Init) {
+        const sectionSub: HTMLElement | null = document.getElementById("photo_sub2");
+        if (sectionSub != null) {
+            const offsetTopSub: number = sectionSub.offsetTop;
+            const clientHeightSub: number = sectionSub.clientHeight;
+            if(typeof currentTopScroll === "number" && typeof currentBottomScroll === "number") {
+                //const heightSub: number = offsetTopSub + clientHeightSub;
+
+                //const objsub:(HTMLElement|null)[]|null=getSubObj("photo_sub2");
+
+                const progressValueSub: number = (currentBottomScroll - offsetTopSub) / clientHeightSub;
+                const progressValueSub2: number = (currentTopScroll - offsetTopSub) / clientHeightSub;
+
+                /*if (objsub!=null) {
+
+                }*/
+
+                if (progressValueSub2 > 0.8) {
+                    let v = (progressValueSub2 - 0.8) / 0.2;
+                    if (v > 1) v = 1;
+
+                    sectionSub.style.opacity = (1 - v).toString();
+                } else if (progressValueSub <= 0.5) {
+                    let v = (progressValueSub) / 0.5;
+                    if (v > 1) v = 1;
+
+                    sectionSub.style.opacity = v.toString();
+                } else {
+                    sectionSub.style.opacity = '1';
+                }
+
+                if (!isStart_pistonPushPhotoAnim) {//启动动画
+                    const offsetTopSub: number = sectionSub.offsetTop;
+                    if (currentBottomScroll > offsetTopSub) {
+                        sectionSub.style.visibility = 'unset';
+                        //sectionSub.style.opacity = '1';
+                        pistonPushPhotoAnim_Start().then();
+                    }
+                }
+            }
+            else{
+                sectionSub.style.visibility = 'unset';
+                sectionSub.style.opacity = '1';
+                pistonPushPhotoAnim_Start().then();
+            }
         }
     }
 }
