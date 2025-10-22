@@ -9,6 +9,7 @@ import {
 } from "@/ts/index/pageScrollEffect";
 import {isMobile} from "@/ts/global/deviceDetect";
 import {sleep} from "@/ts/global/sleep";
+import {joinUsHeaderLogoImg_Click} from "@/ts/index/fun";
 
 
 export async function CheckSystemTheme() {
@@ -105,5 +106,11 @@ export function photo_sub2_target_mouseout(){
   if (!isMobile){
     photo_sub2_target_mouse =false;
   }
+}
+//#endregion
+
+//#region other
+export function joinUsHeaderLogoImg_click(){
+  joinUsHeaderLogoImg_Click()
 }
 //#endregion
