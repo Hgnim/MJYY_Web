@@ -58,7 +58,7 @@ const mpSpeed=2;
 const player:HTMLElement|null=document.getElementById("player");
 const player_red:HTMLImageElement|null=document.querySelector("#player .red") as HTMLImageElement;
 let lastKey:string='null';
-function fireMP(key:string){
+export function fireMP(key:string){
     if (player) {
         if (canShootFire) {
             switch (key) {
