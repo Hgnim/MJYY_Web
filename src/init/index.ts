@@ -1,4 +1,5 @@
 import '@/assets/scss/bootstrap/custom.scss';
+import '@/assets/scss/index/bootstrap/custom.scss';
 
 import '@/ts/global/cookie';
 

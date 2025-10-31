@@ -6,7 +6,7 @@ window.onload=function(){
     gl.style.display="none";
     isLoaded=true;
 }
-let isLoaded = false;
+let isLoaded = false
 let gameStarted = false;
 export function startGame_click(){
     if (!gameStarted && isLoaded) {
