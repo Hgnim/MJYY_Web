@@ -1,0 +1,15 @@
+.mjyy-projectile{
+  position: fixed;
+  height: 24px;
+  width: 24px;
+  animation: mp-rotate .6s infinite linear;
+  z-index: 2;
+}
+@keyframes mp-rotate {
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}

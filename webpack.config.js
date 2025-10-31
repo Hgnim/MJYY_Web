@@ -13,6 +13,7 @@ module.exports = {
         'index': './src/init/index.ts',
         'communityPhotoWall':'./src/init/communityPhotoWall.ts',
         '404':'./src/init/404.ts',
+        'defender': './src/init/defender.ts',
     },
     output: {
         path: path.resolve(__dirname, 'dist'), // 输出路径
@@ -108,6 +109,12 @@ module.exports = {
             filename: '404.html',
             inject: 'head',
             chunks: ['404'],
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/gameHtml/defender.html',
+            filename: 'game/defender.html',
+            inject: 'head',
+            chunks: ['defender'],
         }),
 
         new MiniCssExtractPlugin(

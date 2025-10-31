@@ -1,0 +1,102 @@
+$player-transform: translate(-50%, -50%);
+
+#player {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 64px;
+  width: 64px;
+  transform: $player-transform;
+}
+%playerInEle{
+  position: absolute;
+  top:0;
+  left:0;
+  height: 100%;
+  width: 100%;
+}
+#player .mjyy{
+  @extend %playerInEle;
+}
+#player .red{
+  @extend %playerInEle;
+  opacity: 0;
+  transition: opacity 30ms;
+}
+
+@keyframes player-top {
+  50% {
+    transform: $player-transform rotate(90deg);
+  }
+  75%{
+    transform: $player-transform rotate(135deg);
+  }
+  100%{
+    transform: $player-transform rotate(90deg);
+  }
+}
+@keyframes player-top-shoot {
+  50%{
+    transform: $player-transform rotate(135deg);
+  }
+  100%{
+    transform: $player-transform rotate(90deg);
+  }
+}
+@keyframes player-bottom {
+  50% {
+    transform: $player-transform rotate(270deg);
+  }
+  75%{
+    transform: $player-transform rotate(315deg);
+  }
+  100% {
+    transform: $player-transform rotate(270deg);
+  }
+}
+@keyframes player-bottom-shoot {
+  50%{
+    transform: $player-transform rotate(315deg);
+  }
+  100% {
+    transform: $player-transform rotate(270deg);
+  }
+}
+@keyframes player-left {
+  50% {
+    transform: $player-transform rotate(0deg);
+  }
+  75%{
+    transform: $player-transform rotate(45deg);
+  }
+  100% {
+    transform: $player-transform rotate(0deg);
+  }
+}
+@keyframes player-left-shoot {
+  50%{
+    transform: $player-transform rotate(45deg);
+  }
+  100% {
+    transform: $player-transform rotate(0deg);
+  }
+}
+@keyframes player-right {
+  50% {
+    transform: $player-transform rotate(180deg);
+  }
+  75%{
+    transform: $player-transform rotate(225deg);
+  }
+  100% {
+    transform: $player-transform rotate(180deg);
+  }
+}
+@keyframes player-right-shoot {
+  50%{
+    transform: $player-transform rotate(225deg);
+  }
+  100% {
+    transform: $player-transform rotate(180deg);
+  }
+}

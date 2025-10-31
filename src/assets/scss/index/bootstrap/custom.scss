@@ -1,0 +1,33 @@
+.dropdown-submenu {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  color: #212529;
+  display: none;
+  float: left;
+  font-size: 1rem;
+  left: 0;
+  list-style: none;
+  margin: .125rem 0 0;
+  margin-top: -8px;
+  min-width: 10rem;
+  padding: .5rem 0;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  z-index: 1000;
+  border: unset;
+}
+.dropdown-submenu.autocolor{
+  color: var(--color8);
+  background-color: var(--color16);
+}
+.dropdown-submenu.center{
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown-sub:hover > .dropdown-submenu{
+  display: unset;
+}
