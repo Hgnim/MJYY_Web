@@ -7,9 +7,21 @@
     <link rel="icon" href="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" type="image/x-icon"><!--mjyylogo-128x.png-->
 </head>
 <body>
-<div id="gameOver">
-    <span>游戏结束！</span>
+<div id="gameStart" tabindex="0" onclick="startGame_Click();" onkeydown="startGame_Click();">
+    <div class="background"></div>
+    <span class="click-start unSelectable">点击任意键开始游戏</span>
 </div>
-<img id="player" src="https://s21.ax1x.com/2025/01/10/pECLI6e.png" alt="玩家">
+<div id="gameOver">
+    <span class="game-over unSelectable">游戏结束！</span>
+</div>
+<div id="gameLoading">
+    <span class="text unSelectable">正在加载资源...</span>
+</div>
+<div id="player">
+    <img class="mjyy" src="https://s21.ax1x.com/2025/01/10/pECLI6e.png" alt="玩家">
+    <img class="red" src="https://s21.ax1x.com/2025/10/31/pVz1TmD.png" alt="红温">
+</div>
+<img class="cache" src="https://s21.ax1x.com/2025/10/30/pVzCjtH.png" alt="cache">
+<img class="cache" src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" alt="cache">
 </body>
 </html>
