@@ -310,17 +310,20 @@ export async function loadMediaResources(resMode:string,isInit:boolean=true) {
                     case "source":
                         imgUrls = [
                             "assets/img/copy/qqGroupQRcode.png",
+                            "assets/img/copy/qqDiscodeQRCode.png",
                         ];
                         break;
                     case "low":
                         imgUrls = [
                             "assets/img/copy/qqGroupQRcode-low2.png",
+                            "assets/img/copy/qqDiscodeQRCode-low2.png",
                         ];
                         break;
                     default:
                     case "normal":
                         imgUrls = [
                             "assets/img/copy/qqGroupQRcode-low.png",
+                            "assets/img/copy/qqDiscodeQRCode-low.png",
                         ];
                         break;
                 }
