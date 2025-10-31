@@ -336,7 +336,15 @@
 #ruleText_border::before{
   @include openedBook-background_before;
 }
+
 //#region join_us
+#join_us{
+}
+#join_us .main-title{
+  left: -8%;
+  position: relative;
+}
+
 #join_us_header_logo{
   @include transition_1;
   opacity: 0;
@@ -405,17 +413,20 @@
   transform: translate(-50%,-50%);
   opacity: 0;
 }
+
+//#region joinUs_qrcode
 @mixin joinUs_qgQRCode{
   width: 100%;
   top:0;
   left: 0;
 }
-#joinUs_qgQRCode{
+
+%joinUs_qrcode{
   @include transition_1;
   position: relative;
   opacity: 0;
 }
-#joinUs_qgQRCode a{
+%joinUs_qrcode_a{
   position: absolute;
   height: 100%;
   @include joinUs_qgQRCode;
@@ -428,31 +439,77 @@
   text-align: center;
   color: var(--color8);
 }
-#joinUs_qgQRCode a:hover{
+%joinUs_qrcode_a-hover{
   color: var(--color8);
   text-decoration:none;//去除下划线
 
   opacity: 1;
 }
-#joinUs_qgQRCode a:visited{
+%joinUs_qrcode_a-visited{
   color: var(--color8);//已访问过的颜色
   text-decoration:none;
 }
-#joinUs_qgQRCode a:link {
+%joinUs_qrcode_a-link{
   color: var(--color8);//未访问过的颜色
   text-decoration:none;
 }
-#joinUs_qgQRCode a span{
+%joinUs_qrcode_a_span{
   top:50%;
   left: 50%;
   transform: translate(-50%,-50%);
   position: absolute;
 }
-#joinUs_qgQRCode .photoBoxGroup-2 img{
+%joinUs_qrcode_pbg2_img{
   position: relative;
   @include joinUs_qgQRCode;
   opacity: .9;
 }
+
+#joinUs_qgQRCode{
+  @extend %joinUs_qrcode;
+}
+#joinUs_qgQRCode a{
+  @extend %joinUs_qrcode_a;
+}
+#joinUs_qgQRCode a:hover{
+  @extend %joinUs_qrcode_a-hover;
+}
+#joinUs_qgQRCode a:visited{
+  @extend %joinUs_qrcode_a-visited;
+}
+#joinUs_qgQRCode a:link {
+  @extend %joinUs_qrcode_a-link;
+}
+#joinUs_qgQRCode a span{
+  @extend %joinUs_qrcode_a_span;
+}
+#joinUs_qgQRCode .photoBoxGroup-2 img{
+  @extend %joinUs_qrcode_pbg2_img;
+}
+
+#joinUs_qdQRCode{
+  @extend %joinUs_qrcode;
+}
+#joinUs_qdQRCode a{
+  @extend %joinUs_qrcode_a;
+}
+#joinUs_qdQRCode a:hover{
+  @extend %joinUs_qrcode_a-hover;
+}
+#joinUs_qdQRCode a:visited{
+  @extend %joinUs_qrcode_a-visited;
+}
+#joinUs_qdQRCode a:link {
+  @extend %joinUs_qrcode_a-link;
+}
+#joinUs_qdQRCode a span{
+  @extend %joinUs_qrcode_a_span;
+}
+#joinUs_qdQRCode .photoBoxGroup-2 img{
+  @extend %joinUs_qrcode_pbg2_img;
+}
+//#endregion
+
 #joinUsText2{
   @include transition_1;
   opacity: 0;

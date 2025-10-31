@@ -136,6 +136,7 @@ const allSectionIds = [
                     obj[1]!.style.bottom=`${obj[0]!.offsetTop}px`;
                     obj[2]!.style.opacity='0';
                     obj[3]!.style.opacity='0';
+                    obj[5]!.style.opacity='0';
                     obj[4]!.style.opacity='0';
                 },
                 finishFunc:function(obj:(HTMLElement|null)[]){
@@ -145,6 +146,7 @@ const allSectionIds = [
                     obj[1]!.style.bottom=`0px`;
                     obj[2]!.style.opacity='1';
                     obj[3]!.style.opacity='1';
+                    obj[5]!.style.opacity='1';
                     obj[4]!.style.opacity='1';
                 },
             },
@@ -196,6 +198,7 @@ const allSectionIds = [
                         document.getElementById("joinUsText")!,
                         document.getElementById("joinUs_qgQRCode")!,
                         document.getElementById("joinUsText2")!,
+                        document.getElementById("joinUs_qdQRCode")!,
                     ];
                     break;
             }
@@ -430,6 +433,7 @@ const allSectionIds = [
                                                     let v=(progressValue-0.55/0.15);
                                                     if (v>1)v = 1;
                                                     obj[3]!.style.opacity=v.toString();
+                                                    obj[5]!.style.opacity=v.toString();
                                                 }
                                                 else if (progressValue<=0.85){
                                                     obj[0]!.style.opacity='1';
@@ -438,6 +442,7 @@ const allSectionIds = [
                                                     obj[1]!.style.bottom='0';
                                                     obj[2]!.style.opacity='1';
                                                     obj[3]!.style.opacity='1';
+                                                    obj[5]!.style.opacity='1';
 
                                                     let v=(progressValue-0.7/0.15);
                                                     if (v>1)v = 1;
@@ -453,6 +458,7 @@ const allSectionIds = [
                                                     obj[1]!.style.bottom='0';
                                                     obj[2]!.style.opacity='1';
                                                     obj[3]!.style.opacity='1';
+                                                    obj[5]!.style.opacity='1';
                                                     obj[4]!.style.opacity='1';
                                                 }
                                             }break;
