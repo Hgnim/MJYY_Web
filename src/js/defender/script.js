@@ -1,4 +1,4 @@
-import {fireMP, startGame_click} from "@/ts/defender/script";
+import {fireMP, gameOver, startGame_click} from "@/ts/defender/script";
 
 export function startGame_Click(){
     startGame_click();
@@ -9,14 +9,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 export function touchTop_click(){
-    fireMP('ArrowUp');
+    if (!gameOver)
+        fireMP('ArrowUp');
 }
 export function touchBottom_click(){
-    fireMP('ArrowDown');
+    if (!gameOver)
+        fireMP('ArrowDown');
 }
 export function touchLeft_click(){
-    fireMP('ArrowLeft');
+    if (!gameOver)
+        fireMP('ArrowLeft');
 }
 export function touchRight_click(){
-    fireMP('ArrowRight');
+    if (!gameOver)
+        fireMP('ArrowRight');
 }
