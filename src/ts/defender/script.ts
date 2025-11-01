@@ -6,23 +6,26 @@ window.onload=function(){
     gl.style.display="none";
     isLoaded=true;
 }
+
+function keydownListener(e: KeyboardEvent){
+    switch (e.key) {
+        case 'ArrowUp':
+        case 'ArrowDown':
+        case 'ArrowLeft':
+        case 'ArrowRight':
+            e.preventDefault();//防止触发滚动等
+            fireMP(e.key);
+            break;
+    }
+}
 let isLoaded = false
 let gameStarted = false;
+export let gameOver = false;
 export function startGame_click(){
     if (!gameStarted && isLoaded) {
         gameStarted = true;
         document.getElementById('gameStart')!.style.display = 'none';
-        window.addEventListener('keydown', (e: KeyboardEvent) => {
-            switch (e.key) {
-                case 'ArrowUp':
-                case 'ArrowDown':
-                case 'ArrowLeft':
-                case 'ArrowRight':
-                    e.preventDefault();//防止触发滚动等
-                    fireMP(e.key);
-                    break;
-            }
-        });
+        window.addEventListener('keydown', keydownListener);//注册按键按下监听
         fireCharge_Spawn();
     }
 }
@@ -58,11 +61,12 @@ const mpSpeed=2;
 const player:HTMLElement|null=document.getElementById("player");
 const player_red:HTMLImageElement|null=document.querySelector("#player .red") as HTMLImageElement;
 let lastKey:string='null';
-function fireMP(key:string){
+export function fireMP(key:string){
     if (player) {
         if (canShootFire) {
             switch (key) {
                 case 'ArrowUp': {
+                    // noinspection JSDuplicatedDeclaration
                     async function doIt(wait: number = 0) {
                         if (wait > 0) await sleep(wait);
                         if (player) {
@@ -84,6 +88,7 @@ function fireMP(key:string){
                 }
                     break;
                 case 'ArrowDown': {
+                    // noinspection JSDuplicatedDeclaration
                     async function doIt(wait: number = 0) {
                         if (wait > 0) await sleep(wait);
                         if (player) {
@@ -105,6 +110,7 @@ function fireMP(key:string){
                 }
                     break;
                 case 'ArrowLeft': {
+                    // noinspection JSDuplicatedDeclaration
                     async function doIt(wait: number = 0) {
                         if (wait > 0) await sleep(wait);
                         if (player) {
@@ -126,6 +132,7 @@ function fireMP(key:string){
                 }
                     break;
                 case 'ArrowRight': {
+                    // noinspection JSDuplicatedDeclaration
                     async function doIt(wait: number = 0) {
                         if (wait > 0) await sleep(wait);
                         if (player) {
@@ -177,6 +184,7 @@ async function objMove(
                 (obj.offsetLeft<-obj.width && (leftType==0||leftType==2))
             )
         )
+        && !gameOver
         ){
         if (sequence==nowSequence[dataLoc[0]][dataLoc[1]]){
             if (!doCollideCheck(dataLoc))
@@ -185,7 +193,12 @@ async function objMove(
             allLoc[dataLoc[0]][dataLoc[1]]=obj.getBoundingClientRect();
             if (dataLoc[0]==1 && player){
                 if (isCollide(obj.getBoundingClientRect(),player.getBoundingClientRect())){
+                    //Game Over
+                    gameOver=true;
+                    window.removeEventListener('keydown', keydownListener);//注销按键按下监听
                     document.getElementById('gameOver')!.style.visibility='visible';
+                    player.style.animation='player-dead 100ms infinite';
+                    (document.querySelector('#gameOver .game-over .button') as HTMLElement).focus();
                 }
             }
         }
@@ -207,7 +220,7 @@ async function mjyyProjectile_Move(
     mp.className="mjyy-projectile";
     document.body.appendChild(mp);
     await objMove(mp, top, left,seq,seqLoc);
-    mp.remove();
+    if (!gameOver) mp.remove();
 }
 const fcSpeed=2;
 const fcSpawnInterval=800;
@@ -215,7 +228,7 @@ async function fireCharge_Spawn(){
     while (!player){//等待元素加载
        await sleep(100);
     }
-    while (true) {
+    while (!gameOver) {
         switch (Math.floor(Math.random() * 4)) {
             case 0:
                 fireCharge_Move(-24,
@@ -262,7 +275,7 @@ async function fireCharge_Move(
     fc.className="fire-charge";
     document.body.appendChild(fc);
     await objMove(fc, top, left,seq,seqLoc,topt,leftt);
-    fc.remove();
+    if(!gameOver) fc.remove();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -274,6 +287,7 @@ function player_doAnim(anim:string){
         if (player) {
             const tra = getComputedStyle(player).transform;
             player.style.transform = tra === 'none' ? 'unset' : tra;
+            player.style.setProperty('--player_last-transform',tra);
         }
     }
     if (player) {
@@ -311,7 +325,7 @@ function shootHotValue_changeShow(){
         player_red.style.opacity=(shootHotValue/shootHotMax).toString();
     }
 }
-const shootHotMax:number = 80;//枪管热度极限值
+const shootHotMax:number = 50;//枪管热度极限值
 //枪管过热计算
 function shootHot(){
     if (shootHotValue++<=0){

@@ -31,11 +31,20 @@ body{
   @include maxScreen;
   z-index: 20;
   visibility: hidden;
+}
+#gameOver .background {
   background-color: black;
+  opacity: .6;
+  @include maxScreen;
+  position: absolute;
 }
 #gameOver .game-over{
-  font-size: 6em;
+  font-size: 9cqw;
   @include centerText;
+  white-space: pre-line;//可用<br>换行
+}
+#gameOver .game-over .button{
+  font-size: 3cqw;
 }
 
 #gameStart{
@@ -49,7 +58,7 @@ body{
   position: absolute;
 }
 %ct-size2{
-  font-size: 2em;
+  font-size: 4cqw;
   @include centerText;
 }
 #gameStart .click-start{
@@ -64,3 +73,46 @@ body{
 #gameLoading .text{
   @extend %ct-size2;
 }
+
+//#region touch
+%touch{
+  position: fixed;
+  z-index: 18;
+}
+#touch-top{
+  @extend %touch;
+  //background-color: white;//用于调试
+  top:0;
+  left:0;
+  width:100%;
+  height:50%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);//裁剪可显示区域
+}
+#touch-bottom{
+  @extend %touch;
+  //background-color: pink;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:50%;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+#touch-left{
+  @extend %touch;
+  //background-color: yellow;
+  left:0;
+  top:0;
+  width:50%;
+  height:100%;
+  clip-path: polygon(100% 50%, 0 100%, 0 0);
+}
+#touch-right{
+  @extend %touch;
+  //background-color: blue;
+  right:0;
+  top:0;
+  width:50%;
+  height:100%;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+//#endregion
