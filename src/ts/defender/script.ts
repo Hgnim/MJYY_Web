@@ -160,7 +160,47 @@ export function fireMP(key:string){
         }
     }
 }
-let nowSequence:number[][]=[[0,0,0,0],[0,0,0,0]];//当前序列
+
+function nowSequenceProperty(initialValue:number[][]):{//仿C#的属性写法
+    value:{ value: number[][]; setCell: (i: number, j: number, val: number) => void };
+    readonly lastValue:number[][]
+}
+{
+    let _value:number[][]=//闭包变量，函数执行完后仍然会保留
+        initialValue.map(row => row.slice());//拷贝一次，使用元素一样但引用不同的数组。防止外部直接访问内部数据
+
+    let _lastValue:number[][]=new Array(2).fill(0).map(() => new Array(4).fill(0));//=initialValue;
+
+    function valueChangeDo(){
+        /*_value.forEach((v:number[])=>{
+          })*/
+        for (let i=0;i<_value[1].length;i++){
+            if(_value[1][i]!=_lastValue[1][i]){
+                score.value+=_value[1][i]-_lastValue[1][i];
+            }
+        }
+        _lastValue=_value.map(row => row.slice());//避免同步
+    }
+
+    return{
+      get value():{ value: number[][]; setCell: (i: number, j: number, val: number) => void }{
+          return {
+              value:_value.map(row => row.slice()),//只读安全
+              setCell: (i: number, j: number, val: number):void => {//更改单个元素调用此函数
+                  _value[i][j] = val;
+                  valueChangeDo();
+              }
+          };
+      },
+      set value(val:number[][]){
+          _value=val.map(row => row.slice());
+          valueChangeDo();
+      },
+
+      get lastValue():number[][]{return _lastValue;}//闭包变量关键
+    };
+}
+let nowSequence=nowSequenceProperty([[0,0,0,0],[0,0,0,0]]);//当前序列
 let cumulativeSequence:number[][]=[[-1,-1,-1,-1],[-1,-1,-1,-1]];//累计序列
 const allLoc:(DOMRect|null)[][]=[//所有碰撞待检测对象的坐标
     [new DOMRect(),new DOMRect(),new DOMRect(),new DOMRect()],
@@ -186,7 +226,7 @@ async function objMove(
         )
         && !gameOver
         ){
-        if (sequence==nowSequence[dataLoc[0]][dataLoc[1]]){
+        if (sequence==nowSequence.value.value[dataLoc[0]][dataLoc[1]]){
             if (!doCollideCheck(dataLoc))
                 break;
             //console.log(nowSequence);
@@ -206,7 +246,7 @@ async function objMove(
         obj.style.left=`${obj.offsetLeft+left}px`;
         await sleep(10);
     }
-    nowSequence[dataLoc[0]][dataLoc[1]]++;
+    nowSequence.value.setCell(dataLoc[0],dataLoc[1],nowSequence.value.value[dataLoc[0]][dataLoc[1]]+1);
 }
 async function mjyyProjectile_Move(
     initTop:number, initLeft:number,
@@ -329,7 +369,7 @@ const shootHotMax:number = 50;//枪管热度极限值
 //枪管过热计算
 function shootHot(){
     if (shootHotValue++<=0){
-        console.log('shootCooling Run');
+        //console.log('shootCooling Run');
         shootCooling();
     }
     shootHotValue_changeShow();
@@ -347,7 +387,7 @@ async function shootCooling(){
             canShootFire=false;
         }
         if (stopshootV>=coolingByStopshoot || !canShootFire){
-            console.log('cooling now');
+            //console.log('cooling now');
             const flashMax:number=10;//闪烁等待步进
             let flashNow:number=0;
             let cantShootWait_nowV:number = 0;//如果是无法射击，则等待停火一段时间后再进行恢复
@@ -395,3 +435,16 @@ async function shootCooling(){
     }
     if (!canShootFire) canShootFire=true;//超出最大值后需等待完全冷却后才可继续设计
 }
+
+const scoreE=document.getElementById('score');
+function scoreProperty(initialValue:number):{value:number} {
+    let _value=initialValue;
+    return{
+        get value(){return _value;},
+        set value(val:number){
+            _value=val;
+            if (scoreE) scoreE.innerHTML=val.toString();
+        }
+    }
+}
+let score = scoreProperty(0);
