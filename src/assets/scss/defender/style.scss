@@ -74,6 +74,13 @@ body{
   @extend %ct-size2;
 }
 
+#score-box{
+  color: white;
+}
+#score-box #score{
+
+}
+
 //#region touch
 %touch{
   position: fixed;
