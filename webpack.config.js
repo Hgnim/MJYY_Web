@@ -6,9 +6,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WebpackShellPluginNext = require('webpack-shell-plugin-next');
 
-module.exports = {
-    //mode: 'development',
-    mode: 'production',//优化打包输出和构建性能的模式
+module.exports = (env, argv) => {
+    const mode = argv?.mode || 'production';
+    console.log('Webpack configs：');
+    console.log('Mode:', mode);
+    console.log('Code Optimization:', mode === 'production');
+
+    return{
+    mode: mode,//production: 优化打包输出和构建性能的模式；development: 开发模式
     entry: {
         'index': './src/init/index.ts',
         'communityPhotoWall':'./src/init/communityPhotoWall.ts',
@@ -152,21 +157,41 @@ module.exports = {
         })
     ],
     optimization: {
-        minimize: true, // 开启代码压缩
+        minimize: mode === 'production', //强制开启代码压缩
+        usedExports: mode === 'production', //标记未使用代码
+        // package.json中的"sideEffects"表示告诉Webpack哪些文件有副作用，哪些没有。
+        // "sideEffects": false, //表示整个项目无副作用，最激进，不建议使用
+        // "sideEffects": [
+        //    "*.css", //CSS等文件有副作用，必须保留导入。因为引用css时不会使用，可能会导致被其认为是未使用的代码
+        //    "*.scss",
+        //    "./src/init/**/*" //入口文件等初始化文件一定是有副作用的，否则大部分代码都会被移除。必须保留导入
+        // ]
+        sideEffects: mode === 'production', //启用副作用优化，移除被标记的未使用代码
         minimizer: [
-            `...`,
             new CssMinimizerPlugin({
-                exclude: /^(?!.*(communityPhotoWall|index).*).*\.css/,//反排除需要压缩的css文件
                 minimizerOptions: {
                     preset: [
                         'default',
                         {
-                            discardComments: { removeAll: true },
+                            discardComments: { removeAll: true },//移除所有css注释
                         },
                     ],
                 },
-            }), // 压缩css
-            new TerserPlugin(), // 压缩js
+            }),//压缩css
+            new TerserPlugin({
+                terserOptions: {
+                    format: {
+                        comments: false, // 移除所有注释
+                    },
+                    //移除console和debugger
+                    compress: {
+                        drop_console: true,
+                        drop_debugger: true,
+                        pure_funcs: ['console.log'],//移除特定函数
+                    },
+                },
+                parallel: true,//启用并行压缩
+            }),//压缩js
         ],
     },
     devServer: {
@@ -174,4 +199,5 @@ module.exports = {
             directory: path.join(__dirname, 'dist')
         },
     },
+    }
 };
