@@ -335,6 +335,25 @@ export async function loadMediaResources(resMode:string,isInit:boolean=true) {
             }
         }
     }
+    //字体资源加载
+    {
+        function loadFont(cssVar:string,value:string){
+            document.documentElement.style.setProperty(cssVar,value);
+        }
+
+        {
+            const _cssVar:string = "--unifont-use";
+            const _value:string = "unifont";
+            switch (resMode) {
+                case "low":
+                    loadFont(_cssVar,"");
+                    break;
+                default:
+                    loadFont(_cssVar,_value);
+                    break;
+            }
+        }
+    }
 
     LoadingOver();
 

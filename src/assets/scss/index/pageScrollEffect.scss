@@ -1,3 +1,14 @@
+:root{
+  //--unifont-use: "" ;//"unifont"//在此注释，后续由ts脚本添加此变量
+}
+@font-face{
+  font-family: "unifont" ;
+  src: url("@/assets/font/unifont-16.0.02.otf");
+}
+@mixin unifont-use-font{
+  font-family: var(--unifont-use),system-ui;
+}
+
 /*#region 0图形边框*/
 
 .oak-sign2{
@@ -7,7 +18,7 @@
   background-repeat: no-repeat;
   height: 120px ;
   width: 240px;
-  font-family: 'unifont',system-ui;
+  @include unifont-use-font;
 
   &.os2_custom_p{
     background-size: 100% auto;
@@ -20,7 +31,7 @@
   }
 }
 .oak-sign2 code{
-  font-family: 'unifont',system-ui;
+  @include unifont-use-font;
   color: #e3e3e3;
 }
 
@@ -32,7 +43,7 @@
   height: 160px;
   width: 150px;
   overflow: hidden;
-  font-family: 'unifont',system-ui;
+  @include unifont-use-font;
 }
 .oak-hanging-sign h2{
   user-select: none;
@@ -50,7 +61,7 @@
   height: 260px;
   width: 240px;
   overflow: hidden;
-  font-family: 'unifont',system-ui;
+  @include unifont-use-font;
 
   &.os_custom_rule{
     height: 130px;
@@ -117,13 +128,9 @@
   filter: brightness(var(--filter-brightness));
   z-index: -1;
 }
-@font-face{
-  font-family: "unifont" ;
-  src: url("@/assets/font/unifont-16.0.02.otf");
-}
 @mixin obb_custom_introduce_color{
   color: var(--color8);
-  font-family: 'unifont',system-ui;
+  @include unifont-use-font;
 }
 .obb_custom_introduce h3{
   @include obb_custom_introduce_color;
