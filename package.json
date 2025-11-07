@@ -25,12 +25,18 @@
   },
   "homepage": "https://Hgnim.github.io/MJYY_Web",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "serve": "webpack serve --mode=development",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
     "node-mcstatus": "^1.2.1"
-  }
+  },
+
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "./src/init/**/*"
+  ]
 }

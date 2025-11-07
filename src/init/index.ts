@@ -1,3 +1,5 @@
+console.log('web start');
+
 import '@/assets/scss/bootstrap/custom.scss';
 import '@/assets/scss/index/bootstrap/custom.scss';
 
