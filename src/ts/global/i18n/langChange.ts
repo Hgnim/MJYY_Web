@@ -2,8 +2,14 @@ import {getLocale, loadLocale, setLocale} from "@/ts/global/i18n/index";
 import {localeKey} from "@/ts/global/i18n/types";
 import {getCookie, setCookie} from "@/ts/global/cookie";
 
-//语言初始化加载完成后将会调用该函数
-export let langInitLoadDone:{call:((lang:localeKey)=>void)|null}={call: null};
+export const langInitLoadDone:{
+    //语言初始化加载完成后将会调用该函数组中的所有函数
+    //call:((lang:localeKey)=>void)[],//因为各个都是异步执行，可能存在顺序风险，因此不使用此方法
+    ready:boolean,//表示是否初始化完成
+}={
+    //call: [],
+    ready:false
+};
 
 async function init() {
     {
@@ -14,8 +20,9 @@ async function init() {
         else
             await loadLocale();
     }
-    if (langInitLoadDone.call)
-        langInitLoadDone.call(getLocale());
+    /*for (const c of langInitLoadDone.call)
+        c(getLocale());*/
+    langInitLoadDone.ready = true;//加载完成
 }
 
 //切换语言

@@ -1,6 +1,9 @@
 import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
 import {LoadingOver} from "@/ts/index/loading";
 import {getCookie,setCookie} from "@/ts/global/cookie";
+import {langInitLoadDone} from "@/ts/global/i18n/langChange";
+import {sleep} from "@/ts/global/sleep";
+import {getTranslation, languageChange} from "@/ts/global/i18n";
 
 let resourceMode:string|null;
 
@@ -26,6 +29,40 @@ export function userSelectResourceMode(value:string) {
     loadMediaResources(value,false);
 }
 
+languageChange.call.push(():void=>{
+    //更改语言后重新加载markdown
+    markdownLoad();
+})
+
+/**markdown文件加载函数*/
+async function markdownLoad(){
+    function loadTextFile(path:string) {
+        return new Promise((resolve, reject) => {
+            fetch(path)
+                .then((response) => response.text())
+                .then((readText) => {
+                    resolve(readText);
+                })
+                .catch(() => {
+                    reject(new Error(`文本资源\'{path}\'加载失败`));
+                });
+        });
+    }
+
+    //等待多语言框架初始化完成
+    while (!langInitLoadDone.ready){await sleep(100);}
+
+    const mdRes = [//通过动态路径加载多语言文档
+        [getTranslation('index.rule.markdown_path.server_rule'), "ruleText"],
+        [getTranslation('index.introduce.markdown_path.server_introductory'), "serverIntroductoryText"],
+        [getTranslation('index.join_us.markdown_path.join_us'), "joinUsText"],
+        [getTranslation('index.join_us.markdown_path.join_us2'), "joinUsText2"],
+    ];
+    for (let i = 0; i < mdRes.length; i++) {
+        document.getElementById(mdRes[i][1])!.innerHTML =
+            marked.parse(await loadTextFile(mdRes[i][0]));
+    }
+}
 
 export async function loadMediaResources(resMode:string,isInit:boolean=true) {
     //视频资源加载
@@ -40,7 +77,7 @@ export async function loadMediaResources(resMode:string,isInit:boolean=true) {
             targetBoxs.forEach(targetBox => {
                 switch (resMode) {
                     case "low":
-                        targetBox.innerHTML = "<p style=\"text-align: center;width: 100%;position: relative\">省流模式下将不会加载宣传视频</p>";
+                        targetBox.innerHTML = "<p style=\"text-align: center;width: 100%;position: relative\" data-i18n=\"index.video_page.do_not_load\"></p>";
                         break;
                     case "normal":
                     default:
@@ -56,32 +93,27 @@ export async function loadMediaResources(resMode:string,isInit:boolean=true) {
             });
         }
     }
-    //md文件加载
+    //字体资源加载
     {
-        function loadTextFile(path:string) {
-            return new Promise((resolve, reject) => {
-                fetch(path)
-                    .then((response) => response.text())
-                    .then((readText) => {
-                        resolve(readText);
-                    })
-                    .catch(() => {
-                        reject(new Error(`文本资源\'{path}\'加载失败`));
-                    });
-            });
+        function loadFont(cssVar:string,value:string){
+            document.documentElement.style.setProperty(cssVar,value);
         }
 
-        const mdRes = [
-            ["assets/md/index/serverRule.md", "ruleText"],
-            ["assets/md/index/serverIntroductory.md", "serverIntroductoryText"],
-            ["assets/md/index/joinUs.md", "joinUsText"],
-            ["assets/md/index/joinUsText2.md", "joinUsText2"],
-        ];
-        for (let i = 0; i < mdRes.length; i++) {
-            document.getElementById(mdRes[i][1])!.innerHTML =
-                marked.parse(await loadTextFile(mdRes[i][0]));
+        {
+            const _cssVar:string = "--unifont-use";
+            const _value:string = "unifont";
+            switch (resMode) {
+                case "low":
+                    loadFont(_cssVar,"");
+                    break;
+                default:
+                    loadFont(_cssVar,_value);
+                    break;
+            }
         }
     }
+    //md文件加载
+    await markdownLoad();
     //图片资源加载
     {
         //加载图像资源函数
@@ -332,25 +364,6 @@ export async function loadMediaResources(resMode:string,isInit:boolean=true) {
                     Array.from(document.querySelectorAll(".photoBoxGroup-2:not(.loadingBox)")) as HTMLImageElement[],
                     Array.from(document.querySelectorAll(".loadingBox.photoBoxGroup-2")) as HTMLElement[]
                 );
-            }
-        }
-    }
-    //字体资源加载
-    {
-        function loadFont(cssVar:string,value:string){
-            document.documentElement.style.setProperty(cssVar,value);
-        }
-
-        {
-            const _cssVar:string = "--unifont-use";
-            const _value:string = "unifont";
-            switch (resMode) {
-                case "low":
-                    loadFont(_cssVar,"");
-                    break;
-                default:
-                    loadFont(_cssVar,_value);
-                    break;
             }
         }
     }

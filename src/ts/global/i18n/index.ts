@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 import locI18next from 'loc-i18next';
-import {langsStruType, localeKey} from "@/ts/global/i18n/types";
+import {langsStruType, localeKey, translationKey} from "@/ts/global/i18n/types";
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 const i18n = i18next.createInstance();
@@ -30,7 +30,15 @@ const localize = locI18next.init(i18n, {
 export async function loadLocale() {
     const lang=getLocale();
     //加载json解析并注册到i18next
-    i18n.addResourceBundle(lang, 'translation', await (await fetch(`/locales/${lang}.json`)).json() as langsStruType);
+    i18n.addResourceBundle(lang, 'translation', (await (await fetch(`/locales/${lang}.json`)).json()) as langsStruType);
+
+    //加载回退语言，当缺少翻译时使用其补全语言
+    if(Array.isArray(i18n.options.fallbackLng)) {
+        for (const fallbacklng of i18n.options.fallbackLng) {
+            i18n.addResourceBundle(fallbacklng!, 'translation', (await (await fetch(`/locales/${fallbacklng}.json`)).json()) as langsStruType);
+        }
+    }
+
     //渲染页面（翻译所有[data-i18n]元素）
     localize('body');
 }
@@ -46,7 +54,27 @@ export async function setLocale(lang:localeKey){
     await loadLocale();
 }
 
+//获取翻译文本
+export function getTranslation(key:translationKey, params?: Record<string, string | number>):string {
+    /*
+    console.log('当前语言:', getLocale());
+    console.log('资源是否存在:', i18n.hasResourceBundle(getLocale(), 'translation'));
+    console.log('翻译结果:', i18n.t(key, params));
+    */
+    return i18n.t(key,params);
+}
+
+export const languageChange:{
+    //语言改变时将调用函数组中的所有函数
+    call:((lang:localeKey)=>void)[],
+}={
+    call:[]
+}
 //监听语言变化
-i18n.on('languageChanged', (lang) => {
+i18n.on('languageChanged', (lang:string) => {
     console.log('语言已切换为', lang);
+    //执行所有绑定了的函数
+    for (const c of languageChange.call){
+        c(lang as localeKey);
+    }
 });

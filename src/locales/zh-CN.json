@@ -1,5 +1,103 @@
 {
   "global": {
     "mjyy": "谧静幽原"
+  },
+  "index": {
+    "head": {
+      "title": "我的世界谧静幽原服务器",
+      "description": "我的世界谧静幽原多人服务器官方网站"
+    },
+    "preloader": {
+      "loading": "正在加载资源...",
+      "skipbt": "隐藏加载页",
+      "bgon": "前台加载",
+      "bgoff": "后台加载"
+    },
+    "navbar": {
+      "video_page": "宣传视频",
+      "photo": "服务器图片",
+      "introduce": "服务器介绍",
+      "rule": "规则",
+      "join_us": "加入我们",
+      "more": "更多",
+      "community_photo_wall": "社区照片墙",
+      "community_photo_wall_title": "由玩家们自由发挥的照片墙",
+      "share": "分享",
+      "share_title": "将谧静幽原分享给更多人！",
+      "share_page": {
+        "title": "谧静幽原-我的世界",
+        "description": "想玩我的世界多人生存，就来谧静幽原！",
+        "wechat_qrcode_title": "打开微信扫一扫后手动进行分享",
+        "wechat_qrcode_helper": {
+          "span1": "由于微信未开放相关接口，",
+          "span2": "所以只能通过用户手动进行分享。"
+        }
+      },
+      "game": "小游戏",
+      "defender": "防御者",
+      "defender_title": "防御者小游戏"
+    },
+    "home": {
+      "main_text": "谧静幽原服务器",
+      "main_button_text": "让我们开始吧",
+      "ping_server": {
+        "code": {
+          "id0": "正在检测MC服务器连接状态......",
+          "id1": "尝试用备用方案检测服务器连接状态......",
+          "id2": "与服务器的连接正常",
+          "id3": "Minecraft服务器在线",
+          "id4": "无法连接Minecraft服务器",
+          "id5": "Minecraft服务器请求超时",
+          "id6": "连接状态检查失败，请稍后尝试",
+          "id7": "无法连接至服务器",
+          "player_online_num": "玩家数: ",
+          "player_online_num2": "在线玩家：",
+          "no_check": "在开发分支中不进行Minecraft服务器在线检测"
+        }
+      },
+      "lang": {
+        "zh_cn": "简体中文",
+        "en_us": "English(英语)"
+      },
+      "resource_mode": {
+        "source": "原图",
+        "normal": "正常",
+        "low": "省流"
+      },
+      "effect_check_box": "启用视觉效果"
+    },
+    "video_page": {
+      "header": "视频",
+      "do_not_load": "省流模式下将不会加载宣传视频"
+    },
+    "photo": {
+      "header": "相片",
+      "title1": "我们有多个玩家社区",
+      "title2": "大型工业区",
+      "title3": "冰雪考察站",
+      "big_video_for_image_alt": "大视图图片"
+    },
+    "introduce": {
+      "header": "简介",
+      "markdown_path": {
+        "server_introductory": "assets/md/index/serverIntroductory.zh-CN.md"
+      }
+    },
+    "rule": {
+      "header": "规则",
+      "markdown_path": {
+        "server_rule": "assets/md/index/serverRule.zh-CN.md"
+      }
+    },
+    "join_us": {
+      "header1": "谧静幽原",
+      "header2": "觅见有缘",
+      "join_qqgroup": "点击加入群聊",
+      "join_qqdiscord": "点击加入频道",
+      "markdown_path": {
+        "join_us": "assets/md/index/joinUs.zh-CN.md",
+        "join_us2": "assets/md/index/joinUsText2.zh-CN.md"
+      }
+    }
   }
 }

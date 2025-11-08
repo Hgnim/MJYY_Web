@@ -1,5 +1,12 @@
 {
   "global": {
     "mjyy": "MJYY"
+  },
+  "index": {
+    "join_us": {
+      "markdown_path": {
+        "join_us": "assets/md/index/joinUs.en-US.md"
+      }
+    }
   }
 }

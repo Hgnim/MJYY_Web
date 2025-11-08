@@ -1,2 +1,3 @@
 src/json/*.json linguist-detectable=true
 *.md linguist-detectable=true
+src/locales/*.json linguist-detectable=true
