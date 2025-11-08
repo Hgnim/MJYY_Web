@@ -120,7 +120,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                         </div>
                     </span>
-                    <span id="home_MainButton_text" data-i18n="index.home.main_button_text"></span>
+                    <span id="home_MainButton_text" data-i18n="[style]index.home.style.main_button_text;index.home.main_button_text"></span>
                 </a>
             </div>
             </div>
@@ -180,7 +180,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <div class="row">
                 <div class="col-12">
                     <div class="oak-hanging-sign mx-auto" id="video-page_header">
-                        <h2 data-i18n="index.video_page.header"></h2>
+                        <h2 data-i18n="[style]index.video_page.style.header;index.video_page.header"></h2>
                     </div>
                 </div>
                 <div class="row mx-auto mt-5">
@@ -202,7 +202,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                         <div class="row">
                             <div class="col-sm-6 col-12">
                                 <div class="oak-hanging-sign mx-auto" id="photo_sub1_title">
-                                    <h2 data-i18n="index.photo.header"></h2>
+                                    <h2 data-i18n="[style]index.photo.style.header;index.photo.header"></h2>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-12">
@@ -210,7 +210,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                     <div class="card glass_background" id="photo_sub1_photoBox1">
                                         <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
-                                            <p class="oak-sign2 os2_custom_p" data-i18n="index.photo.title1"></p>
+                                            <p class="oak-sign2 os2_custom_p" data-i18n="[style]index.photo.style.title1;index.photo.title1"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -218,7 +218,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                     <div class="card glass_background" id="photo_sub1_photoBox2">
                                         <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
-                                            <p class="oak-sign2 os2_custom_p" data-i18n="index.photo.title2"></p>
+                                            <p class="oak-sign2 os2_custom_p" data-i18n="[style]index.photo.style.title2;index.photo.title2"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                     <div class="card glass_background" id="photo_sub1_photoBox3">
                                         <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
-                                            <p class="oak-sign2 os2_custom_p" data-i18n="index.photo.title3"></p>
+                                            <p class="oak-sign2 os2_custom_p" data-i18n="[style]index.photo.style.title3;index.photo.title3"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -257,7 +257,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <div class="oak-hanging-sign mx-auto" id="introduce_header">
-                                <h2 data-i18n="index.introduce.header"></h2>
+                                <h2 data-i18n="[style]index.introduce.style.header;index.introduce.header"></h2>
                             </div>
                         </div>
                         <div class="col-12 mx-auto">
@@ -310,7 +310,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
 
                     <div class="row mt-5">
                         <div class="col-12">
-                            <div id="joinUsText" class="oak-sign2 unset_unSelectable">
+                            <div id="joinUsText" class="oak-sign2 unset_unSelectable" data-i18n="[style]index.join_us.style.header1;">
                             </div>
                         </div>
                         <div class="py-4 col-sm-6 col-12">
@@ -348,12 +348,12 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
     <div id="share-page" class="unSelectable">
         <div id="share-window">
             <div id="share-window-info">
-                <h3 id="share-window-info-title">分享给更多人！</h3>
+                <h3 id="share-window-info-title" data-i18n="[style]index.navbar.share_page.style.window_title;index.navbar.share_page.window_title"></h3>
                 <img id="share-window-info-qrcodeImg" >
                 <div id="share-window-info-inputDiv">
                 <!--suppress HtmlFormInputWithoutLabel -->
                     <input id="share-window-info-textBox" type="text" value="" readonly>
-                <input id="share-window-info-copyBtn" type="button" onclick="shareWindowInfoCopyBtn_Click()" value="复制"/>
+                <input id="share-window-info-copyBtn" type="button" onclick="shareWindowInfoCopyBtn_Click()" value="" data-i18n="[value]index.navbar.share_page.copy_button"/>
                  </div>
             </div>
             <div id="share-window-btn" class="share-component"
@@ -364,7 +364,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             data-image="https://s21.ax1x.com/2024/12/28/pAxP0P0.png"
             data-description=""
             data-wechat-qrcode-title=""
-            data-wechat-qrcode-helper = '<p style="color:black"><span data-i18n="index.navbar.share_page.wechat_qrcode_helper.span1"></span><br><span data-i18n="index.navbar.share_page.wechat_qrcode_helper.span2"></span></p>'
+            data-wechat-qrcode-helper = '<p><span class=".share-wechat-helper_span" data-i18n="[style]index.navbar.share_page.wechat_qrcode_helper.style.span1;index.navbar.share_page.wechat_qrcode_helper.span1"></span><br><span class=".share-wechat-helper_span" data-i18n="[style]index.navbar.share_page.wechat_qrcode_helper.style.span2;index.navbar.share_page.wechat_qrcode_helper.span2"></span></p>'
                  data-i18n="[data-title]index.navbar.share_page.title;[data-description]index.navbar.share_page.description;[data-wechat-qrcode-title]index.navbar.share_page.wechat_qrcode_title"
             >
                 <a href="#" class="social-share-icon icon-wechat"></a>

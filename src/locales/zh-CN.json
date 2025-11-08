@@ -25,12 +25,21 @@
       "share": "分享",
       "share_title": "将谧静幽原分享给更多人！",
       "share_page": {
+        "window_title": "分享给更多人！",
+        "copy_button": "复制",
         "title": "谧静幽原-我的世界",
         "description": "想玩我的世界多人生存，就来谧静幽原！",
         "wechat_qrcode_title": "打开微信扫一扫后手动进行分享",
         "wechat_qrcode_helper": {
           "span1": "由于微信未开放相关接口，",
-          "span2": "所以只能通过用户手动进行分享。"
+          "span2": "所以只能通过用户手动进行分享。",
+          "style": {
+            "span1": "",
+            "span2": ""
+          }
+        },
+        "style": {
+          "window_title": ""
         }
       },
       "game": "小游戏",
@@ -40,6 +49,9 @@
     "home": {
       "main_text": "谧静幽原服务器",
       "main_button_text": "让我们开始吧",
+      "style": {
+        "main_button_text": ""
+      },
       "ping_server": {
         "code": {
           "id0": "正在检测MC服务器连接状态......",
@@ -68,19 +80,31 @@
     },
     "video_page": {
       "header": "视频",
-      "do_not_load": "省流模式下将不会加载宣传视频"
+      "do_not_load": "省流模式下将不会加载宣传视频",
+      "style": {
+        "header": ""
+      }
     },
     "photo": {
       "header": "相片",
       "title1": "我们有多个玩家社区",
       "title2": "大型工业区",
       "title3": "冰雪考察站",
-      "big_video_for_image_alt": "大视图图片"
+      "big_video_for_image_alt": "大视图图片",
+      "style": {
+        "header": "",
+        "title1": "",
+        "title2": "",
+        "title3": ""
+      }
     },
     "introduce": {
       "header": "简介",
       "markdown_path": {
         "server_introductory": "assets/md/index/serverIntroductory.zh-CN.md"
+      },
+      "style": {
+        "header": ""
       }
     },
     "rule": {
@@ -97,6 +121,9 @@
       "markdown_path": {
         "join_us": "assets/md/index/joinUs.zh-CN.md",
         "join_us2": "assets/md/index/joinUsText2.zh-CN.md"
+      },
+      "style": {
+        "header1": ""
       }
     }
   }

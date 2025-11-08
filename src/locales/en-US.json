@@ -3,9 +3,127 @@
     "mjyy": "MJYY"
   },
   "index": {
-    "join_us": {
+    "head": {
+      "title": "Minecraft MJYY Server",
+      "description": "The official website of the original multiplayer server of Minecraft:MJYY"
+    },
+    "preloader": {
+      "loading": "Loading resources...",
+      "skipbt": "Hide page",
+      "bgon": "Front desk",
+      "bgoff": "Background"
+    },
+    "navbar": {
+      "video_page": "The Videos",
+      "photo": "The Photos",
+      "introduce": "Server Introduction",
+      "rule": "The Rules",
+      "join_us": "Join Us",
+      "more": "More",
+      "community_photo_wall": "Community Photo wall",
+      "community_photo_wall_title": "A photo wall where players can freely create",
+      "share": "Share",
+      "share_title": "Share MJYY with more people!",
+      "share_page": {
+        "window_title": "Share with more people!",
+        "copy_button": "Copy",
+        "title": "Minecraft:MJYY",
+        "description": "If you want to play Minecraft multiplayer survival, come to MJYY!",
+        "wechat_qrcode_title": "Open wechat, scan the code and then share it manually",
+        "wechat_qrcode_helper": {
+          "span1": "Since wechat has not opened relevant interface,",
+          "span2": "So it can only be shared manually by user.",
+          "style": {
+            "span1": "font-size: 0.87em;",
+            "span2": "font-size: 0.98em;"
+          }
+        },
+        "style": {
+          "window_title": "font-size: 1.386em;width: 100%;left: 0;"
+        }
+      },
+      "game": "Game",
+      "defender": "Defender",
+      "defender_title": "The defender game"
+    },
+    "home": {
+      "main_text": "Minecraft: MJYY",
+      "main_button_text": "Let's go",
+      "style": {
+        "main_button_text": "left: 60px;"
+      },
+      "ping_server": {
+        "code": {
+          "id0": "The connection status of the MC server is being checked......",
+          "id1": "Try to detect the server connection status with the alternative scheme......",
+          "id2": "The connection to the server is normal",
+          "id3": "Minecraft server online",
+          "id4": "Unable to connect to the Minecraft server",
+          "id5": "The Minecraft server request has timed out",
+          "id6": "Connection status check failed. Please try again later",
+          "id7": "Unable to connect to the server",
+          "player_online_num": "Player: ",
+          "player_online_num2": "Player Online：",
+          "no_check": "Do not conduct online detection of Minecraft servers in the development branch"
+        }
+      },
+      "lang": {
+        "zh_cn": "简体中文(Simplified Chinese)",
+        "en_us": "English"
+      },
+      "resource_mode": {
+        "source": "Source",
+        "normal": "Normal",
+        "low": "Low"
+      },
+      "effect_check_box": "Enable visual effects"
+    },
+    "video_page": {
+      "header": "The Videos",
+      "do_not_load": "Promotional videos will not be loaded in the 'low' mode",
+      "style": {
+        "header": "top: 33%;"
+      }
+    },
+    "photo": {
+      "header": "The Photos",
+      "title1": "We have multiple player communities",
+      "title2": "Large industrial area",
+      "title3": "Ice and Snow Research Station",
+      "big_video_for_image_alt": "Large view picture",
+      "style": {
+        "header": "top: 33%;",
+        "title1": "line-height: initial;",
+        "title2": "line-height: initial;",
+        "title3": "line-height: initial;"
+      }
+    },
+    "introduce": {
+      "header": "Introduction",
       "markdown_path": {
-        "join_us": "assets/md/index/joinUs.en-US.md"
+        "server_introductory": "assets/md/index/serverIntroductory.en-US.md"
+      },
+      "style": {
+        "header": "font-size: 1.34em;top: 48%;"
+      }
+    },
+    "rule": {
+      "header": "The Rule",
+      "markdown_path": {
+        "server_rule": "assets/md/index/serverRule.en-US.md"
+      }
+    },
+    "join_us": {
+      "header1": "MJYY",
+      "header2": "Find a karmic connection",
+      "join_qqgroup": "Click to join the qqgroup",
+      "join_qqdiscord": "Click to join the qqdiscord",
+      "markdown_path": {
+        "join_us": "assets/md/index/joinUs.en-US.md",
+        "join_us2": "assets/md/index/joinUsText2.en-US.md"
+      },
+      "style": {
+        "header1": "line-height: initial;font-size: 0.99em;"
       }
     }
   }

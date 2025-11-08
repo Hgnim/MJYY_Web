@@ -28,12 +28,21 @@ export type langsStruType = {
             share:string;
             share_title:string;
             share_page:{
+                window_title:string;
+                copy_button:string;
                 title:string;
                 description:string;
                 wechat_qrcode_title:string;
                 wechat_qrcode_helper:{
                     span1:string;
                     span2:string;
+                    style:{
+                        span1:string;
+                        span2:string;
+                    }
+                }
+                style:{
+                    window_title:string;
                 }
             }
             game:string;
@@ -43,6 +52,9 @@ export type langsStruType = {
         home:{
             main_text:string;
             main_button_text:string;
+            style:{
+                main_button_text:string;
+            }
             ping_server:{
                 code:{
                     id0:string;
@@ -72,6 +84,9 @@ export type langsStruType = {
         video_page:{
             header:string;
             do_not_load:string;
+            style:{
+                header:string;
+            }
         },
         photo:{
             header:string;
@@ -79,11 +94,20 @@ export type langsStruType = {
             title2:string;
             title3:string;
             big_video_for_image_alt:string;
+            style:{
+                header:string;
+                title1:string;
+                title2:string;
+                title3:string;
+            }
         },
         introduce:{
             header:string;
             markdown_path:{
                 server_introductory:string;
+            }
+            style:{
+                header:string;
             }
         },
         rule:{
@@ -100,6 +124,9 @@ export type langsStruType = {
             markdown_path:{
                 join_us:string;
                 join_us2:string;
+            }
+            style:{
+                header1:string;
             }
         }
     }
