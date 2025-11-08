@@ -40,6 +40,9 @@
         },
         "style": {
           "window_title": "font-size: 1.386em;width: 100%;left: 0;"
+        },
+        "code": {
+          "copy_succeed": "Copy successfully"
         }
       },
       "game": "Game",
@@ -50,6 +53,7 @@
       "main_text": "Minecraft: MJYY",
       "main_button_text": "Let's go",
       "style": {
+        "main_text": "font-family: 'unifont', system-ui;font-size: 5.0838539em;",
         "main_button_text": "left: 60px;"
       },
       "ping_server": {

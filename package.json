@@ -42,6 +42,7 @@
     "*.scss",
     "./src/init/**/*",
     "./src/js/**/*.js",
-    "./src/ts/global/i18n/*.ts"
+    "./src/ts/global/i18n/*.ts",
+    "./src/ts/index/script.ts"
   ]
 }

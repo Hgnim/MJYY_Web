@@ -40,6 +40,9 @@
         },
         "style": {
           "window_title": ""
+        },
+        "code": {
+          "copy_succeed": "复制成功"
         }
       },
       "game": "小游戏",
@@ -50,6 +53,7 @@
       "main_text": "谧静幽原服务器",
       "main_button_text": "让我们开始吧",
       "style": {
+        "main_text": "",
         "main_button_text": ""
       },
       "ping_server": {

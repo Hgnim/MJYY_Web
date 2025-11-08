@@ -44,6 +44,9 @@ export type langsStruType = {
                 style:{
                     window_title:string;
                 }
+                code:{
+                    copy_succeed:string;
+                }
             }
             game:string;
             defender:string;
@@ -53,6 +56,7 @@ export type langsStruType = {
             main_text:string;
             main_button_text:string;
             style:{
+                main_text:string;
                 main_button_text:string;
             }
             ping_server:{
