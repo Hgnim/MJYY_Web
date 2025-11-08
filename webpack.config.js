@@ -135,6 +135,7 @@ module.exports = (env, argv) => {
 
                 { from: './src/assets/md', to: 'assets/md' },
                 { from: './src/json', to: 'json' },
+                { from: './src/locales', to: 'locales' },
 
                 {
                     from: './CNAME', to: '',

@@ -28,3 +28,64 @@ body{
   margin-left: 6px;
   margin-top: 4px;
 }
+
+//#region home
+//#region lang-select
+@keyframes lang-select_img-anim {
+  to{
+    transform: rotate(360deg);
+  }
+}
+#lang-select{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 6vw;
+  width: 6vw;
+  z-index: 3;
+}
+#lang-select .lang-select_sub{
+  position: absolute;
+  display: none;
+  background: var(--color15);
+  border-radius: 15px;
+  bottom: 5%;
+  right: 5%;
+  padding: 10% 16%;
+  width: max-content;
+}
+@mixin lang-select_sub_show{
+  display:unset;
+}
+@mixin lang-select_img_anim{
+  animation: lang-select_img-anim 1s;
+}
+#lang-select .lang-select_sub:hover{
+  @include lang-select_sub_show;
+}
+#lang-select .lang-select_sub:hover ~ img {
+  @include lang-select_img_anim;
+}
+#lang-select img{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  clip-path: ellipse(42.55% 43.08% at 50.00% 50.53%);
+}
+#lang-select img:hover{
+  @include lang-select_img_anim;
+}
+#lang-select img:hover + .lang-select_sub{
+  @include lang-select_sub_show;
+}
+#lang-select:has(img:hover, .lang-select_sub:hover) {
+  img {
+    @include lang-select_img_anim;
+  }
+  .lang-select_sub {
+    @include lang-select_sub_show;
+  }
+}
+//#endregion
+//#endregion

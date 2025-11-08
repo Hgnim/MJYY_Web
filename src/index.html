@@ -48,7 +48,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <nav class="navbar navbar-expand-md2 navbar-style fixed-top sticky-navigation navbarStyle autocolor">
                 <a class="navbar-brand page-scroll navbar-logo-box" href="#home" onclick="home_a_run()" style="font-weight: 900;">
                     <img src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" class="navbar-logo autocolor" width="34px"/><!--mjyylogo-128x.png-->
-                    <span class="navbar-title autocolor">谧静幽原</span>
+                    <span class="navbar-title autocolor" data-i18n="global.mjyy"></span>
                 </a>
                 <button class="navbar-toggler navbar-toggler-right border-0 toggler" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -142,6 +142,16 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="lang-select" class="unSelectable">
+                <img src="./assets/svg/earth.svg" alt="Language">
+                <div class="lang-select_sub">
+                    <input type="radio" onchange="langSelect_Change('zh-CN')" id="lang_zhcn" name="lang-radio"/>
+                    <label for="lang_zhcn">简体中文</label>
+                    <br>
+                    <input type="radio" onchange="langSelect_Change('en-US')" id="lang_enus" name="lang-radio"/>
+                    <label for="lang_enus">English</label>
                 </div>
             </div>
         </div>
