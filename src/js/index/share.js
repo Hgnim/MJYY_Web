@@ -1,7 +1,9 @@
+import {getTranslation} from "@/ts/global/i18n";
+
 export function shareWindowInfoCopyBtn_Click(){
     navigator.clipboard.writeText(document.getElementById('share-window-info-textBox').value);
 
-    showToast("复制成功", 2000, "share-window-toast",undefined, "share-window");
+    showToast(getTranslation('index.navbar.share_page.code.copy_succeed'), 2000, "share-window-toast",undefined, "share-window");
 }
 export function OpenSharePage(){
     {

@@ -1,0 +1,1 @@
+Newcomers who don't know how to install the game or join the server, etc., don't worry. You can consult in the server communication group. We will provide relevant tutorials on game clients and entering the server, as well as help solve some difficult problems.

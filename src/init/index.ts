@@ -24,3 +24,7 @@ import {ruleText_Button_Click} from '@/ts/index/pageScrollEffect';
 import '@/assets/scss/index/bigViewForImage.scss';
 
 import '@/assets/scss/index/style.scss';
+
+import '@/ts/global/i18n/langChange';
+
+import '@/ts/index/script';

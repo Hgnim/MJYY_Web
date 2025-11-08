@@ -6,8 +6,8 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-    <title>我的世界谧静幽原服务器</title>
-    <meta name="description" content="我的世界谧静幽原多人服务器官方网站">
+    <title data-i18n="index.head.title"></title>
+    <meta name="description" content=""  data-i18n="[content]index.head.description">
     <meta name="author" content="Hgnim">
     <link rel="icon" href="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" type="image/x-icon"><!--mjyylogo-128x.png-->
 
@@ -34,12 +34,12 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <!-- LOADER -->
             <div id="main-ld">
                 <div id="main-ld-loader"></div>
-                <h3 class="main-ld-txt">正在加载资源...</h3>
-                <button id="main-ld-skipbt" onclick="mainldskipbt_click(2)">隐藏加载页</button>
+                <h3 class="main-ld-txt" data-i18n="index.preloader.loading"></h3>
+                <button id="main-ld-skipbt" onclick="mainldskipbt_click(2)" data-i18n="index.preloader.skipbt"></button>
                 <div class="main-ld-checkbox">
                     <!-- From Uiverse.io by Dev-MdTuhin -->
                     <input checked="" type="checkbox" id="main-ld-bgswap" class="tgl tgl-flip" onchange="mainldbgswap_change()">
-                    <label for="main-ld-bgswap" data-tg-on="前台加载" data-tg-off="后台加载" class="tgl-btn"></label>
+                    <label for="main-ld-bgswap" data-tg-on="" data-tg-off="" class="tgl-btn" data-i18n="[data-tg-on]index.preloader.bgon;[data-tg-off]index.preloader.bgoff"></label>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <nav class="navbar navbar-expand-md2 navbar-style fixed-top sticky-navigation navbarStyle autocolor">
                 <a class="navbar-brand page-scroll navbar-logo-box" href="#home" onclick="home_a_run()" style="font-weight: 900;">
                     <img src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" class="navbar-logo autocolor" width="34px"/><!--mjyylogo-128x.png-->
-                    <span class="navbar-title autocolor">谧静幽原</span>
+                    <span class="navbar-title autocolor" data-i18n="global.mjyy"></span>
                 </a>
                 <button class="navbar-toggler navbar-toggler-right border-0 toggler" type="button" data-toggle="collapse"
                     data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
@@ -58,31 +58,31 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#video_page">宣传视频</a>
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#video_page" data-i18n="index.navbar.video_page"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#photo">服务器图片</a>
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#photo" data-i18n="index.navbar.photo"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#introduce">服务器介绍</a>
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#introduce" data-i18n="index.navbar.introduce"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#rule">规则</a>
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#rule" data-i18n="index.navbar.rule"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#join_us">加入我们</a>
+                            <a class="nav-link page-scroll navbar_ButtonBar autocolor" href="#join_us" data-i18n="index.navbar.join_us"></a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown navbar_ButtonBar autocolor">
-                                <a class="dropdown-text">更多</a>
+                                <a class="dropdown-text" data-i18n="index.navbar.more"></a>
                                 <div class="dropdown-menu autocolor center">
-                                    <a class="dropdown-item autocolor" href="CommunityPhotoWall.html" title="由玩家们自由发挥的照片墙">社区照片墙</a>
-                                    <a class="dropdown-item autocolor" href="" onclick="OpenSharePage();return false;" title="将谧静幽原分享给更多人！">分享</a>
+                                    <a class="dropdown-item autocolor" href="CommunityPhotoWall.html" title="" data-i18n="[title]index.navbar.community_photo_wall_title;index.navbar.community_photo_wall"></a>
+                                    <a class="dropdown-item autocolor" href="" onclick="OpenSharePage();return false;" title="" data-i18n="[title]index.navbar.share_title;index.navbar.share"></a>
                                     <div class="dropdown-sub dropdown-item autocolor">
-                                        <a class="dropdown-text">小游戏</a>
+                                        <a class="dropdown-text" data-i18n="index.navbar.game"></a>
                                         <div class="dropdown-submenu autocolor center">
                                             <!--suppress HtmlUnknownTarget -->
-                                            <a class="dropdown-item autocolor" href="game/defender.html" title="防御者小游戏">防御者</a>
+                                            <a class="dropdown-item autocolor" href="game/defender.html" title="" data-i18n="[title]index.navbar.defender_title;index.navbar.defender"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                 <div class="col-md-8 mx-auto my-auto text-center" style="z-index: 3;">
                     <!--<h1 class="display-4 mb-5 text-white">Main Center Text</h1>-->
                     <div id="home_MainText_Div">
-                    <p id="home_MainText" >谧静幽原服务器</p>
+                    <p id="home_MainText" data-i18n="[style]index.home.style.main_text;index.home.main_text"></p>
                 </div>
                 <a href="#video_page" class="page-scroll" id="home_MainButton">
                     <span id="home_MainButton_icon_box">
@@ -120,7 +120,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right-circle"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                         </div>
                     </span>
-                    <span id="home_MainButton_text">让我们开始吧</span>
+                    <span id="home_MainButton_text" data-i18n="[style]index.home.style.main_button_text;index.home.main_button_text"></span>
                 </a>
             </div>
             </div>
@@ -144,6 +144,16 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                     </div>
                 </div>
             </div>
+            <div id="lang-select" class="unSelectable">
+                <img src="./assets/svg/earth.svg" alt="Language">
+                <div class="lang-select_sub">
+                    <input type="radio" onchange="langSelect_Change('zh-CN')" id="lang_zhcn" name="lang-radio"/>
+                    <label for="lang_zhcn" data-i18n="index.home.lang.zh_cn"></label>
+                    <br>
+                    <input type="radio" onchange="langSelect_Change('en-US')" id="lang_enus" name="lang-radio"/>
+                    <label for="lang_enus" data-i18n="index.home.lang.en_us"></label>
+                </div>
+            </div>
         </div>
         <div id="home_imgFalling" class="effect-div effect-div_imgFalling"></div>
     </section>
@@ -153,15 +163,15 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-image"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
         <!--suppress HtmlFormInputWithoutLabel -->
         <select id="resourceModeBox_select" onchange="resourceModeBox_select_onchange(document.getElementById('resourceModeBox_select').value)">
-            <option value="source">原图</option>
+            <option value="source" data-i18n="index.home.resource_mode.source"></option>
             <!--<option value="high">质量</option>-->
-            <option value="normal">正常</option>
-            <option value="low">省流</option>
+            <option value="normal" data-i18n="index.home.resource_mode.normal"></option>
+            <option value="low" data-i18n="index.home.resource_mode.low"></option>
         </select>
     </i>
     <div id="effectCheckBoxDiv">
         <input type="checkbox" id="effectCheckBox" onchange="effectCheckBox_Change(document.getElementById('effectCheckBox').checked)">
-        <label for="effectCheckBox">启用视觉效果</label>
+        <label for="effectCheckBox" data-i18n="index.home.effect_check_box"></label>
     </div>
 
     <div class="py-5"></div>
@@ -170,7 +180,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
             <div class="row">
                 <div class="col-12">
                     <div class="oak-hanging-sign mx-auto" id="video-page_header">
-                        <h2>视频</h2>
+                        <h2 data-i18n="[style]index.video_page.style.header;index.video_page.header"></h2>
                     </div>
                 </div>
                 <div class="row mx-auto mt-5">
@@ -192,7 +202,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                         <div class="row">
                             <div class="col-sm-6 col-12">
                                 <div class="oak-hanging-sign mx-auto" id="photo_sub1_title">
-                                    <h2>相片</h2>
+                                    <h2 data-i18n="[style]index.photo.style.header;index.photo.header"></h2>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-12">
@@ -200,7 +210,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                     <div class="card glass_background" id="photo_sub1_photoBox1">
                                         <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
-                                            <p class="oak-sign2 os2_custom_p">我们有多个玩家社区</p>
+                                            <p class="oak-sign2 os2_custom_p" data-i18n="[style]index.photo.style.title1;index.photo.title1"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +218,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                     <div class="card glass_background" id="photo_sub1_photoBox2">
                                         <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
-                                            <p class="oak-sign2 os2_custom_p">大型工业区</p>
+                                            <p class="oak-sign2 os2_custom_p" data-i18n="[style]index.photo.style.title2;index.photo.title2"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +226,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                     <div class="card glass_background" id="photo_sub1_photoBox3">
                                         <!--图片卡片html由loadResources脚本中插入-->
                                         <div class="card-body px-0 pbg_haveTitle">
-                                            <p class="oak-sign2 os2_custom_p">冰雪考察站</p>
+                                            <p class="oak-sign2 os2_custom_p" data-i18n="[style]index.photo.style.title3;index.photo.title3"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +257,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <div class="oak-hanging-sign mx-auto" id="introduce_header">
-                                <h2>简介</h2>
+                                <h2 data-i18n="[style]index.introduce.style.header;index.introduce.header"></h2>
                             </div>
                         </div>
                         <div class="col-12 mx-auto">
@@ -267,7 +277,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                     <div class="row">
                         <div class="col-12 mx-auto">
                             <div class="oak-sign os_custom_rule mx-auto" id="rule_header">
-                                <h4>规则</h4>
+                                <h4 data-i18n="index.rule.header"></h4>
                             </div>
                         </div>
                         <div id="ruleText_Button">
@@ -293,14 +303,14 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                             <img src="https://s21.ax1x.com/2024/12/28/pAxP0P0.png" id="join_us_header_logo-img" onclick="joinUsHeaderLogoImg_click()" class="unSelectable" draggable="false">
                         </div>
                         <div class="col-6" id="join_us_header_text">
-                            <h1>谧静幽原</h1>
-                            <h4>觅见有缘</h4>
+                            <h1 data-i18n="index.join_us.header1"></h1>
+                            <h4 data-i18n="index.join_us.header2"></h4>
                         </div>
                     </div>
 
                     <div class="row mt-5">
                         <div class="col-12">
-                            <div id="joinUsText" class="oak-sign2 unset_unSelectable">
+                            <div id="joinUsText" class="oak-sign2 unset_unSelectable" data-i18n="[style]index.join_us.style.header1;">
                             </div>
                         </div>
                         <div class="py-4 col-sm-6 col-12">
@@ -308,7 +318,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                 <div class="photoBoxGroup-2 loadingBox mx-auto" data-show=true>
                                     <img class="photoBoxGroup-2" />
                                 </div>
-                                <a href="https://qm.qq.com/q/siqAtkac9i" class="mx-auto"><span>点击加入群聊</span></a>
+                                <a href="https://qm.qq.com/q/siqAtkac9i" class="mx-auto"><span data-i18n="index.join_us.join_qqgroup"></span></a>
                             </div>
                         </div>
                         <div class="py-4 col-sm-6 col-12">
@@ -316,7 +326,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
                                 <div class="photoBoxGroup-2 loadingBox mx-auto" data-show=true>
                                     <img class="photoBoxGroup-2" />
                                 </div>
-                                <a href="https://pd.qq.com/s/cci7lavxo" class="mx-auto"><span>点击加入频道</span></a>
+                                <a href="https://pd.qq.com/s/cci7lavxo" class="mx-auto"><span data-i18n="index.join_us.join_qqdiscord"></span></a>
                             </div>
                         </div>
                         <div id="joinUsText2" class="mt-3">
@@ -338,23 +348,24 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
     <div id="share-page" class="unSelectable">
         <div id="share-window">
             <div id="share-window-info">
-                <h3 id="share-window-info-title">分享给更多人！</h3>
+                <h3 id="share-window-info-title" data-i18n="[style]index.navbar.share_page.style.window_title;index.navbar.share_page.window_title"></h3>
                 <img id="share-window-info-qrcodeImg" >
                 <div id="share-window-info-inputDiv">
                 <!--suppress HtmlFormInputWithoutLabel -->
                     <input id="share-window-info-textBox" type="text" value="" readonly>
-                <input id="share-window-info-copyBtn" type="button" onclick="shareWindowInfoCopyBtn_Click()" value="复制"/>
+                <input id="share-window-info-copyBtn" type="button" onclick="shareWindowInfoCopyBtn_Click()" value="" data-i18n="[value]index.navbar.share_page.copy_button"/>
                  </div>
             </div>
             <div id="share-window-btn" class="share-component"
             data-initialized="true"
             data-url="https://mjyy.top"
             data-source="https://mjyy.top"
-            data-title="谧静幽原-我的世界"
+            data-title=""
             data-image="https://s21.ax1x.com/2024/12/28/pAxP0P0.png"
-            data-description="想玩我的世界多人生存，就来谧静幽原！"
-            data-wechat-qrcode-title="打开微信扫一扫后手动进行分享"
-            data-wechat-qrcode-helper = '<p style="color:black"><span>由于微信未开放相关接口，</span><br><span>所以只能通过用户手动进行分享。</span></p>'
+            data-description=""
+            data-wechat-qrcode-title=""
+            data-wechat-qrcode-helper = '<p><span class="share-wechat-helper_span" data-i18n="[style]index.navbar.share_page.wechat_qrcode_helper.style.span1;index.navbar.share_page.wechat_qrcode_helper.span1"></span><br><span class="share-wechat-helper_span" data-i18n="[style]index.navbar.share_page.wechat_qrcode_helper.style.span2;index.navbar.share_page.wechat_qrcode_helper.span2"></span></p>'
+                 data-i18n="[data-title]index.navbar.share_page.title;[data-description]index.navbar.share_page.description;[data-wechat-qrcode-title]index.navbar.share_page.wechat_qrcode_title"
             >
                 <a href="#" class="social-share-icon icon-wechat"></a>
                 <a href="#" class="social-share-icon icon-qq"></a>
@@ -373,7 +384,7 @@ HtmlRequiredAltAttribute, RequiredAttributes, JSUnresolvedReference -->
 
 
 <div id="bigViewForImage" onclick="bigViewForImage_click();">
-    <img alt="大视图图片" id="bigViewForImage_imgBox">
+    <img alt="" id="bigViewForImage_imgBox" data-i18n="[alt]index.photo.big_video_for_image_alt">
 </div>
 
 <div id="moreLineEffect" class="effect-div effect-div_moreLineEffect"></div>
