@@ -41,6 +41,7 @@ export async function loadLocale() {
 
     //渲染页面（翻译所有[data-i18n]元素）
     localize('body');
+    localize('head');
 }
 
 //获取当前语言
