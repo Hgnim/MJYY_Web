@@ -40,8 +40,8 @@ body{
   position: absolute;
   right: 0;
   bottom: 0;
-  height: 6vw;
-  width: 6vw;
+  height: calc(2vh + 2vw);
+  width: calc(2vh + 2vw);
   z-index: 3;
 }
 #lang-select .lang-select_sub{

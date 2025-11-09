@@ -8,6 +8,10 @@ export type langsStruType = {
     index:{
         head:{
             title:string;
+            code:{
+                title_leave:string;
+                title_back:string;
+            }
             description:string;
         },
         preloader:{
