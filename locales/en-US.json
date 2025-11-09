@@ -5,6 +5,10 @@
   "index": {
     "head": {
       "title": "Minecraft MJYY Server",
+      "code": {
+        "title_leave": "\uD83D\uDE2DDon't leave--",
+        "title_back": "\uD83E\uDD73Welcome back--"
+      },
       "description": "The official website of the original multiplayer server of Minecraft:MJYY"
     },
     "preloader": {

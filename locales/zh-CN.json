@@ -5,6 +5,10 @@
   "index": {
     "head": {
       "title": "我的世界谧静幽原服务器",
+      "code": {
+        "title_leave": "\uD83D\uDE2D不要走--",
+        "title_back": "\uD83E\uDD73欢迎回来--"
+      },
       "description": "我的世界谧静幽原多人服务器官方网站"
     },
     "preloader": {
