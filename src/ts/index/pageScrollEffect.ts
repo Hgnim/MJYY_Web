@@ -2,7 +2,7 @@ import {sleep} from "@/ts/global/sleep";
 import {getCookie,setCookie} from "@/ts/global/cookie";
 import {isMobile} from "@/ts/global/deviceDetect";
 import {effectCheckBox_Change} from "@/js/index/script";
-import {setMoreLineEffect} from "@/js/index/MoreLineEffect";
+//import {setMoreLineEffect} from "@/js/index/MoreLineEffect";
 import {setImgFalling} from "@/js/index/imgFalling";
 
 const allSectionIds = [
@@ -525,7 +525,7 @@ export function SetScrollEffect (enable: boolean=true) {
             enableEffect();
         else
             disableEffect();
-        setMoreLineEffect(enable);
+        //setMoreLineEffect(enable);
         setImgFalling(enable);
     }
 }

@@ -84,9 +84,11 @@
   padding: 4%;
   overflow: hidden;
   &.if_custom_video-box{
-    height: 45vh;//364px;
-    width: 45vh;//364px;
-    padding: 4vh;
+    height: calc(24vh + 24vw);
+    width: calc(24vh + 24vw);
+    max-width: 28vw;
+    max-height: 28vw;
+    padding: 7%;
     position: relative;
   }
 }
@@ -281,12 +283,61 @@
   @include transition_1;
   opacity: 0;
 }
+
+//Chrome浏览器的滚动条样式
+@mixin book-webkit-scrollbar{
+  width: 5px;//垂直滚动条宽度
+  height: 100%;//水平滚动条高度
+}
+//滚动条滑块
+@mixin book-webkit-scrollbar-thumb{
+  background: #474137;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+//滑块悬停
+@mixin book-webkit-scrollbar-thumb_hover{
+  background: #352b23;
+}
+//滚动条滑道
+@mixin book-webkit-scrollbar-track{
+  background: #56534d;
+  border-radius: 5px;
+}
+//滚动条上下箭头按钮
+@mixin book-webkit-scrollbar-button{
+  display: none;//隐藏按钮
+}
+@mixin book-firefox-scrollbar{
+  @-moz-document url-prefix() {//firefox样式隔离，大括号类的样式只给firefox浏览器使用
+    scrollbar-width: thin; //细滚动条
+    scrollbar-color: #352b23 #56534d; //滑块颜色；滑道颜色
+  }
+}
+
 #serverIntroductoryText{
   @include transition_1;
   height: 100%;
   position: relative;
   overflow: scroll;
+  @include book-firefox-scrollbar;
 }
+#serverIntroductoryText::-webkit-scrollbar {
+  @include book-webkit-scrollbar;
+}
+#serverIntroductoryText::-webkit-scrollbar-thumb {
+  @include book-webkit-scrollbar-thumb;
+}
+#serverIntroductoryText::-webkit-scrollbar-thumb:hover {
+  @include book-webkit-scrollbar-thumb_hover;
+}
+#serverIntroductoryText::-webkit-scrollbar-track {
+  @include book-webkit-scrollbar-track;
+}
+#serverIntroductoryText::-webkit-scrollbar-button {
+  @include book-webkit-scrollbar-button;
+}
+
 #serverIntroductoryText_border{
   @include transition_1;
   z-index: 1;
@@ -332,7 +383,24 @@
   height: 100%;
   position: relative;
   overflow: scroll;
+  @include book-firefox-scrollbar;
 }
+#ruleText::-webkit-scrollbar {
+  @include book-webkit-scrollbar;
+}
+#ruleText::-webkit-scrollbar-thumb {
+  @include book-webkit-scrollbar-thumb;
+}
+#ruleText::-webkit-scrollbar-thumb:hover {
+  @include book-webkit-scrollbar-thumb_hover;
+}
+#ruleText::-webkit-scrollbar-track {
+  @include book-webkit-scrollbar-track;
+}
+#ruleText::-webkit-scrollbar-button {
+  @include book-webkit-scrollbar-button;
+}
+
 #ruleText_border{
   @include transition_1;
   z-index: 1;
