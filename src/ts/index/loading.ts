@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import {home_a_run} from "@/js/index/view_action";
 import {sleep} from "@/ts/global/sleep";
 import {lockScroll,unlockScroll} from "@/ts/global/scrollLock";
@@ -23,7 +24,8 @@ export function LoadingOver(addValue=1) {
 async function waitToRemoveLoadingPage(){
     await sleep(3000);//为了优化网页，在结束加载页面后的一段时间后卸载元素
     document.getElementById("preloader")!.remove();
-    document.getElementsByClassName('pace')[0].remove();
+    //检查html后没有发现pace类的元素，故注释掉这一行。因为执行时会报错：can't access property "remove", document.getElementsByClassName(...)[0] is undefined
+    //document.getElementsByClassName('pace')[0].remove();
 }
 
 //加载时间过长的话则显示跳过加载的按钮

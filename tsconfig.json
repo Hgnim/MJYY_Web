@@ -5,6 +5,7 @@
     "strict": true ,        // 启用严格模式
     "moduleResolution": "node",   // 模块解析方式
     "esModuleInterop": true,      // 允许从 ES 模块中导入 CommonJS 模块
+    "allowSyntheticDefaultImports": true,//允许合成默认导入，配合"esModuleInterop": true,
     "baseUrl": ".",
     "outDir": "dist/tstojs",  //ts编译为js的文件输出位置
     "allowJs": true,
