@@ -1,3 +1,4 @@
+import {marked} from "marked";
 import {pistonPushPhotoAnim_Init} from '@/ts/index/pageScrollEffect';
 import {LoadingOver} from "@/ts/index/loading";
 import {getCookie,setCookie} from "@/ts/global/cookie";
@@ -60,7 +61,7 @@ async function markdownLoad(){
     ];
     for (let i = 0; i < mdRes.length; i++) {
         document.getElementById(mdRes[i][1])!.innerHTML =
-            marked.parse(await loadTextFile(mdRes[i][0]));
+            marked.parse((await loadTextFile(mdRes[i][0])) as string) as string;
     }
 }
 

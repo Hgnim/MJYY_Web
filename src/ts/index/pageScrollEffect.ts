@@ -1,8 +1,10 @@
+import 'bootstrap';//辅助'jquery';
+import $ from 'jquery';
 import {sleep} from "@/ts/global/sleep";
 import {getCookie,setCookie} from "@/ts/global/cookie";
 import {isMobile} from "@/ts/global/deviceDetect";
 import {effectCheckBox_Change} from "@/js/index/script";
-import {setMoreLineEffect} from "@/js/index/MoreLineEffect";
+//import {setMoreLineEffect} from "@/js/index/MoreLineEffect";
 import {setImgFalling} from "@/js/index/imgFalling";
 
 const allSectionIds = [
@@ -19,8 +21,8 @@ const allSectionIds = [
                     //还原其中所有对象的属性至动画开始前
                     //避免快速滚动时导致动画组件没有恢复到初始状态
                     obj[0]!.style.opacity = '0';
-                    obj[1]!.style.left = `${-$(window).width()}px`;
-                    obj[2]!.style.right = `${-$(window).width()}px`;
+                    obj[1]!.style.left = `${-$(window).width()!}px`;
+                    obj[2]!.style.right = `${-$(window).width()!}px`;
                 },
                 finishFunc:function (obj:(HTMLElement|null)[]){
                     //将其中的对象属性更改至完成状态
@@ -42,7 +44,7 @@ const allSectionIds = [
                                     obj = getSubObj("photo_sub1");
 
                                 if (obj!=null) {
-                                    obj[0]!.style.left = `${-$(window).width()}px`;
+                                    obj[0]!.style.left = `${-$(window).width()!}px`;
 
                                     obj[1]!.style.opacity = '0';
                                     obj[1]!.style.top = `${obj[1]!.offsetHeight}px`;
@@ -117,8 +119,8 @@ const allSectionIds = [
             "rule": {
                 isChange: false,
                 restoreFunc: function (obj:(HTMLElement|null)[]){
-                    obj[0]!.style.left=`${-$(window).width()}px`;
-                    obj[1]!.style.right=`${-$(window).width()}px`;
+                    obj[0]!.style.left=`${-$(window).width()!}px`;
+                    obj[1]!.style.right=`${-$(window).width()!}px`;
                     obj[2]!.style.opacity='0';
                 },
                 finishFunc:function(obj:(HTMLElement|null)[]){
@@ -216,16 +218,16 @@ const allSectionIds = [
                         const overflowValue: number = parseFloat(window.getComputedStyle(mb).width) - $(window).width()!;
                         const scrollTop: number | undefined = $(window).scrollTop();
                         const maxScrollTop: number | undefined = $(document).height()! - $(window).height()!;
-                        //if (scrollTop!=null && maxScrollTop!=null) {
+                        if (scrollTop!=null && maxScrollTop!=null) {
                         mb!.style.left = `${(-((scrollTop / maxScrollTop) * overflowValue))}px`;
-                        //}
+                        }
                     }
                 }
 
-                const screenHeight:number = $(window).height();
-                const screenWidth:number = $(window).width();
+                const screenHeight:number |undefined = $(window).height();
+                const screenWidth:number|undefined  = $(window).width();
                 const currentTopScroll:number =$(window).scrollTop()!;
-                const currentBottomScroll:number = currentTopScroll+screenHeight;
+                const currentBottomScroll:number = currentTopScroll+screenHeight!;
 
                 for (let si=0;si<allSectionIds.length;si++){
                     const section = document.getElementById(allSectionIds[si]);
@@ -251,7 +253,7 @@ const allSectionIds = [
                                                         obj[0].style.opacity = `${1 - v}`;
 
                                                         {
-                                                            const v2: number = -(v * $(window).width());
+                                                            const v2: number = -(v * $(window).width()!);
                                                             obj[1].style.left = `${v2}px`;
                                                             obj[2].style.right = `${v2}px`;
                                                         }
@@ -261,7 +263,7 @@ const allSectionIds = [
                                                         obj[0].style.opacity = v.toString();
 
                                                         {
-                                                            const v2: number = -($(window).width() - (v * $(window).width()));
+                                                            const v2: number = -($(window).width()! - (v * $(window).width()!));
                                                             obj[1].style.left = `${v2}px`;
                                                             obj[2].style.right = `${v2}px`;
                                                         }
@@ -311,7 +313,7 @@ const allSectionIds = [
                                                                     objsub[2]!.style.opacity = v.toString();
                                                                     objsub[2]!.style.top = `${(1 - v) * objsub[2]!.offsetHeight}px`;
 
-                                                                    objsub[0]!.style.left = `-${(1 - v) * screenWidth}px`;
+                                                                    objsub[0]!.style.left = `-${(1 - v) * screenWidth!}px`;
                                                                 } else {
                                                                     let v = (progressValueSub - 0.41) / 0.8;
                                                                     if (v > 1) v = 1;
@@ -385,7 +387,7 @@ const allSectionIds = [
                                                 if (progressValue2>0.25){
                                                     let v=(progressValue2-0.25)/0.5;
                                                     if (v>1)v = 1;
-                                                    const pxv=-(v*$(window).width());
+                                                    const pxv=-(v*$(window).width()!);
                                                     obj[0]!.style.left=`${pxv}px`;
                                                     obj[1]!.style.right=`${pxv}px`;
                                                     obj[2]!.style.opacity=`${1-v}`;
@@ -393,7 +395,7 @@ const allSectionIds = [
                                                 else if (progressValue<=0.5){
                                                     let v=(progressValue/0.5);
                                                     if (v>1)v = 1;
-                                                    const pxv=-((1-v)*$(window).width());
+                                                    const pxv=-((1-v)*$(window).width()!);
                                                     obj[0]!.style.left=`${pxv}px`;
                                                     obj[1]!.style.right=`${pxv}px`;
                                                     obj[2]!.style.opacity=v.toString();
@@ -525,7 +527,7 @@ export function SetScrollEffect (enable: boolean=true) {
             enableEffect();
         else
             disableEffect();
-        setMoreLineEffect(enable);
+        //setMoreLineEffect(enable);
         setImgFalling(enable);
     }
 }

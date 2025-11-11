@@ -1,3 +1,5 @@
+import $ from 'jquery';
+import Ping from 'ping.js';
 import {sleep} from "@/ts/global/sleep";
 import {getTranslation} from "@/ts/global/i18n";
 import {langInitLoadDone} from "@/ts/global/i18n/langChange";

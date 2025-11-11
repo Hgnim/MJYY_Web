@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import {marked} from 'marked';
+
 $(function () {
     const jsonFilePath = 'json/photoWall_Data.json';
 

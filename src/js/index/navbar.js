@@ -1,3 +1,4 @@
+import $ from 'jquery';
 $(function () {
     function navbarBackgroundCheckChange(){
         var scroll = $(window).scrollTop();

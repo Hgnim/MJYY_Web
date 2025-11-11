@@ -1,4 +1,12 @@
+import $ from 'jquery';
+import 'web-simple-toast/dist/css/toast.min.css';
+import {showToast} from 'web-simple-toast';
 import {getTranslation} from "@/ts/global/i18n";
+
+//https://github.com/overtrue/share.js
+import 'social-share.js/dist/css/share.min.css';
+import 'social-share.js/dist/js/social-share.min';
+
 
 export function shareWindowInfoCopyBtn_Click(){
     navigator.clipboard.writeText(document.getElementById('share-window-info-textBox').value);

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 $(function () {
     // init tooltip & popovers
     $('[data-toggle="tooltip"]').tooltip();

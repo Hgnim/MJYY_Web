@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import {pingServer_Start} from "@/ts/index/pingServer";
 import {imageClick,bvfiClick} from "@/ts/index/bigViewForImage";
 import {loadMediaResources,userSelectResourceMode,SetResourceMode,GetResourceMode} from "@/ts/index/loadResources";

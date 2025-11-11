@@ -31,5 +31,5 @@ import * as script from '@/js/index/script.js';exposeModuleToGlobal(script);
 
 
 
-import '@/js/index/MoreLineEffect';
+//import '@/js/index/MoreLineEffect';
 import '@/js/index/imgFalling'
