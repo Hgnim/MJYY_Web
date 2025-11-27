@@ -3,11 +3,11 @@ This is a warm and cozy home for Minecraft players, a pure survival server brimm
 
 #### Version Support
 
-Server native version: **Java** Edition **1.21.8**\
+Server native version: **Java** Edition **1.21.10**\
 Supported client versions for the server:
 
 - Java Edition: **1.9** - **1.21.x**
-- Bedrock Edition: **1.21.70** - **1.21.101**
+- Bedrock Edition: **1.21.90** - **1.21.124**
 
 #### Features and Highlights
 
