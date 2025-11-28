@@ -39,6 +39,10 @@ export async function loadLocale() {
         }
     }
 
+    await showLocale();
+}
+//渲染当前已加载的语言至元素
+export async function showLocale(){
     //渲染页面（翻译所有[data-i18n]元素）
     localize('body');
     localize('head');
