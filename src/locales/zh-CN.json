@@ -1,4 +1,17 @@
 {
+  "shared": {
+    "index": {
+      "introduce": {
+        "server_introductory": {
+          "main_version": "1.21.10",
+          "java_min": "1.9",
+          "java_max": "1.21.x",
+          "bedrock_min": "1.21.90",
+          "bedrock_max": "1.21.124"
+        }
+      }
+    }
+  },
   "global": {
     "mjyy": "谧静幽原"
   },
@@ -131,7 +144,7 @@
         "join_us2": "assets/md/index/joinUsText2.zh-CN.md"
       },
       "style": {
-        "header1": ""
+        "header1": "line-height: 1.3;font-size: 1em;"
       }
     }
   }

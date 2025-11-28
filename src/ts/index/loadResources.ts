@@ -4,7 +4,7 @@ import {LoadingOver} from "@/ts/index/loading";
 import {getCookie,setCookie} from "@/ts/global/cookie";
 import {langInitLoadDone} from "@/ts/global/i18n/langChange";
 import {sleep} from "@/ts/global/sleep";
-import {getTranslation, languageChange} from "@/ts/global/i18n";
+import {getTranslation, languageChange, showLocale} from "@/ts/global/i18n";
 
 let resourceMode:string|null;
 
@@ -63,6 +63,7 @@ async function markdownLoad(){
         document.getElementById(mdRes[i][1])!.innerHTML =
             marked.parse((await loadTextFile(mdRes[i][0])) as string) as string;
     }
+    await showLocale();//加载markdown后调用翻译渲染，以渲染markdown中可能出现的需要翻译的内容
 }
 
 export async function loadMediaResources(resMode:string,isInit:boolean=true) {

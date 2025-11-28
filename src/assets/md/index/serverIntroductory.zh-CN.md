@@ -2,11 +2,11 @@
 这里是《我的世界》玩家的温馨家园，一个充满探索、创造与社交乐趣的纯净生存服务器。无论你是新手玩家，还是资深的建造者，都能在这里找到属于自己的乐趣。
 
 #### 版本支持
-服务器原生版本: **Java**版**1.21.8**\
+服务器原生版本: **Java**版<strong data-i18n="shared.index.introduce.server_introductory.main_version">?</strong>\
 服务器支持的客户端版本:
 
-- Java版: **1.9**-**1.21.x**
-- 基岩版: **1.21.70** - **1.21.101**
+- Java版: <strong data-i18n="shared.index.introduce.server_introductory.java_min">?</strong> - <strong data-i18n="shared.index.introduce.server_introductory.java_max">?</strong>
+- 基岩版: <strong data-i18n="shared.index.introduce.server_introductory.bedrock_min">?</strong> - <strong data-i18n="shared.index.introduce.server_introductory.bedrock_max">?</strong>
 
 #### 特色亮点
 - **纯净生存体验**\
