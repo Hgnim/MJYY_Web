@@ -31,7 +31,7 @@ export function doThemeSel(tme:ThemeSelect_Theme,setCookie:boolean=true){
             break;
         case 'system':
             themeIcon.value = '#svg-bsi-circle-half';
-            if (window.matchMedia("(prefers-color-scheme: dark)"))
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches)
                 dataBsTheme_='dark';
             else
                 dataBsTheme_='light';

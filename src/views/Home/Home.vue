@@ -105,7 +105,12 @@ const msAddress:Ref<McServerAddress|undefined|null>=ref(undefined);
   msAddress.value= await getMcServerAddress();
 })();
 
-
+function startBtn_click(){
+  versionSection.value?.scrollIntoView({
+    behavior: 'smooth',//平滑
+    block: 'start',//元素顶对其视口顶
+  });
+}
 
 if (isDev){
   createToast({
@@ -134,13 +139,18 @@ if (isDev){
     </div>
     <broadcast id="broadcast-container"/>
     <div class="d-flex align-items-center justify-content-center full-wh">
-      <div id="home_title">
-        <span id="home_title_text1" class="unSelectable home_title_text"
-              data-aos="zoom-in-down"
-        >谧静幽原</span>
-        <span id="home_title_text2" class="unSelectable home_title_text"
-              data-aos="zoom-in-up"
-        >相见有缘</span>
+      <div>
+        <div id="home_title">
+          <span id="home_title_text1" class="unSelectable home_title_text"
+                data-aos="zoom-in-down"
+          >谧静幽原</span>
+          <span id="home_title_text2" class="unSelectable home_title_text"
+                data-aos="zoom-in-up"
+          >相见有缘</span>
+        </div>
+        <div class="position-relative w-100 d-flex justify-content-center">
+          <button data-aos="fade-in" id="start-btn" class="btn" @click="startBtn_click">{{t(`${lp}.startBtn`)}}</button>
+        </div>
       </div>
     </div>
     <div id="mc-status" class="unSelectable"><!--data-aos="flip-left"-->

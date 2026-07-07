@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import backendPost from '@/ts/backend/post.ts';
-import {type PropType, ref, type Ref} from "vue";
+import {type Component, defineAsyncComponent, type PropType, ref, type Ref} from "vue";
 import PasswordInput, {type SavePasswordProp} from "@/components/passwordInput.vue";
 import {useCookies} from "@vueuse/integrations/useCookies";
 import urlAddParam from "@/utils/urlAddParam.ts";
@@ -34,6 +34,8 @@ const mainIframe:Ref<HTMLIFrameElement|null> = ref(null);
 let mainIframe_haveSrc:boolean = false;
 const authContainer:Ref<HTMLDivElement|null> = ref(null);
 const passwordInput:Ref<InstanceType<typeof PasswordInput>|null>=ref(null);
+let addonComp:Component|null=null;
+const addonComp_key:Ref<string>=ref('');
 
 /**
  * 获取目标时间与当前时间的差
@@ -140,6 +142,9 @@ function mainIframe_onLoad(){
       authContainer.value.style.display = 'none';
 
       if (props.other.doServerMapFix==true){
+        addonComp=defineAsyncComponent(()=>import('@/components/pages/serverMap/component/AuthSubPage_waitLoading.vue'));
+        addonComp_key.value=btoa(JSON.stringify(addonComp));
+
         (async ()=>{
           const {sleep}=await import('@/utils/sleep');
           const smFix = (await import('@/components/pages/serverMap/ts/serverMap_fix.ts')).default;
@@ -203,6 +208,9 @@ if (isClient){
       />
     </div>
   </div>
+  <component :is="addonComp"
+             :key="addonComp_key"
+  />
 </template>
 
 <style scoped lang="scss">

@@ -1,6 +1,7 @@
 {
   "view_Home": {
     "title": "MJYY",
+    "startBtn": "Let's go",
     "versionSection": {
       "title": "Supported Game Versions",
       "javaEdition": {

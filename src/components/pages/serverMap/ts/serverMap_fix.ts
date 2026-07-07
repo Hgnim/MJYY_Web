@@ -6,12 +6,15 @@
 */
 
 import {sleep} from "@/utils/sleep.ts";
+import {isClient} from "@vueuse/core";
 
 export default async function (){
-    const target:HTMLIFrameElement|null=document.getElementById('mainIframe') as HTMLIFrameElement|null;
-    if (target){
-        target.style.height='0';
-        await sleep(1);
-        target.style.height='';
+    if (isClient) {
+        const target: HTMLIFrameElement | null = document.getElementById('mainIframe') as HTMLIFrameElement | null;
+        if (target) {
+            target.style.height = '0';
+            await sleep(1);
+            target.style.height = '';
+        }
     }
 }

@@ -38,6 +38,15 @@ $home-backimg-filter: blur(2px);
       font-size: calc(1.5rem + 1.5vw);
     }
   }
+  #start-btn{
+    background: var(--start-btn-bg);
+    font-size: 1.4rem;
+    border-radius: 18px;
+    transition: border-radius .5s;
+  }
+  #start-btn:hover{
+    border-radius: 25px;
+  }
   #mc-status{
     position: absolute;
     left: 0;
