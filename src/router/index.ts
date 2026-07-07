@@ -94,7 +94,7 @@ const router = createRouter({
                 authSubPage_doServerMapFix: true,
             },
         },
-        {
+        /*{
             path: '/analyticspanel',
             name: 'analyticsPanel',
             component: () => import('@/views/ReuseParentSubPage.vue'),
@@ -113,7 +113,7 @@ const router = createRouter({
                 },
                 localePrefix: 'view_rpsp_analyticsPanel',
             },
-        },
+        },*/
         {
             path: '/messageboard',
             name: 'messageBoard',

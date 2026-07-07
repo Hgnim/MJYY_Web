@@ -143,11 +143,11 @@ imgQuaInit(lp);
                              :to="{ name: 'serverMap'}"
                 >{{t(`${lp}.serverMap`)}}</router-link>
               </li>
-              <li class="dropdown-item">
+              <!--<li class="dropdown-item">
                 <router-link class="nav-link text-center unSelectable" aria-current="page"
                              :class="{'active':(curRouteName=='analyticsPanel')}"
                              :to="{name: 'analyticsPanel'}">{{t(`${lp}.analyticsPanel`)}}</router-link>
-              </li>
+              </li>-->
               <li class="dropdown-item">
                 <router-link class="nav-link text-center unSelectable" aria-current="page"
                              :class="{'active':(curRouteName=='messageBoard')}"

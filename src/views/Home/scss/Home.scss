@@ -40,8 +40,12 @@ $home-backimg-filter: blur(2px);
   }
   #start-btn{
     background: var(--start-btn-bg);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 18px;
+    transition: border-radius .5s;
+  }
+  #start-btn:hover{
+    border-radius: 25px;
   }
   #mc-status{
     position: absolute;

@@ -149,7 +149,7 @@ if (isDev){
           >相见有缘</span>
         </div>
         <div class="position-relative w-100 d-flex justify-content-center">
-          <button id="start-btn" class="btn" @click="startBtn_click">{{t(`${lp}.startBtn`)}}</button>
+          <button data-aos="fade-in" id="start-btn" class="btn" @click="startBtn_click">{{t(`${lp}.startBtn`)}}</button>
         </div>
       </div>
     </div>
