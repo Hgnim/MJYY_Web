@@ -108,7 +108,7 @@ onMounted(async () => {
   }
   #broadcast-content_container{
     width: 50vw;
-    height: 1rem;
+    height: 1.2rem;//为了适应mc字体，因此将值从1rem调整至1.2rem
     overflow:hidden;
     position: relative;
 

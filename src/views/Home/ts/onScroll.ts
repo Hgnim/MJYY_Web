@@ -77,7 +77,7 @@ export default function (
                     }
                     break;
                 case 1:
-                    if (scrollY.value>=titleSplitFuncOpt.titleRef.value.offsetHeight){
+                    if (scrollY.value>=titleSplitFuncOpt.titleUnderRef.value.offsetTop/*titleSplitFuncOpt.titleRef.value.offsetHeight*/){
                         if (bodyScrollLocker!=null)
                             bodyScrollLocker.value=false;
 
