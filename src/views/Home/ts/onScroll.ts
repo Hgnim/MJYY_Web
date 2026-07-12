@@ -3,6 +3,7 @@ import {toggleClass as navbar_toggleClass} from "@/components/navbar/ts/style.ts
 import {onMounted, onUnmounted, type Ref} from "vue";
 import {isClient} from "@/ts/env/ssr.ts";
 import { useScrollLock } from '@vueuse/core'
+import {sleep} from "@/utils/sleep.ts";
 
 export type TitleSplitFuncOpt= {
     titleRef: Ref<HTMLTableSectionElement | null>,
@@ -54,6 +55,36 @@ export default function (
         }else return 0;
     })();
     const bodyScrollLocker= isClient?useScrollLock(document.body):null;
+    let scrollDoneCheck_lock:boolean=false;
+    /**
+     * 备用检查，用于检查滚动条是否已滚动到位（滚动条是否停止滚动），避免因设备而异导致滚动条锁死
+     */
+    function scrollDoneCheck(){
+        if (!scrollDoneCheck_lock){
+            scrollDoneCheck_lock=true;
+            (async () => {
+                let lastScrollY=scrollY.value;
+                while (titleSplitFuncStatusCode==1||titleSplitFuncStatusCode==3) {//且这些状态值代表滚动条是被锁定的状态
+                    await sleep(500);
+                    if(lastScrollY==scrollY.value)//如果和上一个值相同，则代表滚动条已停下且没有成功解锁
+                        break;
+                    else
+                        lastScrollY=scrollY.value;
+                }
+                if (bodyScrollLocker!=null)
+                    bodyScrollLocker.value=false;
+                switch (titleSplitFuncStatusCode){
+                    case 1:
+                        titleSplitFuncStatusCode=2;//如果正常流程没有触发代号更变，超时后将强制将代号更改至下一阶段
+                        break;
+                    case 3:
+                        titleSplitFuncStatusCode=0;
+                        break;
+                }
+                scrollDoneCheck_lock=false;
+            })();
+        }
+    }
     /**
      * 主页的首页部分单独分离
      */
@@ -70,10 +101,10 @@ export default function (
                         titleSplitFuncOpt.titleUnderRef.value.scrollIntoView({
                             behavior: 'smooth',//平滑
                             block: 'start',//元素顶对其视口顶
-
                         });
 
                         titleSplitFuncStatusCode=1;
+                        scrollDoneCheck();
                     }
                     break;
                 case 1:
@@ -95,6 +126,7 @@ export default function (
                         });
 
                         titleSplitFuncStatusCode=3;
+                        scrollDoneCheck();
                     }
                     break;
                 case 3:
