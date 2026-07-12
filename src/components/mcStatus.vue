@@ -30,7 +30,7 @@ async function startCheck(){
         playerOnline.value.innerText=t('mcStatus-playerOnline.main',{online: '-',max: '-'});
         playerList.value.innerHTML=`<strong>${t('mcStatus-playerOnline.list.title')}</strong>`;
 
-        const jsr: JavaStatusResponse = await statusJava("mc.mjyy.top");
+        const jsr: JavaStatusResponse = await statusJava("sp.mjyy.top",30303);
         if (jsr.online) {
           if (jsr.motd)
             motd.value.innerHTML = jsr.motd.html.replace(/<span>[^>]*\n[^<]*<\/span>/, "<br>");
