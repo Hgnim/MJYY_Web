@@ -1,0 +1,1 @@
+const t={view_Game:{title:{t:0,b:{t:2,i:[{t:3}],s:"网页小游戏-谧静幽原"}},body:{title:{t:0,b:{t:2,i:[{t:3}],s:"谧静幽原小游戏"}}},game:{defender:{t:0,b:{t:2,i:[{t:3}],s:"防御者（抢先体验）"}},fiar:{t:0,b:{t:2,i:[{t:3}],s:"多人五子棋"}}}}};export{t as default};

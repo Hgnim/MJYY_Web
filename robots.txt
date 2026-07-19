@@ -1,0 +1,9 @@
+#只允许爬虫抓取根页面与资源，以节省资源
+#目前暂无其它需要被抓取的页面
+
+User-agent: *
+
+Allow: /$
+Allow: /assets/
+
+Disallow: /
