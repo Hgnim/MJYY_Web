@@ -1,0 +1,1 @@
+import{Y as a}from"./virtual_svg-icons-register-0fL8RoHx.js";const i="",o="";function r(l){return a?null:{code:3}}function c(l,n){let u=l,t=!0;return n.params.forEach(e=>{e.value!==void 0&&e.value!==null&&(t?(t=!1,u+=`?${e.name}=${e.value}`):u+=`&${e.name}=${e.value}`)}),u}export{o as a,i as b,r as c,c as u};

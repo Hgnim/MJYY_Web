@@ -1,0 +1,1 @@
+const t={global:{toast:{title:{info:{t:0,b:{t:2,i:[{t:3}],s:"Info"}},warning:{t:0,b:{t:2,i:[{t:3}],s:"Warning"}}}},feedback:{loading:{t:0,b:{t:2,i:[{t:3}],s:"Loading"}},failed:{t:0,b:{t:2,i:[{t:3}],s:"Load failed"}},inText:{loading:{t:0,b:{t:2,i:[{t:3}],s:"[Loading]"}},failed:{t:0,b:{t:2,i:[{t:3}],s:"[Load failed]"}}}}}};export{t as default};
